@@ -7,6 +7,7 @@ from quantecon.markov import tauchen
 import numpy as np
 from collections import namedtuple
 from s_approx import successive_approx
+from numba import njit
 
 
 # NamedTuple Model
@@ -26,6 +27,7 @@ def create_exit_model(
     return Model(n=n, z_vals=z_vals, Q=Q, β=β, s=s)
 
 
+@njit
 def no_exit_value(model):
     """Compute value of firm without exit option."""
     n, z_vals, Q, β, s = model
@@ -33,6 +35,7 @@ def no_exit_value(model):
     return np.linalg.solve((I - β * Q), z_vals)
 
 
+@njit
 def T(v, model):
     """The Bellman operator Tv = max{s, π + β Q v}."""
     n, z_vals, Q, β, s = model
@@ -40,6 +43,7 @@ def T(v, model):
     return np.maximum(s, h)
 
 
+@njit
 def get_greedy(v, model):
     """Get a v-greedy policy."""
     n, z_vals, Q, β, s = model
@@ -59,6 +63,7 @@ def vfi(model):
 
 
 import matplotlib.pyplot as plt
+
 
 def plot_val(savefig=False,
              figname="../figures/firm_exit_1.pdf"):

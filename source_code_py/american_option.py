@@ -78,7 +78,7 @@ import matplotlib.pyplot as plt
 
 
 def plot_contours(savefig=False,
-                  figname="../figures/american_option_1.png"):
+                  figname="../figures/american_option_1.pdf"):
 
     model = create_american_option_model()
     t_vals, z_vals, w_vals, Q, φ, T, β, K = model
@@ -110,7 +110,7 @@ def plot_contours(savefig=False,
 
 def plot_strike(savefig=False,
                 fontsize=12,
-                figname="../figures/american_option_2.png"):
+                figname="../figures/american_option_2.pdf"):
     model = create_american_option_model()
     t_vals, z_vals, w_vals, Q, φ, T, β, K = model
     h_star = compute_cvf(model)
@@ -140,7 +140,8 @@ def plot_strike(savefig=False,
             if k >= 0:
                 exercise_date = t
 
-        assert exercise_date < T, "Option not exercised."
+        if exercise_date >= T:
+            print("Warning: Option not exercised.")
 
         # Plot
         ax.set_ylim(y_min, y_max)
@@ -152,7 +153,7 @@ def plot_strike(savefig=False,
         ax.legend(loc="upper left", fontsize=fontsize)
         ax.text(-10, 11, "in the money", fontsize=fontsize, rotation=90)
         ax.text(-10, 7.2, "out of the money", fontsize=fontsize, rotation=90)
-        ax.text(exercise_date-20, 6, #s_vals[exercise_date]+0.8,
+        ax.text(exercise_date-20, 6,
                 "exercise date", fontsize=fontsize)
         ax.set_xticks((1, T))
         ax.set_yticks((y_min, y_max))
