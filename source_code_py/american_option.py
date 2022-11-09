@@ -7,12 +7,26 @@ from quantecon.markov import tauchen, MarkovChain
 import numpy as np
 from collections import namedtuple
 from s_approx import successive_approx
-from itertools import product
+from numba import njit
 
 
 # NamedTuple Model
 Model = namedtuple("Model", ("t_vals", "z_vals","w_vals", "Q",
-                             "φ", "T", "β", "K", "e"))
+                             "φ", "T", "β", "K"))
+
+
+@njit
+def _eval(t, i_w, i_z, T, K):
+    return (t < T) * (i_z + i_w - K)
+
+
+@njit
+def product(a, b):
+    res = []
+    for x in a:
+        for y in b:
+            res.append((x, y))
+    return res
 
 
 def create_american_option_model(
@@ -27,26 +41,25 @@ def create_american_option_model(
     t_vals = np.arange(T+1)
     mc = tauchen(ρ, ν, n=n)
     z_vals, Q = mc.state_values + μ, mc.P
-    w_vals, φ, β = [-s, s], [0.5, 0.5], 1 / (1 + r)
-    e = lambda t, i_w, i_z: (t <= T) * (z_vals[i_z] + w_vals[i_w] - K)
+    w_vals, φ, β = np.array([-s, s]), np.array([0.5, 0.5]), 1 / (1 + r)
     return Model(t_vals=t_vals, z_vals=z_vals, w_vals=w_vals, Q=Q,
-                 φ=φ, T=T, β=β, K=K, e=e)
+                φ=φ, T=T, β=β, K=K)
 
 
+@njit
 def C(h, model):
     """The continuation value operator."""
-    t_vals, z_vals, w_vals, Q, φ, T, β, K, e = model
+    t_vals, z_vals, w_vals, Q, φ, T, β, K = model
     Ch = np.empty_like(h)
-    z_idx, w_idx = range(len(z_vals)), range(len(w_vals))
+    z_idx, w_idx = np.arange(len(z_vals)), np.arange(len(w_vals))
     for (t, i_z) in product(t_vals, z_idx):
         out = 0.0
         for (i_w_1, i_z_1) in product(w_idx, z_idx):
             t_1 = min(t + 1, T)
-            out += max(e(t_1, i_w_1, i_z_1), h[t_1, i_z_1]) * \
-                        Q[i_z, i_z_1] * φ[i_w_1]
+            out += max(_eval(t_1, w_vals[i_w_1], z_vals[i_z_1], T, K),
+                        h[t_1, i_z_1]) * Q[i_z, i_z_1] * φ[i_w_1]
         Ch[t, i_z] = β * out
     return Ch
-
 
 
 def compute_cvf(model):
@@ -68,17 +81,17 @@ def plot_contours(savefig=False,
                   figname="../figures/american_option_1.png"):
 
     model = create_american_option_model()
-    t_vals, z_vals, w_vals, Q, φ, T, β, K, e = model
+    t_vals, z_vals, w_vals, Q, φ, T, β, K = model
     h_star = compute_cvf(model)
     fig, axes = plt.subplots(3, 1, figsize=(7, 11))
-    z_idx, w_idx = range(len(z_vals)), range(len(w_vals))
+    z_idx, w_idx = np.arange(len(z_vals)), np.arange(len(w_vals))
     H = np.zeros((len(w_vals), len(z_vals)))
-    for (ax_index, t) in zip(range(3), (1, 195, 199)):
+    for (ax_index, t) in zip(range(3), (1, 195, 198)):
 
         ax = axes[ax_index]
 
         for (i_w, i_z) in product(w_idx, z_idx):
-            H[i_w, i_z] = e(t, i_w, i_z) - h_star[t, i_z]
+            H[i_w, i_z] = _eval(t, w_vals[i_w], z_vals[i_z], T, K) - h_star[t, i_z]
 
         cs1 = ax.contourf(w_vals, z_vals, np.transpose(H), alpha=0.5)
         ctr1 = ax.contour(w_vals, z_vals, np.transpose(H), levels=[0.0])
@@ -99,7 +112,7 @@ def plot_strike(savefig=False,
                 fontsize=12,
                 figname="../figures/american_option_2.png"):
     model = create_american_option_model()
-    t_vals, z_vals, w_vals, Q, φ, T, β, K, e = model
+    t_vals, z_vals, w_vals, Q, φ, T, β, K = model
     h_star = compute_cvf(model)
 
     # Built Markov chains for simulation
@@ -117,14 +130,14 @@ def plot_strike(savefig=False,
         # Generate price series
         z_draws = z_mc.simulate_indices(T, init=int(len(z_vals) / 2 - 10))
         w_draws = w_mc.simulate_indices(T)
-        s_vals = np.empty_like(z_draws)
-        for idx in range(T):
-            s_vals[idx] = z_vals[z_draws[idx]] + w_vals[w_draws[idx]]
+        s_vals = z_vals[z_draws] + w_vals[w_draws]
 
         # Find the exercise date, if any.
         exercise_date = T + 1
         for t in range(T):
-            if e(t, w_draws[t], z_draws[t]) >= h_star[w_draws[t], z_draws[t]]:
+            k = _eval(t, w_vals[w_draws[t]], z_vals[z_draws[t]], T, K) - \
+                    h_star[w_draws[t], z_draws[t]]
+            if k >= 0:
                 exercise_date = t
 
         assert exercise_date < T, "Option not exercised."
