@@ -16,7 +16,8 @@ Model = namedtuple("Model", ("t_vals", "z_vals","w_vals", "Q",
 
 
 @njit
-def _eval(t, i_w, i_z, T, K):
+def exit_reward(t, i_w, i_z, T, K):
+    """Payoff to exercising the option at time t."""
     return (t < T) * (i_z + i_w - K)
 
 
@@ -56,7 +57,7 @@ def C(h, model):
         out = 0.0
         for (i_w_1, i_z_1) in product(w_idx, z_idx):
             t_1 = min(t + 1, T)
-            out += max(_eval(t_1, w_vals[i_w_1], z_vals[i_z_1], T, K),
+            out += max(exit_reward(t_1, w_vals[i_w_1], z_vals[i_z_1], T, K),
                         h[t_1, i_z_1]) * Q[i_z, i_z_1] * φ[i_w_1]
         Ch[t, i_z] = β * out
     return Ch
@@ -91,7 +92,7 @@ def plot_contours(savefig=False,
         ax = axes[ax_index]
 
         for (i_w, i_z) in product(w_idx, z_idx):
-            H[i_w, i_z] = _eval(t, w_vals[i_w], z_vals[i_z], T, K) - h_star[t, i_z]
+            H[i_w, i_z] = exit_reward(t, w_vals[i_w], z_vals[i_z], T, K) - h_star[t, i_z]
 
         cs1 = ax.contourf(w_vals, z_vals, np.transpose(H), alpha=0.5)
         ctr1 = ax.contour(w_vals, z_vals, np.transpose(H), levels=[0.0])
@@ -135,7 +136,7 @@ def plot_strike(savefig=False,
         # Find the exercise date, if any.
         exercise_date = T + 1
         for t in range(T):
-            k = _eval(t, w_vals[w_draws[t]], z_vals[z_draws[t]], T, K) - \
+            k = exit_reward(t, w_vals[w_draws[t]], z_vals[z_draws[t]], T, K) - \
                     h_star[w_draws[t], z_draws[t]]
             if k >= 0:
                 exercise_date = t
