@@ -77,7 +77,7 @@ import matplotlib.pyplot as plt
 
 
 def plot_contours(savefig=False,
-                  figname="../figures/american_option_1.png"):
+                  figname="../figures/american_option_1.pdf"):
 
     model = create_american_option_model()
     t_vals, z_vals, w_vals, Q, φ, T, β, K = model

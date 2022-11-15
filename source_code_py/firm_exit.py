@@ -4,9 +4,10 @@ Firm valuation with exit option.
 """
 
 from quantecon.markov import tauchen
+from quantecon import compute_fixed_point
+
 import numpy as np
 from collections import namedtuple
-from s_approx import successive_approx
 from numba import njit
 
 
@@ -54,7 +55,8 @@ def get_greedy(v, model):
 def vfi(model):
     """Solve by VFI."""
     v_init = no_exit_value(model)
-    v_star = successive_approx(lambda v: T(v, model), v_init)
+    v_star = compute_fixed_point(lambda v: T(v, model), v_init, error_tol=1e-6,
+                                 max_iter=1000, print_skip=25)
     σ_star = get_greedy(v_star, model)
     return v_star, σ_star
 
