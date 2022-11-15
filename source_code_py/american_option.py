@@ -4,10 +4,11 @@ Valuation for finite-horizon American call options in discrete time.
 """
 
 from quantecon.markov import tauchen, MarkovChain
+from quantecon import compute_fixed_point
+
 import numpy as np
 from collections import namedtuple
-from s_approx import successive_approx
-from numba import njit
+from numba import njit, prange
 
 
 # NamedTuple Model
@@ -19,15 +20,6 @@ Model = namedtuple("Model", ("t_vals", "z_vals","w_vals", "Q",
 def exit_reward(t, i_w, i_z, T, K):
     """Payoff to exercising the option at time t."""
     return (t < T) * (i_z + i_w - K)
-
-
-@njit
-def product(a, b):
-    res = []
-    for x in a:
-        for y in b:
-            res.append((x, y))
-    return res
 
 
 def create_american_option_model(
@@ -47,19 +39,23 @@ def create_american_option_model(
                 φ=φ, T=T, β=β, K=K)
 
 
-@njit
+@njit(parallel=True)
 def C(h, model):
     """The continuation value operator."""
     t_vals, z_vals, w_vals, Q, φ, T, β, K = model
     Ch = np.empty_like(h)
     z_idx, w_idx = np.arange(len(z_vals)), np.arange(len(w_vals))
-    for (t, i_z) in product(t_vals, z_idx):
-        out = 0.0
-        for (i_w_1, i_z_1) in product(w_idx, z_idx):
-            t_1 = min(t + 1, T)
-            out += max(exit_reward(t_1, w_vals[i_w_1], z_vals[i_z_1], T, K),
-                        h[t_1, i_z_1]) * Q[i_z, i_z_1] * φ[i_w_1]
-        Ch[t, i_z] = β * out
+    for i in prange(len(t_vals)):
+        t = t_vals[i]
+        for i_z in prange(len(z_vals)):
+            out = 0.0
+            for i_w_1 in prange(len(w_vals)):
+                for i_z_1 in prange(len(z_vals)):
+                    t_1 = min(t + 1, T)
+                    out += max(exit_reward(t_1, w_vals[i_w_1], z_vals[i_z_1], T, K),
+                                h[t_1, i_z_1]) * Q[i_z, i_z_1] * φ[i_w_1]
+            Ch[t, i_z] = β * out
+
     return Ch
 
 
@@ -68,7 +64,9 @@ def compute_cvf(model):
     Compute the continuation value function by successive approx.
     """
     h_init = np.zeros((len(model.t_vals), len(model.z_vals)))
-    h_star = successive_approx(lambda h: C(h, model), h_init)
+    h_star = compute_fixed_point(lambda h: C(h, model), h_init,
+                                 error_tol=1e-6, max_iter=1000,
+                                 print_skip=25)
     return h_star
 
 
@@ -90,9 +88,10 @@ def plot_contours(savefig=False,
     for (ax_index, t) in zip(range(3), (1, 195, 198)):
 
         ax = axes[ax_index]
-
-        for (i_w, i_z) in product(w_idx, z_idx):
-            H[i_w, i_z] = exit_reward(t, w_vals[i_w], z_vals[i_z], T, K) - h_star[t, i_z]
+        for i_w in prange(len(w_vals)):
+            for i_z in prange(len(z_vals)):
+                H[i_w, i_z] = exit_reward(t, w_vals[i_w], z_vals[i_z], T,
+                                          K) - h_star[t, i_z]
 
         cs1 = ax.contourf(w_vals, z_vals, np.transpose(H), alpha=0.5)
         ctr1 = ax.contour(w_vals, z_vals, np.transpose(H), levels=[0.0])
