@@ -43,7 +43,8 @@ def T(v, model):
     v_new = np.empty_like(v)
     for i in prange(w_grid.shape[0]):
         for j in prange(y_grid.shape[0]):
-            x_tmp = np.array([B(i, j, k, v, model) for k in w_idx])
+            x_tmp = np.array([B(i, j, k, v, model) for k
+                              in np.arange(w_grid.shape[0])])
             v_new[i, j] = np.max(x_tmp)
     return v_new
 
