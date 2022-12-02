@@ -1,5 +1,6 @@
+from quantecon import compute_fixed_point
+
 import numpy as np
-from s_approx import successive_approx
 from collections import namedtuple
 from numba import njit
 
@@ -51,7 +52,7 @@ def get_greedy(v, model):
     Get a v-greedy policy.  Returns a zero-based array.
     """
     β, K, c, κ, p = model
-    σ_star = np.zeros(K+1)
+    σ_star = np.zeros(K+1, dtype=np.int32)
     for x in range(0, K+1):
         x1 = np.array([B(x, a, v, model) for a in np.arange(K-x+1)])
         σ_star[x] = np.argmax(x1)
@@ -61,7 +62,8 @@ def get_greedy(v, model):
 def solve_inventory_model(v_init, model):
     """Use successive_approx to get v_star and then compute greedy."""
     β, K, c, κ, p = model
-    v_star = successive_approx(lambda v: T(v, model), v_init)
+    v_star = compute_fixed_point(lambda v: T(v, model), v_init,
+                                 error_tol=1e-5, max_iter=1000, print_skip=25)
     σ_star = get_greedy(v_star, model)
     return v_star, σ_star
 
@@ -83,9 +85,10 @@ def sim_inventories(ts_length=400, X_init=0):
     global p, σ_star
     X = np.zeros(ts_length, dtype=np.int32)
     X[0] = X_init
+    # Subtracts 1 because numpy generates only positive integers
+    rand = np.random.default_rng().geometric(p=p, size=ts_length-1) - 1
     for t in range(0, ts_length-1):
-        rand = np.random.geometric(p)
-        X[t+1] = np.maximum(X[t] - rand, 0) + σ_star[X[t]]
+        X[t+1] = np.maximum(X[t] - rand[t], 0) + σ_star[X[t]]
     return X
 
 
