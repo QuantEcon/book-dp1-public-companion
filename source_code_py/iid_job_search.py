@@ -3,14 +3,19 @@ VFI approach to job search in the infinite-horizon IID case.
 
 """
 
-from s_approx import successive_approx
+from quantecon import compute_fixed_point
+
 from two_period_job_search import create_job_search_model
+
+from numba import njit
 import numpy as np
 
 
 # A model with default parameters
 default_model = create_job_search_model()
 
+
+@njit
 def T(v, model):
     """ The Bellman operator. """
     n, w_vals, φ, β, c = model
@@ -18,6 +23,7 @@ def T(v, model):
                     c + β * np.sum(v * φ)) for w in w_vals])
 
 
+@njit
 def get_greedy(v, model):
     """ Get a v-greedy policy. """
     n, w_vals, φ, β, c = model
@@ -28,7 +34,8 @@ def get_greedy(v, model):
 def vfi(model=default_model):
     """ Solve the infinite-horizon IID job search model by VFI. """
     v_init = np.zeros_like(model.w_vals)
-    v_star = successive_approx(lambda v: T(v, model), v_init)
+    v_star = compute_fixed_point(lambda v: T(v, model), v_init,
+                                 error_tol=1e-5, max_iter=1000, print_skip=25)
     σ_star = get_greedy(v_star, model)
     return v_star, σ_star
 
@@ -38,11 +45,12 @@ def vfi(model=default_model):
 
 import matplotlib.pyplot as plt
 
+
 def fig_vseq(model=default_model,
                 k=3,
                 savefig=False,
                 figname="../figures_py/iid_job_search_1.pdf",
-                fs=12):
+                fs=10):
 
     v = np.zeros_like(model.w_vals)
     fig, ax = plt.subplots(figsize=(9, 5.5))
@@ -69,7 +77,7 @@ def fig_vseq(model=default_model,
 
 
 def fig_vstar(model=default_model,
-              savefig=False, fs=12,
+              savefig=False, fs=10,
               figname="../figures_py/iid_job_search_3.pdf"):
     """ Plot the fixed point. """
     n, w_vals, φ, β, c = model
