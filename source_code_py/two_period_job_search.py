@@ -1,9 +1,13 @@
 from quantecon.distributions import BetaBinomial
+
 import numpy as np
+from numba import njit
 from collections import namedtuple
+
 
 # NamedTuple Model
 Model = namedtuple("Model", ("n", "w_vals", "φ", "β", "c"))
+
 
 def create_job_search_model(
         n=50,        # wage grid size
@@ -23,6 +27,7 @@ def create_job_search_model(
     return Model(n=n, w_vals=w_vals, φ=φ, β=β, c=c)
 
 
+@njit
 def v_1(w, model):
     """
     Computes lifetime value at t=1 given current wage w_1 = w
@@ -33,6 +38,7 @@ def v_1(w, model):
     return np.maximum(w + β * w, h_1)
 
 
+@njit
 def res_wage(model):
     """
     Computes reservation wage at t=1
@@ -48,10 +54,11 @@ def res_wage(model):
 
 import matplotlib.pyplot as plt
 
+
 default_model = create_job_search_model()
 
 
-def fig_dist(model=default_model, fs=14):
+def fig_dist(model=default_model, fs=10):
     """
     Plot the distribution of wages
     """
@@ -74,7 +81,7 @@ def fig_v1(model=default_model, savefig=False,
     continuation_val = c + β * np.sum(s * φ)
     min_w, max_w = np.min(w_vals), np.max(w_vals)
 
-    fontdict = {'fontsize': 12}
+    fontdict = {'fontsize': 10}
     fig, ax = plt.subplots(figsize=(9, 5.5))
     ax.set_ylim(0, 120)
     ax.set_xlim(min_w, max_w)
