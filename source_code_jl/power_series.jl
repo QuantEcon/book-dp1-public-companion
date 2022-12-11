@@ -20,4 +20,3 @@ end
 
 # Print maximal error
 print(maximum(abs.(B_inverse - power_series(A))))
-

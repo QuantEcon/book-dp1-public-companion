@@ -25,7 +25,7 @@ function plot_45(; file_name="../figures/newton_solow_45.pdf",
     lb_g = L"g"
     ax.plot(xgrid, g.(xgrid),  lw=2, alpha=0.6, label=lb_g)
 
-    lb_q = L"q"
+    lb_q = L"Q"
     ax.plot(xgrid, q.(xgrid),  lw=2, alpha=0.6, label=lb_q)
 
     ax.plot(xgrid, xgrid, "k--", lw=1, alpha=0.7, label=L"45")

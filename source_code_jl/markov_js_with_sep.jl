@@ -37,8 +37,8 @@ function get_greedy(v, model)
 end
 
 "Solve by VFI."
-function vfi(model)
-    v_init = zero(model.w_vals)
+function vfi(model) 
+    v_init = zero(model.w_vals)  
     v_star = successive_approx(v -> T(v, model), v_init)
     σ_star = get_greedy(v_star, model)
     return v_star, σ_star
@@ -56,7 +56,8 @@ default_model = create_js_with_sep_model()
 
 
 function plot_main(; model=default_model,
-                     savefig=false,
+                     method="vfi", 
+                     savefig=false, 
                      figname="../figures/markov_js_with_sep_1.pdf")
     (; n, w_vals, P, β, c, α) = model
     v_star, σ_star = vfi(model)
@@ -87,7 +88,7 @@ function plot_main(; model=default_model,
 end
 
 function plot_w_stars(; α_vals=LinRange(0.0, 1.0, 10),
-                        savefig=false,
+                        savefig=false, 
                         figname="../figures/markov_js_with_sep_2.pdf")
 
     w_star_vec = similar(α_vals)
@@ -122,3 +123,5 @@ function plot_w_stars(; α_vals=LinRange(0.0, 1.0, 10),
         fig.savefig(figname)
     end
 end
+
+

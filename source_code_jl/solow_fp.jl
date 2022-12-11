@@ -10,7 +10,7 @@ k_grid = LinRange(xmin, xmax, 1200)
 
 function plot_45(ax; k0=0.5, 
                 A=2.0, s=0.3, alpha=0.3, delta=0.4,
-                fs=18, # font size
+                fs=16, # font size
                 num_arrows=8)
 
     # Define the function and the fixed point
@@ -61,11 +61,10 @@ end
 
 
 
-fig, axes = plt.subplots(2, 1, figsize=(8, 14))
-ax1, ax2 = axes
+fig, ax = plt.subplots()
 
-plot_45(ax1; A=2.0, s=0.3, alpha=0.4, delta=0.4) 
-plot_45(ax2; A=3.0, s=0.4, alpha=0.05, delta=0.6) 
+plot_45(ax; A=2.0, s=0.3, alpha=0.4, delta=0.4) 
+#plot_45(ax2; A=3.0, s=0.4, alpha=0.05, delta=0.6) 
 fig.tight_layout()
 plt.show()
 #fig.savefig("../figures/solow_fp.pdf")

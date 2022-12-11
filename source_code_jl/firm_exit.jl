@@ -52,7 +52,7 @@ end
 using PyPlot
 using LaTeXStrings
 PyPlot.matplotlib[:rc]("text", usetex=true) # allow tex rendering
-fontsize=14
+fontsize=16
 
 
 function plot_val(; savefig=false, 

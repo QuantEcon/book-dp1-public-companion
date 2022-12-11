@@ -11,27 +11,27 @@ marker_size = 60
 fs=14
 
 colors = ("red", "blue", "orange", "green")
-x_0_vecs = ([2.0; 3.0], [3.0; 5.2], [2.4; 3.6], [2.6, 5.6])
+u_0_vecs = ([2.0; 3.0], [3.0; 5.2], [2.4; 3.6], [2.6, 5.6])
 iter_range = 8
 
-for (x_0, color) in zip(x_0_vecs, colors)
-    x = x_0
-    s, t = x
-    ax.text(s+e, t-4e, L"x_0", fontsize=fs)
+for (u_0, color) in zip(u_0_vecs, colors)
+    u = u_0
+    s, t = u
+    ax.text(s+e, t-4e, L"u_0", fontsize=fs)
 
     for i in 1:iter_range
-        s, t = x
+        s, t = u
         ax.scatter((s,), (t,), c=color, alpha=0.3, s=marker_size)
-        x_new = T(x)
-        s_new, t_new = x_new
+        u_new = T(u)
+        s_new, t_new = u_new
         ax.plot((s, s_new), (t, t_new), lw=0.5, alpha=0.5, c=color)
-        x = x_new
+        u = u_new
     end
 end
 
-s_star, t_star = x_star
+s_star, t_star = u_star
 ax.scatter((s_star,), (t_star,), c="k", s=marker_size * 1.2)
-ax.text(s_star-4e, t_star+4e, L"x^*", fontsize=fs)
+ax.text(s_star-4e, t_star+4e, L"u^*", fontsize=fs)
 
 ax.set_xticks((2.0, 2.5, 3.0))
 ax.set_yticks((3.0, 4.0, 5.0, 6.0))
