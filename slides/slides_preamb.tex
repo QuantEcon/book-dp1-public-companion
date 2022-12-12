@@ -1,0 +1,302 @@
+\mode<presentation>
+{
+  \usetheme{Singapore}
+  % or ...
+  \setbeamercovered{transparent}
+  % or whatever (possibly just delete it)
+}
+
+\usepackage{fontspec} 
+\usepackage[mathscr]{euscript} 
+%\usepackage[xcharter]{newtxmath}
+%\setmainfont{XCharter}
+\setmonofont{DejaVu Sans Mono}[Scale=MatchLowercase] % provides unicode characters 
+
+
+\usefonttheme{professionalfonts}
+%\usepackage[english]{babel}
+% or whatever
+%\usepackage[latin1]{inputenc}
+% or whatever
+%\usepackage{times}
+\usepackage[T1]{fontenc}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+
+%%%%%%%%%%%%%%%%%%%%%% start my preamble %%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\insertnavigation}[1]{}
+
+\addtobeamertemplate{navigation symbols}{}{%
+    \usebeamerfont{footline}%
+    \usebeamercolor[fg]{footline}%
+    \hspace{1em}%
+    \insertframenumber/\inserttotalframenumber
+}
+
+\setbeamercolor{footline}{fg=blue}
+\setbeamerfont{footline}{series=\bfseries}
+
+%\setbeamertemplate{mini frames}{}
+
+\usepackage{adjustbox}
+
+\usepackage{graphicx}
+\usepackage{amsmath, amssymb, amsthm}
+
+\usepackage{fancyvrb}
+
+\usepackage{hyperref}
+
+% fonts, caligraphic
+
+%\usepackage{stix}
+\usepackage{bbm}
+
+% tikz
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{arrows}
+\usetikzlibrary{calc}
+\usetikzlibrary{intersections}
+\usetikzlibrary{matrix}
+\usetikzlibrary{decorations}
+\usepackage{pgf}
+\usepackage{pgfplots}
+\usetikzlibrary{shapes, fit}
+
+% from fazeleh
+\usetikzlibrary{arrows.meta}
+
+%\usetikzlibrary{arrows.meta}
+\usetikzlibrary{decorations.pathreplacing}  %for brac
+
+
+
+\usepackage{graphviz}
+
+%\usepackage[usenames, dvipsnames]{color}
+
+
+% nice inequalities
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\geq}{\geqslant}
+
+
+\setlength{\parskip}{1.5ex plus0.5ex minus0.5ex}
+\setlength{\jot}{12pt} 
+
+\usepackage[ruled, lined]{algorithm2e}
+
+
+\definecolor{pale}{RGB}{235, 235, 235}
+\definecolor{pale2}{RGB}{175,238,238}
+\definecolor{turquois4}{RGB}{0,134,139}
+\definecolor{DarkOrange1}{RGB}{255,127,0}
+
+\newcommand{\emp}[1]{\textcolor{DarkOrange1}{\bf #1}}
+\newcommand{\newtopic}[1]{\textcolor{Green}{\Large \bf #1}}
+\newcommand{\navy}[1]{\textcolor{Blue}{\bf #1}}
+\newcommand{\navymth}[1]{\textcolor{Blue}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+
+% Minted
+\definecolor{bg}{rgb}{0.95,0.95,0.95}
+\usepackage{minted}
+\usemintedstyle{friendly}
+\newminted{python}{mathescape,frame=lines,framesep=4mm,bgcolor=bg}
+\newminted{ipython}{mathescape,frame=lines,framesep=4mm,bgcolor=bg}
+\newminted{julia}{mathescape,frame=lines,framesep=4mm,bgcolor=bg}
+\newminted{c}{mathescape,frame=lines,framesep=4mm,bgcolor=bg}
+\renewcommand{\theFancyVerbLine}{\sffamily
+    \textcolor[rgb]{0.5,0.5,1.0}{\scriptsize {\arabic{FancyVerbLine}}}}
+
+
+\newcommand{\Fact}{\textcolor{Brown}{\bf Fact. }}
+\newcommand{\Facts}{\textcolor{Brown}{\bf Facts }}
+\newcommand{\keya}{\textcolor{turquois4}{\bf Key Idea. }}
+\newcommand{\Factnodot}{\textcolor{Brown}{\bf Fact }}
+\newcommand{\Eg}{\textcolor{ForestGreen}{Example. }}
+\newcommand{\Egs}{\textcolor{ForestGreen}{Examples. }}
+\newcommand{\Ex}{{\bf Ex. }}
+
+
+
+\newcommand{\CC}{\mathbbm C}
+\newcommand{\EE}{\mathbbm E}
+\newcommand{\FF}{\mathbbm F}
+\newcommand{\RR}{\mathbbm R}
+\newcommand{\KK}{\mathbbm K}
+\newcommand{\MM}{\mathbbm M}
+\newcommand{\NN}{\mathbbm N}
+\newcommand{\PP}{\mathbbm P}
+\newcommand{\TT}{\mathbbm T}
+\newcommand{\QQ}{\mathbbm Q}
+\newcommand{\WW}{\mathbbm W}
+\newcommand{\VV}{\mathbbm V}
+\newcommand{\ZZ}{\mathbbm Z}
+
+\newcommand{\Asf}{\mathsf A}
+\newcommand{\Esf}{\mathsf E}
+\newcommand{\Fsf}{\mathsf F}
+\newcommand{\Gsf}{\mathsf G}
+\newcommand{\Msf}{\mathsf M}
+\newcommand{\Lsf}{\mathsf L}
+\newcommand{\Nsf}{\mathsf N}
+\newcommand{\Psf}{\mathsf P}
+\newcommand{\Qsf}{\mathsf Q}
+\newcommand{\Ssf}{\mathsf S}
+\newcommand{\Tsf}{\mathsf T}
+\newcommand{\Xsf}{\mathsf X}
+\newcommand{\Ysf}{\mathsf Y}
+\newcommand{\Vsf}{\mathsf V}
+\newcommand{\Wsf}{\mathsf W}
+\newcommand{\Zsf}{\mathsf Z}
+
+\newcommand{\aA}{\mathscr A}
+\newcommand{\bB}{\mathscr B}
+\newcommand{\cC}{\mathscr C}
+\newcommand{\dD}{\mathscr D}
+\newcommand{\eE}{\mathscr E}
+\newcommand{\gG}{\mathscr G}
+\newcommand{\hH}{\mathscr H}
+\newcommand{\iI}{\mathscr I}
+\newcommand{\fF}{\mathscr F}
+\newcommand{\lL}{\mathscr L}
+\newcommand{\pP}{\mathscr P}
+\newcommand{\rR}{\mathscr R}
+\newcommand{\sS}{\mathscr S}
+\newcommand{\vV}{\mathscr V}
+\newcommand{\wW}{\mathscr W}
+\newcommand{\mM}{\mathscr M}
+\newcommand{\oO}{\mathscr O}
+\newcommand{\zZ}{\mathscr Z}
+
+\newcommand{\bP}{\mathbf P} 
+\newcommand{\bR}{\mathbf R}
+\newcommand{\bQ}{\mathbf Q}
+
+
+%%%%%% special symbols %%%%%%%%%%
+
+\newcommand{\volone}{Volume~I}
+\newcommand{\voltwo}{Volume~II}
+
+% transpose, not currently using
+\newcommand\T{{\mathpalette\raiseT\intercal}}
+\newcommand\raiseT[2]{\raisebox{0.25ex}{$#1#2$}}
+
+% nice inequalities
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\geq}{\geqslant}
+
+% nice greek letters
+\renewcommand{\phi}{\varphi}
+\renewcommand{\epsilon}{\varepsilon}
+
+% inner product
+\providecommand{\inner}[1]{\left\langle{#1}\right\rangle}
+
+% set of matrices
+\newcommand{\matset}[2]{ \MM^{ #1 \times #2 } }
+
+% stochastic dominance
+\newcommand{\lefsd}{\preceq_{\textrm{F}}}
+\newcommand{\lessd}{\preceq_{\textrm{S}}}
+
+% argmax and min
+\newcommand{\argmax}{\operatornamewithlimits{argmax}}
+\newcommand{\argmin}{\operatornamewithlimits{argmin}}
+
+% sets and logic
+\newcommand{\st}{\ensuremath{\ \mathrm{s.t.}\ }}
+\newcommand{\setntn}[2]{ \{ #1 : #2 \} }
+\newcommand{\natset}[1]{[ #1 ]}
+
+% some useful symbols
+\newcommand{\given}{\, | \,}
+\newcommand{\cf}[1]{ \lstinline|#1| }
+\newcommand{\fore}{\therefore \quad}
+\newcommand{\1}{\mathbbm 1}
+\newcommand{\me}{\mathrm{e}}               % Euler's e
+\newcommand*\diff{\mathop{}\!\mathrm{d}}   % d for integrals
+
+% shortcuts
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+
+% relations
+\newcommand{\eqdist}{\stackrel{d} {=} }
+\newcommand{\iidsim}{\stackrel{\textrm{ {\sc iid }}} {\sim} }
+
+% convergence
+\newcommand{\tod}{\stackrel { d } {\to} }
+\newcommand{\tow}{\stackrel { w } {\to} }
+\newcommand{\toprob}{\stackrel { p } {\to} }
+\newcommand{\toms}{\stackrel { ms } {\to} }
+
+
+%%%%%%%%%%% operators %%%%%%%%%%%%
+
+\DeclareMathOperator{\Exp}{Exp}  % exponential draw
+\DeclareMathOperator{\Lip}{Lip}
+\DeclareMathOperator{\cl}{cl}
+\DeclareMathOperator{\graph}{graph}
+\DeclareMathOperator{\interior}{int}
+\DeclareMathOperator{\Prob}{Prob}
+\DeclareMathOperator{\determinant}{det}
+\DeclareMathOperator{\trace}{trace}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\proj}{proj}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\kernel}{null}
+\DeclareMathOperator{\cov}{Cov}
+\DeclareMathOperator{\corr}{Corr}
+\DeclareMathOperator{\var}{Var}
+\DeclareMathOperator{\mse}{mse}
+\DeclareMathOperator{\se}{se}
+\DeclareMathOperator{\range}{range}
+\DeclareMathOperator{\dimension}{dim}
+\DeclareMathOperator{\epi}{epi}
+\DeclareMathOperator{\vecop}{vec}
+
+\DeclareMathOperator{\real}{Re}
+\DeclareMathOperator{\imag}{Im}
+
+\DeclareMathOperator{\csum}{cs} % column sum
+\DeclareMathOperator{\rsum}{rs} % row sum
+
+
+
+\hypersetup{
+    linkcolor=Blue,
+    colorlinks=true,
+    filecolor=magenta,      % color of file links
+    urlcolor=cyan           % color of external links
+}
+
+
+%\pgfdeclareimage[height=1.2cm]{university-logo}{../tuxswatter2}
+%\logo{\pgfuseimage{university-logo}}
+
+%\addtobeamertemplate{headline}{}
+%{%
+%\begin{flushright}
+%\begin{tikzpicture}[remember picture,overlay]
+%\node [left ]{\includegraphics[width=0.5cm]{../tuxswatter2.png}};
+%\end{tikzpicture}
+%\end{flushright}
+%\vskip -0.1cm
+%} 
+
+ \date[\today]{}
+
+\title{Dynamic Programming}
+
+\author{Thomas J.\ Sargent and John Stachurski}
+
+\date{2023}
+
+
+
