@@ -5,7 +5,7 @@ function create_savings_model(; R=1.01, β=0.98, γ=2.5,
                                 ρ=0.9, ν=0.1, z_size=20,
                                 ϵ_min=-0.25, ϵ_max=0.25, ϵ_size=30)
     ϵ_grid = LinRange(ϵ_min, ϵ_max, ϵ_size)  
-    ϕ = ones(ϵ_size) * (1 / ϵ_size)  # Uniform distributoin
+    ϕ = ones(ϵ_size) * (1 / ϵ_size)  # Uniform distribution
     w_grid = LinRange(w_min, w_max, w_size)  
     mc = tauchen(z_size, ρ, ν)
     z_grid, Q = exp.(mc.state_values), mc.p
