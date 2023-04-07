@@ -4,7 +4,7 @@ m(x) = max(x, 0)  # Convenience function
 
 function create_inventory_model(; β=0.98,     # discount factor
                                   K=40,       # maximum inventory
-                                  c=0.2, κ=2, # cost paramters
+                                  c=0.2, κ=2, # cost parameters
                                   p=0.6)      # demand parameter
     ϕ(d) = (1 - p)^d * p  # demand pdf
     return (; β, K, c, κ, p, ϕ)
