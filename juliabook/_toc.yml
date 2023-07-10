@@ -1,0 +1,15 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+chapters:
+- file: introductions
+- file: operators_fixed_points
+- file: markov_dynamics
+- file: optimal_stopping
+- file: markov_decision_processes
+- file: stochastic_discounting
+- file: nonlinear_valuation
+- file: recursive_decision_processes
+
