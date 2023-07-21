@@ -288,7 +288,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="w">    </span><span class="n">fig</span><span class="p">,</span><span class="w"> </span><span class="n">ax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 <span class="w">    </span><span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">w_vals</span><span class="p">,</span><span class="w"> </span><span class="n">model</span><span class="o">.</span><span class="n">ϕ</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;-o&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="n">label</span><span class="o">=</span><span class="s">&quot;wage distribution&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s">&quot;upper left&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">fontsize</span><span class="o">=</span><span class="n">fs</span><span class="p">)</span>
-<span class="w">    </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="w">    </span><span class="c">#plt.show()</span>
 <span class="k">end</span>
 
 
@@ -320,18 +320,25 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">savefig</span>
 <span class="w">        </span><span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">figname</span><span class="p">)</span>
 <span class="w">    </span><span class="k">end</span>
-<span class="w">    </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="w">    </span><span class="c">#plt.show()</span>
 <span class="k">end</span>
-
-<span class="n">fig_v1</span><span class="p">(</span><span class="n">savefig</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sys:1: UserWarning: Matplotlib is currently using agg, which is a non-GUI backend, so cannot show the figure.
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fig_v1
 </pre></div>
 </div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">fig_v1</span><span class="p">(</span><span class="n">savefig</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
 <img alt="_images/0eab305f840adccbd4e434506eba6ebf33c6a056256213cb311595b835fad009.png" src="_images/0eab305f840adccbd4e434506eba6ebf33c6a056256213cb311595b835fad009.png" />
 </div>
 </div>
@@ -545,7 +552,7 @@ Terminated successfully in 28 iterations.
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mf">1.8</span><span class="p">,</span><span class="w"> </span><span class="mf">3.2</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mf">2.8</span><span class="p">,</span><span class="w"> </span><span class="mf">6.1</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="c">#plt.show()</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s">&quot;../figures/linear_iter_fig_1.pdf&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -554,9 +561,7 @@ Terminated successfully in 28 iterations.
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 25 with error 2.911659384707832e-6.
 Terminated successfully in 28 iterations.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>true
+true
 </pre></div>
 </div>
 <img alt="_images/4fe2b4af7be1d31b22a0735a27b10308d1c7ac031fe4be4ef86c67c3570c3056.png" src="_images/4fe2b4af7be1d31b22a0735a27b10308d1c7ac031fe4be4ef86c67c3570c3056.png" />
@@ -641,7 +646,7 @@ Terminated successfully in 28 iterations.
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">savefig</span>
 <span class="w">        </span><span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">figname</span><span class="p">)</span>
 <span class="w">    </span><span class="k">end</span>
-<span class="w">    </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="w">    </span><span class="c">#plt.show()</span>
 <span class="k">end</span>
 
 
@@ -675,24 +680,40 @@ Terminated successfully in 28 iterations.
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">savefig</span>
 <span class="w">        </span><span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">figname</span><span class="p">)</span>
 <span class="w">    </span><span class="k">end</span>
-<span class="w">    </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="w">    </span><span class="c">#plt.show()</span>
 <span class="k">end</span>
-
-<span class="n">fig_cv</span><span class="p">(</span><span class="n">savefig</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span>
-
-<span class="n">fig_vstar</span><span class="p">(</span><span class="n">savefig</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">UndefVarError</span>: `fig_cv` not defined
-
-<span class="ne">Stacktrace</span>:
- <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">top</span><span class="o">-</span><span class="n">level</span> <span class="n">scope</span>
-   <span class="o">@</span> <span class="n">In</span><span class="p">[</span><span class="mi">8</span><span class="p">]:</span><span class="mi">107</span>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fig_vstar
 </pre></div>
 </div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">fig_vseq</span><span class="p">(</span><span class="n">savefig</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/35f2a77e165d02ebfe72d35df0430e17076241ec5632fbb56345d8f5bb129717.png" src="_images/35f2a77e165d02ebfe72d35df0430e17076241ec5632fbb56345d8f5bb129717.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">fig_vstar</span><span class="p">(</span><span class="n">savefig</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 25 with error 2.2046856429369655e-6.
+Terminated successfully in 28 iterations.
+</pre></div>
+</div>
+<img alt="_images/db6527b2aea8200d53be821bce82128814be2356fd120c0d32778be6f758d46d.png" src="_images/db6527b2aea8200d53be821bce82128814be2356fd120c0d32778be6f758d46d.png" />
 </div>
 </div>
 </section>

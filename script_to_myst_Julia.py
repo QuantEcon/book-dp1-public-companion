@@ -47,75 +47,75 @@ contents = """
 chapter_meta = {
                 "introductions": {
                     "name": "Introductions",
-                    "subs": [
-                    "two_period_job_search.jl",
-                    "compute_spec_rad.jl",
-                    "power_series.jl",
-                    "s_approx.jl",
-                    "linear_iter.jl",
-                    "linear_iter_fig.jl",
-                    "iid_job_search.jl"
-                    ]
+                    "subs": {
+                    "two_period_job_search.jl" : ["fig_v1(savefig=true)"],
+                    "compute_spec_rad.jl" : [],
+                    "power_series.jl" : [],
+                    "s_approx.jl" : [],
+                    "linear_iter.jl" : [],
+                    "linear_iter_fig.jl" : [],
+                    "iid_job_search.jl" : ["fig_vseq(savefig=true)", "fig_vstar(savefig=true)"]
+                    }
                 },
                 "operators_fixed_points": {
                     "name": "Operators and Fixed Points",
-                    "subs": [
-                    "lake.jl",
+                    "subs": {
+                    "lake.jl" : ["plot_paths(savefig=true)", "plot_growth(savefig=true)"],
                     #"lake_1.jl"
-                    ]
+                    }
                 },
                 "markov_dynamics": {
                     "name": "Markov Dynamics",
-                    "subs": [
-                    "inventory_sim.jl",
-                    "is_irreducible.jl",
+                    "subs": {
+                    "inventory_sim.jl" : ["model = create_inventory_model()", "plot_ts(model; savefig=true)", "plot_hist(model; savefig=true)"],
+                    "is_irreducible.jl" : [],
 #                    "inventory_sim.jl",
-                    "laborer_sim.jl",
-                    "markov_js.jl",
-                    "markov_js_with_sep.jl"
-                    ]
+                    "laborer_sim.jl" : [],
+                    "markov_js.jl" : ["plot_main(savefig=true)"],
+                    "markov_js_with_sep.jl" : ["plot_main(savefig=true)", "plot_w_stars(savefig=true)"]
+                    }
                 },
                 "optimal_stopping": {
                     "name": "Optimal Stopping",
-                    "subs": [
-                    "firm_exit.jl",
-                    "american_option.jl"
-                    ]
+                    "subs": {
+                    "firm_exit.jl" : ["plot_val(savefig=true)", "plot_comparison(savefig=true)"],
+                    "american_option.jl" : ["plot_contours(savefig=true)", "plot_strike(savefig=true)"]
+                    }
                 },
                 "markov_decision_processes": {
                     "name": "Markov Decision Processes",
-                    "subs": [
-                    "inventory_dp.jl",
-                    "finite_opt_saving_0.jl",
-                    "finite_opt_saving_1.jl",
-                    "finite_opt_saving_2.jl",
-                    "finite_lq.jl",
-                    "firm_hiring.jl",
-                    "modified_opt_savings.jl"
-                    ]
+                    "subs": {
+                    "inventory_dp.jl" : ["plot_vstar_and_opt_policy(savefig=true)", "plot_ts(savefig=true)"],
+                    "finite_opt_saving_0.jl" : [],
+                    "finite_opt_saving_1.jl" : [],
+                    "finite_opt_saving_2.jl" : ["plot_timing(savefig=true)", "plot_policy()", "plot_time_series(savefig=true)", "plot_histogram(savefig=true)", "plot_lorenz(savefig=true)"],
+                    "finite_lq.jl" : ["plot_policy()", "plot_sim(savefig=true)", "plot_timing(savefig=true)"],
+                    "firm_hiring.jl" : ["plot_policy()", "plot_sim(savefig=true)", "plot_growth(savefig=true)"],
+                    "modified_opt_savings.jl" : ["plot_contours(savefig=true)", "plot_policies(savefig=true)", "plot_time_series(savefig=true)", "plot_histogram(savefig=true)", "plot_lorenz(savefig=true)"]
+                    }
                 },
                 "stochastic_discounting": {
                     "name": "Stochastic Discounting",
-                    "subs": [
-                    "plot_interest_rates.jl",
+                    "subs": {
+                    "plot_interest_rates.jl" : ["plot_rates(df_nominal, savefig=true)", "plot_rates(df_real, savefig=true)"],
                     #"plot_interest_rates_real.jl",
-                    "pd_ratio.jl",
-                    "inventory_sdd.jl"
-                    ]
+                    "pd_ratio.jl" : ["plot_main(savefig=true)"],
+                    "inventory_sdd.jl" : ["plot_ts(savefig=true)"]
+                    }
                 },
                 "nonlinear_valuation": {
                     "name": "Nonlinear Valuation",
-                    "subs": [
-                    "rs_utility.jl",
-                    "ez_utility.jl"
-                    ]
+                    "subs": {
+                    "rs_utility.jl" : ["plot_v(savefig=true)", "plot_multiple_v(savefig=true)"],
+                    "ez_utility.jl" : ["plot_convergence(savefig=true)", "plot_v(savefig=true)", "vary_gamma(savefig=true)", "vary_alpha(savefig=true)"]
+                    }
                 },
                 "recursive_decision_processes": {
                     "name": "Recursive Decision Processes",
-                    "subs": [
-                    "quantile_function.jl",
-                    "quantile_js.jl"
-                    ]
+                    "subs": {
+                    "quantile_function.jl" : [],
+                    "quantile_js.jl" : ["plot_main(savefig=true)"]
+                    }
                 }
                 }
 
@@ -144,20 +144,25 @@ for chapter in chapter_meta.keys():
 
         b.write("\n")
 
-        for sub in chapter_subs:
-            
-            b.write(f"#### {sub}\n")
-            b.write(f"```{{code-cell}} julia-1.9\n")
-            b.write(":tags: [\"hide-input\"]\n")
-
+        for sub in chapter_subs.keys():
             with open(f"./juliabook/{sub}", "r", encoding='utf-8') as g:
+
+                b.write(f"#### {sub}\n")
+                b.write(f"```{{code-cell}} julia-1.9\n")
+                b.write(":tags: [\"hide-input\"]\n")
+
                 text = g.read()
                 b.write(text)
-            
-            
-            b.write(f"\n```\n\n")
 
-    b.close()
+                b.write(f"\n```\n")
+
+                if len(chapter_subs[sub]) > 0:
+                    for func_call in chapter_subs[sub]:
+                        code = f"\n```{{code-cell}} julia-1.9\n{func_call}\n```\n"
+                        
+
+                        b.write(code) 
+
             
     #return True
 #except Exception as e:
@@ -177,5 +182,5 @@ remove_files(root_src_dir, root_dst_dir)
     #print("Failed! - Directory cleaned")
     #exit(1)
     
-shutil.copytree("./juliabook/_build/html/", "./docs/", dirs_exist_ok=True)
+#shutil.copytree("./juliabook/_build/html/", "./docs/", dirs_exist_ok=True)
 

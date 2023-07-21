@@ -55,18 +55,23 @@ function plot_rates(df; fontsize=16, savefig=true)
     ax.plot(df[!, 1], zero(df[!, 2]), c="k", ls="--")
     ax.set_xlim(df[1, 1], df[end, 1])
     ax.legend(fontsize=fontsize, frameon=false)
-    plt.show()
+    #plt.show()
     if savefig
         fig.savefig("../figures/plot_interest_rates_"*r_type*".pdf")
     end
 end
 
-plot_rates(df_nominal, savefig=true)
 
-plot_rates(df_real, savefig=true)
 
 ```
 
+```{code-cell} julia-1.9
+plot_rates(df_nominal, savefig=true)
+```
+
+```{code-cell} julia-1.9
+plot_rates(df_real, savefig=true)
+```
 #### pd_ratio.jl
 ```{code-cell} julia-1.9
 :tags: ["hide-input"]
@@ -130,15 +135,18 @@ function plot_main(; μ_d_vals = (0.02, 0.08),
 
     ax.legend(frameon=false, fontsize=fontsize)
     ax.set_xlabel(L"x", fontsize=fontsize)
-    plt.show()
+    #plt.show()
     if savefig
         fig.savefig(figname)
     end
 end
 
-plot_main(savefig=true)
+
 ```
 
+```{code-cell} julia-1.9
+plot_main(savefig=true)
+```
 #### inventory_sdd.jl
 ```{code-cell} julia-1.9
 :tags: ["hide-input"]
@@ -273,13 +281,15 @@ function plot_ts(; ts_length=400,
     #ax.set_ylim(0, maximum(X)+8)
 
     plt.tight_layout()
-    plt.show()
+    #plt.show()
     if savefig == true
         fig.savefig(figname)
     end
 end
 
-plot_ts(savefig=true)
 
 ```
 
+```{code-cell} julia-1.9
+plot_ts(savefig=true)
+```

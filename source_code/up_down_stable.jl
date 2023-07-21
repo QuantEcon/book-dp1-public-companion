@@ -47,6 +47,6 @@ ax.annotate(fps_label,
     
 plt.savefig("../figures/up_down_stable.pdf")
 
-plt.show()
+#plt.show()
 
 

@@ -67,7 +67,7 @@ ax.set_ylim(-0.2, 2)
 #ax.set_xlabel(L"v", fontsize=20)
 ax.text(2.4, -0.15, L"v", fontsize=22)
 
-plt.show()
+#plt.show()
 
 file_name = "../figures/optimality_illustration_1.pdf"
 fig.savefig(file_name)

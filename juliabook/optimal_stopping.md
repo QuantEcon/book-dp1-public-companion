@@ -112,7 +112,7 @@ function plot_val(; savefig=false,
     ax.legend(frameon=false, fontsize=fontsize)
     ax.set_xlabel(L"z", fontsize=fontsize)
 
-    plt.show()
+    #plt.show()
     if savefig
         fig.savefig(figname)
     end
@@ -136,17 +136,22 @@ function plot_comparison(; savefig=false,
     ax.legend(frameon=false, fontsize=fontsize)
     ax.set_xlabel(L"z", fontsize=fontsize)
 
-    plt.show()
+    #plt.show()
     if savefig
         fig.savefig(figname)
     end
 end
 
-plot_val(savefig=true)
 
-plot_comparison(savefig=true)
 ```
 
+```{code-cell} julia-1.9
+plot_val(savefig=true)
+```
+
+```{code-cell} julia-1.9
+plot_comparison(savefig=true)
+```
 #### american_option.jl
 ```{code-cell} julia-1.9
 :tags: ["hide-input"]
@@ -240,7 +245,7 @@ function plot_contours(; savefig=false,
     if savefig
         fig.savefig(figname)
     end
-    plt.show()
+    #plt.show()
 end
 
 
@@ -301,12 +306,16 @@ function plot_strike(; savefig=false,
     if savefig
         fig.savefig(figname)
     end
-    plt.show()
+    #plt.show()
 end
 
-plot_contours(savefig=true)
-
-plot_strike(savefig=true)
 
 ```
 
+```{code-cell} julia-1.9
+plot_contours(savefig=true)
+```
+
+```{code-cell} julia-1.9
+plot_strike(savefig=true)
+```

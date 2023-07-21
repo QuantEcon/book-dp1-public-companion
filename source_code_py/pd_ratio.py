@@ -71,6 +71,6 @@ def plot_main(μ_d_vals=(0.02, 0.08),
 
     ax.legend(frameon=False)
     ax.set_xlabel(r"$x$")
-    plt.show()
+    #plt.show()
     if savefig:
         fig.savefig(figname)

@@ -87,7 +87,7 @@ def plot_timing(m_vals=np.arange(1, 601, 10),
     ax.legend(frameon=False)
     ax.set_xlabel(r"$m$")
     ax.set_ylabel("time")
-    plt.show()
+    #plt.show()
     if savefig:
         fig.savefig("../figures/finite_opt_saving_2_1.png")
     return (pi_time, vfi_time, opi_times)
@@ -109,6 +109,6 @@ def plot_policy(method="pi", savefig=False):
     ax.plot(w_grid, w_grid[σ_star[:, -1]], label=r"$\sigma^*(\cdot, y_N)$")
     ax.legend()
     plt.title(f"Method: {method}")
-    plt.show()
+    #plt.show()
     if savefig:
         fig.savefig(f"../figures/finite_opt_saving_2_2_{method}.png")

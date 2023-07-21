@@ -304,7 +304,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="w">    </span><span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">frameon</span><span class="o">=</span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">)</span>
 <span class="w">    </span><span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">L</span><span class="s">&quot;z&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">)</span>
 
-<span class="w">    </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="w">    </span><span class="c">#plt.show()</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">savefig</span>
 <span class="w">        </span><span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">figname</span><span class="p">)</span>
 <span class="w">    </span><span class="k">end</span>
@@ -328,19 +328,27 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="w">    </span><span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">frameon</span><span class="o">=</span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">)</span>
 <span class="w">    </span><span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">L</span><span class="s">&quot;z&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">)</span>
 
-<span class="w">    </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="w">    </span><span class="c">#plt.show()</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">savefig</span>
 <span class="w">        </span><span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">figname</span><span class="p">)</span>
 <span class="w">    </span><span class="k">end</span>
 <span class="k">end</span>
-
-<span class="n">plot_val</span><span class="p">(</span><span class="n">savefig</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span>
-
-<span class="n">plot_comparison</span><span class="p">(</span><span class="n">savefig</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>plot_comparison (generic function with 1 method)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">plot_val</span><span class="p">(</span><span class="n">savefig</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 25 with error 0.03580715900042719.
 Completed iteration 50 with error 0.017225068626771645.
@@ -357,6 +365,19 @@ Completed iteration 300 with error 1.6194423579918293e-6.
 Terminated successfully in 315 iterations.
 </pre></div>
 </div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<img alt="_images/2ac64997eec2c3272b60cf7962e53bc7095cbc69b8ca27b71a8b54365d3600e8.png" src="_images/2ac64997eec2c3272b60cf7962e53bc7095cbc69b8ca27b71a8b54365d3600e8.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">plot_comparison</span><span class="p">(</span><span class="n">savefig</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 25 with error 0.03580715900042719.
 Completed iteration 50 with error 0.017225068626771645.
 Completed iteration 75 with error 0.00676835562268252.
@@ -372,10 +393,9 @@ Completed iteration 300 with error 1.6194423579918293e-6.
 Terminated successfully in 315 iterations.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sys:1: UserWarning: Matplotlib is currently using agg, which is a non-GUI backend, so cannot show the figure.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
-<img alt="_images/2ac64997eec2c3272b60cf7962e53bc7095cbc69b8ca27b71a8b54365d3600e8.png" src="_images/2ac64997eec2c3272b60cf7962e53bc7095cbc69b8ca27b71a8b54365d3600e8.png" />
 <img alt="_images/031f726ea5ba89aabbadb023abc455ac10f2d7c719be456dc194f3eea09a5885.png" src="_images/031f726ea5ba89aabbadb023abc455ac10f2d7c719be456dc194f3eea09a5885.png" />
 </div>
 </div>
@@ -479,7 +499,7 @@ Terminated successfully in 315 iterations.
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">savefig</span>
 <span class="w">        </span><span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">figname</span><span class="p">)</span>
 <span class="w">    </span><span class="k">end</span>
-<span class="w">    </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="w">    </span><span class="c">#plt.show()</span>
 <span class="k">end</span>
 
 
@@ -540,42 +560,25 @@ Terminated successfully in 315 iterations.
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">savefig</span>
 <span class="w">        </span><span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">figname</span><span class="p">)</span>
 <span class="w">    </span><span class="k">end</span>
-<span class="w">    </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="w">    </span><span class="c">#plt.show()</span>
 <span class="k">end</span>
-
-<span class="n">plot_contours</span><span class="p">(</span><span class="n">savefig</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span>
-
-<span class="n">plot_strike</span><span class="p">(</span><span class="n">savefig</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 25 with error 0.006681671219211427.
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>plot_strike (generic function with 1 method)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 50 with error 0.0039970038843408495.
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">plot_contours</span><span class="p">(</span><span class="n">savefig</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 75 with error 0.002922808660469428.
-</pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 100 with error 0.0019603799011774503.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 125 with error 0.0012415595933039647.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 150 with error 0.00077388789719951.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 175 with error 0.000481112768765779.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 200 with error 0.0.
-Terminated successfully in 201 iterations.
-</pre></div>
-</div>
+<div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 25 with error 0.006681671219211427.
 </pre></div>
 </div>
@@ -605,7 +608,44 @@ Terminated successfully in 201 iterations.
 </pre></div>
 </div>
 <img alt="_images/c611132de947c93ee7d191ab16ed3dfeddcd1bb0f3c82884ef00c43ec352515d.png" src="_images/c611132de947c93ee7d191ab16ed3dfeddcd1bb0f3c82884ef00c43ec352515d.png" />
-<img alt="_images/0adc10e88335b6c3807fed493123407366c3a367f1bcde435710fab9fb099737.png" src="_images/0adc10e88335b6c3807fed493123407366c3a367f1bcde435710fab9fb099737.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">plot_strike</span><span class="p">(</span><span class="n">savefig</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 25 with error 0.006681671219211427.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 50 with error 0.0039970038843408495.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 75 with error 0.002922808660469428.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 100 with error 0.0019603799011774503.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 125 with error 0.0012415595933039647.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 150 with error 0.00077388789719951.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 175 with error 0.000481112768765779.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 200 with error 0.0.
+Terminated successfully in 201 iterations.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<img alt="_images/fd02270b5d3c5e2abbf2b8c803a207d431492e1c82c23de043597e1f1f538f8a.png" src="_images/fd02270b5d3c5e2abbf2b8c803a207d431492e1c82c23de043597e1f1f538f8a.png" />
 </div>
 </div>
 </section>

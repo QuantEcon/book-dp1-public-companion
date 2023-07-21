@@ -188,4 +188,4 @@ def plot_contours(savefig=False,
     plt.tight_layout()
     if savefig:
         fig.savefig(figname)
-    plt.show()
+    #plt.show()

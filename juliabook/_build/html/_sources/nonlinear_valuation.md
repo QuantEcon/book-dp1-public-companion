@@ -90,7 +90,7 @@ function plot_v(; savefig=false,
     ax.set_xlabel(L"x", fontsize=fontsize)
 
     ax.legend(frameon=false, fontsize=fontsize, loc="upper left")
-    plt.show()
+    #plt.show()
     if savefig
         fig.savefig(figname)
     end
@@ -115,17 +115,22 @@ function plot_multiple_v(; savefig=false,
     end
 
     ax.legend(frameon=false, fontsize=fontsize, loc="upper left")
-    plt.show()
+    #plt.show()
     if savefig
         fig.savefig(figname)
     end
 end
 
-plot_v(savefig=true)
 
-plot_multiple_v(savefig=true)
 ```
 
+```{code-cell} julia-1.9
+plot_v(savefig=true)
+```
+
+```{code-cell} julia-1.9
+plot_multiple_v(savefig=true)
+```
 #### ez_utility.jl
 ```{code-cell} julia-1.9
 :tags: ["hide-input"]
@@ -204,7 +209,7 @@ function plot_convergence(; savefig=false,
     ax.set_xlabel(L"x", fontsize=fontsize)
 
     ax.legend(frameon=false, fontsize=fontsize, loc="upper left")
-    plt.show()
+    #plt.show()
     if savefig
         fig.savefig(figname)
     end
@@ -222,7 +227,7 @@ function plot_v(; savefig=false,
     ax.set_xlabel(L"x", fontsize=fontsize)
 
     ax.legend(frameon=false, fontsize=fontsize, loc="upper left")
-    plt.show()
+    #plt.show()
     if savefig
         fig.savefig(figname)
     end
@@ -245,7 +250,7 @@ function vary_gamma(; gamma_vals=[1.0, -8.0],
     end
 
     ax.legend(frameon=false, fontsize=fontsize, loc="upper left")
-    plt.show()
+    #plt.show()
     if savefig
         fig.savefig(figname)
     end
@@ -268,20 +273,29 @@ function vary_alpha(; alpha_vals=[0.5, 0.6],
     end
 
     ax.legend(frameon=false, fontsize=fontsize, loc="upper left")
-    plt.show()
+    #plt.show()
     if savefig
         fig.savefig(figname)
     end
 end
 
-plot_convergence(savefig=true)
 
-plot_v(savefig=true)
-
-vary_gamma(savefig=true)
-
-vary_alpha(savefig=true)
 
 
 ```
 
+```{code-cell} julia-1.9
+plot_convergence(savefig=true)
+```
+
+```{code-cell} julia-1.9
+plot_v(savefig=true)
+```
+
+```{code-cell} julia-1.9
+vary_gamma(savefig=true)
+```
+
+```{code-cell} julia-1.9
+vary_alpha(savefig=true)
+```

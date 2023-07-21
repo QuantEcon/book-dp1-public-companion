@@ -73,7 +73,7 @@ function plot_val(; savefig=false,
     ax.legend(frameon=false, fontsize=fontsize)
     ax.set_xlabel(L"z", fontsize=fontsize)
 
-    plt.show()
+    #plt.show()
     if savefig
         fig.savefig(figname)
     end
@@ -97,7 +97,7 @@ function plot_comparison(; savefig=false,
     ax.legend(frameon=false, fontsize=fontsize)
     ax.set_xlabel(L"z", fontsize=fontsize)
 
-    plt.show()
+    #plt.show()
     if savefig
         fig.savefig(figname)
     end

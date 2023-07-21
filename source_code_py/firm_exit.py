@@ -85,7 +85,7 @@ def plot_val(savefig=False,
     ax.legend(frameon=False)
     ax.set_xlabel(r"$z$")
 
-    plt.show()
+    #plt.show()
     if savefig:
         fig.savefig(figname)
 
@@ -107,6 +107,6 @@ def plot_comparison(savefig=False,
     ax.legend(frameon=False)
     ax.set_xlabel(r"$z$")
 
-    plt.show()
+    #plt.show()
     if savefig:
         fig.savefig(figname)

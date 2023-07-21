@@ -16,7 +16,7 @@ for i in 1:m
 end
     
 ax.set_xlabel("time")
-plt.show()
+#plt.show()
 
 fig.savefig("../figures/random_walk_1.pdf")
 

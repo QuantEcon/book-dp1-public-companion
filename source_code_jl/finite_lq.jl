@@ -148,7 +148,7 @@ function plot_policy()
     ax.plot(y_grid, y_grid[σ_star[:, 1]], label=L"\sigma^*(\cdot, z_1)")
     ax.plot(y_grid, y_grid[σ_star[:, end]], label=L"\sigma^*(\cdot, z_N)")
     ax.legend(fontsize=fontsize)
-    plt.show()
+    #plt.show()
 end
 
 function plot_sim(; savefig=false, figname="../figures/finite_lq_1.pdf")
@@ -182,7 +182,7 @@ function plot_sim(; savefig=false, figname="../figures/finite_lq_1.pdf")
     end
 
     fig.tight_layout()
-    plt.show()
+    #plt.show()
     if savefig
         fig.savefig(figname)
     end
@@ -219,7 +219,7 @@ function plot_timing(; m_vals=collect(range(1, 600, step=10)),
     ax.legend(fontsize=fontsize, frameon=false)
     ax.set_xlabel(L"m", fontsize=fontsize)
     ax.set_ylabel("time", fontsize=fontsize)
-    plt.show()
+    #plt.show()
     if savefig
         fig.savefig(figname)
     end

@@ -128,7 +128,7 @@ function plot_ts(; ts_length=400,
     #ax.set_ylim(0, maximum(X)+8)
 
     plt.tight_layout()
-    plt.show()
+    #plt.show()
     if savefig == true
         fig.savefig(figname)
     end

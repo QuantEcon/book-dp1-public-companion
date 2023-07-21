@@ -38,6 +38,6 @@ for (fp, lb, coord) in zip(fps, fps_labels, coords):
     
 #plt.savefig("../figures/three_fixed_points.pdf")
 
-plt.show()
+#plt.show()
 
 

@@ -320,7 +320,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="w">             </span><span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">,</span>
 <span class="w">             </span><span class="n">arrowprops</span><span class="o">=</span><span class="kt">Dict</span><span class="p">(</span><span class="s">&quot;arrowstyle&quot;</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;-&gt;&quot;</span><span class="p">))</span>
 
-<span class="w">    </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="w">    </span><span class="c">#plt.show()</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">savefig</span>
 <span class="w">        </span><span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">figname</span><span class="p">)</span>
 <span class="w">    </span><span class="k">end</span>
@@ -353,16 +353,12 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="w">    </span><span class="k">end</span>
 
 <span class="w">    </span><span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<span class="w">    </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="w">    </span><span class="c">#plt.show()</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">savefig</span>
 <span class="w">        </span><span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">figname</span><span class="p">)</span>
 <span class="w">    </span><span class="k">end</span>
 
 <span class="k">end</span>
-
-<span class="n">plot_paths</span><span class="p">(</span><span class="n">savefig</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span>
-
-<span class="n">plot_growth</span><span class="p">(</span><span class="n">savefig</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -371,13 +367,28 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>true
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>plot_growth (generic function with 1 method)
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sys:1: UserWarning: Matplotlib is currently using agg, which is a non-GUI backend, so cannot show the figure.
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">plot_paths</span><span class="p">(</span><span class="n">savefig</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
 <img alt="_images/df0713194835d08426009d644b7d24f8273efb19eac1f8c101d7f09138f51bb8.png" src="_images/df0713194835d08426009d644b7d24f8273efb19eac1f8c101d7f09138f51bb8.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">plot_growth</span><span class="p">(</span><span class="n">savefig</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
 <img alt="_images/14a61f23a4f008d4a24d075d3be23b9cc8a88b1f88bc88b34e9cbbfba11d0120.png" src="_images/14a61f23a4f008d4a24d075d3be23b9cc8a88b1f88bc88b34e9cbbfba11d0120.png" />
 </div>
 </div>

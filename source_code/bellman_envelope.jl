@@ -50,7 +50,7 @@ ax.text(2.4, -0.15, L"v", fontsize=22)
 ax.set_xticks([])
 ax.set_yticks([])
 
-plt.show()
+#plt.show()
 
 file_name = "../figures/bellman_envelope.pdf"
 fig.savefig(file_name)

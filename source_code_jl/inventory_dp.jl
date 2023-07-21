@@ -90,7 +90,7 @@ function plot_vstar_and_opt_policy(; fontsize=16,
     ax.set_xlabel("inventory", fontsize=fontsize)
     ax.set_ylabel("optimal choice", fontsize=fontsize)
     ax.legend(fontsize=fontsize, frameon=false)
-    plt.show()
+    #plt.show()
     if savefig == true
         fig.savefig(figname)
     end
@@ -106,7 +106,7 @@ function plot_ts(; fontsize=16,
     ax.set_ylabel("inventory", fontsize=fontsize)
     ax.legend(fontsize=fontsize, frameon=false)
     ax.set_ylim(0, maximum(X)+4)
-    plt.show()
+    #plt.show()
     if savefig == true
         fig.savefig(figname)
     end

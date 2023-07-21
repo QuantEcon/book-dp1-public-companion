@@ -45,7 +45,7 @@ ax.set_xlim(0, 2.6)
 ax.set_ylim(0, 2.6)
 #ax.set_xlabel(L"x", fontsize=14)
 
-plt.show()
+#plt.show()
 
 filename = "../figures/howard_newton_1.pdf"
 

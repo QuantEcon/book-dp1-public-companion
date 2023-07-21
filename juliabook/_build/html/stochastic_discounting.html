@@ -249,32 +249,39 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="w">    </span><span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="o">!</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="n">zero</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="o">!</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]),</span><span class="w"> </span><span class="n">c</span><span class="o">=</span><span class="s">&quot;k&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ls</span><span class="o">=</span><span class="s">&quot;--&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="n">df</span><span class="p">[</span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">])</span>
 <span class="w">    </span><span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">,</span><span class="w"> </span><span class="n">frameon</span><span class="o">=</span><span class="nb">false</span><span class="p">)</span>
-<span class="w">    </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="w">    </span><span class="c">#plt.show()</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">savefig</span>
 <span class="w">        </span><span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s">&quot;../figures/plot_interest_rates_&quot;</span><span class="o">*</span><span class="n">r_type</span><span class="o">*</span><span class="s">&quot;.pdf&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="k">end</span>
 <span class="k">end</span>
-
-<span class="n">plot_rates</span><span class="p">(</span><span class="n">df_nominal</span><span class="p">,</span><span class="w"> </span><span class="n">savefig</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span>
-
-<span class="n">plot_rates</span><span class="p">(</span><span class="n">df_real</span><span class="p">,</span><span class="w"> </span><span class="n">savefig</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>ArgumentError: Package CSV not found in current path.
-- Run `import Pkg; Pkg.add(&quot;CSV&quot;)` to install the CSV package.
-
-Stacktrace:
- [1] macro expansion
-   @ .\loading.jl:1630 [inlined]
- [2] macro expansion
-   @ .\lock.jl:267 [inlined]
- [3] require(into::Module, mod::Symbol)
-   @ Base .\loading.jl:1611
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>plot_rates (generic function with 1 method)
 </pre></div>
 </div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">plot_rates</span><span class="p">(</span><span class="n">df_nominal</span><span class="p">,</span><span class="w"> </span><span class="n">savefig</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/b53e080113bc47640cfdfd3206882adebd631d739e6dc3759bc049346e37a54d.png" src="_images/b53e080113bc47640cfdfd3206882adebd631d739e6dc3759bc049346e37a54d.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">plot_rates</span><span class="p">(</span><span class="n">df_real</span><span class="p">,</span><span class="w"> </span><span class="n">savefig</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/1880a039697c1e15946e6ab6d46fa8c060a6f4a513df4115f667f70ed69821a0.png" src="_images/1880a039697c1e15946e6ab6d46fa8c060a6f4a513df4115f667f70ed69821a0.png" />
 </div>
 </div>
 </section>
@@ -347,21 +354,28 @@ Stacktrace:
 
 <span class="w">    </span><span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">frameon</span><span class="o">=</span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">)</span>
 <span class="w">    </span><span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">L</span><span class="s">&quot;x&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">)</span>
-<span class="w">    </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="w">    </span><span class="c">#plt.show()</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">savefig</span>
 <span class="w">        </span><span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">figname</span><span class="p">)</span>
 <span class="w">    </span><span class="k">end</span>
 <span class="k">end</span>
-
-<span class="n">plot_main</span><span class="p">(</span><span class="n">savefig</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sys:1: UserWarning: Matplotlib is currently using agg, which is a non-GUI backend, so cannot show the figure.
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>plot_main (generic function with 1 method)
 </pre></div>
 </div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">plot_main</span><span class="p">(</span><span class="n">savefig</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
 <img alt="_images/20cd05302fb56bbf8021312ec25dabf2008f2a7bed28cb34a5e8320d0eb9f0b3.png" src="_images/20cd05302fb56bbf8021312ec25dabf2008f2a7bed28cb34a5e8320d0eb9f0b3.png" />
 </div>
 </div>
@@ -506,13 +520,11 @@ Stacktrace:
 <span class="w">    </span><span class="c">#ax.set_ylim(0, maximum(X)+8)</span>
 
 <span class="w">    </span><span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<span class="w">    </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="w">    </span><span class="c">#plt.show()</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">savefig</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">true</span>
 <span class="w">        </span><span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">figname</span><span class="p">)</span>
 <span class="w">    </span><span class="k">end</span>
 <span class="k">end</span>
-
-<span class="n">plot_ts</span><span class="p">(</span><span class="n">savefig</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -590,9 +602,18 @@ Stacktrace:
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Terminated successfully in 563 iterations.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>plot_ts (generic function with 1 method)
 </pre></div>
 </div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">plot_ts</span><span class="p">(</span><span class="n">savefig</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">BoundsError</span>: attempt to access 41×20 Matrix{Int32} at index [0, 1]
 
 <span class="ne">Stacktrace</span>:
@@ -601,13 +622,13 @@ Stacktrace:
  <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="n">getindex</span><span class="p">(</span><span class="n">A</span><span class="p">::</span><span class="n">Matrix</span><span class="p">{</span><span class="n">Int32</span><span class="p">},</span> <span class="n">i1</span><span class="p">::</span><span class="n">Int32</span><span class="p">,</span> <span class="n">I</span><span class="p">::</span><span class="n">Int64</span><span class="p">)</span>
    <span class="o">@</span> <span class="n">Base</span> <span class="o">.</span>\<span class="n">abstractarray</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">1297</span>
  <span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="n">sim_inventories</span><span class="p">(</span><span class="n">ts_length</span><span class="p">::</span><span class="n">Int64</span><span class="p">;</span> <span class="n">X_init</span><span class="p">::</span><span class="n">Int64</span><span class="p">)</span>
-   <span class="o">@</span> <span class="n">Main</span> <span class="o">.</span>\<span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">]:</span><span class="mi">104</span>
+   <span class="o">@</span> <span class="n">Main</span> <span class="o">.</span>\<span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">]:</span><span class="mi">104</span>
  <span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="n">sim_inventories</span>
-   <span class="o">@</span> <span class="o">.</span>\<span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">]:</span><span class="mi">97</span> <span class="p">[</span><span class="n">inlined</span><span class="p">]</span>
+   <span class="o">@</span> <span class="o">.</span>\<span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">]:</span><span class="mi">97</span> <span class="p">[</span><span class="n">inlined</span><span class="p">]</span>
  <span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="n">plot_ts</span><span class="p">(;</span> <span class="n">ts_length</span><span class="p">::</span><span class="n">Int64</span><span class="p">,</span> <span class="n">fontsize</span><span class="p">::</span><span class="n">Int64</span><span class="p">,</span> <span class="n">figname</span><span class="p">::</span><span class="n">String</span><span class="p">,</span> <span class="n">savefig</span><span class="p">::</span><span class="n">Bool</span><span class="p">)</span>
-   <span class="o">@</span> <span class="n">Main</span> <span class="o">.</span>\<span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">]:</span><span class="mi">113</span>
+   <span class="o">@</span> <span class="n">Main</span> <span class="o">.</span>\<span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">]:</span><span class="mi">113</span>
  <span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="n">top</span><span class="o">-</span><span class="n">level</span> <span class="n">scope</span>
-   <span class="o">@</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">]:</span><span class="mi">138</span>
+   <span class="o">@</span> <span class="n">In</span><span class="p">[</span><span class="mi">8</span><span class="p">]:</span><span class="mi">1</span>
 </pre></div>
 </div>
 </div>

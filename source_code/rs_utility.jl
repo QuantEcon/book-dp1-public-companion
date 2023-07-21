@@ -51,7 +51,7 @@ function plot_v(; savefig=false,
     ax.set_xlabel(L"x", fontsize=fontsize)
 
     ax.legend(frameon=false, fontsize=fontsize, loc="upper left")
-    plt.show()
+    #plt.show()
     if savefig
         fig.savefig(figname)
     end
@@ -76,12 +76,9 @@ function plot_multiple_v(; savefig=false,
     end
 
     ax.legend(frameon=false, fontsize=fontsize, loc="upper left")
-    plt.show()
+    #plt.show()
     if savefig
         fig.savefig(figname)
     end
 end
 
-plot_v(savefig=true)
-
-plot_multiple_v(savefig=true)

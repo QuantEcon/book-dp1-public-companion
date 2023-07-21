@@ -88,7 +88,7 @@ function plot_contours(; savefig=false,
     if savefig
         fig.savefig(figname)
     end
-    plt.show()
+    #plt.show()
 end
 
 
@@ -149,9 +149,6 @@ function plot_strike(; savefig=false,
     if savefig
         fig.savefig(figname)
     end
-    plt.show()
+    #plt.show()
 end
 
-plot_contours(savefig=true)
-
-plot_strike(savefig=true)

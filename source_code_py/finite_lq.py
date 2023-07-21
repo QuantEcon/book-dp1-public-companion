@@ -166,7 +166,7 @@ def plot_policy(savefig=False, figname="../figures/finite_lq_0.pdf"):
     ax.plot(y_grid, y_grid[σ_star[:, 0]], label=r"$\sigma^*(\cdot, z_1)$")
     ax.plot(y_grid, y_grid[σ_star[:, -1]], label="$\sigma^*(\cdot, z_N)$")
     ax.legend()
-    plt.show()
+    #plt.show()
     if savefig:
         fig.savefig(figname)
 
@@ -202,7 +202,7 @@ def plot_sim(savefig=False, figname="../figures/finite_lq_1.pdf"):
         ax.set_title(r"$\gamma = $" + f"{γ}")
 
     fig.tight_layout()
-    plt.show()
+    #plt.show()
     if savefig:
         fig.savefig(figname)
 
@@ -242,7 +242,7 @@ def plot_timing(m_vals=np.arange(1, 601, 10),
     ax.legend(frameon=False)
     ax.set_xlabel(r"$m$")
     ax.set_ylabel("time")
-    plt.show()
+    #plt.show()
     if savefig:
         fig.savefig(figname)
     return (vfi_time, opi_times)

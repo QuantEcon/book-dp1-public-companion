@@ -75,7 +75,7 @@ function fig_dist(model=default_model, fs=14)
     fig, ax = plt.subplots()
     ax.plot(model.w_vals, model.ϕ, "-o", alpha=0.5, label="wage distribution")
     ax.legend(loc="upper left", fontsize=fs)
-    plt.show()
+    #plt.show()
 end
 
 
@@ -107,7 +107,7 @@ function fig_v1(model=default_model; savefig=false,
     if savefig
         fig.savefig(figname)
     end
-    plt.show()
+    #plt.show()
 end
 
 
@@ -277,7 +277,7 @@ function fig_vseq(model=default_model;
     if savefig
         fig.savefig(figname)
     end
-    plt.show()
+    #plt.show()
 end
 
 
@@ -311,7 +311,7 @@ function fig_vstar(model=default_model;
     if savefig
         fig.savefig(figname)
     end
-    plt.show()
+    #plt.show()
 end
 
 

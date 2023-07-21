@@ -76,7 +76,7 @@ def plot_convergence(savefig=False,
     ax.set_xlabel(r"$x$")
 
     ax.legend(frameon=False, loc="upper left")
-    plt.show()
+    #plt.show()
     if savefig:
         fig.savefig(figname)
 
@@ -92,7 +92,7 @@ def plot_v(savefig=False,
     ax.set_xlabel(r"$x$")
 
     ax.legend(frameon=False, loc="upper left")
-    plt.show()
+    #plt.show()
     if savefig:
         fig.savefig(figname)
 
@@ -112,7 +112,7 @@ def vary_gamma(gamma_vals=[1.0, -8.0],
         ax.set_ylabel(r"$v(x)$")
 
     ax.legend(frameon=False, loc="upper left")
-    plt.show()
+    #plt.show()
     if savefig:
         fig.savefig(figname)
 
@@ -132,6 +132,6 @@ def vary_alpha(alpha_vals=[0.5, 0.6],
         ax.set_ylabel(r"$v(x)$")
 
     ax.legend(frameon=False, loc="upper left")
-    plt.show()
+    #plt.show()
     if savefig:
         fig.savefig(figname)

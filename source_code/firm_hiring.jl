@@ -87,7 +87,7 @@ function plot_policy(; savefig=false,
     ax.plot(l_grid, l_grid[σ_star[:, 1]], label=L"\sigma^*(\cdot, z_1)")
     ax.plot(l_grid, l_grid[σ_star[:, end]], label=L"\sigma^*(\cdot, z_N)")
     ax.legend(fontsize=fontsize)
-    plt.show()
+    #plt.show()
 end
 
 
@@ -139,7 +139,7 @@ function plot_sim(; savefig=false,
     ax.set_ylabel("employment", fontsize=fontsize)
     ax.set_xlabel("time", fontsize=fontsize)
 
-    plt.show()
+    #plt.show()
     if savefig
         fig.savefig(figname)
     end
@@ -166,14 +166,9 @@ function plot_growth(; savefig=false,
     #end
 
     plt.tight_layout()
-    plt.show()
+    #plt.show()
     if savefig
         fig.savefig(figname)
     end
 end
 
-plot_policy()
-
-plot_sim(savefig=true)
-
-plot_growth(savefig=true)

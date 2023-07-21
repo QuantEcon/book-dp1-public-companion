@@ -26,5 +26,5 @@ if false
     fig.savefig("../figures/binom_stoch_dom.pdf")
 end
 
-plt.show()
+#plt.show()
 

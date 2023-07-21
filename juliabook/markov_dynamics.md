@@ -96,7 +96,7 @@ function plot_ts(model; fontsize=16,
     ax.legend(fontsize=fontsize, frameon=false)
     ax.set_ylim(0, S + s + 20)
 
-    plt.show()
+    #plt.show()
     if savefig == true
         fig.savefig(figname)
     end
@@ -119,19 +119,26 @@ function plot_hist(model; fontsize=16,
     ax.legend(fontsize=fontsize, frameon=false)
     ax.set_ylim(0, 0.015)
 
-    plt.show()
+    #plt.show()
     if savefig == true
         fig.savefig(figname)
     end
 end
 
-model = create_inventory_model()
 
-plot_ts(model; savefig=true)
-
-plot_hist(model; savefig=true)
 ```
 
+```{code-cell} julia-1.9
+model = create_inventory_model()
+```
+
+```{code-cell} julia-1.9
+plot_ts(model; savefig=true)
+```
+
+```{code-cell} julia-1.9
+plot_hist(model; savefig=true)
+```
 #### is_irreducible.jl
 ```{code-cell} julia-1.9
 :tags: ["hide-input"]
@@ -142,7 +149,6 @@ mc = MarkovChain(P)
 print(is_irreducible(mc))
 
 ```
-
 #### laborer_sim.jl
 ```{code-cell} julia-1.9
 :tags: ["hide-input"]
@@ -184,7 +190,6 @@ function test_convergence(; k=10_000_000, p=0.5)
 
 
 ```
-
 #### markov_js.jl
 ```{code-cell} julia-1.9
 :tags: ["hide-input"]
@@ -296,15 +301,17 @@ function plot_main(; model=default_model,
     ax.plot(w_vals, max.(e, h_star), "k-", alpha=0.7, label=L"v^*(w)")
     ax.legend(frameon=false, fontsize=fontsize)
     ax.set_xlabel(L"w", fontsize=fontsize)
-    plt.show()
+    #plt.show()
     if savefig
         fig.savefig(figname)
     end
 end
 
-plot_main(savefig=true)
 ```
 
+```{code-cell} julia-1.9
+plot_main(savefig=true)
+```
 #### markov_js_with_sep.jl
 ```{code-cell} julia-1.9
 :tags: ["hide-input"]
@@ -391,7 +398,7 @@ function plot_main(; model=default_model,
     ax.plot(w_vals, v_star, "k-", alpha=0.7, label=L"v_u^*(w)")
     ax.legend(frameon=false, fontsize=fontsize)
     ax.set_xlabel(L"w", fontsize=fontsize)
-    plt.show()
+    #plt.show()
     if savefig
         fig.savefig(figname)
     end
@@ -428,14 +435,17 @@ function plot_w_stars(; α_vals=LinRange(0.0, 1.0, 10),
     ax.legend(frameon=false, fontsize=fontsize)
     ax.set_xlabel(L"\alpha", fontsize=fontsize)
     ax.set_xlabel(L"w", fontsize=fontsize)
-    plt.show()
+    #plt.show()
     if savefig
         fig.savefig(figname)
     end
 end
-
-plot_main(savefig=true)
-
-plot_w_stars(savefig=true)
 ```
 
+```{code-cell} julia-1.9
+plot_main(savefig=true)
+```
+
+```{code-cell} julia-1.9
+plot_w_stars(savefig=true)
+```

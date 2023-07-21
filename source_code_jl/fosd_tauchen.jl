@@ -26,7 +26,7 @@ ax.plot(mc.state_values, F, "b-o", alpha=0.4, lw=2, label=L"G^\varphi")
 ax.plot(mc.state_values, G, "g-o", alpha=0.4, lw=2, label=L"G^\psi")
 ax.legend(frameon=false, fontsize=fontsize)
 
-plt.show()
+#plt.show()
 
 fig.savefig("../figures/fosd_tauchen_1.pdf")
 

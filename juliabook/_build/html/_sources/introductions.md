@@ -86,7 +86,7 @@ function fig_dist(model=default_model, fs=14)
     fig, ax = plt.subplots()
     ax.plot(model.w_vals, model.ϕ, "-o", alpha=0.5, label="wage distribution")
     ax.legend(loc="upper left", fontsize=fs)
-    plt.show()
+    #plt.show()
 end
 
 
@@ -118,12 +118,13 @@ function fig_v1(model=default_model; savefig=false,
     if savefig
         fig.savefig(figname)
     end
-    plt.show()
+    #plt.show()
 end
-
-fig_v1(savefig=true)
 ```
 
+```{code-cell} julia-1.9
+fig_v1(savefig=true)
+```
 #### compute_spec_rad.jl
 ```{code-cell} julia-1.9
 :tags: ["hide-input"]
@@ -134,7 +135,6 @@ A = [0.4 0.1;                               # Test with arbitrary A
 print(ρ(A))
 
 ```
-
 #### power_series.jl
 ```{code-cell} julia-1.9
 :tags: ["hide-input"]
@@ -162,7 +162,6 @@ end
 print(maximum(abs.(B_inverse - power_series(A))))
 
 ```
-
 #### s_approx.jl
 ```{code-cell} julia-1.9
 :tags: ["hide-input"]
@@ -203,7 +202,6 @@ function successive_approx(T,                  # operator (callable)
 end
 
 ```
-
 #### linear_iter.jl
 ```{code-cell} julia-1.9
 :tags: ["hide-input"]
@@ -224,7 +222,6 @@ print(isapprox(u_star, u_star_approx, rtol=1e-5))
 
 
 ```
-
 #### linear_iter_fig.jl
 ```{code-cell} julia-1.9
 :tags: ["hide-input"]
@@ -268,12 +265,11 @@ ax.set_yticks((3.0, 4.0, 5.0, 6.0))
 ax.set_xlim(1.8, 3.2)
 ax.set_ylim(2.8, 6.1)
 
-plt.show()
+#plt.show()
 fig.savefig("../figures/linear_iter_fig_1.pdf")
 
 
 ```
-
 #### iid_job_search.jl
 ```{code-cell} julia-1.9
 :tags: ["hide-input"]
@@ -346,7 +342,7 @@ function fig_vseq(model=default_model;
     if savefig
         fig.savefig(figname)
     end
-    plt.show()
+    #plt.show()
 end
 
 
@@ -380,14 +376,18 @@ function fig_vstar(model=default_model;
     if savefig
         fig.savefig(figname)
     end
-    plt.show()
+    #plt.show()
 end
 
-fig_cv(savefig=true)
-
-fig_vstar(savefig=true)
 
 
 
 ```
 
+```{code-cell} julia-1.9
+fig_vseq(savefig=true)
+```
+
+```{code-cell} julia-1.9
+fig_vstar(savefig=true)
+```

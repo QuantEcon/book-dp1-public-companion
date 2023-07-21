@@ -86,7 +86,7 @@ def plot_main(model=default_model,
     ax.plot(w_vals, v_star, "k-", alpha=0.7, label=r"$v_u^*(w)$")
     ax.legend(frameon=False)
     ax.set_xlabel(r"$w$")
-    plt.show()
+    #plt.show()
     if savefig:
         fig.savefig(figname)
 
@@ -121,6 +121,6 @@ def plot_w_stars(α_vals=np.linspace(0.0, 1.0, 10),
     ax.legend(frameon=False)
     ax.set_xlabel(r"$\alpha$")
     ax.set_xlabel(r"$w$")
-    plt.show()
+    #plt.show()
     if savefig:
         fig.savefig(figname)

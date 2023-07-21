@@ -112,7 +112,7 @@ fig, axes = plt.subplots(1, 2, figsize=(10, 3.25))
 lc1.plot(axes[0], axes[1])
 
 plt.savefig("../figures/lqcontrol_1.pdf")
-plt.show()
+#plt.show()
 
 
 
@@ -122,7 +122,7 @@ fig, axes = plt.subplots(1, 2, figsize=(10, 3.25))
 lc2.plot(axes[0], axes[1])
 
 plt.savefig("../figures/lqcontrol_2.pdf")
-plt.show()
+#plt.show()
 
 
 
@@ -132,7 +132,7 @@ fig, axes = plt.subplots(1, 2, figsize=(10, 3.25))
 lc3.plot(axes[0], axes[1])
 
 plt.savefig("../figures/lqcontrol_3.pdf")
-plt.show()
+#plt.show()
 
 
 # -

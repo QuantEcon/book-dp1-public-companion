@@ -84,7 +84,7 @@ function plot_main(; theta_vals=(-10, 0.0001, 0.1),
     end
 
     fig.tight_layout()
-    plt.show()
+    #plt.show()
 
     if savefig
         fig.savefig(figname)

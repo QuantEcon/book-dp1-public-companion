@@ -98,10 +98,9 @@ function plot_main(; tau_vals=(0.1, 0.25, 0.5, 0.6, 0.7, 0.8),
     ax.set_xlabel("quantile", fontsize=fontsize)
     ax.set_ylabel("wages", fontsize=fontsize)
 
-    plt.show()
+    #plt.show()
     if savefig
         fig.savefig(figname)
     end
 end
 
-plot_main(savefig=true)

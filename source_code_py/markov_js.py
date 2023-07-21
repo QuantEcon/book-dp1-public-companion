@@ -112,6 +112,6 @@ def plot_main(model=default_model,
     ax.plot(w_vals, np.maximum(e, h_star), "k-", alpha=0.7, label=r"$v^*(w)$")
     ax.legend(frameon=False)
     ax.set_xlabel(r"$w$")
-    plt.show()
+    #plt.show()
     if savefig:
         fig.savefig(figname)

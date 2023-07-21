@@ -52,7 +52,7 @@ function plot_45(; file_name="../figures/newton_solow_45.pdf",
     ax.set_ylim(-3, 4)
     ax.set_xlim(0, 4)
 
-    plt.show()
+    #plt.show()
     if save_fig
         fig.savefig(file_name)
     end
@@ -106,7 +106,7 @@ function plot_trajectories(; file_name="../figures/newton_solow_traj.pdf",
     end
 
 
-    plt.show()
+    #plt.show()
     if save_fig
         fig.savefig(file_name)
     end

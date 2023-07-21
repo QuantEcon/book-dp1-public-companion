@@ -12,6 +12,6 @@ ax = axes[2]
 ax.bar(1:2, (q, 1-q), label=L"\psi")
 
 ax.legend()
-plt.show()
+#plt.show()
 
 

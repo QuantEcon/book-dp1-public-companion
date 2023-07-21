@@ -375,17 +375,27 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="w">    </span><span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">&quot;quantile&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">)</span>
 <span class="w">    </span><span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&quot;wages&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">)</span>
 
-<span class="w">    </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="w">    </span><span class="c">#plt.show()</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">savefig</span>
 <span class="w">        </span><span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">figname</span><span class="p">)</span>
 <span class="w">    </span><span class="k">end</span>
 <span class="k">end</span>
-
-<span class="n">plot_main</span><span class="p">(</span><span class="n">savefig</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>plot_main (generic function with 1 method)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">plot_main</span><span class="p">(</span><span class="n">savefig</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 197.04958104222322
 OPI current error = 32.41999066047552
@@ -404,10 +414,10 @@ OPI current error = 16.591569430034014
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 7.09109988950496
-OPI current error = 3.102226038720346e-6
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 197.04958104222322
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 3.102226038720346e-6
+OPI current error = 197.04958104222322
 OPI current error = 32.41999066047552
 </pre></div>
 </div>
@@ -460,25 +470,20 @@ OPI current error = 0.0
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 197.04958104222322
+OPI current error = 82.51356008425161
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 82.51356008425161
-OPI current error = 0.0
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 0.0
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 197.04958104222322
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 133.14095588610522
+OPI current error = 133.14095588610522
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 0.0
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sys:1: UserWarning: Matplotlib is currently using agg, which is a non-GUI backend, so cannot show the figure.
 </pre></div>
 </div>
 <img alt="_images/d2dd934c2c8bca7e7f5ae06ad341250835283afcf684d947c392bc1dad2d250f.png" src="_images/d2dd934c2c8bca7e7f5ae06ad341250835283afcf684d947c392bc1dad2d250f.png" />
