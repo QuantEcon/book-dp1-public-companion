@@ -21,3 +21,7 @@ function plot_rates(df; fontsize=16, savefig=true)
         fig.savefig("../figures/plot_interest_rates_"*r_type*".pdf")
     end
 end
+
+plot_rates(df_nominal, savefig=true)
+
+plot_rates(df_real, savefig=true)

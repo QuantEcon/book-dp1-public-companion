@@ -104,5 +104,8 @@ function fig_vstar(model=default_model;
     plt.show()
 end
 
+fig_cv(savefig=true)
+
+fig_vstar(savefig=true)
 
 

@@ -130,3 +130,7 @@ function plot_growth(; savefig=false, figname="../figures/lake_2.pdf")
     end
 
 end
+
+plot_paths(savefig=true)
+
+plot_growth(savefig=true)

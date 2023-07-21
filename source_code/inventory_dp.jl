@@ -114,3 +114,6 @@ function plot_ts(; fontsize=16,
     end
 end
 
+plot_vstar_and_opt_policy(savefig=true)
+
+plot_ts(savefig=true)

@@ -25,10 +25,18 @@ kernelspec:
 ```
 
 
-#### rs_utility.jl
-```{code-cell} julia
-:tags: ["hide-input"]
+```{code-cell} julia-1.9
+:tags: ["remove-cell"]
+using Pkg;
+Pkg.activate("../");
 
+using PyCall;
+pygui(:tk);
+```
+
+#### rs_utility.jl
+```{code-cell} julia-1.9
+:tags: ["hide-input"]
 include("s_approx.jl")
 using LinearAlgebra, QuantEcon
 
@@ -113,12 +121,14 @@ function plot_multiple_v(; savefig=false,
     end
 end
 
+plot_v(savefig=true)
+
+plot_multiple_v(savefig=true)
 ```
 
 #### ez_utility.jl
-```{code-cell} julia
+```{code-cell} julia-1.9
 :tags: ["hide-input"]
-
 """
 Epstein--Zin utility: solving the recursion for a given consumption
 path.
@@ -263,6 +273,15 @@ function vary_alpha(; alpha_vals=[0.5, 0.6],
         fig.savefig(figname)
     end
 end
+
+plot_convergence(savefig=true)
+
+plot_v(savefig=true)
+
+vary_gamma(savefig=true)
+
+vary_alpha(savefig=true)
+
 
 ```
 

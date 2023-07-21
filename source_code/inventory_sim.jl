@@ -86,3 +86,8 @@ function plot_hist(model; fontsize=16,
     end
 end
 
+model = create_inventory_model()
+
+plot_ts(model; savefig=true)
+
+plot_hist(model; savefig=true)

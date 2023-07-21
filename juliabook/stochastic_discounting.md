@@ -25,39 +25,18 @@ kernelspec:
 ```
 
 
-#### plot_interest_rates.jl
-```{code-cell} julia
-:tags: ["hide-input"]
+```{code-cell} julia-1.9
+:tags: ["remove-cell"]
+using Pkg;
+Pkg.activate("../");
 
-# Nominal interest rate from https://fred.stlouisfed.org/series/GS1
-# Real interest rate from https://fred.stlouisfed.org/series/WFII10
-#
-# Download as CSV files
-#
-
-using DataFrames, CSV, PyPlot
-
-df_nominal = DataFrame(CSV.File("data/GS1.csv"))
-df_real = DataFrame(CSV.File("data/WFII10.csv"))
-
-function plot_rates(df; fontsize=16, savefig=true)
-    r_type = df == df_nominal ? "nominal" : "real"
-    fig, ax = plt.subplots(figsize=(9, 5))
-    ax.plot(df[!, 1], df[!, 2], label=r_type*" interest rate")
-    ax.plot(df[!, 1], zero(df[!, 2]), c="k", ls="--")
-    ax.set_xlim(df[1, 1], df[end, 1])
-    ax.legend(fontsize=fontsize, frameon=false)
-    plt.show()
-    if savefig
-        fig.savefig("../figures/plot_interest_rates_"*r_type*".pdf")
-    end
-end
+using PyCall;
+pygui(:tk);
 ```
 
 #### plot_interest_rates.jl
-```{code-cell} julia
+```{code-cell} julia-1.9
 :tags: ["hide-input"]
-
 # Nominal interest rate from https://fred.stlouisfed.org/series/GS1
 # Real interest rate from https://fred.stlouisfed.org/series/WFII10
 #
@@ -81,12 +60,16 @@ function plot_rates(df; fontsize=16, savefig=true)
         fig.savefig("../figures/plot_interest_rates_"*r_type*".pdf")
     end
 end
+
+plot_rates(df_nominal, savefig=true)
+
+plot_rates(df_real, savefig=true)
+
 ```
 
 #### pd_ratio.jl
-```{code-cell} julia
+```{code-cell} julia-1.9
 :tags: ["hide-input"]
-
 """
 Price-dividend ratio in a model with dividend and consumption growth.
 
@@ -153,12 +136,12 @@ function plot_main(; μ_d_vals = (0.02, 0.08),
     end
 end
 
+plot_main(savefig=true)
 ```
 
 #### inventory_sdd.jl
-```{code-cell} julia
+```{code-cell} julia-1.9
 :tags: ["hide-input"]
-
 """
 Inventory management model with state-dependent discounting.  
 The discount factor takes the form β_t = Z_t, where (Z_t) is 
@@ -295,6 +278,8 @@ function plot_ts(; ts_length=400,
         fig.savefig(figname)
     end
 end
+
+plot_ts(savefig=true)
 
 ```
 

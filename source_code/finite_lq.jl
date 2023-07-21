@@ -225,3 +225,9 @@ function plot_timing(; m_vals=collect(range(1, 600, step=10)),
     end
     return (pi_time, vfi_time, opi_times)
 end
+
+plot_policy()
+
+plot_sim(savefig=true)
+
+plot_timing(savefig=true)

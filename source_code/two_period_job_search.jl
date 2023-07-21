@@ -82,4 +82,4 @@ function fig_v1(model=default_model; savefig=false,
     plt.show()
 end
 
-
+fig_v1(savefig=true)

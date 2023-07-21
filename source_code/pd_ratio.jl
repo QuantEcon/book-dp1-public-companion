@@ -64,3 +64,4 @@ function plot_main(; μ_d_vals = (0.02, 0.08),
     end
 end
 
+plot_main(savefig=true)

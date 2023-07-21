@@ -135,3 +135,4 @@ function plot_ts(; ts_length=400,
     end
 end
 
+plot_ts(savefig=true)

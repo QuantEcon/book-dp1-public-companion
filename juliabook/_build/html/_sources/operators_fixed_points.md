@@ -25,10 +25,18 @@ kernelspec:
 ```
 
 
-#### lake.jl
-```{code-cell} julia
-:tags: ["hide-input"]
+```{code-cell} julia-1.9
+:tags: ["remove-cell"]
+using Pkg;
+Pkg.activate("../");
 
+using PyCall;
+pygui(:tk);
+```
+
+#### lake.jl
+```{code-cell} julia-1.9
+:tags: ["hide-input"]
 using LinearAlgebra
 
 α, λ, d, b = 0.01, 0.1, 0.02, 0.025
@@ -161,5 +169,9 @@ function plot_growth(; savefig=false, figname="../figures/lake_2.pdf")
     end
 
 end
+
+plot_paths(savefig=true)
+
+plot_growth(savefig=true)
 ```
 

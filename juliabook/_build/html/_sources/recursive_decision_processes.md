@@ -25,10 +25,18 @@ kernelspec:
 ```
 
 
-#### quantile_function.jl
-```{code-cell} julia
-:tags: ["hide-input"]
+```{code-cell} julia-1.9
+:tags: ["remove-cell"]
+using Pkg;
+Pkg.activate("../");
 
+using PyCall;
+pygui(:tk);
+```
+
+#### quantile_function.jl
+```{code-cell} julia-1.9
+:tags: ["hide-input"]
 import Distributions.quantile, Distributions.DiscreteNonParametric
 
 "Compute the τ-th quantile of v(X) when X ∼ ϕ and v = sort(v)."
@@ -58,12 +66,12 @@ end
     
 
 
+
 ```
 
 #### quantile_js.jl
-```{code-cell} julia
+```{code-cell} julia-1.9
 :tags: ["hide-input"]
-
 """
 Job search with Markov wage draws and quantile preferences.
 
@@ -170,5 +178,6 @@ function plot_main(; tau_vals=(0.1, 0.25, 0.5, 0.6, 0.7, 0.8),
     end
 end
 
+plot_main(savefig=true)
 ```
 

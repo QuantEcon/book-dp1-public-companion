@@ -4,8 +4,9 @@ logo: _static/qe-logo.png
 #description: This website presents a set of lectures on dynamic programming for economics, designed and written by Thomas J. Sargent and John Stachurski.
 
 execute:
-  execute_notebooks: "cache"
+  #execute_notebooks: "cache"
   timeout: 600 # 10 minutes
+  allow_errors: true
 
 only_build_toc_files: true
 
@@ -39,6 +40,11 @@ sphinx:
         binderhub_url             : https://mybinder.org  # The URL of the BinderHub (e.g., https://mybinder.org)
         colab_url                 : https://colab.research.google.com
         thebe                     : false  # Add a thebe button to pages (requires the repository to run on Binder)
+    mathjax3_config:
+      tex:
+        macros:
+          "argmax" : "arg\\,max"
+          "argmin" : "arg\\,min"
     mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
     rediraffe_redirects:
       index_toc.md: intro.md

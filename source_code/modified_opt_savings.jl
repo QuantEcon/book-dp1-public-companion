@@ -299,3 +299,14 @@ function plot_lorenz(; m=1_000_000,
     end
 
 end
+
+plot_contours(savefig=true)
+
+plot_policies(savefig=true)
+
+plot_time_series(savefig=true)
+
+plot_histogram(savefig=true)
+
+plot_lorenz(savefig=true)
+

@@ -143,3 +143,11 @@ function vary_alpha(; alpha_vals=[0.5, 0.6],
     end
 end
 
+plot_convergence(savefig=true)
+
+plot_v(savefig=true)
+
+vary_gamma(savefig=true)
+
+vary_alpha(savefig=true)
+

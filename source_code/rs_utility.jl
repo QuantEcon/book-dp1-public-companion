@@ -82,3 +82,6 @@ function plot_multiple_v(; savefig=false,
     end
 end
 
+plot_v(savefig=true)
+
+plot_multiple_v(savefig=true)

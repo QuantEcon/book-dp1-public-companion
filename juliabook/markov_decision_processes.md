@@ -25,10 +25,18 @@ kernelspec:
 ```
 
 
-#### inventory_dp.jl
-```{code-cell} julia
-:tags: ["hide-input"]
+```{code-cell} julia-1.9
+:tags: ["remove-cell"]
+using Pkg;
+Pkg.activate("../");
 
+using PyCall;
+pygui(:tk);
+```
+
+#### inventory_dp.jl
+```{code-cell} julia-1.9
+:tags: ["hide-input"]
 include("s_approx.jl")
 using Distributions
 m(x) = max(x, 0)  # Convenience function
@@ -145,12 +153,14 @@ function plot_ts(; fontsize=16,
     end
 end
 
+plot_vstar_and_opt_policy(savefig=true)
+
+plot_ts(savefig=true)
 ```
 
 #### finite_opt_saving_0.jl
-```{code-cell} julia
+```{code-cell} julia-1.9
 :tags: ["hide-input"]
-
 using QuantEcon, LinearAlgebra, IterTools
 
 function create_savings_model(; R=1.01, β=0.98, γ=2.5,  
@@ -194,12 +204,12 @@ end
 
 
 
+
 ```
 
 #### finite_opt_saving_1.jl
-```{code-cell} julia
+```{code-cell} julia-1.9
 :tags: ["hide-input"]
-
 include("finite_opt_saving_0.jl")
 
 "Compute a v-greedy policy."
@@ -243,12 +253,12 @@ end
 
 
 
+
 ```
 
 #### finite_opt_saving_2.jl
-```{code-cell} julia
+```{code-cell} julia-1.9
 :tags: ["hide-input"]
-
 include("s_approx.jl")
 include("finite_opt_saving_1.jl")
 
@@ -435,12 +445,22 @@ function plot_lorenz(; m=1_000_000,
         fig.savefig(figname)
     end
 end
+
+plot_timing(savefig=true)
+
+plot_policy()
+
+plot_time_series(savefig=true)
+
+plot_histogram(savefig=true)
+
+plot_lorenz(savefig=true)
+
 ```
 
 #### finite_lq.jl
-```{code-cell} julia
+```{code-cell} julia-1.9
 :tags: ["hide-input"]
-
 using QuantEcon, LinearAlgebra, IterTools
 include("s_approx.jl")
 
@@ -668,12 +688,18 @@ function plot_timing(; m_vals=collect(range(1, 600, step=10)),
     end
     return (pi_time, vfi_time, opi_times)
 end
+
+plot_policy()
+
+plot_sim(savefig=true)
+
+plot_timing(savefig=true)
+
 ```
 
 #### firm_hiring.jl
-```{code-cell} julia
+```{code-cell} julia-1.9
 :tags: ["hide-input"]
-
 using QuantEcon, LinearAlgebra, IterTools
 
 function create_hiring_model(; 
@@ -848,13 +874,16 @@ function plot_growth(; savefig=false,
     end
 end
 
+plot_policy()
 
+plot_sim(savefig=true)
+
+plot_growth(savefig=true)
 ```
 
 #### modified_opt_savings.jl
-```{code-cell} julia
+```{code-cell} julia-1.9
 :tags: ["hide-input"]
-
 using QuantEcon, LinearAlgebra, IterTools
 
 function create_savings_model(; β=0.98, γ=2.5,  
@@ -1156,5 +1185,17 @@ function plot_lorenz(; m=1_000_000,
     end
 
 end
+
+plot_contours(savefig=true)
+
+plot_policies(savefig=true)
+
+plot_time_series(savefig=true)
+
+plot_histogram(savefig=true)
+
+plot_lorenz(savefig=true)
+
+
 ```
 

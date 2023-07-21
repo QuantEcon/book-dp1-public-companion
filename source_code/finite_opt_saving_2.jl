@@ -184,3 +184,13 @@ function plot_lorenz(; m=1_000_000,
         fig.savefig(figname)
     end
 end
+
+plot_timing(savefig=true)
+
+plot_policy()
+
+plot_time_series(savefig=true)
+
+plot_histogram(savefig=true)
+
+plot_lorenz(savefig=true)

@@ -112,3 +112,4 @@ function plot_main(; model=default_model,
     end
 end
 
+plot_main(savefig=true)

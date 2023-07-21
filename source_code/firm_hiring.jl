@@ -172,4 +172,8 @@ function plot_growth(; savefig=false,
     end
 end
 
+plot_policy()
 
+plot_sim(savefig=true)
+
+plot_growth(savefig=true)

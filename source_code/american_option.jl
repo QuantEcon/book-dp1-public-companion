@@ -151,3 +151,7 @@ function plot_strike(; savefig=false,
     end
     plt.show()
 end
+
+plot_contours(savefig=true)
+
+plot_strike(savefig=true)

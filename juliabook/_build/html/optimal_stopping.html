@@ -333,23 +333,53 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="w">        </span><span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">figname</span><span class="p">)</span>
 <span class="w">    </span><span class="k">end</span>
 <span class="k">end</span>
+
+<span class="n">plot_val</span><span class="p">(</span><span class="n">savefig</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span>
+
+<span class="n">plot_comparison</span><span class="p">(</span><span class="n">savefig</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>ArgumentError: Package QuantEcon not found in current path.
-- Run `import Pkg; Pkg.add(&quot;QuantEcon&quot;)` to install the QuantEcon package.
-
-Stacktrace:
- [1] macro expansion
-   @ .\loading.jl:1630 [inlined]
- [2] macro expansion
-   @ .\lock.jl:267 [inlined]
- [3] require(into::Module, mod::Symbol)
-   @ Base .\loading.jl:1611
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 25 with error 0.03580715900042719.
+Completed iteration 50 with error 0.017225068626771645.
+Completed iteration 75 with error 0.00676835562268252.
+Completed iteration 100 with error 0.002642877005840205.
+Completed iteration 125 with error 0.001043441654843491.
+Completed iteration 150 with error 0.0004139022964579908.
+Completed iteration 175 with error 0.00016428959624192885.
+Completed iteration 200 with error 6.521647846113865e-5.
+Completed iteration 225 with error 2.5888622744218992e-5.
+Completed iteration 250 with error 1.027687515886555e-5.
+Completed iteration 275 with error 4.079559587921722e-6.
+Completed iteration 300 with error 1.6194423579918293e-6.
+Terminated successfully in 315 iterations.
 </pre></div>
 </div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 25 with error 0.03580715900042719.
+Completed iteration 50 with error 0.017225068626771645.
+Completed iteration 75 with error 0.00676835562268252.
+Completed iteration 100 with error 0.002642877005840205.
+Completed iteration 125 with error 0.001043441654843491.
+Completed iteration 150 with error 0.0004139022964579908.
+Completed iteration 175 with error 0.00016428959624192885.
+Completed iteration 200 with error 6.521647846113865e-5.
+Completed iteration 225 with error 2.5888622744218992e-5.
+Completed iteration 250 with error 1.027687515886555e-5.
+Completed iteration 275 with error 4.079559587921722e-6.
+Completed iteration 300 with error 1.6194423579918293e-6.
+Terminated successfully in 315 iterations.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sys:1: UserWarning: Matplotlib is currently using agg, which is a non-GUI backend, so cannot show the figure.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<img alt="_images/2ac64997eec2c3272b60cf7962e53bc7095cbc69b8ca27b71a8b54365d3600e8.png" src="_images/2ac64997eec2c3272b60cf7962e53bc7095cbc69b8ca27b71a8b54365d3600e8.png" />
+<img alt="_images/031f726ea5ba89aabbadb023abc455ac10f2d7c719be456dc194f3eea09a5885.png" src="_images/031f726ea5ba89aabbadb023abc455ac10f2d7c719be456dc194f3eea09a5885.png" />
 </div>
 </div>
 </section>
@@ -515,10 +545,75 @@ Stacktrace:
 <span class="w">    </span><span class="k">end</span>
 <span class="w">    </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 <span class="k">end</span>
+
+<span class="n">plot_contours</span><span class="p">(</span><span class="n">savefig</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span>
+
+<span class="n">plot_strike</span><span class="p">(</span><span class="n">savefig</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 25 with error 0.006681671219211427.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 50 with error 0.0039970038843408495.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 75 with error 0.002922808660469428.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 100 with error 0.0019603799011774503.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 125 with error 0.0012415595933039647.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 150 with error 0.00077388789719951.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 175 with error 0.000481112768765779.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 200 with error 0.0.
+Terminated successfully in 201 iterations.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 25 with error 0.006681671219211427.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 50 with error 0.0039970038843408495.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 75 with error 0.002922808660469428.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 100 with error 0.0019603799011774503.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 125 with error 0.0012415595933039647.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 150 with error 0.00077388789719951.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 175 with error 0.000481112768765779.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 200 with error 0.0.
+Terminated successfully in 201 iterations.
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">AssertionError</span>: Option not exercised.
+
+<span class="ne">Stacktrace</span>:
+ <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">plot_strike</span><span class="p">(;</span> <span class="n">savefig</span><span class="p">::</span><span class="n">Bool</span><span class="p">,</span> <span class="n">fontsize</span><span class="p">::</span><span class="n">Int64</span><span class="p">,</span> <span class="n">figname</span><span class="p">::</span><span class="n">String</span><span class="p">)</span>
+   <span class="o">@</span> <span class="n">Main</span> <span class="o">.</span>\<span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span><span class="mi">131</span>
+ <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="n">top</span><span class="o">-</span><span class="n">level</span> <span class="n">scope</span>
+   <span class="o">@</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span><span class="mi">157</span>
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 </section>

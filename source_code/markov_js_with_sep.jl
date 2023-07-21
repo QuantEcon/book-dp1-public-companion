@@ -124,4 +124,6 @@ function plot_w_stars(; α_vals=LinRange(0.0, 1.0, 10),
     end
 end
 
+plot_main(savefig=true)
 
+plot_w_stars(savefig=true)

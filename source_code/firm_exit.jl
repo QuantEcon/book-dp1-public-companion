@@ -103,4 +103,6 @@ function plot_comparison(; savefig=false,
     end
 end
 
+plot_val(savefig=true)
 
+plot_comparison(savefig=true)
