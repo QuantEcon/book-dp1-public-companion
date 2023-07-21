@@ -177,3 +177,5 @@ remove_files(root_src_dir, root_dst_dir)
     #print("Failed! - Directory cleaned")
     #exit(1)
     
+shutil.copytree("./juliabook/_build/html/", "./docs/", dirs_exist_ok=True)
+
