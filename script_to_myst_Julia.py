@@ -151,7 +151,11 @@ for chapter in chapter_meta.keys():
                 b.write(f"```{{code-cell}} julia-1.9\n")
                 b.write(":tags: [\"hide-input\"]\n")
 
-                text = g.read()
+                text = g.readlines()
+
+                for line in text:
+                    if "plt.show()" in line:
+                        text.remove(line)
                 b.write(text)
 
                 b.write(f"\n```\n")
