@@ -58,7 +58,7 @@ for i in 1:2
     end
 end
 
-#plt.show()
+plt.show()
 
 fig.savefig("../figures/solow_fp_adjust.pdf")
 

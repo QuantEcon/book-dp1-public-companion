@@ -66,7 +66,7 @@ fig, ax = plt.subplots()
 plot_45(ax; A=2.0, s=0.3, alpha=0.4, delta=0.4) 
 #plot_45(ax2; A=3.0, s=0.4, alpha=0.05, delta=0.6) 
 fig.tight_layout()
-#plt.show()
+plt.show()
 #fig.savefig("../figures/solow_fp.pdf")
 
 

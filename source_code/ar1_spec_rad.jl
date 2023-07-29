@@ -93,5 +93,5 @@ function plot_beta_sim(; T=80,
     if savefig
         fig.savefig(figname)
     end
-    #plt.show()
+    plt.show()
 end

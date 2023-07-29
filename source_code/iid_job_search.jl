@@ -67,7 +67,7 @@ function fig_vseq(model=default_model;
     if savefig
         fig.savefig(figname)
     end
-    #plt.show()
+    plt.show()
 end
 
 
@@ -101,7 +101,7 @@ function fig_vstar(model=default_model;
     if savefig
         fig.savefig(figname)
     end
-    #plt.show()
+    plt.show()
 end
 
 

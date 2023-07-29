@@ -78,7 +78,7 @@ ax.plot(time, q, 'b-', lw=2, alpha=0.6, label='$q_t$')
 ax.legend(ncol=2, **legend_args)
 s = f'dynamics with $\gamma = {γ}$'
 ax.text(max(time) * 0.6, 1 * q_bar.max(), s, fontsize=14)
-#plt.show()
+plt.show()
 # -
 
 

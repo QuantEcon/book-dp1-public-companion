@@ -218,7 +218,7 @@ function plot_contours(; savefig=false,
     if savefig
         fig.savefig(figname)
     end
-    #plt.show()
+    plt.show()
 end
 
 
@@ -238,13 +238,13 @@ function plot_policies(; savefig=false,
         ax.plot(w_grid, w_grid[σ_star[:, y_bar, i]], label=label)
     end
     ax.legend(fontsize=fontsize)
-    #plt.show()
+    plt.show()
 
     plt.tight_layout()
     if savefig
         fig.savefig(figname)
     end
-    #plt.show()
+    plt.show()
 end
 
 
@@ -257,7 +257,7 @@ function plot_time_series(; m=2_000,
     ax.plot(w_series, label=L"w_t")
     ax.legend(fontsize=fontsize)
     ax.set_xlabel("time", fontsize=fontsize)
-    #plt.show()
+    plt.show()
     if savefig
         fig.savefig(figname)
     end
@@ -274,7 +274,7 @@ function plot_histogram(; m=1_000_000,
     ax.hist(w_series, bins=40, density=true)
     ax.set_xlabel("wealth", fontsize=fontsize)
     ax.text(15, 0.7, "Gini = $g", fontsize=fontsize)
-    #plt.show()
+    plt.show()
     if savefig
         fig.savefig(figname)
     end
@@ -293,12 +293,9 @@ function plot_lorenz(; m=1_000_000,
     ax.plot(F, F, label="Lorenz curve, equality")
     ax.plot(F, L, label="Lorenz curve, wealth distribution")
     ax.legend()
-    #plt.show()
+    plt.show()
     if savefig
         fig.savefig(figname)
     end
 
 end
-
-
-

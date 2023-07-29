@@ -58,7 +58,7 @@ function plot_45(; file_name="../figures/newton_1.pdf",
     ax.set_ylim(0, 2.6)
     #ax.set_xlabel(L"x", fontsize=14)
 
-    #plt.show()
+    plt.show()
     if savefig
         fig.savefig(file_name)
     end

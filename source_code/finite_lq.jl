@@ -148,7 +148,7 @@ function plot_policy()
     ax.plot(y_grid, y_grid[σ_star[:, 1]], label=L"\sigma^*(\cdot, z_1)")
     ax.plot(y_grid, y_grid[σ_star[:, end]], label=L"\sigma^*(\cdot, z_N)")
     ax.legend(fontsize=fontsize)
-    #plt.show()
+    plt.show()
 end
 
 function plot_sim(; savefig=false, figname="../figures/finite_lq_1.pdf")
@@ -182,7 +182,7 @@ function plot_sim(; savefig=false, figname="../figures/finite_lq_1.pdf")
     end
 
     fig.tight_layout()
-    #plt.show()
+    plt.show()
     if savefig
         fig.savefig(figname)
     end
@@ -195,7 +195,7 @@ function plot_timing(; m_vals=collect(range(1, 600, step=10)),
     )
     model = create_investment_model()
     #println("Running Howard policy iteration.")
-    pi_time = @elapsed σ_pi = policy_iteration(model)
+    #pi_time = @elapsed σ_pi = policy_iteration(model)
     #println("PI completed in $pi_time seconds.")
     println("Running value function iteration.")
     vfi_time = @elapsed σ_vfi = value_iteration(model, tol=1e-5)
@@ -219,11 +219,9 @@ function plot_timing(; m_vals=collect(range(1, 600, step=10)),
     ax.legend(fontsize=fontsize, frameon=false)
     ax.set_xlabel(L"m", fontsize=fontsize)
     ax.set_ylabel("time", fontsize=fontsize)
-    #plt.show()
+    plt.show()
     if savefig
         fig.savefig(figname)
     end
     return (pi_time, vfi_time, opi_times)
 end
-
-

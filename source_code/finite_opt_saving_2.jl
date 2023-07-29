@@ -109,7 +109,7 @@ function plot_timing(; m_vals=collect(range(1, 600, step=10)),
     ax.legend(fontsize=fontsize, frameon=false)
     ax.set_xlabel(L"m", fontsize=fontsize)
     ax.set_ylabel("time", fontsize=fontsize)
-    #plt.show()
+    plt.show()
     if savefig
         fig.savefig("../figures/finite_opt_saving_2_1.pdf")
     end
@@ -131,7 +131,7 @@ function plot_policy(; method="pi")
     ax.plot(w_grid, w_grid[σ_star[:, 1]], label=L"\sigma^*(\cdot, y_1)")
     ax.plot(w_grid, w_grid[σ_star[:, end]], label=L"\sigma^*(\cdot, y_N)")
     ax.legend(fontsize=fontsize)
-    #plt.show()
+    plt.show()
 end
 
 
@@ -144,7 +144,7 @@ function plot_time_series(; m=2_000,
     ax.plot(w_series, label=L"w_t")
     ax.set_xlabel("time", fontsize=fontsize)
     ax.legend(fontsize=fontsize)
-    #plt.show()
+    plt.show()
     if savefig
         fig.savefig(figname)
     end
@@ -160,7 +160,7 @@ function plot_histogram(; m=1_000_000,
     ax.hist(w_series, bins=40, density=true)
     ax.set_xlabel("wealth", fontsize=fontsize)
     ax.text(15, 0.4, "Gini = $g", fontsize=fontsize)
-    #plt.show()
+    plt.show()
 
     if savefig
         fig.savefig(figname)
@@ -178,11 +178,9 @@ function plot_lorenz(; m=1_000_000,
     ax.plot(F, F, label="Lorenz curve, equality")
     ax.plot(F, L, label="Lorenz curve, wealth distribution")
     ax.legend()
-    #plt.show()
+    plt.show()
 
     if savefig
         fig.savefig(figname)
     end
 end
-
-

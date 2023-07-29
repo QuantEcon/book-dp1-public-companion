@@ -37,6 +37,6 @@ end
     
 #plt.savefig("../figures/three_fixed_points.pdf")
 
-#plt.show()
+plt.show()
 
 

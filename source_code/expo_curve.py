@@ -66,7 +66,7 @@ ax.text(s0[0]-0.001, s0[1]+0.002, s0[2], "$x_0$", fontsize=14)
 ax.scatter(s0[0], s0[1], s0[2], color='k')
 
 plt.savefig("../figures/expo_curve_1.pdf")
-#plt.show()
+plt.show()
 # -
 
 

@@ -23,6 +23,6 @@ for (θ, ax) in zip(θ_vals, axes)
     ax.set_title(title)
 end
 
-#plt.show()
+plt.show()
 
 

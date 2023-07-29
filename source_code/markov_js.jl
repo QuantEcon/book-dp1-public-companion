@@ -106,8 +106,9 @@ function plot_main(; model=default_model,
     ax.plot(w_vals, max.(e, h_star), "k-", alpha=0.7, label=L"v^*(w)")
     ax.legend(frameon=false, fontsize=fontsize)
     ax.set_xlabel(L"w", fontsize=fontsize)
-    #plt.show()
+    plt.show()
     if savefig
         fig.savefig(figname)
     end
 end
+

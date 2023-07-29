@@ -16,10 +16,8 @@ function plot_rates(df; fontsize=16, savefig=true)
     ax.plot(df[!, 1], zero(df[!, 2]), c="k", ls="--")
     ax.set_xlim(df[1, 1], df[end, 1])
     ax.legend(fontsize=fontsize, frameon=false)
-    #plt.show()
+    plt.show()
     if savefig
         fig.savefig("../figures/plot_interest_rates_"*r_type*".pdf")
     end
 end
-
-

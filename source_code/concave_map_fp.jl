@@ -34,7 +34,7 @@ ax.set_yticks((0, 1, 2, 3))
 ax.set_ylim(0, 3)
 ax.set_xlim(0, 3)
 
-#plt.show()
+plt.show()
 #fig.savefig("../figures/concave_map_fp.pdf")
 
 

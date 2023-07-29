@@ -42,7 +42,7 @@ ax.text(2.4, -0.15, L"x", fontsize=20)
 ax.set_xticks([])
 ax.set_yticks([])
 
-#plt.show()
+plt.show()
 
 file_name = "../figures/v_star_illus.pdf"
 fig.savefig(file_name)

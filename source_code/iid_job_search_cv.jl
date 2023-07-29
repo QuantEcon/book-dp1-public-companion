@@ -49,7 +49,7 @@ function fig_g(model=default_model;
         fig.savefig(figname)
     end
 
-    #plt.show()
+    plt.show()
 
 end
 
@@ -90,7 +90,7 @@ function fig_tg(betas=[0.95, 0.96];
         fig.savefig(figname)
     end
 
-    #plt.show()
+    plt.show()
 
 end
 
@@ -110,7 +110,7 @@ function fig_cv(model=default_model;
     ax.legend(fontsize=fs)
     ax.set_ylim(0, maximum(vhat))
 
-    #plt.show()
+    plt.show()
     if savefig
         fig.savefig(figname)
     end
@@ -140,6 +140,6 @@ function fig_bf(betas=LinRange(0.9, 0.99, 20);
         fig.savefig(figname)
     end
 
-    #plt.show()
+    plt.show()
 
 end

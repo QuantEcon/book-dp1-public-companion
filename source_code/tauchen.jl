@@ -32,6 +32,6 @@ ax.legend(fontsize=fontsize)
 if false
     plt.savefig("../figures/tauchen_1.pdf")
 end
-#plt.show()
+plt.show()
 
 

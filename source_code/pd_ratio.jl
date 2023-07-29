@@ -58,7 +58,7 @@ function plot_main(; μ_d_vals = (0.02, 0.08),
 
     ax.legend(frameon=false, fontsize=fontsize)
     ax.set_xlabel(L"x", fontsize=fontsize)
-    #plt.show()
+    plt.show()
     if savefig
         fig.savefig(figname)
     end

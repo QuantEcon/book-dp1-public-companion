@@ -72,7 +72,7 @@ function plot_status(; ts_length=200,
     ax.plot(E, label="status")
     ax.legend(fontsize=fs, frameon=false)
 
-    #plt.show()
+    plt.show()
     if savefig
         fig.savefig(figname)
     end

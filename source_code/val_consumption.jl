@@ -28,7 +28,7 @@ function plot_v(; savefig=false,
     ax.set_xlabel(L"x", fontsize=fontsize)
     ax.legend(frameon=false, fontsize=fontsize, loc="upper left")
     ax.set_ylim(-65, -40)
-    #plt.show()
+    plt.show()
     if savefig
         fig.savefig(figname)
     end
