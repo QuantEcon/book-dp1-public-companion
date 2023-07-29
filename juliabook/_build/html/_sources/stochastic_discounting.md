@@ -253,7 +253,7 @@ function sim_inventories(ts_length; X_init=0)
     X[1] = X_init
     for t in 1:(ts_length-1)
         D′ = rand(G)
-        X[t+1] = m(X[t] - D′) + σ_star[X[t], i_z[t]]
+        X[t+1] = m(X[t] - D′) + σ_star[X[t] + 1, i_z[t]]
     end
     return X, z_vals[i_z]
 end
