@@ -4,7 +4,7 @@ logo: _static/qe-logo.png
 #description: This website presents a set of lectures on dynamic programming for economics, designed and written by Thomas J. Sargent and John Stachurski.
 
 execute:
-  #execute_notebooks: "cache"
+  execute_notebooks: "cache"
   timeout: 600 # 10 minutes
   allow_errors: true
 

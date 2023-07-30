@@ -105,7 +105,7 @@ def plot_contours(savefig=False,
     fig.tight_layout()
     if savefig:
         fig.savefig(figname)
-    #plt.show()
+    plt.show()
 
 
 def plot_strike(savefig=False,
@@ -160,4 +160,4 @@ def plot_strike(savefig=False,
 
     if savefig:
         fig.savefig(figname)
-    #plt.show()
+    plt.show()

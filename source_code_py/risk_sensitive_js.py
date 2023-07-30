@@ -89,7 +89,7 @@ def plot_main(theta_vals=(-10, 0.0001, 0.1),
         ax.set_xlabel(r"$w$")
 
     fig.tight_layout()
-    #plt.show()
+    plt.show()
 
     if savefig:
         fig.savefig(figname)

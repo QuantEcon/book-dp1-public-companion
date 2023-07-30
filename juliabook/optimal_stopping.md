@@ -112,7 +112,6 @@ function plot_val(; savefig=false,
     ax.legend(frameon=false, fontsize=fontsize)
     ax.set_xlabel(L"z", fontsize=fontsize)
 
-    #plt.show()
     if savefig
         fig.savefig(figname)
     end
@@ -136,11 +135,11 @@ function plot_comparison(; savefig=false,
     ax.legend(frameon=false, fontsize=fontsize)
     ax.set_xlabel(L"z", fontsize=fontsize)
 
-    #plt.show()
     if savefig
         fig.savefig(figname)
     end
 end
+
 
 
 ```
@@ -245,7 +244,6 @@ function plot_contours(; savefig=false,
     if savefig
         fig.savefig(figname)
     end
-    #plt.show()
 end
 
 
@@ -306,9 +304,7 @@ function plot_strike(; savefig=false,
     if savefig
         fig.savefig(figname)
     end
-    #plt.show()
 end
-
 
 ```
 

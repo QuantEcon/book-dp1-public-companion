@@ -64,7 +64,7 @@ def plot_ts(model, fontsize=16,
     ax.legend(fontsize=fontsize, frameon=False)
     ax.set_ylim(0, S + s + 20)
 
-    #plt.show()
+    plt.show()
     if savefig:
         fig.savefig(figname)
 
@@ -87,6 +87,6 @@ def plot_hist(model, fontsize=16,
     ax.legend(fontsize=fontsize, frameon=False)
     ax.set_ylim(0, 0.015)
 
-    #plt.show()
+    plt.show()
     if savefig:
         fig.savefig(figname)

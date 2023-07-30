@@ -5,6 +5,7 @@ from numba import njit
 import time
 from finite_opt_saving_1 import get_greedy, get_value
 from finite_opt_saving_0 import create_savings_model, T, T_σ
+from quantecon import markov
 
 
 
@@ -44,6 +45,28 @@ def optimistic_policy_iteration(model, tolerance=1e-5, m=100):
             v = T_σ(v, σ, model)
         error = np.max(np.abs(v - last_v))
     return get_greedy(v, model)
+
+# Simulations and inequality measures
+
+def simulate_wealth(m):
+
+    model = create_savings_model()
+    σ_star = optimistic_policy_iteration(model)
+    β, R, γ, w_grid, y_grid, Q = model
+
+    # Simulate labor income (indices rather than grid values)
+    mc = MarkovChain(Q)
+    y_idx_series = simulate(mc, m)
+
+    # Compute corresponding wealth time series
+    w_idx_series = np.empty_like(y_idx_series)
+    w_idx_series[0] = 1  # initial condition
+    for t in range(m-1):
+        i, j = w_idx_series[t], y_idx_series[t]
+        w_idx_series[t+1] = σ_star[i, j]
+    w_series = w_grid[w_idx_series]
+
+    return w_series
 
 
 # Plots
@@ -87,7 +110,7 @@ def plot_timing(m_vals=np.arange(1, 601, 10),
     ax.legend(frameon=False)
     ax.set_xlabel(r"$m$")
     ax.set_ylabel("time")
-    #plt.show()
+    plt.show()
     if savefig:
         fig.savefig("../figures/finite_opt_saving_2_1.png")
     return (pi_time, vfi_time, opi_times)
@@ -109,6 +132,6 @@ def plot_policy(method="pi", savefig=False):
     ax.plot(w_grid, w_grid[σ_star[:, -1]], label=r"$\sigma^*(\cdot, y_N)$")
     ax.legend()
     plt.title(f"Method: {method}")
-    #plt.show()
+    plt.show()
     if savefig:
         fig.savefig(f"../figures/finite_opt_saving_2_2_{method}.png")

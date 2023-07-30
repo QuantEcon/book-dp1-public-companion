@@ -86,7 +86,6 @@ function fig_dist(model=default_model, fs=14)
     fig, ax = plt.subplots()
     ax.plot(model.w_vals, model.ϕ, "-o", alpha=0.5, label="wage distribution")
     ax.legend(loc="upper left", fontsize=fs)
-    #plt.show()
 end
 
 
@@ -118,8 +117,10 @@ function fig_v1(model=default_model; savefig=false,
     if savefig
         fig.savefig(figname)
     end
-    #plt.show()
 end
+
+
+
 ```
 
 ```{code-cell} julia-1.9
@@ -265,7 +266,6 @@ ax.set_yticks((3.0, 4.0, 5.0, 6.0))
 ax.set_xlim(1.8, 3.2)
 ax.set_ylim(2.8, 6.1)
 
-#plt.show()
 fig.savefig("../figures/linear_iter_fig_1.pdf")
 
 
@@ -342,7 +342,6 @@ function fig_vseq(model=default_model;
     if savefig
         fig.savefig(figname)
     end
-    #plt.show()
 end
 
 
@@ -376,7 +375,6 @@ function fig_vstar(model=default_model;
     if savefig
         fig.savefig(figname)
     end
-    #plt.show()
 end
 
 

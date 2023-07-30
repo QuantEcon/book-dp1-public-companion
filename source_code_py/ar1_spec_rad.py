@@ -91,6 +91,6 @@ def plot_beta_sim(T=80,
 
     if savefig:
         fig.savefig(figname)
-    #plt.show()
+    plt.show()
 
 plot_beta_sim()

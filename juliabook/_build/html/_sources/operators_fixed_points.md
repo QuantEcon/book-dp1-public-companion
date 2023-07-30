@@ -130,7 +130,6 @@ function plot_paths(; figname="../figures/lake_1.pdf",
              fontsize=fontsize,
              arrowprops=Dict("arrowstyle" => "->"))
 
-    #plt.show()
     if savefig
         fig.savefig(figname)
     end
@@ -163,12 +162,12 @@ function plot_growth(; savefig=false, figname="../figures/lake_2.pdf")
     end
 
     plt.tight_layout()
-    #plt.show()
     if savefig
         fig.savefig(figname)
     end
 
 end
+
 ```
 
 ```{code-cell} julia-1.9

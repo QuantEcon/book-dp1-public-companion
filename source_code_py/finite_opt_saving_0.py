@@ -9,7 +9,7 @@ Model = namedtuple("Model", ("β", "R", "γ", "w_grid", "y_grid", "Q"))
 
 
 def create_savings_model(R=1.01, β=0.98, γ=2.5,
-                         w_min=0.01, w_max=5.0, w_size=200,
+                         w_min=0.01, w_max=20.0, w_size=200,
                          ρ=0.9, ν=0.1, y_size=5):
     w_grid = np.linspace(w_min, w_max, w_size)
     mc = tauchen(ρ, ν, n=y_size)
@@ -25,7 +25,7 @@ def U(c, γ):
 @njit
 def B(i, j, k, v, model):
     """
-    B(w, y, w′) = u(R*w + y - w′) + β Σ_y′ v(w′, y′) Q(y, y′).
+    B(w, y, w′, v) = u(R*w + y - w′) + β Σ_y′ v(w′, y′) Q(y, y′).
     """
     β, R, γ, w_grid, y_grid, Q = model
     w, y, w_1 = w_grid[i], y_grid[j], w_grid[k]

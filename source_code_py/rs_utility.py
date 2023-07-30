@@ -61,7 +61,7 @@ def plot_v(savefig=False,
     ax.set_xlabel(r"$x$")
 
     ax.legend(frameon=False, loc="upper left")
-    #plt.show()
+    plt.show()
     if savefig:
         fig.savefig(figname)
 
@@ -82,6 +82,6 @@ def plot_multiple_v(savefig=False,
         ax.set_ylabel(r"$v(x)$")
 
     ax.legend(frameon=False, loc="upper left")
-    #plt.show()
+    plt.show()
     if savefig:
         fig.savefig(figname)

@@ -73,7 +73,7 @@ def fig_vseq(model=default_model,
 
     if savefig:
         fig.savefig(figname)
-    #plt.show()
+    plt.show()
 
 
 def fig_vstar(model=default_model,
@@ -103,4 +103,4 @@ def fig_vstar(model=default_model,
 
     if savefig:
         fig.savefig(figname)
-    #plt.show()
+    plt.show()

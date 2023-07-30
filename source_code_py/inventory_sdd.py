@@ -138,6 +138,6 @@ def plot_ts(ts_length=400,
     ax.legend(fontsize=fontsize, frameon=False)
 
     plt.tight_layout()
-    #plt.show()
+    plt.show()
     if savefig:
         fig.savefig(figname)

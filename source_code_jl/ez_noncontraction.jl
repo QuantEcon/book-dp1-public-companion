@@ -22,7 +22,7 @@ function plot_F(; savefig=false,
     ax.set_yticks((0, 1, 2))
     ax.legend(fontsize=fs, frameon=false)
 
-    #plt.show()
+    plt.show()
 
     if savefig
         fig.savefig(figname)

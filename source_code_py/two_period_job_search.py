@@ -65,7 +65,7 @@ def fig_dist(model=default_model, fs=10):
     fig, ax = plt.subplots()
     ax.plot(model.w_vals, model.φ, "-o", alpha=0.5, label="wage distribution")
     ax.legend(loc="upper left", fontsize=fs)
-    #plt.show()
+    plt.show()
 
 
 def fig_v1(model=default_model, savefig=False,
@@ -99,4 +99,4 @@ def fig_v1(model=default_model, savefig=False,
     ax.legend(frameon=False, fontsize=fs, loc="upper left")
     if savefig:
         fig.savefig(figname)
-    #plt.show()
+    plt.show()

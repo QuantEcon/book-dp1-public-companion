@@ -120,7 +120,7 @@ function plot_vstar_and_opt_policy(; fontsize=16,
     ax.set_xlabel("inventory", fontsize=fontsize)
     ax.set_ylabel("optimal choice", fontsize=fontsize)
     ax.legend(fontsize=fontsize, frameon=false)
-    #plt.show()
+    plt.show()
     if savefig == true
         fig.savefig(figname)
     end
@@ -136,7 +136,7 @@ function plot_ts(; fontsize=16,
     ax.set_ylabel("inventory", fontsize=fontsize)
     ax.legend(fontsize=fontsize, frameon=false)
     ax.set_ylim(0, maximum(X)+4)
-    #plt.show()
+    plt.show()
     if savefig == true
         fig.savefig(figname)
     end
@@ -351,7 +351,7 @@ function plot_timing(; m_vals=collect(range(1, 600, step=10)),
     ax.legend(fontsize=fontsize, frameon=false)
     ax.set_xlabel(L"m", fontsize=fontsize)
     ax.set_ylabel("time", fontsize=fontsize)
-    #plt.show()
+    plt.show()
     if savefig
         fig.savefig("../figures/finite_opt_saving_2_1.pdf")
     end
@@ -373,7 +373,7 @@ function plot_policy(; method="pi")
     ax.plot(w_grid, w_grid[σ_star[:, 1]], label=L"\sigma^*(\cdot, y_1)")
     ax.plot(w_grid, w_grid[σ_star[:, end]], label=L"\sigma^*(\cdot, y_N)")
     ax.legend(fontsize=fontsize)
-    #plt.show()
+    plt.show()
 end
 
 
@@ -386,7 +386,7 @@ function plot_time_series(; m=2_000,
     ax.plot(w_series, label=L"w_t")
     ax.set_xlabel("time", fontsize=fontsize)
     ax.legend(fontsize=fontsize)
-    #plt.show()
+    plt.show()
     if savefig
         fig.savefig(figname)
     end
@@ -402,7 +402,7 @@ function plot_histogram(; m=1_000_000,
     ax.hist(w_series, bins=40, density=true)
     ax.set_xlabel("wealth", fontsize=fontsize)
     ax.text(15, 0.4, "Gini = $g", fontsize=fontsize)
-    #plt.show()
+    plt.show()
 
     if savefig
         fig.savefig(figname)
@@ -420,7 +420,7 @@ function plot_lorenz(; m=1_000_000,
     ax.plot(F, F, label="Lorenz curve, equality")
     ax.plot(F, L, label="Lorenz curve, wealth distribution")
     ax.legend()
-    #plt.show()
+    plt.show()
 
     if savefig
         fig.savefig(figname)
@@ -580,7 +580,7 @@ function plot_policy()
     ax.plot(y_grid, y_grid[σ_star[:, 1]], label=L"\sigma^*(\cdot, z_1)")
     ax.plot(y_grid, y_grid[σ_star[:, end]], label=L"\sigma^*(\cdot, z_N)")
     ax.legend(fontsize=fontsize)
-    #plt.show()
+    plt.show()
 end
 
 function plot_sim(; savefig=false, figname="../figures/finite_lq_1.pdf")
@@ -614,7 +614,7 @@ function plot_sim(; savefig=false, figname="../figures/finite_lq_1.pdf")
     end
 
     fig.tight_layout()
-    #plt.show()
+    plt.show()
     if savefig
         fig.savefig(figname)
     end
@@ -651,7 +651,7 @@ function plot_timing(; m_vals=collect(range(1, 600, step=10)),
     ax.legend(fontsize=fontsize, frameon=false)
     ax.set_xlabel(L"m", fontsize=fontsize)
     ax.set_ylabel("time", fontsize=fontsize)
-    #plt.show()
+    plt.show()
     if savefig
         fig.savefig(figname)
     end
@@ -750,7 +750,7 @@ function plot_policy(; savefig=false,
     ax.plot(l_grid, l_grid[σ_star[:, 1]], label=L"\sigma^*(\cdot, z_1)")
     ax.plot(l_grid, l_grid[σ_star[:, end]], label=L"\sigma^*(\cdot, z_N)")
     ax.legend(fontsize=fontsize)
-    #plt.show()
+    plt.show()
 end
 
 
@@ -802,7 +802,7 @@ function plot_sim(; savefig=false,
     ax.set_ylabel("employment", fontsize=fontsize)
     ax.set_xlabel("time", fontsize=fontsize)
 
-    #plt.show()
+    plt.show()
     if savefig
         fig.savefig(figname)
     end
@@ -829,7 +829,7 @@ function plot_growth(; savefig=false,
     #end
 
     plt.tight_layout()
-    #plt.show()
+    plt.show()
     if savefig
         fig.savefig(figname)
     end
@@ -1060,7 +1060,7 @@ function plot_contours(; savefig=false,
     if savefig
         fig.savefig(figname)
     end
-    #plt.show()
+    plt.show()
 end
 
 
@@ -1080,13 +1080,13 @@ function plot_policies(; savefig=false,
         ax.plot(w_grid, w_grid[σ_star[:, y_bar, i]], label=label)
     end
     ax.legend(fontsize=fontsize)
-    #plt.show()
+    plt.show()
 
     plt.tight_layout()
     if savefig
         fig.savefig(figname)
     end
-    #plt.show()
+    plt.show()
 end
 
 
@@ -1099,7 +1099,7 @@ function plot_time_series(; m=2_000,
     ax.plot(w_series, label=L"w_t")
     ax.legend(fontsize=fontsize)
     ax.set_xlabel("time", fontsize=fontsize)
-    #plt.show()
+    plt.show()
     if savefig
         fig.savefig(figname)
     end
@@ -1116,7 +1116,7 @@ function plot_histogram(; m=1_000_000,
     ax.hist(w_series, bins=40, density=true)
     ax.set_xlabel("wealth", fontsize=fontsize)
     ax.text(15, 0.7, "Gini = $g", fontsize=fontsize)
-    #plt.show()
+    plt.show()
     if savefig
         fig.savefig(figname)
     end
@@ -1135,7 +1135,7 @@ function plot_lorenz(; m=1_000_000,
     ax.plot(F, F, label="Lorenz curve, equality")
     ax.plot(F, L, label="Lorenz curve, wealth distribution")
     ax.legend()
-    #plt.show()
+    plt.show()
     if savefig
         fig.savefig(figname)
     end
