@@ -57,7 +57,7 @@ chapter_meta = {
                 "operators_fixed_points": {
                     "name": "Operators and Fixed Points",
                     "subs": {
-                    "lake.jl" : ["plot_paths(savefig=true)", "plot_growth(savefig=true)"],
+                    "lake.jl" : ["plot_paths(savefig=true)", "plot_growth(savefig=true)"], #to be added to python
                     #"lake_1.jl"
                     }
                 },
@@ -94,7 +94,7 @@ chapter_meta = {
                 "stochastic_discounting": {
                     "name": "Stochastic Discounting",
                     "subs": {
-                    "plot_interest_rates.jl" : ["plot_rates(df_nominal, savefig=true)", "plot_rates(df_real, savefig=true)"],
+                    "plot_interest_rates.jl" : ["plot_rates(df_nominal, savefig=true)", "plot_rates(df_real, savefig=true)"], #to be added to python
                     #"plot_interest_rates_real.jl",
                     "pd_ratio.jl" : ["plot_main(savefig=true)"],
                     "inventory_sdd.jl" : ["plot_ts(savefig=true)"]
@@ -110,8 +110,8 @@ chapter_meta = {
                 "recursive_decision_processes": {
                     "name": "Recursive Decision Processes",
                     "subs": {
-                    "quantile_function.jl" : [],
-                    "quantile_js.jl" : ["plot_main(savefig=true)"]
+                    "quantile_function.jl" : [], #to be added to python
+                    "quantile_js.jl" : ["plot_main(savefig=true)"] #to be added to python
                     }
                 }
                 }
