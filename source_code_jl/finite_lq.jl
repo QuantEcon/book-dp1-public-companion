@@ -223,5 +223,6 @@ function plot_timing(; m_vals=collect(range(1, 600, step=10)),
     if savefig
         fig.savefig(figname)
     end
-    return (pi_time, vfi_time, opi_times)
+    return (vfi_time, opi_times)
+    #return (pi_time, vfi_time, opi_times)
 end

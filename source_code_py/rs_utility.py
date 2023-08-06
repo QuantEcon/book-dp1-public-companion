@@ -16,7 +16,7 @@ def create_rs_utility_model(
         ρ=0.96,     # correlation coef in AR(1)
         σ=0.1,      # volatility
         θ=-1.0):    # risk aversion
-    mc = tauchen(ρ, σ, 0, 10, n)  # n_std = 10
+    mc = tauchen(n, ρ, σ, 0, 10)  # n_std = 10
     x_vals, P = mc.state_values, mc.P
     r = x_vals      # special case u(c(x)) = x
     return Model(β=β, θ=θ, ρ=ρ, σ=σ, r=r, x_vals=x_vals, P=P)

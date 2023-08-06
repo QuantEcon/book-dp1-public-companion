@@ -12,7 +12,7 @@ def create_savings_model(R=1.01, β=0.98, γ=2.5,
                          w_min=0.01, w_max=20.0, w_size=200,
                          ρ=0.9, ν=0.1, y_size=5):
     w_grid = np.linspace(w_min, w_max, w_size)
-    mc = tauchen(ρ, ν, n=y_size)
+    mc = tauchen(y_size, ρ, ν)
     y_grid, Q = np.exp(mc.state_values), mc.P
     return Model(β=β, R=R, γ=γ, w_grid=w_grid, y_grid=y_grid, Q=Q)
 

@@ -32,7 +32,7 @@ def create_american_option_model(
     Creates an instance of the option model with log S_t = Z_t + W_t.
     """
     t_vals = np.arange(T+1)
-    mc = tauchen(ρ, ν, n=n)
+    mc = tauchen(n, ρ, ν)
     z_vals, Q = mc.state_values + μ, mc.P
     w_vals, φ, β = np.array([-s, s]), np.array([0.5, 0.5]), 1 / (1 + r)
     return Model(t_vals=t_vals, z_vals=z_vals, w_vals=w_vals, Q=Q,

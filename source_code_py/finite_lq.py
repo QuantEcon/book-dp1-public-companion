@@ -21,7 +21,7 @@ def create_investment_model(
         z_size=25):                           # Grid size for shock
     β = 1/(1+r)
     y_grid = np.linspace(y_min, y_max, y_size)
-    mc = tauchen(ρ, ν, n=y_size)
+    mc = tauchen(y_size, ρ, ν)
     z_grid, Q = mc.state_values, mc.P
     return Model(β=β, a_0=a_0, a_1=a_1, γ=γ, c=c,
           y_grid=y_grid, z_grid=z_grid, Q=Q)

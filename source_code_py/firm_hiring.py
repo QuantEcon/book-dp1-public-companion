@@ -20,7 +20,7 @@ def create_hiring_model(
         z_size=100):                         # Grid size for shock
     β = 1/(1+r)
     l_grid = np.linspace(l_min, l_max, l_size)
-    mc = tauchen(ρ, ν, b, 6, z_size)
+    mc = tauchen(z_size, ρ, ν, b, 6)
     z_grid, Q = mc.state_values, mc.P
     return Model(β=β, κ=κ, α=α, p=p, w=w,
                  l_grid=l_grid, z_grid=z_grid, Q=Q)
@@ -160,11 +160,11 @@ def plot_growth(savefig=False,
     ax.hist(l_g, alpha=0.6, bins=100)
     ax.set_xlabel("growth")
 
-    fig, axes = plt.subplots(2, 1)
-    series = y_g, z_g
-    for (ax, g) in zip(axes, series):
-        ax.hist(g, alpha=0.6, bins=100)
-        ax.set_xlabel("growth")
+    #fig, axes = plt.subplots(2, 1)
+    #series = y_g, z_g
+    #for (ax, g) in zip(axes, series):
+    #    ax.hist(g, alpha=0.6, bins=100)
+    #    ax.set_xlabel("growth")
 
     plt.tight_layout()
     plt.show()

@@ -14,7 +14,7 @@ from quantecon.markov import tauchen
 
 
 def compute_mc_spec_rad(n, ρ, σ, μ, m, b):
-    mc = tauchen(ρ, σ, μ * (1 - ρ), m, n)
+    mc = tauchen(n, ρ, σ, μ * (1 - ρ), m)
     state_values, P = mc.state_values, mc.P
 
     L = np.zeros((n, n))

@@ -1,6 +1,7 @@
 import numpy as np
 from finite_opt_saving_0 import U, B
 from numba import njit, prange
+from itertools import product
 
 
 @njit(parallel=True)
@@ -27,19 +28,18 @@ def get_value(σ, model):
     """Get the value v_σ of policy σ."""
     # Unpack and set up
     β, R, γ, w_grid, y_grid, Q = model
+    w_idx, y_idx = np.arange(len(w_grid)), np.arange(len(y_grid))
     wn, yn = len(w_grid), len(y_grid)
     n = wn * yn
-    # Allocate and create single index versions of P_σ and r_σ
-    P_σ = np.zeros((n, n))
-    r_σ = np.zeros(n)
-    for m in prange(n):
-        i, j = single_to_multi(m, yn)
+    # Build P_σ and r_σ as multi-index arrays
+    P_σ = np.zeros((wn, yn, wn, yn))
+    r_σ = np.zeros((wn, yn))
+    for (i, j) in product(w_idx, y_idx):
         w, y, w_1 = w_grid[i], y_grid[j], w_grid[σ[i, j]]
-        r_σ[m] = U(w + y - w_1/R, γ)
-        for m_1 in prange(n):
-            i_1, j_1 = single_to_multi(m_1, yn)
+        r_σ[i, j] = U(w + y - w_1/R, γ)
+        for (i_1, j_1) in product(w_idx, y_idx):
             if i_1 == σ[i, j]:
-                P_σ[m, m_1] = Q[j, j_1]
+                P_σ[i, j, i_1, j_1] = Q[j, j_1]
 
     # Solve for the value of σ
     I = np.identity(n)
@@ -47,3 +47,4 @@ def get_value(σ, model):
     # Return as multi-index array
     v_σ = v_σ.reshape(wn, yn)
     return v_σ
+

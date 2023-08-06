@@ -23,7 +23,7 @@ def create_ez_utility_model(
         β=0.99,     # time discount factor
         α=0.75,     # EIS parameter
         γ=-2.0):    # risk aversion parameter
-    mc = tauchen(ρ, σ, 0, 5, n)
+    mc = tauchen(n, ρ, σ, 0, 5)
     x_vals, P = mc.state_values, mc.P
     c = np.exp(x_vals)
     return Model(β=β, ρ=ρ, σ=σ, α=α, γ=γ, c=c, x_vals=x_vals, P=P)

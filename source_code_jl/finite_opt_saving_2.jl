@@ -39,8 +39,43 @@ function optimistic_policy_iteration(model; tolerance=1e-5, m=100)
     return get_greedy(v, model)
 end
 
+# == Simulations and inequality measures == #
 
-# Plots
+function simulate_wealth(m)
+
+    model = create_savings_model()
+    σ_star = optimistic_policy_iteration(model)
+    (; β, R, γ, w_grid, y_grid, Q) = model
+
+    # Simulate labor income (indices rather than grid values)
+    mc = MarkovChain(Q)
+    y_idx_series = simulate(mc, m)
+
+    # Compute corresponding wealth time series
+    w_idx_series = similar(y_idx_series)
+    w_idx_series[1] = 1  # initial condition
+    for t in 1:(m-1)
+        i, j = w_idx_series[t], y_idx_series[t]
+        w_idx_series[t+1] = σ_star[i, j]
+    end
+    w_series = w_grid[w_idx_series]
+
+    return w_series
+end
+
+function lorenz(v)  # assumed sorted vector
+    S = cumsum(v)  # cumulative sums: [v[1], v[1] + v[2], ... ]
+    F = (1:length(v)) / length(v)
+    L = S ./ S[end]
+    return (; F, L) # returns named tuple
+end
+
+gini(v) = (2 * sum(i * y for (i,y) in enumerate(v))/sum(v)
+           - (length(v) + 1))/length(v)
+
+
+
+# == Plots == #
 
 using PyPlot
 using LaTeXStrings
@@ -97,4 +132,55 @@ function plot_policy(; method="pi")
     ax.plot(w_grid, w_grid[σ_star[:, end]], label=L"\sigma^*(\cdot, y_N)")
     ax.legend(fontsize=fontsize)
     plt.show()
+end
+
+
+function plot_time_series(; m=2_000,
+                           savefig=false, 
+                           figname="../figures/finite_opt_saving_ts.pdf")
+
+    w_series = simulate_wealth(m)
+    fig, ax = plt.subplots(figsize=(9, 5.2))
+    ax.plot(w_series, label=L"w_t")
+    ax.set_xlabel("time", fontsize=fontsize)
+    ax.legend(fontsize=fontsize)
+    plt.show()
+    if savefig
+        fig.savefig(figname)
+    end
+end
+
+function plot_histogram(; m=1_000_000,
+                           savefig=false, 
+                           figname="../figures/finite_opt_saving_hist.pdf")
+
+    w_series = simulate_wealth(m)
+    g = round(gini(sort(w_series)), digits=2)
+    fig, ax = plt.subplots(figsize=(9, 5.2))
+    ax.hist(w_series, bins=40, density=true)
+    ax.set_xlabel("wealth", fontsize=fontsize)
+    ax.text(15, 0.4, "Gini = $g", fontsize=fontsize)
+    plt.show()
+
+    if savefig
+        fig.savefig(figname)
+    end
+end
+
+function plot_lorenz(; m=1_000_000,
+                           savefig=false, 
+                           figname="../figures/finite_opt_saving_lorenz.pdf")
+
+    w_series = simulate_wealth(m)
+    (; F, L) = lorenz(sort(w_series))
+
+    fig, ax = plt.subplots(figsize=(9, 5.2))
+    ax.plot(F, F, label="Lorenz curve, equality")
+    ax.plot(F, L, label="Lorenz curve, wealth distribution")
+    ax.legend()
+    plt.show()
+
+    if savefig
+        fig.savefig(figname)
+    end
 end

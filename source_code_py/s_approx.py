@@ -22,5 +22,5 @@ def successive_approx(T,                     # Operator (callable)
     if error <= tolerance:
         print(f"Terminated successfully in {k} iterations.")
     else:
-        print("Termination Warning: Error is greater than tolerance.")
+        print("Warning: hit iteration bound.")
     return x

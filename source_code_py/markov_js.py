@@ -22,7 +22,7 @@ def create_markov_js_model(
     """
     Creates an instance of the job search model with Markov wages.
     """
-    mc = tauchen(ρ, ν, n=n)
+    mc = tauchen(n, ρ, ν)
     w_vals, P = np.exp(mc.state_values), mc.P
     return Model(n=n, w_vals=w_vals, P=P, β=β, c=c)
 

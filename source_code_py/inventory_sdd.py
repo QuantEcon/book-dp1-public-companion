@@ -1,6 +1,6 @@
 """
 
-Inventory management model with state-dependent discounting.  The discount
+Inventory management model with state-dependent discounting. The discount
 factor takes the form β_t = Z_t, where (Z_t) is a discretization of a
 Gaussian AR(1) process
 

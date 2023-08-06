@@ -1,8 +1,8 @@
 import os
 import shutil
 
-root_src_dir = './source_code/'
-root_dst_dir = './juliabook/'
+root_src_dir = './source_code_jl/'
+root_dst_dir = './julia_version/juliabook/'
 
 shutil.copytree(root_src_dir, root_dst_dir, dirs_exist_ok=True)
 
@@ -26,7 +26,7 @@ kernelspec:
   name: julia-1.9
 ---
 
-(getting_started)=
+(placeholder_text)=
 ```{raw} html
 <div id="qe-notebook-header" style="text-align:right;">
         <a href="https://quantecon.org/" title="quantecon.org">
@@ -131,8 +131,9 @@ for chapter in chapter_meta.keys():
     chapter_name = chapter_meta[chapter]["name"]
     chapter_subs = chapter_meta[chapter]["subs"]
 
-    with open(f"./juliabook/{chapter}.md", "w", encoding='utf-8') as b:
-        b.write(header)
+    with open(f"./julia_version/juliabook/{chapter}.md", "w", encoding='utf-8') as b:
+        new_header = header.replace("placeholder_text", chapter_name)
+        b.write(new_header)
         b.write(f"# {chapter_name}\n\n")
         b.write(contents)
         b.write("\n\n")
@@ -142,7 +143,7 @@ for chapter in chapter_meta.keys():
         b.write("\n")
 
         for sub in chapter_subs.keys():
-            with open(f"./juliabook/{sub}", "r", encoding='utf-8') as g:
+            with open(f"./julia_version/juliabook/{sub}", "r", encoding='utf-8') as g:
 
                 b.write(f"#### {sub}\n")
                 b.write(f"```{{code-cell}} julia-1.9\n")
@@ -173,7 +174,7 @@ for chapter in chapter_meta.keys():
     #return False
 
 #try:
-os.system("jupyter-book build juliabook/")
+os.system("jupyter-book build ./julia_version/juliabook/")
 remove_files(root_src_dir, root_dst_dir)
     #print("Success!")
 #exit(0)

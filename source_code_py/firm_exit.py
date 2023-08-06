@@ -23,7 +23,7 @@ def create_exit_model(
     """
     Creates an instance of the firm exit model.
     """
-    mc = tauchen(ρ, ν, b=μ, n=n)
+    mc = tauchen(n, ρ, ν, mu=μ)
     z_vals, Q = mc.state_values, mc.P
     return Model(n=n, z_vals=z_vals, Q=Q, β=β, s=s)
 

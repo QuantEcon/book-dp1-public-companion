@@ -88,7 +88,7 @@ def sim_inventories(ts_length=400, X_init=0):
     # Subtracts 1 because numpy generates only positive integers
     rand = np.random.default_rng().geometric(p=p, size=ts_length-1) - 1
     for t in range(0, ts_length-1):
-        X[t+1] = np.maximum(X[t] - rand[t], 0) + σ_star[X[t]]
+        X[t+1] = np.maximum(X[t] - rand[t], 0) + σ_star[X[t] + 1]
     return X
 
 
