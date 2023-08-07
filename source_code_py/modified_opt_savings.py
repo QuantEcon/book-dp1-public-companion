@@ -11,10 +11,10 @@ Model = namedtuple("Model", ("β", "γ", "η_grid", "φ",
                              "w_grid", "y_grid", "Q"))
 
 
-def create_savings_model(β=0.98, γ=2.5,
+def create_savings_model(β=0.98, γ=2.5,  
                          w_min=0.01, w_max=20.0, w_size=100,
                          ρ=0.9, ν=0.1, y_size=20,
-                         η_min=-0.25, η_max=0.25, η_size=30):
+                         η_min=0.75, η_max=1.25, η_size=2):
     η_grid = np.linspace(η_min, η_max, η_size)
     φ = np.ones(η_size) * (1 / η_size)  # Uniform distributoin
     w_grid = np.linspace(w_min, w_max, w_size)
@@ -23,15 +23,13 @@ def create_savings_model(β=0.98, γ=2.5,
     return Model(β=β, γ=γ, η_grid=η_grid, φ=φ, w_grid=w_grid,
                  y_grid=y_grid, Q=Q)
 
-
 ## == Functions for regular OPI == ##
 
 @njit
 def U(c, γ):
     return c**(1-γ)/(1-γ)
 
-
-@njit(parallel=True)
+@njit
 def B(i, j, k, l, v, model):
     """
     The function
@@ -90,8 +88,6 @@ def optimistic_policy_iteration(model, tolerance=1e-5, m=100):
         error = np.max(np.abs(v - last_v))
         print(f"OPI current error = {error}")
     return get_greedy(v, model)
-
-
 
 
 ## == Functions for modified OPI == ##
@@ -235,7 +231,7 @@ def plot_policies(savefig=False):
     ax.plot(w_grid, w_grid, "k--", label=r"$45$")
 
     for (i, η) in enumerate(η_grid):
-        label = r"$\sigma^*$" + " at " + r"$\eta = $" + "$η"
+        label = r"$\sigma^*$" + " at " + r"$\eta = $" + f"{η.round(2)}"
         ax.plot(w_grid, w_grid[σ_star[:, y_bar, i]], label=label)
         
     ax.legend()
@@ -247,7 +243,7 @@ def plot_time_series(m=2_000, savefig=False):
 
     w_series = simulate_wealth(m)
     fig, ax = plt.subplots(figsize=(9, 5.2))
-    ax.plot(w_series, label=r"w_t")
+    ax.plot(w_series, label=r"$w_t$")
     ax.set_xlabel("time")
     ax.legend()
     plt.show()
@@ -257,11 +253,12 @@ def plot_time_series(m=2_000, savefig=False):
 def plot_histogram(m=1_000_000, savefig=False):
 
     w_series = simulate_wealth(m)
-    g = round(gini(w_series.sort()), ndigits=2)
+    w_series.sort()
+    g = round(gini(w_series), ndigits=2)
     fig, ax = plt.subplots(figsize=(9, 5.2))
     ax.hist(w_series, bins=40, density=True)
     ax.set_xlabel("wealth")
-    ax.text(15, 0.4, "Gini = $g")
+    ax.text(15, 0.4, f"Gini = {g}")
     plt.show()
 
     if savefig:
@@ -270,7 +267,8 @@ def plot_histogram(m=1_000_000, savefig=False):
 def plot_lorenz(m=1_000_000, savefig=False):
 
     w_series = simulate_wealth(m)
-    (F, L) = lorenz(w_series.sort())
+    w_series.sort()
+    (F, L) = lorenz(w_series)
 
     fig, ax = plt.subplots(figsize=(9, 5.2))
     ax.plot(F, F, label="Lorenz curve, equality")
@@ -280,3 +278,9 @@ def plot_lorenz(m=1_000_000, savefig=False):
 
     if savefig:
         fig.savefig("../figures/modified_opt_saving_lorenz.pdf")
+
+plot_contours()
+plot_policies()
+plot_time_series()
+plot_histogram()
+plot_lorenz()
