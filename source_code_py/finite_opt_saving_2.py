@@ -16,7 +16,7 @@ def value_iteration(model, tol=1e-5):
     return get_greedy(v_star, model)
 
 
-@njit
+@njit(cache=True, fastmath=True)
 def policy_iteration(model):
     """Howard policy iteration routine."""
     wn, yn = len(model.w_grid), len(model.y_grid)
@@ -181,3 +181,9 @@ def plot_lorenz(m=1_000_000, savefig=False):
 
     if savefig:
         fig.savefig("../figures/finite_opt_saving_lorenz.pdf")
+
+plot_timing()
+plot_policy()
+plot_time_series()
+plot_histogram()
+plot_lorenz()
