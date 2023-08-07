@@ -278,9 +278,3 @@ def plot_lorenz(m=1_000_000, savefig=False):
 
     if savefig:
         fig.savefig("../figures/modified_opt_saving_lorenz.pdf")
-
-plot_contours()
-plot_policies()
-plot_time_series()
-plot_histogram()
-plot_lorenz()
