@@ -2,31 +2,18 @@ import numpy as np
 from finite_opt_saving_0 import U, B
 from numba import njit, prange
 
-@njit
-def cartesian_product(arrays):
-    arrays = [np.asarray(a) for a in arrays]
-    num_arrays = len(arrays)
-    lengths = np.zeros(num_arrays, dtype=np.int64)
-    for i in prange(num_arrays):
-        lengths[i] = len(arrays[i])
-    num_elements = np.prod(lengths)
+@njit(parallel=True)
+def cartesian_product(arr1, arr2):
+    len1 = len(arr1)
+    len2 = len(arr2)
+    result = np.empty((len1 * len2, 2), dtype=np.int64)
 
-    result = np.zeros((num_elements, num_arrays), dtype=arrays[0].dtype)
-    temp_product = np.zeros(num_arrays, dtype=np.int64)
+    for i in prange(len1):
+        for j in prange(len2):
+            result[i * len2 + j, 0] = arr1[i]
+            result[i * len2 + j, 1] = arr2[j]
 
-    for i in prange(num_elements):
-        for j in prange(num_arrays):
-            result[i, j] = arrays[j][temp_product[j]]
-        
-        # Increment the temporary product
-        for j in prange(num_arrays - 1, -1, -1):
-            temp_product[j] += 1
-            if temp_product[j] == lengths[j] and j != 0:
-                temp_product[j] = 0
-            else:
-                break
     return result
-
 
 @njit(parallel=True)
 def get_greedy(v, model):
@@ -57,7 +44,7 @@ def get_value(σ, model):
     # Build P_σ and r_σ as multi-index arrays
     P_σ = np.zeros((wn, yn, wn, yn))
     r_σ = np.zeros((wn, yn))
-    prd = cartesian_product([w_idx, y_idx])
+    prd = cartesian_product(w_idx, y_idx)
     for (i, j) in prd:
         w, y, w_1 = w_grid[i], y_grid[j], w_grid[σ[i, j]]
         r_σ[i, j] = U(w + y - w_1/R, γ)
