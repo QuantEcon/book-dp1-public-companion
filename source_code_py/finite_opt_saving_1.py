@@ -1,7 +1,6 @@
 import numpy as np
 from finite_opt_saving_0 import U, B
 from numba import njit, prange
-from itertools import product
 
 @njit
 def cartesian_product(arrays):
