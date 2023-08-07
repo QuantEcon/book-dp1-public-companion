@@ -181,9 +181,3 @@ def plot_lorenz(m=1_000_000, savefig=False):
 
     if savefig:
         fig.savefig("../figures/finite_opt_saving_lorenz.pdf")
-
-plot_timing()
-plot_policy()
-plot_time_series()
-plot_histogram()
-plot_lorenz()
