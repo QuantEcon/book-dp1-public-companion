@@ -12,8 +12,5 @@ The easiest way to provide feedback is to open an issue above.
 
 ## Code
 
-The repo also contains all of the Julia code found in the code snippets within
-the textbook, as well as Julia code to reproduce all figures.
-
-We are in the process of writing Python implementations of this code.
-Contributions are most welcome.  
+The repo also contains all of the Julia and Python code found in the code snippets within
+the textbook, as well as Julia and Python code to reproduce all figures.
