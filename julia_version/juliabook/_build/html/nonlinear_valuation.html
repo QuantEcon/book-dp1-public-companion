@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Nonlinear Valuation &#8212; Dynamic Programming</title>
+    <title>Chapter 7: Nonlinear Valuation &#8212; Dynamic Programming</title>
     <script src="https://unpkg.com/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://unpkg.com/tippy.js@6.3.1/dist/tippy-bundle.umd.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
@@ -108,28 +108,28 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="_static/lectures-favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Recursive Decision Processes" href="recursive_decision_processes.html" />
-    <link rel="prev" title="Stochastic Discounting" href="stochastic_discounting.html" />
+    <link rel="next" title="Chapter 8: Recursive Decision Processes" href="recursive_decision_processes.html" />
+    <link rel="prev" title="Chapter 6: Stochastic Discounting" href="stochastic_discounting.html" />
 
 <!-- Normal Meta Tags -->
 <meta name="author" context="Thomas J. Sargent &amp; John Stachurski" />
 <meta name="keywords" content="" />
-<meta name="description" content=Nonlinear Valuation  Contents  Nonlinear Valuation  rs_utility.jl  ez_utility.jl  rs_utility.jl  include(&#34;s_approx.jl&#34;) using LinearAlgebra, QuantEcon  function />
+<meta name="description" content=Chapter 7: Nonlinear Valuation  Contents  Chapter 7: Nonlinear Valuation  rs_utility.jl  ez_utility.jl  rs_utility.jl  include(&#34;s_approx.jl&#34;) using LinearAlgebr />
 
 <!-- Twitter tags -->
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@quantecon" />
-<meta name="twitter:title" content="Nonlinear Valuation"/>
-<meta name="twitter:description" content="Nonlinear Valuation  Contents  Nonlinear Valuation  rs_utility.jl  ez_utility.jl  rs_utility.jl  include(&#34;s_approx.jl&#34;) using LinearAlgebra, QuantEcon  function">
+<meta name="twitter:title" content="Chapter 7: Nonlinear Valuation"/>
+<meta name="twitter:description" content="Chapter 7: Nonlinear Valuation  Contents  Chapter 7: Nonlinear Valuation  rs_utility.jl  ez_utility.jl  rs_utility.jl  include(&#34;s_approx.jl&#34;) using LinearAlgebr">
 <meta name="twitter:creator" content="@quantecon">
 <meta name="twitter:image" content="https://assets.quantecon.org/img/qe-twitter-logo.png">
 
 <!-- Opengraph tags -->
-<meta property="og:title" content="Nonlinear Valuation" />
+<meta property="og:title" content="Chapter 7: Nonlinear Valuation" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="None" />
 <meta property="og:image" content="https://assets.quantecon.org/img/qe-og-logo.png" />
-<meta property="og:description" content="Nonlinear Valuation  Contents  Nonlinear Valuation  rs_utility.jl  ez_utility.jl  rs_utility.jl  include(&#34;s_approx.jl&#34;) using LinearAlgebra, QuantEcon  function" />
+<meta property="og:description" content="Chapter 7: Nonlinear Valuation  Contents  Chapter 7: Nonlinear Valuation  rs_utility.jl  ez_utility.jl  rs_utility.jl  include(&#34;s_approx.jl&#34;) using LinearAlgebr" />
 <meta property="og:site_name" content="Dynamic Programming" />
 <meta name="theme-color" content="#ffffff" />
 
@@ -188,7 +188,7 @@ const thebe_selector_output = ".output, .cell_output"
 
                         <p class="qe-page__header-heading"><a href="intro.html">Dynamic Programming</a></p>
 
-                        <p class="qe-page__header-subheading">Nonlinear Valuation</p>
+                        <p class="qe-page__header-subheading">Chapter 7: Nonlinear Valuation</p>
 
                     </div>
 
@@ -208,11 +208,11 @@ const thebe_selector_output = ".output, .cell_output"
                 <img style="width:250px;display:inline;" src="https://assets.quantecon.org/img/qe-menubar-logo.svg" alt="QuantEcon">
         </a>
 </div><section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><a class="toc-backref" href="#id2">Nonlinear Valuation</a><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<h1><a class="toc-backref" href="#id2">Chapter 7: Nonlinear Valuation</a><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
 <div class="contents topic" id="contents">
 <p class="topic-title">Contents</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#id1" id="id2">Nonlinear Valuation</a></p>
+<li><p><a class="reference internal" href="#id1" id="id2">Chapter 7: Nonlinear Valuation</a></p>
 <ul>
 <li><p><a class="reference internal" href="#rs-utility-jl" id="id3">rs_utility.jl</a></p></li>
 <li><p><a class="reference internal" href="#ez-utility-jl" id="id4">ez_utility.jl</a></p></li>
@@ -1155,43 +1155,50 @@ Terminated successfully in 1557 iterations.
                 <nav class="qe-sidebar__nav" id="qe-sidebar-nav" aria-label="Main navigation">
                     <ul class="current nav bd-sidenav nav sidenav_l1">
  <li class="toctree-l1">
+  <a class="reference external" href="https://dp.quantecon.org/">
+   Home (Landing Page)
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="introductions.html">
-   Introductions
+   Chapter 1: Introductions
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="operators_fixed_points.html">
-   Operators and Fixed Points
+   Chapter 2: Operators and Fixed Points
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="markov_dynamics.html">
-   Markov Dynamics
+   Chapter 3: Markov Dynamics
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="optimal_stopping.html">
-   Optimal Stopping
+   Chapter 4: Optimal Stopping
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="markov_decision_processes.html">
-   Markov Decision Processes
+   Chapter 5: Markov Decision Processes
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="stochastic_discounting.html">
-   Stochastic Discounting
+   Chapter 6: Stochastic Discounting
   </a>
  </li>
  <li class="toctree-l1 current active active">
   <a class="current reference internal" href="#">
-   Nonlinear Valuation
+   Chapter 7: Nonlinear Valuation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="recursive_decision_processes.html">
-   Recursive Decision Processes
+   Chapter 8: Recursive Decision Processes
   </a>
  </li>
 </ul>

@@ -9,7 +9,7 @@ kernelspec:
   name: python3
 ---
 
-(Operators and Fixed Points)=
+(Chapter 2: Operators and Fixed Points)=
 ```{raw} html
 <div id="qe-notebook-header" style="text-align:right;">
         <a href="https://quantecon.org/" title="quantecon.org">
@@ -17,7 +17,7 @@ kernelspec:
         </a>
 </div>
 ```
-# Operators and Fixed Points
+# Chapter 2: Operators and Fixed Points
 
 
 ```{contents} Contents

@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Markov Decision Processes &#8212; Dynamic Programming</title>
+    <title>Chapter 5: Markov Decision Processes &#8212; Dynamic Programming</title>
     <script src="https://unpkg.com/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://unpkg.com/tippy.js@6.3.1/dist/tippy-bundle.umd.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
@@ -108,28 +108,28 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="_static/lectures-favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Stochastic Discounting" href="stochastic_discounting.html" />
-    <link rel="prev" title="Optimal Stopping" href="optimal_stopping.html" />
+    <link rel="next" title="Chapter 6: Stochastic Discounting" href="stochastic_discounting.html" />
+    <link rel="prev" title="Chapter 4: Optimal Stopping" href="optimal_stopping.html" />
 
 <!-- Normal Meta Tags -->
 <meta name="author" context="Thomas J. Sargent &amp; John Stachurski" />
 <meta name="keywords" content="" />
-<meta name="description" content=Markov Decision Processes  Contents  Markov Decision Processes  inventory_dp.py  finite_opt_saving_0.py  finite_opt_saving_1.py  finite_opt_saving_2.py  finite_ />
+<meta name="description" content=Chapter 5: Markov Decision Processes  Contents  Chapter 5: Markov Decision Processes  inventory_dp.py  finite_opt_saving_0.py  finite_opt_saving_1.py  finite_op />
 
 <!-- Twitter tags -->
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@quantecon" />
-<meta name="twitter:title" content="Markov Decision Processes"/>
-<meta name="twitter:description" content="Markov Decision Processes  Contents  Markov Decision Processes  inventory_dp.py  finite_opt_saving_0.py  finite_opt_saving_1.py  finite_opt_saving_2.py  finite_">
+<meta name="twitter:title" content="Chapter 5: Markov Decision Processes"/>
+<meta name="twitter:description" content="Chapter 5: Markov Decision Processes  Contents  Chapter 5: Markov Decision Processes  inventory_dp.py  finite_opt_saving_0.py  finite_opt_saving_1.py  finite_op">
 <meta name="twitter:creator" content="@quantecon">
 <meta name="twitter:image" content="https://assets.quantecon.org/img/qe-twitter-logo.png">
 
 <!-- Opengraph tags -->
-<meta property="og:title" content="Markov Decision Processes" />
+<meta property="og:title" content="Chapter 5: Markov Decision Processes" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="None" />
 <meta property="og:image" content="https://assets.quantecon.org/img/qe-og-logo.png" />
-<meta property="og:description" content="Markov Decision Processes  Contents  Markov Decision Processes  inventory_dp.py  finite_opt_saving_0.py  finite_opt_saving_1.py  finite_opt_saving_2.py  finite_" />
+<meta property="og:description" content="Chapter 5: Markov Decision Processes  Contents  Chapter 5: Markov Decision Processes  inventory_dp.py  finite_opt_saving_0.py  finite_opt_saving_1.py  finite_op" />
 <meta property="og:site_name" content="Dynamic Programming" />
 <meta name="theme-color" content="#ffffff" />
 
@@ -193,7 +193,7 @@ const thebe_selector_output = ".output, .cell_output"
 
                         <p class="qe-page__header-heading"><a href="intro.html">Dynamic Programming</a></p>
 
-                        <p class="qe-page__header-subheading">Markov Decision Processes</p>
+                        <p class="qe-page__header-subheading">Chapter 5: Markov Decision Processes</p>
 
                     </div>
 
@@ -213,11 +213,11 @@ const thebe_selector_output = ".output, .cell_output"
                 <img style="width:250px;display:inline;" src="https://assets.quantecon.org/img/qe-menubar-logo.svg" alt="QuantEcon">
         </a>
 </div><section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><a class="toc-backref" href="#id2">Markov Decision Processes</a><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<h1><a class="toc-backref" href="#id2">Chapter 5: Markov Decision Processes</a><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
 <div class="contents topic" id="contents">
 <p class="topic-title">Contents</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#id1" id="id2">Markov Decision Processes</a></p>
+<li><p><a class="reference internal" href="#id1" id="id2">Chapter 5: Markov Decision Processes</a></p>
 <ul>
 <li><p><a class="reference internal" href="#inventory-dp-py" id="id3">inventory_dp.py</a></p></li>
 <li><p><a class="reference internal" href="#finite-opt-saving-0-py" id="id4">finite_opt_saving_0.py</a></p></li>
@@ -373,30 +373,32 @@ const thebe_selector_output = ".output, .cell_output"
 ---------------------------------------------
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>25           4.104e-01      1.601e+00         
-50           2.102e-01      1.635e+00         
-75           9.558e-02      1.668e+00         
-100          5.715e-02      1.715e+00         
-125          3.436e-02      1.755e+00         
-150          2.070e-02      1.796e+00         
-175          1.249e-02      1.838e+00         
-200          7.532e-03      1.869e+00         
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>25           4.104e-01      1.950e+00         
+50           2.102e-01      1.995e+00         
+75           9.558e-02      2.030e+00         
+100          5.715e-02      2.070e+00         
+125          3.436e-02      2.100e+00         
+150          2.070e-02      2.146e+00         
+175          1.249e-02      2.180e+00         
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>225          4.545e-03      1.918e+00         
-250          2.743e-03      1.966e+00         
-275          1.655e-03      2.005e+00         
-300          9.987e-04      2.044e+00         
-325          6.027e-04      2.071e+00         
-350          3.637e-04      2.119e+00         
-375          2.195e-04      2.157e+00         
-400          1.324e-04      2.183e+00         
-425          7.993e-05      2.217e+00         
-450          4.823e-05      2.265e+00         
-475          2.911e-05      2.296e+00         
-500          1.757e-05      2.336e+00         
-525          1.060e-05      2.369e+00         
-528          9.977e-06      2.369e+00         
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>200          7.532e-03      2.220e+00         
+225          4.545e-03      2.260e+00         
+250          2.743e-03      2.310e+00         
+275          1.655e-03      2.350e+00         
+300          9.987e-04      2.390e+00         
+325          6.027e-04      2.430e+00         
+350          3.637e-04      2.460e+00         
+375          2.195e-04      2.500e+00         
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>400          1.324e-04      2.540e+00         
+425          7.993e-05      2.586e+00         
+450          4.823e-05      2.634e+00         
+475          2.911e-05      2.670e+00         
+500          1.757e-05      2.710e+00         
+525          1.060e-05      2.750e+00         
+528          9.977e-06      2.750e+00         
 Converged in 528 steps
 </pre></div>
 </div>
@@ -419,7 +421,7 @@ Converged in 528 steps
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a56097071daa81ebb4a688638b0729b80c85832a3c94239668fbac0e018695d1.png" src="_images/a56097071daa81ebb4a688638b0729b80c85832a3c94239668fbac0e018695d1.png" />
+<img alt="_images/7cd2cea14aac60bffd70ba15561d08e268f0e6b84188c0d6510f06ae27776c56.png" src="_images/7cd2cea14aac60bffd70ba15561d08e268f0e6b84188c0d6510f06ae27776c56.png" />
 </div>
 </div>
 </section>
@@ -510,8 +512,6 @@ Converged in 528 steps
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">finite_opt_saving_0</span> <span class="kn">import</span> <span class="n">U</span><span class="p">,</span> <span class="n">B</span>
 <span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">njit</span><span class="p">,</span> <span class="n">prange</span>
-<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">product</span>
-
 
 <span class="nd">@njit</span><span class="p">(</span><span class="n">parallel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">get_greedy</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
@@ -519,7 +519,7 @@ Converged in 528 steps
     <span class="n">β</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">γ</span><span class="p">,</span> <span class="n">w_grid</span><span class="p">,</span> <span class="n">y_grid</span><span class="p">,</span> <span class="n">Q</span> <span class="o">=</span> <span class="n">model</span>
     <span class="n">σ</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">w_grid</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y_grid</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">prange</span><span class="p">(</span><span class="n">w_grid</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
-        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">prange</span><span class="p">(</span><span class="n">y_grid</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">y_grid</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
             <span class="n">x_tmp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">B</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span>
                              <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">w_grid</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])])</span>
             <span class="n">σ</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">x_tmp</span><span class="p">)</span>
@@ -531,26 +531,29 @@ Converged in 528 steps
     <span class="c1"># Function to extract (i, j) from m = i + (j-1)*yn</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">m</span><span class="o">//</span><span class="n">yn</span><span class="p">,</span> <span class="n">m</span><span class="o">%</span><span class="k">yn</span>)
 
-
 <span class="nd">@njit</span><span class="p">(</span><span class="n">parallel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">get_value</span><span class="p">(</span><span class="n">σ</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the value v_σ of policy σ.&quot;&quot;&quot;</span>
     <span class="c1"># Unpack and set up</span>
     <span class="n">β</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">γ</span><span class="p">,</span> <span class="n">w_grid</span><span class="p">,</span> <span class="n">y_grid</span><span class="p">,</span> <span class="n">Q</span> <span class="o">=</span> <span class="n">model</span>
-    <span class="n">w_idx</span><span class="p">,</span> <span class="n">y_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">w_grid</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y_grid</span><span class="p">))</span>
     <span class="n">wn</span><span class="p">,</span> <span class="n">yn</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">w_grid</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_grid</span><span class="p">)</span>
     <span class="n">n</span> <span class="o">=</span> <span class="n">wn</span> <span class="o">*</span> <span class="n">yn</span>
     <span class="c1"># Build P_σ and r_σ as multi-index arrays</span>
     <span class="n">P_σ</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">wn</span><span class="p">,</span> <span class="n">yn</span><span class="p">,</span> <span class="n">wn</span><span class="p">,</span> <span class="n">yn</span><span class="p">))</span>
     <span class="n">r_σ</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">wn</span><span class="p">,</span> <span class="n">yn</span><span class="p">))</span>
-    <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="ow">in</span> <span class="n">product</span><span class="p">(</span><span class="n">w_idx</span><span class="p">,</span> <span class="n">y_idx</span><span class="p">):</span>
-        <span class="n">w</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w_1</span> <span class="o">=</span> <span class="n">w_grid</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">y_grid</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">w_grid</span><span class="p">[</span><span class="n">σ</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]]</span>
-        <span class="n">r_σ</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">U</span><span class="p">(</span><span class="n">w</span> <span class="o">+</span> <span class="n">y</span> <span class="o">-</span> <span class="n">w_1</span><span class="o">/</span><span class="n">R</span><span class="p">,</span> <span class="n">γ</span><span class="p">)</span>
-        <span class="k">for</span> <span class="p">(</span><span class="n">i_1</span><span class="p">,</span> <span class="n">j_1</span><span class="p">)</span> <span class="ow">in</span> <span class="n">product</span><span class="p">(</span><span class="n">w_idx</span><span class="p">,</span> <span class="n">y_idx</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">i_1</span> <span class="o">==</span> <span class="n">σ</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]:</span>
-                <span class="n">P_σ</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">i_1</span><span class="p">,</span> <span class="n">j_1</span><span class="p">]</span> <span class="o">=</span> <span class="n">Q</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">j_1</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">wn</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">yn</span><span class="p">):</span>
+            <span class="n">w</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w_1</span> <span class="o">=</span> <span class="n">w_grid</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">y_grid</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">w_grid</span><span class="p">[</span><span class="n">σ</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]]</span>
+            <span class="n">r_σ</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">U</span><span class="p">(</span><span class="n">w</span> <span class="o">+</span> <span class="n">y</span> <span class="o">-</span> <span class="n">w_1</span><span class="o">/</span><span class="n">R</span><span class="p">,</span> <span class="n">γ</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">i_1</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">wn</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">j_1</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">yn</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="n">i_1</span> <span class="o">==</span> <span class="n">σ</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]:</span>
+                        <span class="n">P_σ</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">i_1</span><span class="p">,</span> <span class="n">j_1</span><span class="p">]</span> <span class="o">=</span> <span class="n">Q</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">j_1</span><span class="p">]</span>
 
     <span class="c1"># Solve for the value of σ</span>
+    <span class="n">P_σ</span> <span class="o">=</span> <span class="n">P_σ</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+    <span class="n">r_σ</span> <span class="o">=</span> <span class="n">r_σ</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
     <span class="n">I</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
     <span class="n">v_σ</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">((</span><span class="n">I</span> <span class="o">-</span> <span class="n">β</span> <span class="o">*</span> <span class="n">P_σ</span><span class="p">),</span> <span class="n">r_σ</span><span class="p">)</span>
     <span class="c1"># Return as multi-index array</span>
@@ -589,7 +592,7 @@ Converged in 528 steps
     <span class="k">return</span> <span class="n">get_greedy</span><span class="p">(</span><span class="n">v_star</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
 
 
-<span class="nd">@njit</span>
+<span class="nd">@njit</span><span class="p">(</span><span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fastmath</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">policy_iteration</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Howard policy iteration routine.&quot;&quot;&quot;</span>
     <span class="n">wn</span><span class="p">,</span> <span class="n">yn</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">w_grid</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">y_grid</span><span class="p">)</span>
@@ -726,11 +729,12 @@ Converged in 528 steps
 <span class="k">def</span> <span class="nf">plot_histogram</span><span class="p">(</span><span class="n">m</span><span class="o">=</span><span class="mi">1_000_000</span><span class="p">,</span> <span class="n">savefig</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 
     <span class="n">w_series</span> <span class="o">=</span> <span class="n">simulate_wealth</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
-    <span class="n">g</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">gini</span><span class="p">(</span><span class="n">w_series</span><span class="o">.</span><span class="n">sort</span><span class="p">()),</span> <span class="n">ndigits</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">w_series</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">gini</span><span class="p">(</span><span class="n">w_series</span><span class="p">),</span> <span class="n">ndigits</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
     <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mf">5.2</span><span class="p">))</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">w_series</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;wealth&quot;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="s2">&quot;Gini = $g&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Gini = </span><span class="si">{</span><span class="n">g</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">savefig</span><span class="p">:</span>
         <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;../figures/finite_opt_saving_hist.pdf&quot;</span><span class="p">)</span>
@@ -738,7 +742,8 @@ Converged in 528 steps
 <span class="k">def</span> <span class="nf">plot_lorenz</span><span class="p">(</span><span class="n">m</span><span class="o">=</span><span class="mi">1_000_000</span><span class="p">,</span> <span class="n">savefig</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 
     <span class="n">w_series</span> <span class="o">=</span> <span class="n">simulate_wealth</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
-    <span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span> <span class="o">=</span> <span class="n">lorenz</span><span class="p">(</span><span class="n">w_series</span><span class="o">.</span><span class="n">sort</span><span class="p">())</span>
+    <span class="n">w_series</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+    <span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span> <span class="o">=</span> <span class="n">lorenz</span><span class="p">(</span><span class="n">w_series</span><span class="p">)</span>
 
     <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mf">5.2</span><span class="p">))</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">F</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Lorenz curve, equality&quot;</span><span class="p">)</span>
@@ -762,61 +767,415 @@ Converged in 528 steps
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Running Howard policy iteration.
 </pre></div>
 </div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>---------------------------------------------------------------------------
-TypingError                               Traceback (most recent call last)
-Cell In[7], line 1
-----&gt; 1 plot_timing(savefig=True)
-
-Cell In[6], line 88, in plot_timing(m_vals, savefig)
-     86 print(&quot;Running Howard policy iteration.&quot;)
-     87 t1 = time.time()
----&gt; 88 σ_pi = policy_iteration(model)
-     89 pi_time = time.time() - t1
-     90 print(f&quot;PI completed in {pi_time} seconds.&quot;)
-
-File ~\mambaforge\envs\pyFin\Lib\site-packages\numba\core\dispatcher.py:468, in _DispatcherBase._compile_for_args(self, *args, **kws)
-    464         msg = (f&quot;{str(e).rstrip()} \n\nThis error may have been caused &quot;
-    465                f&quot;by the following argument(s):\n{args_str}\n&quot;)
-    466         e.patch_message(msg)
---&gt; 468     error_rewrite(e, &#39;typing&#39;)
-    469 except errors.UnsupportedError as e:
-    470     # Something unsupported is present in the user code, add help info
-    471     error_rewrite(e, &#39;unsupported_error&#39;)
-
-File ~\mambaforge\envs\pyFin\Lib\site-packages\numba\core\dispatcher.py:409, in _DispatcherBase._compile_for_args.&lt;locals&gt;.error_rewrite(e, issue_type)
-    407     raise e
-    408 else:
---&gt; 409     raise e.with_traceback(None)
-
-TypingError: Failed in nopython mode pipeline (step: nopython frontend)
-Failed in nopython mode pipeline (step: nopython frontend)
-Untyped global name &#39;product&#39;: Cannot determine Numba type of &lt;class &#39;type&#39;&gt;
-
-File &quot;finite_opt_saving_1.py&quot;, line 37:
-def get_value(σ, model):
-    &lt;source elided&gt;
-    r_σ = np.zeros((wn, yn))
-    for (i, j) in product(w_idx, y_idx):
-    ^
-
-During: resolving callee type: type(CPUDispatcher(&lt;function get_value at 0x0000020366FD9760&gt;))
-During: typing of call at C:\Users\orect\AppData\Local\Temp\ipykernel_13580\2892945003.py (26)
-
-During: resolving callee type: type(CPUDispatcher(&lt;function get_value at 0x0000020366FD9760&gt;))
-During: typing of call at C:\Users\orect\AppData\Local\Temp\ipykernel_13580\2892945003.py (26)
-
-During: resolving callee type: type(CPUDispatcher(&lt;function get_value at 0x0000020366FD9760&gt;))
-During: typing of call at C:\Users\orect\AppData\Local\Temp\ipykernel_13580\2892945003.py (26)
-
-
-File &quot;C:\Users\orect\AppData\Local\Temp\ipykernel_13580\2892945003.py&quot;, line 26:
-def policy_iteration(model):
-    &lt;source elided&gt;
-    while error &gt; 0:
-        v_σ = get_value(σ, model)
-        ^
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concluded loop 1 with error: 100.
 </pre></div>
 </div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concluded loop 2 with error: 80.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concluded loop 3 with error: 34.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concluded loop 4 with error: 20.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concluded loop 5 with error: 11.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concluded loop 6 with error: 5.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concluded loop 7 with error: 5.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concluded loop 8 with error: 3.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concluded loop 9 with error: 1.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concluded loop 10 with error: 1.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concluded loop 11 with error: 1.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concluded loop 12 with error: 1.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concluded loop 13 with error: 1.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concluded loop 14 with error: 1.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concluded loop 15 with error: 1.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concluded loop 16 with error: 1.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concluded loop 17 with error: 1.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concluded loop 18 with error: 1.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concluded loop 19 with error: 1.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concluded loop 20 with error: 1.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concluded loop 21 with error: 1.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concluded loop 22 with error: 1.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concluded loop 23 with error: 0.
+PI completed in 24.13505530357361 seconds.
+Running value function iteration.
+Iteration    Distance       Elapsed (seconds)
+---------------------------------------------
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>25           5.365e-01      2.350e+00         
+50           2.757e-01      2.435e+00         
+75           1.596e-01      2.520e+00         
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100          9.494e-02      2.600e+00         
+125          5.692e-02      2.685e+00         
+150          3.424e-02      2.780e+00         
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>175          2.063e-02      2.877e+00         
+200          1.244e-02      2.970e+00         
+225          7.502e-03      3.060e+00         
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>250          4.526e-03      3.155e+00         
+275          2.731e-03      3.303e+00         
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>300          1.648e-03      3.395e+00         
+325          9.944e-04      3.485e+00         
+350          6.001e-04      3.580e+00         
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>375          3.621e-04      3.660e+00         
+400          2.185e-04      3.745e+00         
+425          1.319e-04      3.830e+00         
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>450          7.958e-05      3.915e+00         
+475          4.802e-05      4.035e+00         
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>500          2.898e-05      4.125e+00         
+525          1.749e-05      4.213e+00         
+550          1.055e-05      4.285e+00         
+553          9.933e-06      4.300e+00         
+Converged in 553 steps
+VFI completed in 4.304942846298218 seconds.
+Running optimistic policy iteration with m=1.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=1 completed in 4.070014953613281 seconds.
+Running optimistic policy iteration with m=11.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=11 completed in 0.29680323600769043 seconds.
+Running optimistic policy iteration with m=21.
+OPI with m=21 completed in 0.14007568359375 seconds.
+Running optimistic policy iteration with m=31.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=31 completed in 0.13510704040527344 seconds.
+Running optimistic policy iteration with m=41.
+OPI with m=41 completed in 0.10993409156799316 seconds.
+Running optimistic policy iteration with m=51.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=51 completed in 0.1511075496673584 seconds.
+Running optimistic policy iteration with m=61.
+OPI with m=61 completed in 0.16368699073791504 seconds.
+Running optimistic policy iteration with m=71.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=71 completed in 0.17528080940246582 seconds.
+Running optimistic policy iteration with m=81.
+OPI with m=81 completed in 0.18967914581298828 seconds.
+Running optimistic policy iteration with m=91.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=91 completed in 0.195237398147583 seconds.
+Running optimistic policy iteration with m=101.
+OPI with m=101 completed in 0.19515347480773926 seconds.
+Running optimistic policy iteration with m=111.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=111 completed in 0.22482585906982422 seconds.
+Running optimistic policy iteration with m=121.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=121 completed in 0.24514245986938477 seconds.
+Running optimistic policy iteration with m=131.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=131 completed in 0.25492334365844727 seconds.
+Running optimistic policy iteration with m=141.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=141 completed in 0.2547001838684082 seconds.
+Running optimistic policy iteration with m=151.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=151 completed in 0.3000662326812744 seconds.
+Running optimistic policy iteration with m=161.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=161 completed in 0.28001904487609863 seconds.
+Running optimistic policy iteration with m=171.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=171 completed in 0.300248384475708 seconds.
+Running optimistic policy iteration with m=181.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=181 completed in 0.3148808479309082 seconds.
+Running optimistic policy iteration with m=191.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=191 completed in 0.28700828552246094 seconds.
+Running optimistic policy iteration with m=201.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=201 completed in 0.3129279613494873 seconds.
+Running optimistic policy iteration with m=211.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=211 completed in 0.31990742683410645 seconds.
+Running optimistic policy iteration with m=221.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=221 completed in 0.32520413398742676 seconds.
+Running optimistic policy iteration with m=231.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=231 completed in 0.3400905132293701 seconds.
+Running optimistic policy iteration with m=241.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=241 completed in 0.3598449230194092 seconds.
+Running optimistic policy iteration with m=251.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=251 completed in 0.3597698211669922 seconds.
+Running optimistic policy iteration with m=261.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=261 completed in 0.3701779842376709 seconds.
+Running optimistic policy iteration with m=271.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=271 completed in 0.37511587142944336 seconds.
+Running optimistic policy iteration with m=281.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=281 completed in 0.40000176429748535 seconds.
+Running optimistic policy iteration with m=291.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=291 completed in 0.4048912525177002 seconds.
+Running optimistic policy iteration with m=301.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=301 completed in 0.4047970771789551 seconds.
+Running optimistic policy iteration with m=311.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=311 completed in 0.4403557777404785 seconds.
+Running optimistic policy iteration with m=321.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=321 completed in 0.42582154273986816 seconds.
+Running optimistic policy iteration with m=331.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=331 completed in 0.4528541564941406 seconds.
+Running optimistic policy iteration with m=341.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=341 completed in 0.46131086349487305 seconds.
+Running optimistic policy iteration with m=351.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=351 completed in 0.445040225982666 seconds.
+Running optimistic policy iteration with m=361.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=361 completed in 0.46995067596435547 seconds.
+Running optimistic policy iteration with m=371.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=371 completed in 0.46904802322387695 seconds.
+Running optimistic policy iteration with m=381.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=381 completed in 0.4856588840484619 seconds.
+Running optimistic policy iteration with m=391.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=391 completed in 0.4849812984466553 seconds.
+Running optimistic policy iteration with m=401.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=401 completed in 0.5023257732391357 seconds.
+Running optimistic policy iteration with m=411.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=411 completed in 0.5229849815368652 seconds.
+Running optimistic policy iteration with m=421.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=421 completed in 0.5249345302581787 seconds.
+Running optimistic policy iteration with m=431.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=431 completed in 0.5327496528625488 seconds.
+Running optimistic policy iteration with m=441.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=441 completed in 0.566960334777832 seconds.
+Running optimistic policy iteration with m=451.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=451 completed in 0.5704195499420166 seconds.
+Running optimistic policy iteration with m=461.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=461 completed in 0.6350021362304688 seconds.
+Running optimistic policy iteration with m=471.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=471 completed in 0.5897641181945801 seconds.
+Running optimistic policy iteration with m=481.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=481 completed in 0.5902690887451172 seconds.
+Running optimistic policy iteration with m=491.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=491 completed in 0.6096940040588379 seconds.
+Running optimistic policy iteration with m=501.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=501 completed in 0.6261270046234131 seconds.
+Running optimistic policy iteration with m=511.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=511 completed in 0.6341123580932617 seconds.
+Running optimistic policy iteration with m=521.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=521 completed in 0.6198780536651611 seconds.
+Running optimistic policy iteration with m=531.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=531 completed in 0.659916877746582 seconds.
+Running optimistic policy iteration with m=541.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=541 completed in 0.6652317047119141 seconds.
+Running optimistic policy iteration with m=551.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=551 completed in 0.6996819972991943 seconds.
+Running optimistic policy iteration with m=561.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=561 completed in 1.0449509620666504 seconds.
+Running optimistic policy iteration with m=571.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=571 completed in 0.6835858821868896 seconds.
+Running optimistic policy iteration with m=581.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=581 completed in 0.681499719619751 seconds.
+Running optimistic policy iteration with m=591.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=591 completed in 0.6949822902679443 seconds.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(24.13505530357361,
+ 4.304942846298218,
+ [4.070014953613281,
+  0.29680323600769043,
+  0.14007568359375,
+  0.13510704040527344,
+  0.10993409156799316,
+  0.1511075496673584,
+  0.16368699073791504,
+  0.17528080940246582,
+  0.18967914581298828,
+  0.195237398147583,
+  0.19515347480773926,
+  0.22482585906982422,
+  0.24514245986938477,
+  0.25492334365844727,
+  0.2547001838684082,
+  0.3000662326812744,
+  0.28001904487609863,
+  0.300248384475708,
+  0.3148808479309082,
+  0.28700828552246094,
+  0.3129279613494873,
+  0.31990742683410645,
+  0.32520413398742676,
+  0.3400905132293701,
+  0.3598449230194092,
+  0.3597698211669922,
+  0.3701779842376709,
+  0.37511587142944336,
+  0.40000176429748535,
+  0.4048912525177002,
+  0.4047970771789551,
+  0.4403557777404785,
+  0.42582154273986816,
+  0.4528541564941406,
+  0.46131086349487305,
+  0.445040225982666,
+  0.46995067596435547,
+  0.46904802322387695,
+  0.4856588840484619,
+  0.4849812984466553,
+  0.5023257732391357,
+  0.5229849815368652,
+  0.5249345302581787,
+  0.5327496528625488,
+  0.566960334777832,
+  0.5704195499420166,
+  0.6350021362304688,
+  0.5897641181945801,
+  0.5902690887451172,
+  0.6096940040588379,
+  0.6261270046234131,
+  0.6341123580932617,
+  0.6198780536651611,
+  0.659916877746582,
+  0.6652317047119141,
+  0.6996819972991943,
+  1.0449509620666504,
+  0.6835858821868896,
+  0.681499719619751,
+  0.6949822902679443])
+</pre></div>
+</div>
+<img alt="_images/a6b2a225eb5e4d0b7193da960e9827f818476d1a91a5bd3fbdde4c041fb8fc10.png" src="_images/a6b2a225eb5e4d0b7193da960e9827f818476d1a91a5bd3fbdde4c041fb8fc10.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -826,61 +1185,76 @@ def policy_iteration(model):
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>---------------------------------------------------------------------------
-TypingError                               Traceback (most recent call last)
-Cell In[8], line 1
-----&gt; 1 plot_policy()
-
-Cell In[6], line 130, in plot_policy(method, savefig)
-    128     σ_star =  value_iteration(model)
-    129 elif method == &quot;pi&quot;:
---&gt; 130     σ_star = policy_iteration(model)
-    131 else:
-    132     method = &quot;OPT&quot;
-
-File ~\mambaforge\envs\pyFin\Lib\site-packages\numba\core\dispatcher.py:468, in _DispatcherBase._compile_for_args(self, *args, **kws)
-    464         msg = (f&quot;{str(e).rstrip()} \n\nThis error may have been caused &quot;
-    465                f&quot;by the following argument(s):\n{args_str}\n&quot;)
-    466         e.patch_message(msg)
---&gt; 468     error_rewrite(e, &#39;typing&#39;)
-    469 except errors.UnsupportedError as e:
-    470     # Something unsupported is present in the user code, add help info
-    471     error_rewrite(e, &#39;unsupported_error&#39;)
-
-File ~\mambaforge\envs\pyFin\Lib\site-packages\numba\core\dispatcher.py:409, in _DispatcherBase._compile_for_args.&lt;locals&gt;.error_rewrite(e, issue_type)
-    407     raise e
-    408 else:
---&gt; 409     raise e.with_traceback(None)
-
-TypingError: Failed in nopython mode pipeline (step: nopython frontend)
-Failed in nopython mode pipeline (step: nopython frontend)
-Untyped global name &#39;product&#39;: Cannot determine Numba type of &lt;class &#39;type&#39;&gt;
-
-File &quot;finite_opt_saving_1.py&quot;, line 37:
-def get_value(σ, model):
-    &lt;source elided&gt;
-    r_σ = np.zeros((wn, yn))
-    for (i, j) in product(w_idx, y_idx):
-    ^
-
-During: resolving callee type: type(CPUDispatcher(&lt;function get_value at 0x0000020366FD9760&gt;))
-During: typing of call at C:\Users\orect\AppData\Local\Temp\ipykernel_13580\2892945003.py (26)
-
-During: resolving callee type: type(CPUDispatcher(&lt;function get_value at 0x0000020366FD9760&gt;))
-During: typing of call at C:\Users\orect\AppData\Local\Temp\ipykernel_13580\2892945003.py (26)
-
-During: resolving callee type: type(CPUDispatcher(&lt;function get_value at 0x0000020366FD9760&gt;))
-During: typing of call at C:\Users\orect\AppData\Local\Temp\ipykernel_13580\2892945003.py (26)
-
-
-File &quot;C:\Users\orect\AppData\Local\Temp\ipykernel_13580\2892945003.py&quot;, line 26:
-def policy_iteration(model):
-    &lt;source elided&gt;
-    while error &gt; 0:
-        v_σ = get_value(σ, model)
-        ^
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concluded loop 1 with error: 100.
 </pre></div>
 </div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concluded loop 2 with error: 80.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concluded loop 3 with error: 34.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concluded loop 4 with error: 20.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concluded loop 5 with error: 11.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concluded loop 6 with error: 5.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concluded loop 7 with error: 5.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concluded loop 8 with error: 3.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concluded loop 9 with error: 1.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concluded loop 10 with error: 1.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concluded loop 11 with error: 1.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concluded loop 12 with error: 1.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concluded loop 13 with error: 1.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concluded loop 14 with error: 1.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concluded loop 15 with error: 1.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concluded loop 16 with error: 1.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concluded loop 17 with error: 1.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concluded loop 18 with error: 1.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concluded loop 19 with error: 1.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concluded loop 20 with error: 1.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concluded loop 21 with error: 1.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concluded loop 22 with error: 1.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concluded loop 23 with error: 0.
+</pre></div>
+</div>
+<img alt="_images/94edba1d02ff90dd0b757e6bc2f8ffb4f2105d73600ca88f5f9df9ccc8466d38.png" src="_images/94edba1d02ff90dd0b757e6bc2f8ffb4f2105d73600ca88f5f9df9ccc8466d38.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -890,7 +1264,7 @@ def policy_iteration(model):
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b70e781f64ab1d5c106cba8b6283a31629a55a9c783244dc49fa86275a7cb654.png" src="_images/b70e781f64ab1d5c106cba8b6283a31629a55a9c783244dc49fa86275a7cb654.png" />
+<img alt="_images/8134903810c9c96a4e9c6e760c644b03418bb1da4903354ece004d885b6f9ea8.png" src="_images/8134903810c9c96a4e9c6e760c644b03418bb1da4903354ece004d885b6f9ea8.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -900,28 +1274,7 @@ def policy_iteration(model):
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">plot_histogram</span><span class="p">(</span><span class="n">savefig</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="nn">Cell In[6], line 156,</span> in <span class="ni">plot_histogram</span><span class="nt">(m, savefig)</span>
-<span class="g g-Whitespace">    </span><span class="mi">153</span> <span class="k">def</span> <span class="nf">plot_histogram</span><span class="p">(</span><span class="n">m</span><span class="o">=</span><span class="mi">1_000_000</span><span class="p">,</span> <span class="n">savefig</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">155</span>     <span class="n">w_series</span> <span class="o">=</span> <span class="n">simulate_wealth</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">156</span>     <span class="n">g</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">gini</span><span class="p">(</span><span class="n">w_series</span><span class="o">.</span><span class="n">sort</span><span class="p">()),</span> <span class="n">ndigits</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">157</span>     <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mf">5.2</span><span class="p">))</span>
-<span class="g g-Whitespace">    </span><span class="mi">158</span>     <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">w_series</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="nn">Cell In[6], line 76,</span> in <span class="ni">&lt;lambda&gt;</span><span class="nt">(v)</span>
-<span class="g g-Whitespace">     </span><span class="mi">73</span>     <span class="n">L</span> <span class="o">=</span> <span class="n">S</span> <span class="o">/</span> <span class="n">S</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<span class="g g-Whitespace">     </span><span class="mi">74</span>     <span class="k">return</span> <span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span> <span class="c1"># returns named tuple</span>
-<span class="nn">---&gt; 76 gini = lambda v: (2 * sum(i * y for (i, y)</span> in <span class="ni">enumerate(v))/sum(v) - (len(v) + 1))/len</span><span class="nt">(v)</span>
-<span class="g g-Whitespace">     </span><span class="mi">78</span> <span class="c1"># Plots</span>
-<span class="g g-Whitespace">     </span><span class="mi">80</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-
-<span class="ne">TypeError</span>: &#39;NoneType&#39; object is not iterable
-</pre></div>
-</div>
+<img alt="_images/d95ba139bed7f2de9486e54feac3b9473355162f224723b876605d4fbddeff4c.png" src="_images/d95ba139bed7f2de9486e54feac3b9473355162f224723b876605d4fbddeff4c.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -931,28 +1284,7 @@ def policy_iteration(model):
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">11</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">plot_lorenz</span><span class="p">(</span><span class="n">savefig</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="nn">Cell In[6], line 168,</span> in <span class="ni">plot_lorenz</span><span class="nt">(m, savefig)</span>
-<span class="g g-Whitespace">    </span><span class="mi">165</span> <span class="k">def</span> <span class="nf">plot_lorenz</span><span class="p">(</span><span class="n">m</span><span class="o">=</span><span class="mi">1_000_000</span><span class="p">,</span> <span class="n">savefig</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">167</span>     <span class="n">w_series</span> <span class="o">=</span> <span class="n">simulate_wealth</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">168</span>     <span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span> <span class="o">=</span> <span class="n">lorenz</span><span class="p">(</span><span class="n">w_series</span><span class="o">.</span><span class="n">sort</span><span class="p">())</span>
-<span class="g g-Whitespace">    </span><span class="mi">170</span>     <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mf">5.2</span><span class="p">))</span>
-<span class="g g-Whitespace">    </span><span class="mi">171</span>     <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">F</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Lorenz curve, equality&quot;</span><span class="p">)</span>
-
-<span class="nn">Cell In[6], line 72,</span> in <span class="ni">lorenz</span><span class="nt">(v)</span>
-<span class="g g-Whitespace">     </span><span class="mi">70</span> <span class="k">def</span> <span class="nf">lorenz</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>  <span class="c1"># assumed sorted vector</span>
-<span class="g g-Whitespace">     </span><span class="mi">71</span>     <span class="n">S</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>  <span class="c1"># cumulative sums: [v[1], v[1] + v[2], ... ]</span>
-<span class="ne">---&gt; </span><span class="mi">72</span>     <span class="n">F</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">73</span>     <span class="n">L</span> <span class="o">=</span> <span class="n">S</span> <span class="o">/</span> <span class="n">S</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<span class="g g-Whitespace">     </span><span class="mi">74</span>     <span class="k">return</span> <span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span>
-
-<span class="ne">TypeError</span>: object of type &#39;NoneType&#39; has no len()
-</pre></div>
-</div>
+<img alt="_images/c6ae1a6a386473521e14bf94aa5107f05a33f059f797ba59aeb848e6d524088c.png" src="_images/c6ae1a6a386473521e14bf94aa5107f05a33f059f797ba59aeb848e6d524088c.png" />
 </div>
 </div>
 </section>
@@ -1232,7 +1564,7 @@ def policy_iteration(model):
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/464f1cd4a32a8c884a4a231140f3788e6638ab9a0f714c2fe7720965d93bf043.png" src="_images/464f1cd4a32a8c884a4a231140f3788e6638ab9a0f714c2fe7720965d93bf043.png" />
+<img alt="_images/37692617c0993abde931b51301f3e03964c02e87ac7fe841bf654521b806dae5.png" src="_images/37692617c0993abde931b51301f3e03964c02e87ac7fe841bf654521b806dae5.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1247,357 +1579,357 @@ Iteration    Distance       Elapsed (seconds)
 ---------------------------------------------
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>25           8.945e+00      1.606e+00         
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>25           8.945e+00      1.745e+00         
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>50           3.040e+00      2.141e+00         
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>50           3.040e+00      2.210e+00         
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>75           1.132e+00      2.606e+00         
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>75           1.132e+00      2.675e+00         
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100          4.246e-01      3.073e+00         
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100          4.246e-01      3.140e+00         
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>125          1.593e-01      3.537e+00         
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>125          1.593e-01      3.605e+00         
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>150          5.974e-02      4.002e+00         
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>150          5.974e-02      4.075e+00         
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>175          2.241e-02      4.467e+00         
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>175          2.241e-02      4.545e+00         
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>200          8.406e-03      4.939e+00         
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>200          8.406e-03      5.007e+00         
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>225          3.153e-03      5.412e+00         
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>225          3.153e-03      5.485e+00         
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>250          1.183e-03      5.883e+00         
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>250          1.183e-03      5.950e+00         
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>275          4.437e-04      6.441e+00         
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>275          4.437e-04      6.415e+00         
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>300          1.664e-04      6.927e+00         
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>300          1.664e-04      6.895e+00         
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>325          6.244e-05      7.426e+00         
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>325          6.244e-05      7.360e+00         
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>350          2.342e-05      7.902e+00         
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>350          2.342e-05      7.820e+00         
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>372          9.883e-06      8.298e+00         
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>372          9.883e-06      8.245e+00         
 Converged in 372 steps
-VFI completed in 8.317303657531738 seconds.
+VFI completed in 8.260155200958252 seconds.
 Running optimistic policy iteration with m=1.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=1 completed in 7.705800294876099 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=1 completed in 8.330036401748657 seconds.
 Running optimistic policy iteration with m=11.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=11 completed in 0.9312241077423096 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=11 completed in 0.83963942527771 seconds.
 Running optimistic policy iteration with m=21.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=21 completed in 0.524613618850708 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=21 completed in 0.5151033401489258 seconds.
 Running optimistic policy iteration with m=31.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=31 completed in 0.6309833526611328 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=31 completed in 0.39994120597839355 seconds.
 Running optimistic policy iteration with m=41.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=41 completed in 0.37549853324890137 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=41 completed in 0.36507296562194824 seconds.
 Running optimistic policy iteration with m=51.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=51 completed in 0.323650598526001 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=51 completed in 0.3252849578857422 seconds.
 Running optimistic policy iteration with m=61.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=61 completed in 0.3668208122253418 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=61 completed in 0.3233358860015869 seconds.
 Running optimistic policy iteration with m=71.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=71 completed in 0.3247509002685547 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=71 completed in 0.3116323947906494 seconds.
 Running optimistic policy iteration with m=81.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=81 completed in 0.33099913597106934 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=81 completed in 0.33583855628967285 seconds.
 Running optimistic policy iteration with m=91.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=91 completed in 0.463407039642334 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=91 completed in 0.34876084327697754 seconds.
 Running optimistic policy iteration with m=101.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=101 completed in 0.5621151924133301 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=101 completed in 0.41016602516174316 seconds.
 Running optimistic policy iteration with m=111.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=111 completed in 0.3889293670654297 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=111 completed in 0.4102482795715332 seconds.
 Running optimistic policy iteration with m=121.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=121 completed in 0.44277429580688477 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=121 completed in 0.39989590644836426 seconds.
 Running optimistic policy iteration with m=131.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=131 completed in 0.4202611446380615 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=131 completed in 0.429349422454834 seconds.
 Running optimistic policy iteration with m=141.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=141 completed in 0.43380117416381836 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=141 completed in 0.4506518840789795 seconds.
 Running optimistic policy iteration with m=151.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=151 completed in 0.5007362365722656 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=151 completed in 0.514873743057251 seconds.
 Running optimistic policy iteration with m=161.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=161 completed in 0.5629949569702148 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=161 completed in 0.5362021923065186 seconds.
 Running optimistic policy iteration with m=171.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=171 completed in 0.5623066425323486 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=171 completed in 0.5529758930206299 seconds.
 Running optimistic policy iteration with m=181.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=181 completed in 0.6399619579315186 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=181 completed in 0.5601072311401367 seconds.
 Running optimistic policy iteration with m=191.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=191 completed in 0.6409530639648438 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=191 completed in 0.6506648063659668 seconds.
 Running optimistic policy iteration with m=201.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=201 completed in 0.6890718936920166 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=201 completed in 0.7050096988677979 seconds.
 Running optimistic policy iteration with m=211.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=211 completed in 0.5390331745147705 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=211 completed in 0.5602974891662598 seconds.
 Running optimistic policy iteration with m=221.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=221 completed in 0.5723419189453125 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=221 completed in 0.582097053527832 seconds.
 Running optimistic policy iteration with m=231.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=231 completed in 0.5723471641540527 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=231 completed in 0.5994760990142822 seconds.
 Running optimistic policy iteration with m=241.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=241 completed in 0.5972495079040527 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=241 completed in 0.6231689453125 seconds.
 Running optimistic policy iteration with m=251.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=251 completed in 0.5885002613067627 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=251 completed in 0.6448643207550049 seconds.
 Running optimistic policy iteration with m=261.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=261 completed in 0.6794464588165283 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=261 completed in 0.6550357341766357 seconds.
 Running optimistic policy iteration with m=271.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=271 completed in 0.6881828308105469 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=271 completed in 0.677180290222168 seconds.
 Running optimistic policy iteration with m=281.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=281 completed in 0.6838271617889404 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=281 completed in 0.6878747940063477 seconds.
 Running optimistic policy iteration with m=291.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=291 completed in 0.6975750923156738 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=291 completed in 0.7102410793304443 seconds.
 Running optimistic policy iteration with m=301.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=301 completed in 0.719301700592041 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=301 completed in 0.7297322750091553 seconds.
 Running optimistic policy iteration with m=311.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=311 completed in 0.7251858711242676 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=311 completed in 0.7901694774627686 seconds.
 Running optimistic policy iteration with m=321.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=321 completed in 0.7656257152557373 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=321 completed in 0.7650454044342041 seconds.
 Running optimistic policy iteration with m=331.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=331 completed in 0.789837121963501 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=331 completed in 0.8479199409484863 seconds.
 Running optimistic policy iteration with m=341.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=341 completed in 0.8964087963104248 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=341 completed in 0.9620866775512695 seconds.
 Running optimistic policy iteration with m=351.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=351 completed in 0.8231747150421143 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=351 completed in 1.655797004699707 seconds.
 Running optimistic policy iteration with m=361.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=361 completed in 0.8407490253448486 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=361 completed in 0.9840283393859863 seconds.
 Running optimistic policy iteration with m=371.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=371 completed in 0.8682880401611328 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=371 completed in 1.0249841213226318 seconds.
 Running optimistic policy iteration with m=381.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=381 completed in 0.9425203800201416 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=381 completed in 1.1678946018218994 seconds.
 Running optimistic policy iteration with m=391.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=391 completed in 1.081928014755249 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=391 completed in 1.3301417827606201 seconds.
 Running optimistic policy iteration with m=401.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=401 completed in 1.0679411888122559 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=401 completed in 1.0950403213500977 seconds.
 Running optimistic policy iteration with m=411.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=411 completed in 1.1959724426269531 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=411 completed in 0.9542505741119385 seconds.
 Running optimistic policy iteration with m=421.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=421 completed in 1.0063669681549072 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=421 completed in 1.3307223320007324 seconds.
 Running optimistic policy iteration with m=431.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=431 completed in 1.0556316375732422 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=431 completed in 1.010864019393921 seconds.
 Running optimistic policy iteration with m=441.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=441 completed in 1.0233290195465088 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=441 completed in 1.004025936126709 seconds.
 Running optimistic policy iteration with m=451.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=451 completed in 1.0233221054077148 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=451 completed in 1.0176706314086914 seconds.
 Running optimistic policy iteration with m=461.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=461 completed in 1.1686656475067139 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=461 completed in 1.032470941543579 seconds.
 Running optimistic policy iteration with m=471.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=471 completed in 1.0803754329681396 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=471 completed in 1.0294616222381592 seconds.
 Running optimistic policy iteration with m=481.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=481 completed in 1.159712791442871 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=481 completed in 1.0653259754180908 seconds.
 Running optimistic policy iteration with m=491.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=491 completed in 1.097865343093872 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=491 completed in 1.1200377941131592 seconds.
 Running optimistic policy iteration with m=501.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=501 completed in 1.1125457286834717 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=501 completed in 1.7651989459991455 seconds.
 Running optimistic policy iteration with m=511.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=511 completed in 1.0783131122589111 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=511 completed in 1.1097984313964844 seconds.
 Running optimistic policy iteration with m=521.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=521 completed in 1.1742053031921387 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=521 completed in 1.1499300003051758 seconds.
 Running optimistic policy iteration with m=531.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=531 completed in 1.0798242092132568 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=531 completed in 1.1650786399841309 seconds.
 Running optimistic policy iteration with m=541.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=541 completed in 1.2539124488830566 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=541 completed in 1.1753196716308594 seconds.
 Running optimistic policy iteration with m=551.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=551 completed in 1.0972256660461426 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=551 completed in 1.224905252456665 seconds.
 Running optimistic policy iteration with m=561.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=561 completed in 1.2188184261322021 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=561 completed in 1.2358653545379639 seconds.
 Running optimistic policy iteration with m=571.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=571 completed in 1.1996078491210938 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=571 completed in 1.2439067363739014 seconds.
 Running optimistic policy iteration with m=581.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=581 completed in 1.3466198444366455 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=581 completed in 1.2500486373901367 seconds.
 Running optimistic policy iteration with m=591.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=591 completed in 1.2662878036499023 seconds.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI with m=591 completed in 1.4350380897521973 seconds.
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(8.317303657531738,
- [7.705800294876099,
-  0.9312241077423096,
-  0.524613618850708,
-  0.6309833526611328,
-  0.37549853324890137,
-  0.323650598526001,
-  0.3668208122253418,
-  0.3247509002685547,
-  0.33099913597106934,
-  0.463407039642334,
-  0.5621151924133301,
-  0.3889293670654297,
-  0.44277429580688477,
-  0.4202611446380615,
-  0.43380117416381836,
-  0.5007362365722656,
-  0.5629949569702148,
-  0.5623066425323486,
-  0.6399619579315186,
-  0.6409530639648438,
-  0.6890718936920166,
-  0.5390331745147705,
-  0.5723419189453125,
-  0.5723471641540527,
-  0.5972495079040527,
-  0.5885002613067627,
-  0.6794464588165283,
-  0.6881828308105469,
-  0.6838271617889404,
-  0.6975750923156738,
-  0.719301700592041,
-  0.7251858711242676,
-  0.7656257152557373,
-  0.789837121963501,
-  0.8964087963104248,
-  0.8231747150421143,
-  0.8407490253448486,
-  0.8682880401611328,
-  0.9425203800201416,
-  1.081928014755249,
-  1.0679411888122559,
-  1.1959724426269531,
-  1.0063669681549072,
-  1.0556316375732422,
-  1.0233290195465088,
-  1.0233221054077148,
-  1.1686656475067139,
-  1.0803754329681396,
-  1.159712791442871,
-  1.097865343093872,
-  1.1125457286834717,
-  1.0783131122589111,
-  1.1742053031921387,
-  1.0798242092132568,
-  1.2539124488830566,
-  1.0972256660461426,
-  1.2188184261322021,
-  1.1996078491210938,
-  1.3466198444366455,
-  1.2662878036499023])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(8.260155200958252,
+ [8.330036401748657,
+  0.83963942527771,
+  0.5151033401489258,
+  0.39994120597839355,
+  0.36507296562194824,
+  0.3252849578857422,
+  0.3233358860015869,
+  0.3116323947906494,
+  0.33583855628967285,
+  0.34876084327697754,
+  0.41016602516174316,
+  0.4102482795715332,
+  0.39989590644836426,
+  0.429349422454834,
+  0.4506518840789795,
+  0.514873743057251,
+  0.5362021923065186,
+  0.5529758930206299,
+  0.5601072311401367,
+  0.6506648063659668,
+  0.7050096988677979,
+  0.5602974891662598,
+  0.582097053527832,
+  0.5994760990142822,
+  0.6231689453125,
+  0.6448643207550049,
+  0.6550357341766357,
+  0.677180290222168,
+  0.6878747940063477,
+  0.7102410793304443,
+  0.7297322750091553,
+  0.7901694774627686,
+  0.7650454044342041,
+  0.8479199409484863,
+  0.9620866775512695,
+  1.655797004699707,
+  0.9840283393859863,
+  1.0249841213226318,
+  1.1678946018218994,
+  1.3301417827606201,
+  1.0950403213500977,
+  0.9542505741119385,
+  1.3307223320007324,
+  1.010864019393921,
+  1.004025936126709,
+  1.0176706314086914,
+  1.032470941543579,
+  1.0294616222381592,
+  1.0653259754180908,
+  1.1200377941131592,
+  1.7651989459991455,
+  1.1097984313964844,
+  1.1499300003051758,
+  1.1650786399841309,
+  1.1753196716308594,
+  1.224905252456665,
+  1.2358653545379639,
+  1.2439067363739014,
+  1.2500486373901367,
+  1.4350380897521973])
 </pre></div>
 </div>
-<img alt="_images/c41b566edd20b6e72553f10434ac50de3f36fd7e6256f5256d28052d7726f401.png" src="_images/c41b566edd20b6e72553f10434ac50de3f36fd7e6256f5256d28052d7726f401.png" />
+<img alt="_images/f430211c7da2950c1483eade834def3a55102ea79e3eb7a4e1bc445cee5d9f18.png" src="_images/f430211c7da2950c1483eade834def3a55102ea79e3eb7a4e1bc445cee5d9f18.png" />
 </div>
 </div>
 </section>
@@ -1801,7 +2133,7 @@ Running optimistic policy iteration with m=591.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/0f07b4f20cda4bb6746d7f0b0667473a537fe8fcee7c907b2f7750663d8a228d.png" src="_images/0f07b4f20cda4bb6746d7f0b0667473a537fe8fcee7c907b2f7750663d8a228d.png" />
+<img alt="_images/a971dc2ad409b42f8da600756033960008afb4c6d3e0ee794fdfa2512fa6a972.png" src="_images/a971dc2ad409b42f8da600756033960008afb4c6d3e0ee794fdfa2512fa6a972.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1811,7 +2143,7 @@ Running optimistic policy iteration with m=591.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e8736e532658a24c760742c9bdb6f242527ba8c98e0d8834021b8d27a58c0ad9.png" src="_images/e8736e532658a24c760742c9bdb6f242527ba8c98e0d8834021b8d27a58c0ad9.png" />
+<img alt="_images/45ea54765a9f0e0516b02210aa2e45b3919c82c4ec88d998a85aea16f8ba9cab.png" src="_images/45ea54765a9f0e0516b02210aa2e45b3919c82c4ec88d998a85aea16f8ba9cab.png" />
 </div>
 </div>
 </section>
@@ -1837,10 +2169,10 @@ Running optimistic policy iteration with m=591.
                              <span class="s2">&quot;w_grid&quot;</span><span class="p">,</span> <span class="s2">&quot;y_grid&quot;</span><span class="p">,</span> <span class="s2">&quot;Q&quot;</span><span class="p">))</span>
 
 
-<span class="k">def</span> <span class="nf">create_savings_model</span><span class="p">(</span><span class="n">β</span><span class="o">=</span><span class="mf">0.98</span><span class="p">,</span> <span class="n">γ</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span>
+<span class="k">def</span> <span class="nf">create_savings_model</span><span class="p">(</span><span class="n">β</span><span class="o">=</span><span class="mf">0.98</span><span class="p">,</span> <span class="n">γ</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span>  
                          <span class="n">w_min</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">w_max</span><span class="o">=</span><span class="mf">20.0</span><span class="p">,</span> <span class="n">w_size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
                          <span class="n">ρ</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">ν</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">y_size</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
-                         <span class="n">η_min</span><span class="o">=-</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">η_max</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">η_size</span><span class="o">=</span><span class="mi">30</span><span class="p">):</span>
+                         <span class="n">η_min</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span> <span class="n">η_max</span><span class="o">=</span><span class="mf">1.25</span><span class="p">,</span> <span class="n">η_size</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
     <span class="n">η_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">η_min</span><span class="p">,</span> <span class="n">η_max</span><span class="p">,</span> <span class="n">η_size</span><span class="p">)</span>
     <span class="n">φ</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">η_size</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">η_size</span><span class="p">)</span>  <span class="c1"># Uniform distributoin</span>
     <span class="n">w_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">w_min</span><span class="p">,</span> <span class="n">w_max</span><span class="p">,</span> <span class="n">w_size</span><span class="p">)</span>
@@ -1849,15 +2181,13 @@ Running optimistic policy iteration with m=591.
     <span class="k">return</span> <span class="n">Model</span><span class="p">(</span><span class="n">β</span><span class="o">=</span><span class="n">β</span><span class="p">,</span> <span class="n">γ</span><span class="o">=</span><span class="n">γ</span><span class="p">,</span> <span class="n">η_grid</span><span class="o">=</span><span class="n">η_grid</span><span class="p">,</span> <span class="n">φ</span><span class="o">=</span><span class="n">φ</span><span class="p">,</span> <span class="n">w_grid</span><span class="o">=</span><span class="n">w_grid</span><span class="p">,</span>
                  <span class="n">y_grid</span><span class="o">=</span><span class="n">y_grid</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="n">Q</span><span class="p">)</span>
 
-
 <span class="c1">## == Functions for regular OPI == ##</span>
 
 <span class="nd">@njit</span>
 <span class="k">def</span> <span class="nf">U</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">γ</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">c</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">γ</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">γ</span><span class="p">)</span>
 
-
-<span class="nd">@njit</span><span class="p">(</span><span class="n">parallel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nd">@njit</span>
 <span class="k">def</span> <span class="nf">B</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The function</span>
@@ -1916,8 +2246,6 @@ Running optimistic policy iteration with m=591.
         <span class="n">error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">v</span> <span class="o">-</span> <span class="n">last_v</span><span class="p">))</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;OPI current error = </span><span class="si">{</span><span class="n">error</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">get_greedy</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
-
-
 
 
 <span class="c1">## == Functions for modified OPI == ##</span>
@@ -2060,7 +2388,7 @@ Running optimistic policy iteration with m=591.
     <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">w_grid</span><span class="p">,</span> <span class="n">w_grid</span><span class="p">,</span> <span class="s2">&quot;k--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$45$&quot;</span><span class="p">)</span>
 
     <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">η</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">η_grid</span><span class="p">):</span>
-        <span class="n">label</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;$\sigma^*$&quot;</span> <span class="o">+</span> <span class="s2">&quot; at &quot;</span> <span class="o">+</span> <span class="sa">r</span><span class="s2">&quot;$\eta = $&quot;</span> <span class="o">+</span> <span class="s2">&quot;$η&quot;</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;$\sigma^*$&quot;</span> <span class="o">+</span> <span class="s2">&quot; at &quot;</span> <span class="o">+</span> <span class="sa">r</span><span class="s2">&quot;$\eta = $&quot;</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">η</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">w_grid</span><span class="p">,</span> <span class="n">w_grid</span><span class="p">[</span><span class="n">σ_star</span><span class="p">[:,</span> <span class="n">y_bar</span><span class="p">,</span> <span class="n">i</span><span class="p">]],</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
         
     <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
@@ -2071,7 +2399,7 @@ Running optimistic policy iteration with m=591.
 
     <span class="n">w_series</span> <span class="o">=</span> <span class="n">simulate_wealth</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
     <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mf">5.2</span><span class="p">))</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">w_series</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;w_t&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">w_series</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$w_t$&quot;</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">savefig</span><span class="p">:</span>
@@ -2080,11 +2408,12 @@ Running optimistic policy iteration with m=591.
 <span class="k">def</span> <span class="nf">plot_histogram</span><span class="p">(</span><span class="n">m</span><span class="o">=</span><span class="mi">1_000_000</span><span class="p">,</span> <span class="n">savefig</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 
     <span class="n">w_series</span> <span class="o">=</span> <span class="n">simulate_wealth</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
-    <span class="n">g</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">gini</span><span class="p">(</span><span class="n">w_series</span><span class="o">.</span><span class="n">sort</span><span class="p">()),</span> <span class="n">ndigits</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">w_series</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">gini</span><span class="p">(</span><span class="n">w_series</span><span class="p">),</span> <span class="n">ndigits</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
     <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mf">5.2</span><span class="p">))</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">w_series</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;wealth&quot;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="s2">&quot;Gini = $g&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Gini = </span><span class="si">{</span><span class="n">g</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">savefig</span><span class="p">:</span>
         <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;../figures/modified_opt_saving_hist.pdf&quot;</span><span class="p">)</span>
@@ -2092,7 +2421,8 @@ Running optimistic policy iteration with m=591.
 <span class="k">def</span> <span class="nf">plot_lorenz</span><span class="p">(</span><span class="n">m</span><span class="o">=</span><span class="mi">1_000_000</span><span class="p">,</span> <span class="n">savefig</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 
     <span class="n">w_series</span> <span class="o">=</span> <span class="n">simulate_wealth</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
-    <span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span> <span class="o">=</span> <span class="n">lorenz</span><span class="p">(</span><span class="n">w_series</span><span class="o">.</span><span class="n">sort</span><span class="p">())</span>
+    <span class="n">w_series</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+    <span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span> <span class="o">=</span> <span class="n">lorenz</span><span class="p">(</span><span class="n">w_series</span><span class="p">)</span>
 
     <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mf">5.2</span><span class="p">))</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">F</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Lorenz curve, equality&quot;</span><span class="p">)</span>
@@ -2113,10 +2443,21 @@ Running optimistic policy iteration with m=591.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = nan
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 38.39992049152962
+OPI current error = 4.0669511808480365
+OPI current error = 4.638095426143888
+OPI current error = 1.3260813588220906
+OPI current error = 0.387220292250511
+OPI current error = 0.09428546775950508
+OPI current error = 0.020264553290232357
+OPI current error = 0.002633073608009795
+OPI current error = 0.00013614255680849396
 </pre></div>
 </div>
-<img alt="_images/70168a111105ff3832628542912454736e9cc879f9ff64d2080d6dc3523a221c.png" src="_images/70168a111105ff3832628542912454736e9cc879f9ff64d2080d6dc3523a221c.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 7.911990657305523e-06
+</pre></div>
+</div>
+<img alt="_images/795fdec89e2c45e6eb3085e269d62af78b5131f40b93f409e4fb418df8b86c4b.png" src="_images/795fdec89e2c45e6eb3085e269d62af78b5131f40b93f409e4fb418df8b86c4b.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2126,10 +2467,27 @@ Running optimistic policy iteration with m=591.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = nan
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 37.350402001184854
+OPI current error = 4.0666250947260565
+OPI current error = 3.892585870289693
 </pre></div>
 </div>
-<img alt="_images/97cae44288cd51dcf82ade9cd9830c73495f70d561404a2a662ebfa69a2b993c.png" src="_images/97cae44288cd51dcf82ade9cd9830c73495f70d561404a2a662ebfa69a2b993c.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 1.1681955052614903
+OPI current error = 0.3343174765677439
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 0.06611271436992183
+OPI current error = 0.010680300539284815
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 0.0009714030350487235
+OPI current error = 7.058042497476436e-05
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 7.911990245190736e-06
+</pre></div>
+</div>
+<img alt="_images/8692a5b54eba9acdd209801e6f98eb6e9f8a218bb33bcf00c7ec67dbdb2d8669.png" src="_images/8692a5b54eba9acdd209801e6f98eb6e9f8a218bb33bcf00c7ec67dbdb2d8669.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2139,10 +2497,27 @@ Running optimistic policy iteration with m=591.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = nan
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 37.350402001184854
+OPI current error = 4.0666250947260565
 </pre></div>
 </div>
-<img alt="_images/d19eb9a08bcd9a8faaa35280c2f9ef787ea633eaff855e68da551e679687164b.png" src="_images/d19eb9a08bcd9a8faaa35280c2f9ef787ea633eaff855e68da551e679687164b.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 3.892585870289693
+OPI current error = 1.1681955052614903
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 0.3343174765677439
+OPI current error = 0.06611271436992183
+OPI current error = 0.010680300539284815
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 0.0009714030350487235
+OPI current error = 7.058042497476436e-05
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 7.911990245190736e-06
+</pre></div>
+</div>
+<img alt="_images/333935fa2f8f38ed502c1b29cf689daa9fe3dff12f69f18fd83cfb3e5fa4736f.png" src="_images/333935fa2f8f38ed502c1b29cf689daa9fe3dff12f69f18fd83cfb3e5fa4736f.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2152,31 +2527,27 @@ Running optimistic policy iteration with m=591.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = nan
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 37.350402001184854
+OPI current error = 4.0666250947260565
 </pre></div>
 </div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">24</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">plot_histogram</span><span class="p">(</span><span class="n">savefig</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="nn">Cell In[20], line 257,</span> in <span class="ni">plot_histogram</span><span class="nt">(m, savefig)</span>
-<span class="g g-Whitespace">    </span><span class="mi">254</span> <span class="k">def</span> <span class="nf">plot_histogram</span><span class="p">(</span><span class="n">m</span><span class="o">=</span><span class="mi">1_000_000</span><span class="p">,</span> <span class="n">savefig</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">256</span>     <span class="n">w_series</span> <span class="o">=</span> <span class="n">simulate_wealth</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">257</span>     <span class="n">g</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">gini</span><span class="p">(</span><span class="n">w_series</span><span class="o">.</span><span class="n">sort</span><span class="p">()),</span> <span class="n">ndigits</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">258</span>     <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mf">5.2</span><span class="p">))</span>
-<span class="g g-Whitespace">    </span><span class="mi">259</span>     <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">w_series</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="nn">Cell In[20], line 186,</span> in <span class="ni">&lt;lambda&gt;</span><span class="nt">(v)</span>
-<span class="g g-Whitespace">    </span><span class="mi">183</span>     <span class="n">L</span> <span class="o">=</span> <span class="n">S</span> <span class="o">/</span> <span class="n">S</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<span class="g g-Whitespace">    </span><span class="mi">184</span>     <span class="k">return</span> <span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span> <span class="c1"># returns named tuple</span>
-<span class="nn">--&gt; 186 gini = lambda v: (2 * sum(i * y for (i, y)</span> in <span class="ni">enumerate(v))/sum(v) - (len(v) + 1))/len</span><span class="nt">(v)</span>
-<span class="g g-Whitespace">    </span><span class="mi">188</span> <span class="c1"># Plots</span>
-<span class="g g-Whitespace">    </span><span class="mi">191</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-
-<span class="ne">TypeError</span>: &#39;NoneType&#39; object is not iterable
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 3.892585870289693
+OPI current error = 1.1681955052614903
 </pre></div>
 </div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 0.3343174765677439
+OPI current error = 0.06611271436992183
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 0.010680300539284815
+OPI current error = 0.0009714030350487235
+OPI current error = 7.058042497476436e-05
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 7.911990245190736e-06
+</pre></div>
+</div>
+<img alt="_images/d20dcded06ae1fcdcf04e6149401d8b0a98dec378f163c86720977cf245d67af.png" src="_images/d20dcded06ae1fcdcf04e6149401d8b0a98dec378f163c86720977cf245d67af.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2186,31 +2557,29 @@ Running optimistic policy iteration with m=591.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = nan
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 37.350402001184854
+OPI current error = 4.0666250947260565
 </pre></div>
 </div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">25</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">plot_lorenz</span><span class="p">(</span><span class="n">savefig</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="nn">Cell In[20], line 269,</span> in <span class="ni">plot_lorenz</span><span class="nt">(m, savefig)</span>
-<span class="g g-Whitespace">    </span><span class="mi">266</span> <span class="k">def</span> <span class="nf">plot_lorenz</span><span class="p">(</span><span class="n">m</span><span class="o">=</span><span class="mi">1_000_000</span><span class="p">,</span> <span class="n">savefig</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">268</span>     <span class="n">w_series</span> <span class="o">=</span> <span class="n">simulate_wealth</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">269</span>     <span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span> <span class="o">=</span> <span class="n">lorenz</span><span class="p">(</span><span class="n">w_series</span><span class="o">.</span><span class="n">sort</span><span class="p">())</span>
-<span class="g g-Whitespace">    </span><span class="mi">271</span>     <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mf">5.2</span><span class="p">))</span>
-<span class="g g-Whitespace">    </span><span class="mi">272</span>     <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">F</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Lorenz curve, equality&quot;</span><span class="p">)</span>
-
-<span class="nn">Cell In[20], line 182,</span> in <span class="ni">lorenz</span><span class="nt">(v)</span>
-<span class="g g-Whitespace">    </span><span class="mi">180</span> <span class="k">def</span> <span class="nf">lorenz</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>  <span class="c1"># assumed sorted vector</span>
-<span class="g g-Whitespace">    </span><span class="mi">181</span>     <span class="n">S</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>  <span class="c1"># cumulative sums: [v[1], v[1] + v[2], ... ]</span>
-<span class="ne">--&gt; </span><span class="mi">182</span>     <span class="n">F</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">183</span>     <span class="n">L</span> <span class="o">=</span> <span class="n">S</span> <span class="o">/</span> <span class="n">S</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<span class="g g-Whitespace">    </span><span class="mi">184</span>     <span class="k">return</span> <span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span>
-
-<span class="ne">TypeError</span>: object of type &#39;NoneType&#39; has no len()
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 3.892585870289693
+OPI current error = 1.1681955052614903
 </pre></div>
 </div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 0.3343174765677439
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 0.06611271436992183
+OPI current error = 0.010680300539284815
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 0.0009714030350487235
+OPI current error = 7.058042497476436e-05
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 7.911990245190736e-06
+</pre></div>
+</div>
+<img alt="_images/1208637e54e106866b49e39390b803e147cd0981f8e986120dce93fcc361b3ab.png" src="_images/1208637e54e106866b49e39390b803e147cd0981f8e986120dce93fcc361b3ab.png" />
 </div>
 </div>
 </section>
@@ -2267,43 +2636,50 @@ Running optimistic policy iteration with m=591.
                 <nav class="qe-sidebar__nav" id="qe-sidebar-nav" aria-label="Main navigation">
                     <ul class="current nav bd-sidenav nav sidenav_l1">
  <li class="toctree-l1">
+  <a class="reference external" href="https://dp.quantecon.org/">
+   Home (Landing Page)
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="introductions.html">
-   Introductions
+   Chapter 1: Introductions
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="operators_fixed_points.html">
-   Operators and Fixed Points
+   Chapter 2: Operators and Fixed Points
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="markov_dynamics.html">
-   Markov Dynamics
+   Chapter 3: Markov Dynamics
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="optimal_stopping.html">
-   Optimal Stopping
+   Chapter 4: Optimal Stopping
   </a>
  </li>
  <li class="toctree-l1 current active active">
   <a class="current reference internal" href="#">
-   Markov Decision Processes
+   Chapter 5: Markov Decision Processes
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="stochastic_discounting.html">
-   Stochastic Discounting
+   Chapter 6: Stochastic Discounting
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="nonlinear_valuation.html">
-   Nonlinear Valuation
+   Chapter 7: Nonlinear Valuation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="recursive_decision_processes.html">
-   Recursive Decision Processes
+   Chapter 8: Recursive Decision Processes
   </a>
  </li>
 </ul>

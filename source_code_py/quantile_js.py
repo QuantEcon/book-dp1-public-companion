@@ -77,9 +77,8 @@ def plot_main(tau_vals=(0.1, 0.25, 0.5, 0.6, 0.7, 0.8),
 
     model = create_markov_js_model()
     n, w_vals, P, β, c, τ = model
-    mc = MarkovChain(model.P)
-    s = mc.stationary_distributions()[0]
-    #s = stationary_distributions(mc)[1]
+    mc = MarkovChain(P)
+    s = mc.stationary_distributions[0]
 
     fig, ax = plt.subplots()
     ax.plot(tau_vals, w_star_vals, "k--", lw=2, alpha=0.7, label="reservation wage")

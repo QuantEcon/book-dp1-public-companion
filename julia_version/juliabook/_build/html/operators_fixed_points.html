@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Operators and Fixed Points &#8212; Dynamic Programming</title>
+    <title>Chapter 2: Operators and Fixed Points &#8212; Dynamic Programming</title>
     <script src="https://unpkg.com/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://unpkg.com/tippy.js@6.3.1/dist/tippy-bundle.umd.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
@@ -108,28 +108,28 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="_static/lectures-favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Markov Dynamics" href="markov_dynamics.html" />
-    <link rel="prev" title="Introductions" href="introductions.html" />
+    <link rel="next" title="Chapter 3: Markov Dynamics" href="markov_dynamics.html" />
+    <link rel="prev" title="Chapter 1: Introductions" href="introductions.html" />
 
 <!-- Normal Meta Tags -->
 <meta name="author" context="Thomas J. Sargent &amp; John Stachurski" />
 <meta name="keywords" content="" />
-<meta name="description" content=Operators and Fixed Points  Contents  Operators and Fixed Points  lake.jl  lake.jl  using LinearAlgebra  α, λ, d, b = 0.01, 0.1, 0.02, 0.025 g = b - d A = [(1 - />
+<meta name="description" content=Chapter 2: Operators and Fixed Points  Contents  Chapter 2: Operators and Fixed Points  lake.jl  lake.jl  using LinearAlgebra  α, λ, d, b = 0.01, 0.1, 0.02, 0.0 />
 
 <!-- Twitter tags -->
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@quantecon" />
-<meta name="twitter:title" content="Operators and Fixed Points"/>
-<meta name="twitter:description" content="Operators and Fixed Points  Contents  Operators and Fixed Points  lake.jl  lake.jl  using LinearAlgebra  α, λ, d, b = 0.01, 0.1, 0.02, 0.025 g = b - d A = [(1 -">
+<meta name="twitter:title" content="Chapter 2: Operators and Fixed Points"/>
+<meta name="twitter:description" content="Chapter 2: Operators and Fixed Points  Contents  Chapter 2: Operators and Fixed Points  lake.jl  lake.jl  using LinearAlgebra  α, λ, d, b = 0.01, 0.1, 0.02, 0.0">
 <meta name="twitter:creator" content="@quantecon">
 <meta name="twitter:image" content="https://assets.quantecon.org/img/qe-twitter-logo.png">
 
 <!-- Opengraph tags -->
-<meta property="og:title" content="Operators and Fixed Points" />
+<meta property="og:title" content="Chapter 2: Operators and Fixed Points" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="None" />
 <meta property="og:image" content="https://assets.quantecon.org/img/qe-og-logo.png" />
-<meta property="og:description" content="Operators and Fixed Points  Contents  Operators and Fixed Points  lake.jl  lake.jl  using LinearAlgebra  α, λ, d, b = 0.01, 0.1, 0.02, 0.025 g = b - d A = [(1 -" />
+<meta property="og:description" content="Chapter 2: Operators and Fixed Points  Contents  Chapter 2: Operators and Fixed Points  lake.jl  lake.jl  using LinearAlgebra  α, λ, d, b = 0.01, 0.1, 0.02, 0.0" />
 <meta property="og:site_name" content="Dynamic Programming" />
 <meta name="theme-color" content="#ffffff" />
 
@@ -187,7 +187,7 @@ const thebe_selector_output = ".output, .cell_output"
 
                         <p class="qe-page__header-heading"><a href="intro.html">Dynamic Programming</a></p>
 
-                        <p class="qe-page__header-subheading">Operators and Fixed Points</p>
+                        <p class="qe-page__header-subheading">Chapter 2: Operators and Fixed Points</p>
 
                     </div>
 
@@ -207,11 +207,11 @@ const thebe_selector_output = ".output, .cell_output"
                 <img style="width:250px;display:inline;" src="https://assets.quantecon.org/img/qe-menubar-logo.svg" alt="QuantEcon">
         </a>
 </div><section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><a class="toc-backref" href="#id2">Operators and Fixed Points</a><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<h1><a class="toc-backref" href="#id2">Chapter 2: Operators and Fixed Points</a><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
 <div class="contents topic" id="contents">
 <p class="topic-title">Contents</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#id1" id="id2">Operators and Fixed Points</a></p>
+<li><p><a class="reference internal" href="#id1" id="id2">Chapter 2: Operators and Fixed Points</a></p>
 <ul>
 <li><p><a class="reference internal" href="#lake-jl" id="id3">lake.jl</a></p></li>
 </ul>
@@ -447,43 +447,50 @@ const thebe_selector_output = ".output, .cell_output"
                 <nav class="qe-sidebar__nav" id="qe-sidebar-nav" aria-label="Main navigation">
                     <ul class="current nav bd-sidenav nav sidenav_l1">
  <li class="toctree-l1">
+  <a class="reference external" href="https://dp.quantecon.org/">
+   Home (Landing Page)
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="introductions.html">
-   Introductions
+   Chapter 1: Introductions
   </a>
  </li>
  <li class="toctree-l1 current active active">
   <a class="current reference internal" href="#">
-   Operators and Fixed Points
+   Chapter 2: Operators and Fixed Points
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="markov_dynamics.html">
-   Markov Dynamics
+   Chapter 3: Markov Dynamics
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="optimal_stopping.html">
-   Optimal Stopping
+   Chapter 4: Optimal Stopping
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="markov_decision_processes.html">
-   Markov Decision Processes
+   Chapter 5: Markov Decision Processes
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="stochastic_discounting.html">
-   Stochastic Discounting
+   Chapter 6: Stochastic Discounting
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="nonlinear_valuation.html">
-   Nonlinear Valuation
+   Chapter 7: Nonlinear Valuation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="recursive_decision_processes.html">
-   Recursive Decision Processes
+   Chapter 8: Recursive Decision Processes
   </a>
  </li>
 </ul>

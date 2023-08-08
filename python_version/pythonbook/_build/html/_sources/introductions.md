@@ -9,7 +9,7 @@ kernelspec:
   name: python3
 ---
 
-(Introductions)=
+(Chapter 1: Introductions)=
 ```{raw} html
 <div id="qe-notebook-header" style="text-align:right;">
         <a href="https://quantecon.org/" title="quantecon.org">
@@ -17,7 +17,7 @@ kernelspec:
         </a>
 </div>
 ```
-# Introductions
+# Chapter 1: Introductions
 
 
 ```{contents} Contents
@@ -274,10 +274,10 @@ for (x_0, color) in zip(u_0_vecs, colors):
 
     for i in range(iter_range):
         s, t = x
-        ax.scatter((s,), (t,), c=color, alpha=0.3, s=marker_size)
+        ax.scatter((s,), (t,), c=color, alpha=0.2, s=marker_size)
         x_new = T(x)
         s_new, t_new = x_new
-        ax.plot((s,) + s_new, (t,) + t_new, marker='.',linewidth=0.5, alpha=0.5, color=color)
+        ax.plot((s, s_new), (t, t_new), marker='.',linewidth=0.5, alpha=0.5, color=color)
         x = x_new
 
 s_star, t_star = x_star

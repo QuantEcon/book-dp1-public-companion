@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Markov Decision Processes &#8212; Dynamic Programming</title>
+    <title>Chapter 5: Markov Decision Processes &#8212; Dynamic Programming</title>
     <script src="https://unpkg.com/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://unpkg.com/tippy.js@6.3.1/dist/tippy-bundle.umd.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
@@ -108,28 +108,28 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="_static/lectures-favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Stochastic Discounting" href="stochastic_discounting.html" />
-    <link rel="prev" title="Optimal Stopping" href="optimal_stopping.html" />
+    <link rel="next" title="Chapter 6: Stochastic Discounting" href="stochastic_discounting.html" />
+    <link rel="prev" title="Chapter 4: Optimal Stopping" href="optimal_stopping.html" />
 
 <!-- Normal Meta Tags -->
 <meta name="author" context="Thomas J. Sargent &amp; John Stachurski" />
 <meta name="keywords" content="" />
-<meta name="description" content=Markov Decision Processes  Contents  Markov Decision Processes  inventory_dp.jl  finite_opt_saving_0.jl  finite_opt_saving_1.jl  finite_opt_saving_2.jl  finite_ />
+<meta name="description" content=Chapter 5: Markov Decision Processes  Contents  Chapter 5: Markov Decision Processes  inventory_dp.jl  finite_opt_saving_0.jl  finite_opt_saving_1.jl  finite_op />
 
 <!-- Twitter tags -->
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@quantecon" />
-<meta name="twitter:title" content="Markov Decision Processes"/>
-<meta name="twitter:description" content="Markov Decision Processes  Contents  Markov Decision Processes  inventory_dp.jl  finite_opt_saving_0.jl  finite_opt_saving_1.jl  finite_opt_saving_2.jl  finite_">
+<meta name="twitter:title" content="Chapter 5: Markov Decision Processes"/>
+<meta name="twitter:description" content="Chapter 5: Markov Decision Processes  Contents  Chapter 5: Markov Decision Processes  inventory_dp.jl  finite_opt_saving_0.jl  finite_opt_saving_1.jl  finite_op">
 <meta name="twitter:creator" content="@quantecon">
 <meta name="twitter:image" content="https://assets.quantecon.org/img/qe-twitter-logo.png">
 
 <!-- Opengraph tags -->
-<meta property="og:title" content="Markov Decision Processes" />
+<meta property="og:title" content="Chapter 5: Markov Decision Processes" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="None" />
 <meta property="og:image" content="https://assets.quantecon.org/img/qe-og-logo.png" />
-<meta property="og:description" content="Markov Decision Processes  Contents  Markov Decision Processes  inventory_dp.jl  finite_opt_saving_0.jl  finite_opt_saving_1.jl  finite_opt_saving_2.jl  finite_" />
+<meta property="og:description" content="Chapter 5: Markov Decision Processes  Contents  Chapter 5: Markov Decision Processes  inventory_dp.jl  finite_opt_saving_0.jl  finite_opt_saving_1.jl  finite_op" />
 <meta property="og:site_name" content="Dynamic Programming" />
 <meta name="theme-color" content="#ffffff" />
 
@@ -193,7 +193,7 @@ const thebe_selector_output = ".output, .cell_output"
 
                         <p class="qe-page__header-heading"><a href="intro.html">Dynamic Programming</a></p>
 
-                        <p class="qe-page__header-subheading">Markov Decision Processes</p>
+                        <p class="qe-page__header-subheading">Chapter 5: Markov Decision Processes</p>
 
                     </div>
 
@@ -213,11 +213,11 @@ const thebe_selector_output = ".output, .cell_output"
                 <img style="width:250px;display:inline;" src="https://assets.quantecon.org/img/qe-menubar-logo.svg" alt="QuantEcon">
         </a>
 </div><section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><a class="toc-backref" href="#id2">Markov Decision Processes</a><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<h1><a class="toc-backref" href="#id2">Chapter 5: Markov Decision Processes</a><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
 <div class="contents topic" id="contents">
 <p class="topic-title">Contents</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#id1" id="id2">Markov Decision Processes</a></p>
+<li><p><a class="reference internal" href="#id1" id="id2">Chapter 5: Markov Decision Processes</a></p>
 <ul>
 <li><p><a class="reference internal" href="#inventory-dp-jl" id="id3">inventory_dp.jl</a></p></li>
 <li><p><a class="reference internal" href="#finite-opt-saving-0-jl" id="id4">finite_opt_saving_0.jl</a></p></li>
@@ -2565,43 +2565,50 @@ OPI current error = 7.911990667963664e-6
                 <nav class="qe-sidebar__nav" id="qe-sidebar-nav" aria-label="Main navigation">
                     <ul class="current nav bd-sidenav nav sidenav_l1">
  <li class="toctree-l1">
+  <a class="reference external" href="https://dp.quantecon.org/">
+   Home (Landing Page)
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="introductions.html">
-   Introductions
+   Chapter 1: Introductions
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="operators_fixed_points.html">
-   Operators and Fixed Points
+   Chapter 2: Operators and Fixed Points
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="markov_dynamics.html">
-   Markov Dynamics
+   Chapter 3: Markov Dynamics
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="optimal_stopping.html">
-   Optimal Stopping
+   Chapter 4: Optimal Stopping
   </a>
  </li>
  <li class="toctree-l1 current active active">
   <a class="current reference internal" href="#">
-   Markov Decision Processes
+   Chapter 5: Markov Decision Processes
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="stochastic_discounting.html">
-   Stochastic Discounting
+   Chapter 6: Stochastic Discounting
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="nonlinear_valuation.html">
-   Nonlinear Valuation
+   Chapter 7: Nonlinear Valuation
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="recursive_decision_processes.html">
-   Recursive Decision Processes
+   Chapter 8: Recursive Decision Processes
   </a>
  </li>
 </ul>

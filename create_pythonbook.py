@@ -43,7 +43,7 @@ contents = """
 """
 chapter_meta = {
     "introductions": {
-        "name": "Introductions",
+        "name": "Chapter 1: Introductions",
         "subs": { # order determines order in chapter
             "two_period_job_search.py": ["fig_v1(savefig=True)"],
             "compute_spec_rad.py": [],
@@ -55,14 +55,14 @@ chapter_meta = {
         }
     },
     "operators_fixed_points": {
-        "name": "Operators and Fixed Points",
+        "name": "Chapter 2: Operators and Fixed Points",
         "subs": {
             "lake.py": ["plot_paths(savefig=True)", "plot_growth(savefig=True)"],
             # "lake_1.py"
         }
     },
     "markov_dynamics": {
-        "name": "Markov Dynamics",
+        "name": "Chapter 3: Markov Dynamics",
         "subs": {
             "inventory_sim.py": ["model = create_inventory_model()", "plot_ts(model, savefig=True)", "plot_hist(model, savefig=True)"],
             "is_irreducible.py": [],
@@ -73,14 +73,14 @@ chapter_meta = {
         }
     },
     "optimal_stopping": {
-        "name": "Optimal Stopping",
+        "name": "Chapter 4: Optimal Stopping",
         "subs": {
             "firm_exit.py": ["plot_val(savefig=True)", "plot_comparison(savefig=True)"],
             "american_option.py": ["plot_contours(savefig=True)", "plot_strike(savefig=True)"]
         }
     },
     "markov_decision_processes": {
-        "name": "Markov Decision Processes",
+        "name": "Chapter 5: Markov Decision Processes",
         "subs": {
             "inventory_dp.py": ["plot_vstar_and_opt_policy(savefig=True)", "plot_ts(savefig=True)"],
             "finite_opt_saving_0.py": [],
@@ -92,7 +92,7 @@ chapter_meta = {
         }
     },
     "stochastic_discounting": {
-        "name": "Stochastic Discounting",
+        "name": "Chapter 6: Stochastic Discounting",
         "subs": {
             "plot_interest_rates.py": ["plot_rates(df_nominal, savefig=True)", "plot_rates(df_real, savefig=True)"],
             # "plot_interest_rates_real.py",
@@ -101,14 +101,14 @@ chapter_meta = {
         }
     },
     "nonlinear_valuation": {
-        "name": "Nonlinear Valuation",
+        "name": "Chapter 7: Nonlinear Valuation",
         "subs": {
             "rs_utility.py": ["plot_v(savefig=True)", "plot_multiple_v(savefig=True)"],
             "ez_utility.py": ["plot_convergence(savefig=True)", "plot_v(savefig=True)", "vary_gamma(savefig=True)", "vary_alpha(savefig=True)"]
         }
     },
     "recursive_decision_processes": {
-        "name": "Recursive Decision Processes",
+        "name": "Chapter 8: Recursive Decision Processes",
         "subs": {
             "quantile_function.py": [],
             "quantile_js.py": ["plot_main(savefig=True)"]

@@ -9,7 +9,7 @@ kernelspec:
   name: julia-1.9
 ---
 
-(Optimal Stopping)=
+(Chapter 4: Optimal Stopping)=
 ```{raw} html
 <div id="qe-notebook-header" style="text-align:right;">
         <a href="https://quantecon.org/" title="quantecon.org">
@@ -17,7 +17,7 @@ kernelspec:
         </a>
 </div>
 ```
-# Optimal Stopping
+# Chapter 4: Optimal Stopping
 
 
 ```{contents} Contents

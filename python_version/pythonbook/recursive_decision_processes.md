@@ -9,7 +9,7 @@ kernelspec:
   name: python3
 ---
 
-(Recursive Decision Processes)=
+(Chapter 8: Recursive Decision Processes)=
 ```{raw} html
 <div id="qe-notebook-header" style="text-align:right;">
         <a href="https://quantecon.org/" title="quantecon.org">
@@ -17,7 +17,7 @@ kernelspec:
         </a>
 </div>
 ```
-# Recursive Decision Processes
+# Chapter 8: Recursive Decision Processes
 
 
 ```{contents} Contents
@@ -32,10 +32,13 @@ kernelspec:
 from scipy.stats import rv_discrete
 import numpy as np
 
+from numba import njit
+
 "Compute the τ-th quantile of v(X) when X ∼ ϕ and v = sort(v)."
+@njit
 def quantile(τ, v, ϕ):
     for (i, v_value) in enumerate(v):
-        p = sum(ϕ[:i])  # sum all ϕ[j] s.t. v[j] ≤ v_value
+        p = sum(ϕ[:i+1])  # sum all ϕ[j] s.t. v[j] ≤ v_value
         if p >= τ:         # exit and return v_value if prob ≥ τ
             return v_value
 
@@ -137,9 +140,8 @@ def plot_main(tau_vals=(0.1, 0.25, 0.5, 0.6, 0.7, 0.8),
 
     model = create_markov_js_model()
     n, w_vals, P, β, c, τ = model
-    mc = MarkovChain(model.P)
-    s = mc.stationary_distributions()[0]
-    #s = stationary_distributions(mc)[1]
+    mc = MarkovChain(P)
+    s = mc.stationary_distributions[0]
 
     fig, ax = plt.subplots()
     ax.plot(tau_vals, w_star_vals, "k--", lw=2, alpha=0.7, label="reservation wage")

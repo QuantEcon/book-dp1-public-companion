@@ -9,7 +9,7 @@ kernelspec:
   name: julia-1.9
 ---
 
-(Nonlinear Valuation)=
+(Chapter 7: Nonlinear Valuation)=
 ```{raw} html
 <div id="qe-notebook-header" style="text-align:right;">
         <a href="https://quantecon.org/" title="quantecon.org">
@@ -17,7 +17,7 @@ kernelspec:
         </a>
 </div>
 ```
-# Nonlinear Valuation
+# Chapter 7: Nonlinear Valuation
 
 
 ```{contents} Contents

@@ -9,7 +9,7 @@ kernelspec:
   name: julia-1.9
 ---
 
-(Markov Decision Processes)=
+(Chapter 5: Markov Decision Processes)=
 ```{raw} html
 <div id="qe-notebook-header" style="text-align:right;">
         <a href="https://quantecon.org/" title="quantecon.org">
@@ -17,7 +17,7 @@ kernelspec:
         </a>
 </div>
 ```
-# Markov Decision Processes
+# Chapter 5: Markov Decision Processes
 
 
 ```{contents} Contents

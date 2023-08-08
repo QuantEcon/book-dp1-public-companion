@@ -1,10 +1,13 @@
 from scipy.stats import rv_discrete
 import numpy as np
 
+from numba import njit
+
 "Compute the τ-th quantile of v(X) when X ∼ ϕ and v = sort(v)."
+@njit
 def quantile(τ, v, ϕ):
     for (i, v_value) in enumerate(v):
-        p = sum(ϕ[:i])  # sum all ϕ[j] s.t. v[j] ≤ v_value
+        p = sum(ϕ[:i+1])  # sum all ϕ[j] s.t. v[j] ≤ v_value
         if p >= τ:         # exit and return v_value if prob ≥ τ
             return v_value
 

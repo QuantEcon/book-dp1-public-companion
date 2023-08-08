@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Recursive Decision Processes &#8212; Dynamic Programming</title>
+    <title>Chapter 8: Recursive Decision Processes &#8212; Dynamic Programming</title>
     <script src="https://unpkg.com/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://unpkg.com/tippy.js@6.3.1/dist/tippy-bundle.umd.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
@@ -108,27 +108,27 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="_static/lectures-favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Nonlinear Valuation" href="nonlinear_valuation.html" />
+    <link rel="prev" title="Chapter 7: Nonlinear Valuation" href="nonlinear_valuation.html" />
 
 <!-- Normal Meta Tags -->
 <meta name="author" context="Thomas J. Sargent &amp; John Stachurski" />
 <meta name="keywords" content="" />
-<meta name="description" content=Recursive Decision Processes  Contents  Recursive Decision Processes  quantile_function.py  quantile_js.py  quantile_function.py  from scipy.stats import rv_dis />
+<meta name="description" content=Chapter 8: Recursive Decision Processes  Contents  Chapter 8: Recursive Decision Processes  quantile_function.py  quantile_js.py  quantile_function.py  from sci />
 
 <!-- Twitter tags -->
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@quantecon" />
-<meta name="twitter:title" content="Recursive Decision Processes"/>
-<meta name="twitter:description" content="Recursive Decision Processes  Contents  Recursive Decision Processes  quantile_function.py  quantile_js.py  quantile_function.py  from scipy.stats import rv_dis">
+<meta name="twitter:title" content="Chapter 8: Recursive Decision Processes"/>
+<meta name="twitter:description" content="Chapter 8: Recursive Decision Processes  Contents  Chapter 8: Recursive Decision Processes  quantile_function.py  quantile_js.py  quantile_function.py  from sci">
 <meta name="twitter:creator" content="@quantecon">
 <meta name="twitter:image" content="https://assets.quantecon.org/img/qe-twitter-logo.png">
 
 <!-- Opengraph tags -->
-<meta property="og:title" content="Recursive Decision Processes" />
+<meta property="og:title" content="Chapter 8: Recursive Decision Processes" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="None" />
 <meta property="og:image" content="https://assets.quantecon.org/img/qe-og-logo.png" />
-<meta property="og:description" content="Recursive Decision Processes  Contents  Recursive Decision Processes  quantile_function.py  quantile_js.py  quantile_function.py  from scipy.stats import rv_dis" />
+<meta property="og:description" content="Chapter 8: Recursive Decision Processes  Contents  Chapter 8: Recursive Decision Processes  quantile_function.py  quantile_js.py  quantile_function.py  from sci" />
 <meta property="og:site_name" content="Dynamic Programming" />
 <meta name="theme-color" content="#ffffff" />
 
@@ -187,7 +187,7 @@ const thebe_selector_output = ".output, .cell_output"
 
                         <p class="qe-page__header-heading"><a href="intro.html">Dynamic Programming</a></p>
 
-                        <p class="qe-page__header-subheading">Recursive Decision Processes</p>
+                        <p class="qe-page__header-subheading">Chapter 8: Recursive Decision Processes</p>
 
                     </div>
 
@@ -207,11 +207,11 @@ const thebe_selector_output = ".output, .cell_output"
                 <img style="width:250px;display:inline;" src="https://assets.quantecon.org/img/qe-menubar-logo.svg" alt="QuantEcon">
         </a>
 </div><section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><a class="toc-backref" href="#id2">Recursive Decision Processes</a><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<h1><a class="toc-backref" href="#id2">Chapter 8: Recursive Decision Processes</a><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
 <div class="contents topic" id="contents">
 <p class="topic-title">Contents</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#id1" id="id2">Recursive Decision Processes</a></p>
+<li><p><a class="reference internal" href="#id1" id="id2">Chapter 8: Recursive Decision Processes</a></p>
 <ul>
 <li><p><a class="reference internal" href="#quantile-function-py" id="id3">quantile_function.py</a></p></li>
 <li><p><a class="reference internal" href="#quantile-js-py" id="id4">quantile_js.py</a></p></li>
@@ -231,10 +231,13 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">rv_discrete</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
+<span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">njit</span>
+
 <span class="s2">&quot;Compute the τ-th quantile of v(X) when X ∼ ϕ and v = sort(v).&quot;</span>
+<span class="nd">@njit</span>
 <span class="k">def</span> <span class="nf">quantile</span><span class="p">(</span><span class="n">τ</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">ϕ</span><span class="p">):</span>
     <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">v_value</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
-        <span class="n">p</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">ϕ</span><span class="p">[:</span><span class="n">i</span><span class="p">])</span>  <span class="c1"># sum all ϕ[j] s.t. v[j] ≤ v_value</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">ϕ</span><span class="p">[:</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>  <span class="c1"># sum all ϕ[j] s.t. v[j] ≤ v_value</span>
         <span class="k">if</span> <span class="n">p</span> <span class="o">&gt;=</span> <span class="n">τ</span><span class="p">:</span>         <span class="c1"># exit and return v_value if prob ≥ τ</span>
             <span class="k">return</span> <span class="n">v_value</span>
 
@@ -344,9 +347,8 @@ const thebe_selector_output = ".output, .cell_output"
 
     <span class="n">model</span> <span class="o">=</span> <span class="n">create_markov_js_model</span><span class="p">()</span>
     <span class="n">n</span><span class="p">,</span> <span class="n">w_vals</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="n">β</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">τ</span> <span class="o">=</span> <span class="n">model</span>
-    <span class="n">mc</span> <span class="o">=</span> <span class="n">MarkovChain</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">P</span><span class="p">)</span>
-    <span class="n">s</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">stationary_distributions</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="c1">#s = stationary_distributions(mc)[1]</span>
+    <span class="n">mc</span> <span class="o">=</span> <span class="n">MarkovChain</span><span class="p">(</span><span class="n">P</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">stationary_distributions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
     <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tau_vals</span><span class="p">,</span> <span class="n">w_star_vals</span><span class="p">,</span> <span class="s2">&quot;k--&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;reservation wage&quot;</span><span class="p">)</span>
@@ -370,153 +372,56 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 197.04958104222322
+OPI current error = 32.41999066047552
+OPI current error = 35.62127408582426
+OPI current error = 34.1446640510786
+OPI current error = 31.357190366860497
+OPI current error = 27.984260985215176
+OPI current error = 23.254898512652094
+OPI current error = 16.591569430034006
+OPI current error = 7.09109988950496
+OPI current error = 3.102226038720346e-06
+OPI current error = 197.04958104222322
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 32.467196455608494
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 32.41999066047552
+OPI current error = 29.678936943622382
+OPI current error = 29.093921296620483
+OPI current error = 27.974814794615806
+OPI current error = 26.72531111677077
+OPI current error = 25.39554124988487
+OPI current error = 23.255076254919008
+OPI current error = 20.92822560847147
+OPI current error = 18.39891195068428
+OPI current error = 14.680917085664738
+OPI current error = 10.525484762612273
+OPI current error = 5.881149036250456
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 35.627534497410466
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 34.57793412281143
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 32.8485252244502
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 30.301683221356754
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 27.36483154334332
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 23.25507515311916
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 17.507814494000158
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 10.52548430073142
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 0.6903884338177377
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 5.404218939020211e-08
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 197.04958104222322
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 32.72395898112843
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 28.047059602754324
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 27.913851965614672
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 27.35549199386309
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 26.725501899935686
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 26.070335715454505
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 25.39571210309179
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 24.701934953947628
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 23.255101473349686
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 21.725518938946976
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 20.108456854911008
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 18.398912400195783
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 16.591596398378925
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 13.684981939138261
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 10.525484770532167
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 7.091103466050626
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 2.0426989375140323
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 9.59630597208161e-10
+OPI current error = 197.04958104222322
+OPI current error = 36.59694294236868
+OPI current error = 0.676518038229375
+OPI current error = 0.08971952178475817
+OPI current error = 0.011898563134202789
+OPI current error = 0.001577982158643465
+OPI current error = 0.00020927129308034864
+OPI current error = 2.7753465943192168e-05
+OPI current error = 3.6806523482368902e-06
+OPI current error = 197.04958104222322
+OPI current error = 51.40389833249008
+OPI current error = 0.0
+OPI current error = 197.04958104222322
+OPI current error = 82.51356008425164
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 0.0
+OPI current error = 197.04958104222322
+OPI current error = 133.14095588610522
+OPI current error = 0.0
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 197.04958104222322
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 42.568916696961494
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 0.0
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 197.04958104222322
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 65.20363595183524
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 0.0
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 197.04958104222322
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 105.18677613198999
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 0.0
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">plot_main</span><span class="p">(</span><span class="n">savefig</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="nn">Cell In[2], line 72,</span> in <span class="ni">plot_main</span><span class="nt">(tau_vals, savefig, figname)</span>
-<span class="g g-Whitespace">     </span><span class="mi">70</span> <span class="n">model</span> <span class="o">=</span> <span class="n">create_markov_js_model</span><span class="p">(</span><span class="n">τ</span><span class="o">=</span><span class="n">τ</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">71</span> <span class="n">n</span><span class="p">,</span> <span class="n">w_vals</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="n">β</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">τ</span> <span class="o">=</span> <span class="n">model</span>
-<span class="ne">---&gt; </span><span class="mi">72</span> <span class="n">v_star</span><span class="p">,</span> <span class="n">σ_star</span> <span class="o">=</span> <span class="n">optimistic_policy_iteration</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">73</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">74</span>     <span class="k">if</span> <span class="n">σ_star</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-
-<span class="nn">Cell In[2], line 48,</span> in <span class="ni">optimistic_policy_iteration</span><span class="nt">(model, tolerance, m)</span>
-<span class="g g-Whitespace">     </span><span class="mi">46</span> <span class="k">while</span> <span class="n">error</span> <span class="o">&gt;</span> <span class="n">tolerance</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">47</span>     <span class="n">last_v</span> <span class="o">=</span> <span class="n">v</span>
-<span class="ne">---&gt; </span><span class="mi">48</span>     <span class="n">σ</span> <span class="o">=</span> <span class="n">get_greedy</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">49</span>     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">50</span>         <span class="n">v</span> <span class="o">=</span> <span class="n">T_σ</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">σ</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
-
-<span class="nn">Cell In[2], line 37,</span> in <span class="ni">get_greedy</span><span class="nt">(v, model)</span>
-<span class="g g-Whitespace">     </span><span class="mi">35</span> <span class="k">def</span> <span class="nf">get_greedy</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">36</span>     <span class="n">n</span><span class="p">,</span> <span class="n">w_vals</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="n">β</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">τ</span> <span class="o">=</span> <span class="n">model</span>
-<span class="ne">---&gt; </span><span class="mi">37</span>     <span class="n">σ</span> <span class="o">=</span> <span class="n">w_vals</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">β</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">c</span> <span class="o">+</span> <span class="n">β</span> <span class="o">*</span> <span class="n">R</span><span class="p">(</span><span class="n">τ</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">P</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">38</span>     <span class="k">return</span> <span class="n">σ</span>
-
-<span class="ne">TypeError</span>: unsupported operand type(s) for *: &#39;float&#39; and &#39;NoneType&#39;
-</pre></div>
-</div>
+<img alt="_images/fac77d82f29ba27e06698452801706df880f07ca0e2de18f7bf05d7f778f76cb.png" src="_images/fac77d82f29ba27e06698452801706df880f07ca0e2de18f7bf05d7f778f76cb.png" />
 </div>
 </div>
 </section>
@@ -573,43 +478,50 @@ const thebe_selector_output = ".output, .cell_output"
                 <nav class="qe-sidebar__nav" id="qe-sidebar-nav" aria-label="Main navigation">
                     <ul class="current nav bd-sidenav nav sidenav_l1">
  <li class="toctree-l1">
+  <a class="reference external" href="https://dp.quantecon.org/">
+   Home (Landing Page)
+   <i class="fas fa-external-link-alt">
+   </i>
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="introductions.html">
-   Introductions
+   Chapter 1: Introductions
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="operators_fixed_points.html">
-   Operators and Fixed Points
+   Chapter 2: Operators and Fixed Points
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="markov_dynamics.html">
-   Markov Dynamics
+   Chapter 3: Markov Dynamics
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="optimal_stopping.html">
-   Optimal Stopping
+   Chapter 4: Optimal Stopping
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="markov_decision_processes.html">
-   Markov Decision Processes
+   Chapter 5: Markov Decision Processes
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="stochastic_discounting.html">
-   Stochastic Discounting
+   Chapter 6: Stochastic Discounting
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="nonlinear_valuation.html">
-   Nonlinear Valuation
+   Chapter 7: Nonlinear Valuation
   </a>
  </li>
  <li class="toctree-l1 current active active">
   <a class="current reference internal" href="#">
-   Recursive Decision Processes
+   Chapter 8: Recursive Decision Processes
   </a>
  </li>
 </ul>

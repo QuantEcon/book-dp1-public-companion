@@ -9,7 +9,7 @@ kernelspec:
   name: julia-1.9
 ---
 
-(Recursive Decision Processes)=
+(Chapter 8: Recursive Decision Processes)=
 ```{raw} html
 <div id="qe-notebook-header" style="text-align:right;">
         <a href="https://quantecon.org/" title="quantecon.org">
@@ -17,7 +17,7 @@ kernelspec:
         </a>
 </div>
 ```
-# Recursive Decision Processes
+# Chapter 8: Recursive Decision Processes
 
 
 ```{contents} Contents

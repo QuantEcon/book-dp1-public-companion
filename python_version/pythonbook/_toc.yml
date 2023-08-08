@@ -4,6 +4,8 @@
 format: jb-book
 root: intro
 chapters:
+- url: https://dp.quantecon.org/
+  title: Home (Landing Page)
 - file: introductions
 - file: operators_fixed_points
 - file: markov_dynamics
