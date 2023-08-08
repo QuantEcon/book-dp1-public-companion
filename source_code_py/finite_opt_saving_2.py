@@ -16,7 +16,7 @@ def value_iteration(model, tol=1e-5):
     return get_greedy(v_star, model)
 
 
-@njit
+@njit(cache=True, fastmath=True)
 def policy_iteration(model):
     """Howard policy iteration routine."""
     wn, yn = len(model.w_grid), len(model.y_grid)
@@ -156,11 +156,12 @@ def plot_time_series(m=2_000, savefig=False):
 def plot_histogram(m=1_000_000, savefig=False):
 
     w_series = simulate_wealth(m)
-    g = round(gini(w_series.sort()), ndigits=2)
+    w_series.sort()
+    g = round(gini(w_series), ndigits=2)
     fig, ax = plt.subplots(figsize=(9, 5.2))
     ax.hist(w_series, bins=40, density=True)
     ax.set_xlabel("wealth")
-    ax.text(15, 0.4, "Gini = $g")
+    ax.text(15, 0.4, f"Gini = {g}")
     plt.show()
 
     if savefig:
@@ -169,7 +170,8 @@ def plot_histogram(m=1_000_000, savefig=False):
 def plot_lorenz(m=1_000_000, savefig=False):
 
     w_series = simulate_wealth(m)
-    (F, L) = lorenz(w_series.sort())
+    w_series.sort()
+    (F, L) = lorenz(w_series)
 
     fig, ax = plt.subplots(figsize=(9, 5.2))
     ax.plot(F, F, label="Lorenz curve, equality")
