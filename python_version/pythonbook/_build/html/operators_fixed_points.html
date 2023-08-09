@@ -244,6 +244,9 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="c1"># == Plots == #</span>
 
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;text.usetex&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;font.size&quot;</span><span class="p">:</span> <span class="mi">14</span><span class="p">})</span>
 
 
 <span class="k">def</span> <span class="nf">plot_paths</span><span class="p">(</span><span class="n">figname</span><span class="o">=</span><span class="s2">&quot;../figures/lake_1.pdf&quot;</span><span class="p">,</span> <span class="n">savefig</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -358,7 +361,737 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4cbc4d0d2f44e37b15b9fdad51a884fb87f93443ce4ee76aa10c74b6fb99e0cc.png" src="_images/4cbc4d0d2f44e37b15b9fdad51a884fb87f93443ce4ee76aa10c74b6fb99e0cc.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>---------------------------------------------------------------------------
+RuntimeError                              Traceback (most recent call last)
+Cell In[2], line 1
+----&gt; 1 plot_paths(savefig=True)
+
+Cell In[1], line 89, in plot_paths(figname, savefig)
+     81 ax.annotate(rf&quot;$x_0 = ({x}, {y})$&quot;, 
+     82             xy=(x, y),
+     83          xycoords=&quot;data&quot;,
+     84          xytext=(0, 20),
+     85          textcoords=&quot;offset points&quot;,
+     86          arrowprops={&quot;arrowstyle&quot; : &quot;-&gt;&quot;})
+     88 if savefig:
+---&gt; 89     fig.savefig(figname)
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\figure.py:3343, in Figure.savefig(self, fname, transparent, **kwargs)
+   3339     for ax in self.axes:
+   3340         stack.enter_context(
+   3341             ax.patch._cm_set(facecolor=&#39;none&#39;, edgecolor=&#39;none&#39;))
+-&gt; 3343 self.canvas.print_figure(fname, **kwargs)
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\backend_bases.py:2366, in FigureCanvasBase.print_figure(self, filename, dpi, facecolor, edgecolor, orientation, format, bbox_inches, pad_inches, bbox_extra_artists, backend, **kwargs)
+   2362 try:
+   2363     # _get_renderer may change the figure dpi (as vector formats
+   2364     # force the figure dpi to 72), so we need to set it again here.
+   2365     with cbook._setattr_cm(self.figure, dpi=dpi):
+-&gt; 2366         result = print_method(
+   2367             filename,
+   2368             facecolor=facecolor,
+   2369             edgecolor=edgecolor,
+   2370             orientation=orientation,
+   2371             bbox_inches_restore=_bbox_inches_restore,
+   2372             **kwargs)
+   2373 finally:
+   2374     if bbox_inches and restore_bbox:
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\backend_bases.py:2232, in FigureCanvasBase._switch_canvas_and_return_print_method.&lt;locals&gt;.&lt;lambda&gt;(*args, **kwargs)
+   2228     optional_kws = {  # Passed by print_figure for other renderers.
+   2229         &quot;dpi&quot;, &quot;facecolor&quot;, &quot;edgecolor&quot;, &quot;orientation&quot;,
+   2230         &quot;bbox_inches_restore&quot;}
+   2231     skip = optional_kws - {*inspect.signature(meth).parameters}
+-&gt; 2232     print_method = functools.wraps(meth)(lambda *args, **kwargs: meth(
+   2233         *args, **{k: v for k, v in kwargs.items() if k not in skip}))
+   2234 else:  # Let third-parties do as they see fit.
+   2235     print_method = meth
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\backends\backend_pdf.py:2815, in FigureCanvasPdf.print_pdf(self, filename, bbox_inches_restore, metadata)
+   2810 file.newPage(width, height)
+   2811 renderer = MixedModeRenderer(
+   2812     self.figure, width, height, dpi,
+   2813     RendererPdf(file, dpi, height, width),
+   2814     bbox_inches_restore=bbox_inches_restore)
+-&gt; 2815 self.figure.draw(renderer)
+   2816 renderer.finalize()
+   2817 if not isinstance(filename, PdfPages):
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\artist.py:95, in _finalize_rasterization.&lt;locals&gt;.draw_wrapper(artist, renderer, *args, **kwargs)
+     93 @wraps(draw)
+     94 def draw_wrapper(artist, renderer, *args, **kwargs):
+---&gt; 95     result = draw(artist, renderer, *args, **kwargs)
+     96     if renderer._rasterizing:
+     97         renderer.stop_rasterizing()
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\artist.py:72, in allow_rasterization.&lt;locals&gt;.draw_wrapper(artist, renderer)
+     69     if artist.get_agg_filter() is not None:
+     70         renderer.start_filter()
+---&gt; 72     return draw(artist, renderer)
+     73 finally:
+     74     if artist.get_agg_filter() is not None:
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\figure.py:3140, in Figure.draw(self, renderer)
+   3137         # ValueError can occur when resizing a window.
+   3139 self.patch.draw(renderer)
+-&gt; 3140 mimage._draw_list_compositing_images(
+   3141     renderer, self, artists, self.suppressComposite)
+   3143 for sfig in self.subfigs:
+   3144     sfig.draw(renderer)
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\image.py:131, in _draw_list_compositing_images(renderer, parent, artists, suppress_composite)
+    129 if not_composite or not has_images:
+    130     for a in artists:
+--&gt; 131         a.draw(renderer)
+    132 else:
+    133     # Composite any adjacent images together
+    134     image_group = []
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\artist.py:72, in allow_rasterization.&lt;locals&gt;.draw_wrapper(artist, renderer)
+     69     if artist.get_agg_filter() is not None:
+     70         renderer.start_filter()
+---&gt; 72     return draw(artist, renderer)
+     73 finally:
+     74     if artist.get_agg_filter() is not None:
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\axes\_base.py:3064, in _AxesBase.draw(self, renderer)
+   3061 if artists_rasterized:
+   3062     _draw_rasterized(self.figure, artists_rasterized, renderer)
+-&gt; 3064 mimage._draw_list_compositing_images(
+   3065     renderer, self, artists, self.figure.suppressComposite)
+   3067 renderer.close_group(&#39;axes&#39;)
+   3068 self.stale = False
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\image.py:131, in _draw_list_compositing_images(renderer, parent, artists, suppress_composite)
+    129 if not_composite or not has_images:
+    130     for a in artists:
+--&gt; 131         a.draw(renderer)
+    132 else:
+    133     # Composite any adjacent images together
+    134     image_group = []
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\artist.py:72, in allow_rasterization.&lt;locals&gt;.draw_wrapper(artist, renderer)
+     69     if artist.get_agg_filter() is not None:
+     70         renderer.start_filter()
+---&gt; 72     return draw(artist, renderer)
+     73 finally:
+     74     if artist.get_agg_filter() is not None:
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\text.py:2027, in Annotation.draw(self, renderer)
+   2024     return
+   2025 # Update text positions before `Text.draw` would, so that the
+   2026 # FancyArrowPatch is correctly positioned.
+-&gt; 2027 self.update_positions(renderer)
+   2028 self.update_bbox_position_size(renderer)
+   2029 if self.arrow_patch is not None:  # FancyArrowPatch
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\text.py:1960, in Annotation.update_positions(self, renderer)
+   1957 if arrowprops is None:
+   1958     return
+-&gt; 1960 bbox = Text.get_window_extent(self, renderer)
+   1962 arrow_end = x1, y1 = self._get_position_xy(renderer)  # Annotated pos.
+   1964 ms = arrowprops.get(&quot;mutation_scale&quot;, self.get_size())
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\text.py:959, in Text.get_window_extent(self, renderer, dpi)
+    954     raise RuntimeError(
+    955         &quot;Cannot get window extent of text w/o renderer. You likely &quot;
+    956         &quot;want to call &#39;figure.draw_without_rendering()&#39; first.&quot;)
+    958 with cbook._setattr_cm(self.figure, dpi=dpi):
+--&gt; 959     bbox, info, descent = self._get_layout(self._renderer)
+    960     x, y = self.get_unitless_position()
+    961     x, y = self.get_transform().transform((x, y))
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\text.py:386, in Text._get_layout(self, renderer)
+    384 clean_line, ismath = self._preprocess_math(line)
+    385 if clean_line:
+--&gt; 386     w, h, d = _get_text_metrics_with_cache(
+    387         renderer, clean_line, self._fontproperties,
+    388         ismath=ismath, dpi=self.figure.dpi)
+    389 else:
+    390     w = h = d = 0
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\text.py:97, in _get_text_metrics_with_cache(renderer, text, fontprop, ismath, dpi)
+     94 &quot;&quot;&quot;Call ``renderer.get_text_width_height_descent``, caching the results.&quot;&quot;&quot;
+     95 # Cached based on a copy of fontprop so that later in-place mutations of
+     96 # the passed-in argument do not mess up the cache.
+---&gt; 97 return _get_text_metrics_with_cache_impl(
+     98     weakref.ref(renderer), text, fontprop.copy(), ismath, dpi)
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\text.py:105, in _get_text_metrics_with_cache_impl(renderer_ref, text, fontprop, ismath, dpi)
+    101 @functools.lru_cache(4096)
+    102 def _get_text_metrics_with_cache_impl(
+    103         renderer_ref, text, fontprop, ismath, dpi):
+    104     # dpi is unused, but participates in cache invalidation (via the renderer).
+--&gt; 105     return renderer_ref().get_text_width_height_descent(text, fontprop, ismath)
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\backends\_backend_pdf_ps.py:107, in RendererPDFPSBase.get_text_width_height_descent(self, s, prop, ismath)
+    104 def get_text_width_height_descent(self, s, prop, ismath):
+    105     # docstring inherited
+    106     if ismath == &quot;TeX&quot;:
+--&gt; 107         return super().get_text_width_height_descent(s, prop, ismath)
+    108     elif ismath:
+    109         parse = self._text2path.mathtext_parser.parse(s, 72, prop)
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\backend_bases.py:645, in RendererBase.get_text_width_height_descent(self, s, prop, ismath)
+    641 fontsize = prop.get_size_in_points()
+    643 if ismath == &#39;TeX&#39;:
+    644     # todo: handle properties
+--&gt; 645     return self.get_texmanager().get_text_width_height_descent(
+    646         s, fontsize, renderer=self)
+    648 dpi = self.points_to_pixels(72)
+    649 if ismath:
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\texmanager.py:368, in TexManager.get_text_width_height_descent(cls, tex, fontsize, renderer)
+    366 if tex.strip() == &#39;&#39;:
+    367     return 0, 0, 0
+--&gt; 368 dvifile = cls.make_dvi(tex, fontsize)
+    369 dpi_fraction = renderer.points_to_pixels(1.) if renderer else 1
+    370 with dviread.Dvi(dvifile, 72 * dpi_fraction) as dvi:
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\texmanager.py:300, in TexManager.make_dvi(cls, tex, fontsize)
+    298     with TemporaryDirectory(dir=cwd) as tmpdir:
+    299         tmppath = Path(tmpdir)
+--&gt; 300         cls._run_checked_subprocess(
+    301             [&quot;latex&quot;, &quot;-interaction=nonstopmode&quot;, &quot;--halt-on-error&quot;,
+    302              f&quot;--output-directory={tmppath.name}&quot;,
+    303              f&quot;{texfile.name}&quot;], tex, cwd=cwd)
+    304         (tmppath / Path(dvifile).name).replace(dvifile)
+    305 return dvifile
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\texmanager.py:263, in TexManager._run_checked_subprocess(cls, command, tex, cwd)
+    259     raise RuntimeError(
+    260         &#39;Failed to process string with tex because {} could not be &#39;
+    261         &#39;found&#39;.format(command[0])) from exc
+    262 except subprocess.CalledProcessError as exc:
+--&gt; 263     raise RuntimeError(
+    264         &#39;{prog} was not able to process the following string:\n&#39;
+    265         &#39;{tex!r}\n\n&#39;
+    266         &#39;Here is the full command invocation and its output:\n\n&#39;
+    267         &#39;{format_command}\n\n&#39;
+    268         &#39;{exc}\n\n&#39;.format(
+    269             prog=command[0],
+    270             format_command=cbook._pformat_subprocess(command),
+    271             tex=tex.encode(&#39;unicode_escape&#39;),
+    272             exc=exc.output.decode(&#39;utf-8&#39;, &#39;backslashreplace&#39;))
+    273         ) from None
+    274 _log.debug(report)
+    275 return report
+
+RuntimeError: latex was not able to process the following string:
+b&#39;\\\\bar x&#39;
+
+Here is the full command invocation and its output:
+
+latex -interaction=nonstopmode --halt-on-error --output-directory=tmp4yyas0hb 623ac079189bdbc69ab713c6cd583a76.tex
+
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.4) (preloaded format=latex.fmt)
+ restricted \write18 enabled.
+entering extended mode
+(623ac079189bdbc69ab713c6cd583a76.tex
+LaTeX2e &lt;2022-11-01&gt; patch level 1
+L3 programming layer &lt;2023-03-30&gt;
+(C:\Users\orect\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
+Document Class: article 2022/07/02 v1.4n Standard LaTeX document class
+(C:\Users\orect\AppData\Local\Programs\MiKTeX\tex/latex/base\size10.clo))
+(C:\Users\orect\AppData\Local\Programs\MiKTeX\tex/latex/type1cm\type1cm.sty)
+(C:\Users\orect\AppData\Local\Programs\MiKTeX\tex/latex/cm-super\type1ec.sty
+(C:\Users\orect\AppData\Local\Programs\MiKTeX\tex/latex/base\t1cmr.fd))
+(C:\Users\orect\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty)
+(C:\Users\orect\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
+(C:\Users\orect\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty)
+(C:\Users\orect\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
+(C:\Users\orect\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty))
+(C:\Users\orect\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg))
+
+(C:\Users\orect\AppData\Local\Programs\MiKTeX\tex/latex/underscore\underscore.s
+ty) (C:\Users\orect\AppData\Local\Programs\MiKTeX\tex/latex/base\textcomp.sty)
+(C:\Users\orect\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-dvi
+ps.def)
+No file 623ac079189bdbc69ab713c6cd583a76.aux.
+*geometry* driver: auto-detecting
+*geometry* detected driver: dvips
+! Missing $ inserted.
+&lt;inserted text&gt; 
+                $
+l.29 {\sffamily \bar
+                     x}%
+No pages of output.
+Transcript written on C:\Users\orect\.matplotlib\tex.cache\62\3a\tmp4yyas0hb\62
+3ac079189bdbc69ab713c6cd583a76.log.
+
+
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error in callback &lt;function _draw_all_if_interactive at 0x000001FD2EACD120&gt; (for post_execute):
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>---------------------------------------------------------------------------
+RuntimeError                              Traceback (most recent call last)
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\pyplot.py:120, in _draw_all_if_interactive()
+    118 def _draw_all_if_interactive():
+    119     if matplotlib.is_interactive():
+--&gt; 120         draw_all()
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\_pylab_helpers.py:132, in Gcf.draw_all(cls, force)
+    130 for manager in cls.get_all_fig_managers():
+    131     if force or manager.canvas.figure.stale:
+--&gt; 132         manager.canvas.draw_idle()
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\backend_bases.py:2082, in FigureCanvasBase.draw_idle(self, *args, **kwargs)
+   2080 if not self._is_idle_drawing:
+   2081     with self._idle_draw_cntx():
+-&gt; 2082         self.draw(*args, **kwargs)
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\backends\backend_agg.py:400, in FigureCanvasAgg.draw(self)
+    396 # Acquire a lock on the shared font cache.
+    397 with RendererAgg.lock, \
+    398      (self.toolbar._wait_cursor_for_draw_cm() if self.toolbar
+    399       else nullcontext()):
+--&gt; 400     self.figure.draw(self.renderer)
+    401     # A GUI class may be need to update a window using this draw, so
+    402     # don&#39;t forget to call the superclass.
+    403     super().draw()
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\artist.py:95, in _finalize_rasterization.&lt;locals&gt;.draw_wrapper(artist, renderer, *args, **kwargs)
+     93 @wraps(draw)
+     94 def draw_wrapper(artist, renderer, *args, **kwargs):
+---&gt; 95     result = draw(artist, renderer, *args, **kwargs)
+     96     if renderer._rasterizing:
+     97         renderer.stop_rasterizing()
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\artist.py:72, in allow_rasterization.&lt;locals&gt;.draw_wrapper(artist, renderer)
+     69     if artist.get_agg_filter() is not None:
+     70         renderer.start_filter()
+---&gt; 72     return draw(artist, renderer)
+     73 finally:
+     74     if artist.get_agg_filter() is not None:
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\figure.py:3140, in Figure.draw(self, renderer)
+   3137         # ValueError can occur when resizing a window.
+   3139 self.patch.draw(renderer)
+-&gt; 3140 mimage._draw_list_compositing_images(
+   3141     renderer, self, artists, self.suppressComposite)
+   3143 for sfig in self.subfigs:
+   3144     sfig.draw(renderer)
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\image.py:131, in _draw_list_compositing_images(renderer, parent, artists, suppress_composite)
+    129 if not_composite or not has_images:
+    130     for a in artists:
+--&gt; 131         a.draw(renderer)
+    132 else:
+    133     # Composite any adjacent images together
+    134     image_group = []
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\artist.py:72, in allow_rasterization.&lt;locals&gt;.draw_wrapper(artist, renderer)
+     69     if artist.get_agg_filter() is not None:
+     70         renderer.start_filter()
+---&gt; 72     return draw(artist, renderer)
+     73 finally:
+     74     if artist.get_agg_filter() is not None:
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\axes\_base.py:3064, in _AxesBase.draw(self, renderer)
+   3061 if artists_rasterized:
+   3062     _draw_rasterized(self.figure, artists_rasterized, renderer)
+-&gt; 3064 mimage._draw_list_compositing_images(
+   3065     renderer, self, artists, self.figure.suppressComposite)
+   3067 renderer.close_group(&#39;axes&#39;)
+   3068 self.stale = False
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\image.py:131, in _draw_list_compositing_images(renderer, parent, artists, suppress_composite)
+    129 if not_composite or not has_images:
+    130     for a in artists:
+--&gt; 131         a.draw(renderer)
+    132 else:
+    133     # Composite any adjacent images together
+    134     image_group = []
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\artist.py:72, in allow_rasterization.&lt;locals&gt;.draw_wrapper(artist, renderer)
+     69     if artist.get_agg_filter() is not None:
+     70         renderer.start_filter()
+---&gt; 72     return draw(artist, renderer)
+     73 finally:
+     74     if artist.get_agg_filter() is not None:
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\text.py:2027, in Annotation.draw(self, renderer)
+   2024     return
+   2025 # Update text positions before `Text.draw` would, so that the
+   2026 # FancyArrowPatch is correctly positioned.
+-&gt; 2027 self.update_positions(renderer)
+   2028 self.update_bbox_position_size(renderer)
+   2029 if self.arrow_patch is not None:  # FancyArrowPatch
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\text.py:1960, in Annotation.update_positions(self, renderer)
+   1957 if arrowprops is None:
+   1958     return
+-&gt; 1960 bbox = Text.get_window_extent(self, renderer)
+   1962 arrow_end = x1, y1 = self._get_position_xy(renderer)  # Annotated pos.
+   1964 ms = arrowprops.get(&quot;mutation_scale&quot;, self.get_size())
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\text.py:959, in Text.get_window_extent(self, renderer, dpi)
+    954     raise RuntimeError(
+    955         &quot;Cannot get window extent of text w/o renderer. You likely &quot;
+    956         &quot;want to call &#39;figure.draw_without_rendering()&#39; first.&quot;)
+    958 with cbook._setattr_cm(self.figure, dpi=dpi):
+--&gt; 959     bbox, info, descent = self._get_layout(self._renderer)
+    960     x, y = self.get_unitless_position()
+    961     x, y = self.get_transform().transform((x, y))
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\text.py:386, in Text._get_layout(self, renderer)
+    384 clean_line, ismath = self._preprocess_math(line)
+    385 if clean_line:
+--&gt; 386     w, h, d = _get_text_metrics_with_cache(
+    387         renderer, clean_line, self._fontproperties,
+    388         ismath=ismath, dpi=self.figure.dpi)
+    389 else:
+    390     w = h = d = 0
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\text.py:97, in _get_text_metrics_with_cache(renderer, text, fontprop, ismath, dpi)
+     94 &quot;&quot;&quot;Call ``renderer.get_text_width_height_descent``, caching the results.&quot;&quot;&quot;
+     95 # Cached based on a copy of fontprop so that later in-place mutations of
+     96 # the passed-in argument do not mess up the cache.
+---&gt; 97 return _get_text_metrics_with_cache_impl(
+     98     weakref.ref(renderer), text, fontprop.copy(), ismath, dpi)
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\text.py:105, in _get_text_metrics_with_cache_impl(renderer_ref, text, fontprop, ismath, dpi)
+    101 @functools.lru_cache(4096)
+    102 def _get_text_metrics_with_cache_impl(
+    103         renderer_ref, text, fontprop, ismath, dpi):
+    104     # dpi is unused, but participates in cache invalidation (via the renderer).
+--&gt; 105     return renderer_ref().get_text_width_height_descent(text, fontprop, ismath)
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\backends\backend_agg.py:226, in RendererAgg.get_text_width_height_descent(self, s, prop, ismath)
+    224 _api.check_in_list([&quot;TeX&quot;, True, False], ismath=ismath)
+    225 if ismath == &quot;TeX&quot;:
+--&gt; 226     return super().get_text_width_height_descent(s, prop, ismath)
+    228 if ismath:
+    229     ox, oy, width, height, descent, font_image = \
+    230         self.mathtext_parser.parse(s, self.dpi, prop)
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\backend_bases.py:645, in RendererBase.get_text_width_height_descent(self, s, prop, ismath)
+    641 fontsize = prop.get_size_in_points()
+    643 if ismath == &#39;TeX&#39;:
+    644     # todo: handle properties
+--&gt; 645     return self.get_texmanager().get_text_width_height_descent(
+    646         s, fontsize, renderer=self)
+    648 dpi = self.points_to_pixels(72)
+    649 if ismath:
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\texmanager.py:368, in TexManager.get_text_width_height_descent(cls, tex, fontsize, renderer)
+    366 if tex.strip() == &#39;&#39;:
+    367     return 0, 0, 0
+--&gt; 368 dvifile = cls.make_dvi(tex, fontsize)
+    369 dpi_fraction = renderer.points_to_pixels(1.) if renderer else 1
+    370 with dviread.Dvi(dvifile, 72 * dpi_fraction) as dvi:
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\texmanager.py:300, in TexManager.make_dvi(cls, tex, fontsize)
+    298     with TemporaryDirectory(dir=cwd) as tmpdir:
+    299         tmppath = Path(tmpdir)
+--&gt; 300         cls._run_checked_subprocess(
+    301             [&quot;latex&quot;, &quot;-interaction=nonstopmode&quot;, &quot;--halt-on-error&quot;,
+    302              f&quot;--output-directory={tmppath.name}&quot;,
+    303              f&quot;{texfile.name}&quot;], tex, cwd=cwd)
+    304         (tmppath / Path(dvifile).name).replace(dvifile)
+    305 return dvifile
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\texmanager.py:263, in TexManager._run_checked_subprocess(cls, command, tex, cwd)
+    259     raise RuntimeError(
+    260         &#39;Failed to process string with tex because {} could not be &#39;
+    261         &#39;found&#39;.format(command[0])) from exc
+    262 except subprocess.CalledProcessError as exc:
+--&gt; 263     raise RuntimeError(
+    264         &#39;{prog} was not able to process the following string:\n&#39;
+    265         &#39;{tex!r}\n\n&#39;
+    266         &#39;Here is the full command invocation and its output:\n\n&#39;
+    267         &#39;{format_command}\n\n&#39;
+    268         &#39;{exc}\n\n&#39;.format(
+    269             prog=command[0],
+    270             format_command=cbook._pformat_subprocess(command),
+    271             tex=tex.encode(&#39;unicode_escape&#39;),
+    272             exc=exc.output.decode(&#39;utf-8&#39;, &#39;backslashreplace&#39;))
+    273         ) from None
+    274 _log.debug(report)
+    275 return report
+
+RuntimeError: latex was not able to process the following string:
+b&#39;\\\\bar x&#39;
+
+Here is the full command invocation and its output:
+
+latex -interaction=nonstopmode --halt-on-error --output-directory=tmp9_h_v3qz 623ac079189bdbc69ab713c6cd583a76.tex
+
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.4) (preloaded format=latex.fmt)
+ restricted \write18 enabled.
+entering extended mode
+(623ac079189bdbc69ab713c6cd583a76.tex
+LaTeX2e &lt;2022-11-01&gt; patch level 1
+L3 programming layer &lt;2023-03-30&gt;
+(C:\Users\orect\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
+Document Class: article 2022/07/02 v1.4n Standard LaTeX document class
+(C:\Users\orect\AppData\Local\Programs\MiKTeX\tex/latex/base\size10.clo))
+(C:\Users\orect\AppData\Local\Programs\MiKTeX\tex/latex/type1cm\type1cm.sty)
+(C:\Users\orect\AppData\Local\Programs\MiKTeX\tex/latex/cm-super\type1ec.sty
+(C:\Users\orect\AppData\Local\Programs\MiKTeX\tex/latex/base\t1cmr.fd))
+(C:\Users\orect\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty)
+(C:\Users\orect\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
+(C:\Users\orect\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty)
+(C:\Users\orect\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
+(C:\Users\orect\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty))
+(C:\Users\orect\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg))
+
+(C:\Users\orect\AppData\Local\Programs\MiKTeX\tex/latex/underscore\underscore.s
+ty) (C:\Users\orect\AppData\Local\Programs\MiKTeX\tex/latex/base\textcomp.sty)
+(C:\Users\orect\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-dvi
+ps.def)
+No file 623ac079189bdbc69ab713c6cd583a76.aux.
+*geometry* driver: auto-detecting
+*geometry* detected driver: dvips
+! Missing $ inserted.
+&lt;inserted text&gt; 
+                $
+l.29 {\sffamily \bar
+                     x}%
+No pages of output.
+Transcript written on C:\Users\orect\.matplotlib\tex.cache\62\3a\tmp9_h_v3qz\62
+3ac079189bdbc69ab713c6cd583a76.log.
+
+
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>---------------------------------------------------------------------------
+RuntimeError                              Traceback (most recent call last)
+File ~\mambaforge\envs\pyFin\Lib\site-packages\IPython\core\formatters.py:340, in BaseFormatter.__call__(self, obj)
+    338     pass
+    339 else:
+--&gt; 340     return printer(obj)
+    341 # Finally look for special method names
+    342 method = get_real_method(obj, self.print_method)
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\IPython\core\pylabtools.py:152, in print_figure(fig, fmt, bbox_inches, base64, **kwargs)
+    149     from matplotlib.backend_bases import FigureCanvasBase
+    150     FigureCanvasBase(fig)
+--&gt; 152 fig.canvas.print_figure(bytes_io, **kw)
+    153 data = bytes_io.getvalue()
+    154 if fmt == &#39;svg&#39;:
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\backend_bases.py:2342, in FigureCanvasBase.print_figure(self, filename, dpi, facecolor, edgecolor, orientation, format, bbox_inches, pad_inches, bbox_extra_artists, backend, **kwargs)
+   2336     renderer = _get_renderer(
+   2337         self.figure,
+   2338         functools.partial(
+   2339             print_method, orientation=orientation)
+   2340     )
+   2341     with getattr(renderer, &quot;_draw_disabled&quot;, nullcontext)():
+-&gt; 2342         self.figure.draw(renderer)
+   2344 if bbox_inches:
+   2345     if bbox_inches == &quot;tight&quot;:
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\artist.py:95, in _finalize_rasterization.&lt;locals&gt;.draw_wrapper(artist, renderer, *args, **kwargs)
+     93 @wraps(draw)
+     94 def draw_wrapper(artist, renderer, *args, **kwargs):
+---&gt; 95     result = draw(artist, renderer, *args, **kwargs)
+     96     if renderer._rasterizing:
+     97         renderer.stop_rasterizing()
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\artist.py:72, in allow_rasterization.&lt;locals&gt;.draw_wrapper(artist, renderer)
+     69     if artist.get_agg_filter() is not None:
+     70         renderer.start_filter()
+---&gt; 72     return draw(artist, renderer)
+     73 finally:
+     74     if artist.get_agg_filter() is not None:
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\figure.py:3140, in Figure.draw(self, renderer)
+   3137         # ValueError can occur when resizing a window.
+   3139 self.patch.draw(renderer)
+-&gt; 3140 mimage._draw_list_compositing_images(
+   3141     renderer, self, artists, self.suppressComposite)
+   3143 for sfig in self.subfigs:
+   3144     sfig.draw(renderer)
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\image.py:131, in _draw_list_compositing_images(renderer, parent, artists, suppress_composite)
+    129 if not_composite or not has_images:
+    130     for a in artists:
+--&gt; 131         a.draw(renderer)
+    132 else:
+    133     # Composite any adjacent images together
+    134     image_group = []
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\artist.py:72, in allow_rasterization.&lt;locals&gt;.draw_wrapper(artist, renderer)
+     69     if artist.get_agg_filter() is not None:
+     70         renderer.start_filter()
+---&gt; 72     return draw(artist, renderer)
+     73 finally:
+     74     if artist.get_agg_filter() is not None:
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\axes\_base.py:3064, in _AxesBase.draw(self, renderer)
+   3061 if artists_rasterized:
+   3062     _draw_rasterized(self.figure, artists_rasterized, renderer)
+-&gt; 3064 mimage._draw_list_compositing_images(
+   3065     renderer, self, artists, self.figure.suppressComposite)
+   3067 renderer.close_group(&#39;axes&#39;)
+   3068 self.stale = False
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\image.py:131, in _draw_list_compositing_images(renderer, parent, artists, suppress_composite)
+    129 if not_composite or not has_images:
+    130     for a in artists:
+--&gt; 131         a.draw(renderer)
+    132 else:
+    133     # Composite any adjacent images together
+    134     image_group = []
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\artist.py:72, in allow_rasterization.&lt;locals&gt;.draw_wrapper(artist, renderer)
+     69     if artist.get_agg_filter() is not None:
+     70         renderer.start_filter()
+---&gt; 72     return draw(artist, renderer)
+     73 finally:
+     74     if artist.get_agg_filter() is not None:
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\text.py:2027, in Annotation.draw(self, renderer)
+   2024     return
+   2025 # Update text positions before `Text.draw` would, so that the
+   2026 # FancyArrowPatch is correctly positioned.
+-&gt; 2027 self.update_positions(renderer)
+   2028 self.update_bbox_position_size(renderer)
+   2029 if self.arrow_patch is not None:  # FancyArrowPatch
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\text.py:1960, in Annotation.update_positions(self, renderer)
+   1957 if arrowprops is None:
+   1958     return
+-&gt; 1960 bbox = Text.get_window_extent(self, renderer)
+   1962 arrow_end = x1, y1 = self._get_position_xy(renderer)  # Annotated pos.
+   1964 ms = arrowprops.get(&quot;mutation_scale&quot;, self.get_size())
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\text.py:959, in Text.get_window_extent(self, renderer, dpi)
+    954     raise RuntimeError(
+    955         &quot;Cannot get window extent of text w/o renderer. You likely &quot;
+    956         &quot;want to call &#39;figure.draw_without_rendering()&#39; first.&quot;)
+    958 with cbook._setattr_cm(self.figure, dpi=dpi):
+--&gt; 959     bbox, info, descent = self._get_layout(self._renderer)
+    960     x, y = self.get_unitless_position()
+    961     x, y = self.get_transform().transform((x, y))
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\text.py:386, in Text._get_layout(self, renderer)
+    384 clean_line, ismath = self._preprocess_math(line)
+    385 if clean_line:
+--&gt; 386     w, h, d = _get_text_metrics_with_cache(
+    387         renderer, clean_line, self._fontproperties,
+    388         ismath=ismath, dpi=self.figure.dpi)
+    389 else:
+    390     w = h = d = 0
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\text.py:97, in _get_text_metrics_with_cache(renderer, text, fontprop, ismath, dpi)
+     94 &quot;&quot;&quot;Call ``renderer.get_text_width_height_descent``, caching the results.&quot;&quot;&quot;
+     95 # Cached based on a copy of fontprop so that later in-place mutations of
+     96 # the passed-in argument do not mess up the cache.
+---&gt; 97 return _get_text_metrics_with_cache_impl(
+     98     weakref.ref(renderer), text, fontprop.copy(), ismath, dpi)
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\text.py:105, in _get_text_metrics_with_cache_impl(renderer_ref, text, fontprop, ismath, dpi)
+    101 @functools.lru_cache(4096)
+    102 def _get_text_metrics_with_cache_impl(
+    103         renderer_ref, text, fontprop, ismath, dpi):
+    104     # dpi is unused, but participates in cache invalidation (via the renderer).
+--&gt; 105     return renderer_ref().get_text_width_height_descent(text, fontprop, ismath)
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\backends\backend_agg.py:226, in RendererAgg.get_text_width_height_descent(self, s, prop, ismath)
+    224 _api.check_in_list([&quot;TeX&quot;, True, False], ismath=ismath)
+    225 if ismath == &quot;TeX&quot;:
+--&gt; 226     return super().get_text_width_height_descent(s, prop, ismath)
+    228 if ismath:
+    229     ox, oy, width, height, descent, font_image = \
+    230         self.mathtext_parser.parse(s, self.dpi, prop)
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\backend_bases.py:645, in RendererBase.get_text_width_height_descent(self, s, prop, ismath)
+    641 fontsize = prop.get_size_in_points()
+    643 if ismath == &#39;TeX&#39;:
+    644     # todo: handle properties
+--&gt; 645     return self.get_texmanager().get_text_width_height_descent(
+    646         s, fontsize, renderer=self)
+    648 dpi = self.points_to_pixels(72)
+    649 if ismath:
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\texmanager.py:368, in TexManager.get_text_width_height_descent(cls, tex, fontsize, renderer)
+    366 if tex.strip() == &#39;&#39;:
+    367     return 0, 0, 0
+--&gt; 368 dvifile = cls.make_dvi(tex, fontsize)
+    369 dpi_fraction = renderer.points_to_pixels(1.) if renderer else 1
+    370 with dviread.Dvi(dvifile, 72 * dpi_fraction) as dvi:
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\texmanager.py:300, in TexManager.make_dvi(cls, tex, fontsize)
+    298     with TemporaryDirectory(dir=cwd) as tmpdir:
+    299         tmppath = Path(tmpdir)
+--&gt; 300         cls._run_checked_subprocess(
+    301             [&quot;latex&quot;, &quot;-interaction=nonstopmode&quot;, &quot;--halt-on-error&quot;,
+    302              f&quot;--output-directory={tmppath.name}&quot;,
+    303              f&quot;{texfile.name}&quot;], tex, cwd=cwd)
+    304         (tmppath / Path(dvifile).name).replace(dvifile)
+    305 return dvifile
+
+File ~\mambaforge\envs\pyFin\Lib\site-packages\matplotlib\texmanager.py:263, in TexManager._run_checked_subprocess(cls, command, tex, cwd)
+    259     raise RuntimeError(
+    260         &#39;Failed to process string with tex because {} could not be &#39;
+    261         &#39;found&#39;.format(command[0])) from exc
+    262 except subprocess.CalledProcessError as exc:
+--&gt; 263     raise RuntimeError(
+    264         &#39;{prog} was not able to process the following string:\n&#39;
+    265         &#39;{tex!r}\n\n&#39;
+    266         &#39;Here is the full command invocation and its output:\n\n&#39;
+    267         &#39;{format_command}\n\n&#39;
+    268         &#39;{exc}\n\n&#39;.format(
+    269             prog=command[0],
+    270             format_command=cbook._pformat_subprocess(command),
+    271             tex=tex.encode(&#39;unicode_escape&#39;),
+    272             exc=exc.output.decode(&#39;utf-8&#39;, &#39;backslashreplace&#39;))
+    273         ) from None
+    274 _log.debug(report)
+    275 return report
+
+RuntimeError: latex was not able to process the following string:
+b&#39;\\\\bar x&#39;
+
+Here is the full command invocation and its output:
+
+latex -interaction=nonstopmode --halt-on-error --output-directory=tmp07q51tzt 623ac079189bdbc69ab713c6cd583a76.tex
+
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.4) (preloaded format=latex.fmt)
+ restricted \write18 enabled.
+entering extended mode
+(623ac079189bdbc69ab713c6cd583a76.tex
+LaTeX2e &lt;2022-11-01&gt; patch level 1
+L3 programming layer &lt;2023-03-30&gt;
+(C:\Users\orect\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
+Document Class: article 2022/07/02 v1.4n Standard LaTeX document class
+(C:\Users\orect\AppData\Local\Programs\MiKTeX\tex/latex/base\size10.clo))
+(C:\Users\orect\AppData\Local\Programs\MiKTeX\tex/latex/type1cm\type1cm.sty)
+(C:\Users\orect\AppData\Local\Programs\MiKTeX\tex/latex/cm-super\type1ec.sty
+(C:\Users\orect\AppData\Local\Programs\MiKTeX\tex/latex/base\t1cmr.fd))
+(C:\Users\orect\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty)
+(C:\Users\orect\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
+(C:\Users\orect\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty)
+(C:\Users\orect\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
+(C:\Users\orect\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty))
+(C:\Users\orect\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg))
+
+(C:\Users\orect\AppData\Local\Programs\MiKTeX\tex/latex/underscore\underscore.s
+ty) (C:\Users\orect\AppData\Local\Programs\MiKTeX\tex/latex/base\textcomp.sty)
+(C:\Users\orect\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-dvi
+ps.def)
+No file 623ac079189bdbc69ab713c6cd583a76.aux.
+*geometry* driver: auto-detecting
+*geometry* detected driver: dvips
+! Missing $ inserted.
+&lt;inserted text&gt; 
+                $
+l.29 {\sffamily \bar
+                     x}%
+No pages of output.
+Transcript written on C:\Users\orect\.matplotlib\tex.cache\62\3a\tmp07q51tzt\62
+3ac079189bdbc69ab713c6cd583a76.log.
+
+
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 640x480 with 1 Axes&gt;
+</pre></div>
+</div>
 </div>
 </div>
 <div class="cell docutils container">
@@ -368,7 +1101,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1db35c362493a5e5a4ed2995f9894b1667c4bec7a2e6be8c95fb7fc4c239bd34.png" src="_images/1db35c362493a5e5a4ed2995f9894b1667c4bec7a2e6be8c95fb7fc4c239bd34.png" />
+<img alt="_images/3a1282ea42a179f441ca98b4352b085fc5144e3943ce0b9407b06a40b7644cd0.png" src="_images/3a1282ea42a179f441ca98b4352b085fc5144e3943ce0b9407b06a40b7644cd0.png" />
 </div>
 </div>
 </section>

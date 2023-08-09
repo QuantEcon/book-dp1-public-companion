@@ -96,6 +96,9 @@ def vfi(model):
 
 
 import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
+
+plt.rcParams.update({"text.usetex": True, "font.size": 14})
 
 
 def plot_val(savefig=False,
@@ -228,6 +231,9 @@ def compute_cvf(model):
 
 
 import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
+
+plt.rcParams.update({"text.usetex": True, "font.size": 14})
 
 
 def plot_contours(savefig=False,

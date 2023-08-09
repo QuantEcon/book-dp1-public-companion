@@ -121,6 +121,9 @@ def optimistic_policy_iteration(model, tolerance=1e-5, m=100):
 # == Plots == #
 
 import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
+
+plt.rcParams.update({"text.usetex": True, "font.size": 14})
 
 
 def plot_main(tau_vals=(0.1, 0.25, 0.5, 0.6, 0.7, 0.8), 

@@ -46,6 +46,9 @@ print(np.allclose(A * x̄, (1 + g) * x̄))   # prints true
 # == Plots == #
 
 import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
+
+plt.rcParams.update({"text.usetex": True, "font.size": 14})
 
 
 def plot_paths(figname="../figures/lake_1.pdf", savefig=False):

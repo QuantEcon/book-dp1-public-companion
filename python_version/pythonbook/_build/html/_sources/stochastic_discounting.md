@@ -38,6 +38,9 @@ kernelspec:
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
+
+plt.rcParams.update({"text.usetex": True, "font.size": 14})
 
 df_nominal = pd.read_csv("./data/GS1.csv")
 df_real = pd.read_csv("./data/WFII10.csv")
@@ -117,6 +120,9 @@ def pd_ratio(model):
 
 
 import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
+
+plt.rcParams.update({"text.usetex": True, "font.size": 14})
 
 
 default_model = create_asset_pricing_model()
@@ -297,6 +303,9 @@ def optimistic_policy_iteration(v_init,
 # == Plots == #
 
 import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
+
+plt.rcParams.update({"text.usetex": True, "font.size": 14})
 
 # Create an instance of the model and solve it
 model = create_sdd_inventory_model()

@@ -71,6 +71,9 @@ def compute_rs_utility(model):
 
 
 import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
+
+plt.rcParams.update({"text.usetex": True, "font.size": 14})
 
 
 def plot_v(savefig=False,
@@ -177,6 +180,9 @@ def compute_ez_utility(model):
 
 
 import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
+
+plt.rcParams.update({"text.usetex": True, "font.size": 14})
 
 
 def plot_convergence(savefig=False,

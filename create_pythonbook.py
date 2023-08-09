@@ -143,6 +143,9 @@ try:
                         if "plt.show()" not in line:
                             b.write(line)
 
+                        if "import matplotlib.pyplot as plt" in line:
+                            b.write(line + "\nplt.rcParams.update({\"text.usetex\": True, \"font.size\": 14})\n")
+
                     b.write(f"\n```\n")
 
                     if len(chapter_subs[sub]) > 0:

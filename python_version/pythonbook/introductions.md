@@ -84,6 +84,9 @@ def res_wage(model):
 ##### Plots #####
 
 import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
+
+plt.rcParams.update({"text.usetex": True, "font.size": 14})
 
 
 default_model = create_job_search_model()
@@ -250,6 +253,9 @@ print(np.allclose(x_star, x_star_approx, rtol=1e-5))
 ```{code-cell} python
 :tags: ["hide-input"]
 import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
+
+plt.rcParams.update({"text.usetex": True, "font.size": 14})
 import numpy as np
 
 from linear_iter import x_star, T
@@ -341,6 +347,9 @@ def vfi(model=default_model):
 # == Plots == #
 
 import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
+
+plt.rcParams.update({"text.usetex": True, "font.size": 14})
 
 
 def fig_vseq(model=default_model,

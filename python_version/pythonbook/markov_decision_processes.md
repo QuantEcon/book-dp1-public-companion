@@ -102,6 +102,9 @@ def solve_inventory_model(v_init, model):
 # == Plots == #
 
 import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
+
+plt.rcParams.update({"text.usetex": True, "font.size": 14})
 
 
 # Create an instance of the model and solve it
@@ -369,6 +372,9 @@ gini = lambda v: (2 * sum(i * y for (i, y) in enumerate(v))/sum(v) - (len(v) + 1
 # Plots
 
 import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
+
+plt.rcParams.update({"text.usetex": True, "font.size": 14})
 
 
 def plot_timing(m_vals=np.arange(1, 601, 10),
@@ -649,6 +655,9 @@ def optimistic_policy_iteration(model, tol=1e-5, m=100):
 # Plots
 
 import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
+
+plt.rcParams.update({"text.usetex": True, "font.size": 14})
 
 
 def plot_policy(savefig=False, figname="../figures/finite_lq_0.pdf"):
@@ -841,6 +850,9 @@ def optimistic_policy_iteration(model, tolerance=1e-5, m=100):
 # Plots
 
 import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
+
+plt.rcParams.update({"text.usetex": True, "font.size": 14})
 
 
 def plot_policy(savefig=False,
@@ -1127,6 +1139,9 @@ gini = lambda v: (2 * sum(i * y for (i, y) in enumerate(v))/sum(v) - (len(v) + 1
 
 
 import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
+
+plt.rcParams.update({"text.usetex": True, "font.size": 14})
 
 
 def plot_contours(savefig=False,

@@ -77,6 +77,9 @@ def compute_stationary_dist(model):
 # Plots
 
 import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
+
+plt.rcParams.update({"text.usetex": True, "font.size": 14})
 
 
 default_model = create_inventory_model()
@@ -282,6 +285,9 @@ def policy_iteration(model):
 # == Plots == #
 
 import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
+
+plt.rcParams.update({"text.usetex": True, "font.size": 14})
 
 
 default_model = create_markov_js_model()
@@ -376,6 +382,9 @@ def vfi(model):
 # == Plots == #
 
 import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
+
+plt.rcParams.update({"text.usetex": True, "font.size": 14})
 
 
 default_model = create_js_with_sep_model()
