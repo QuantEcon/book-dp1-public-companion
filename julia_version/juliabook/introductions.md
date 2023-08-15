@@ -10,7 +10,7 @@ kernelspec:
 ---
 
 (Chapter 1: Introductions)=
-```{raw} html
+```{raw} jupyter
 <div id="qe-notebook-header" style="text-align:right;">
         <a href="https://quantecon.org/" title="quantecon.org">
                 <img style="width:250px;display:inline;" src="https://assets.quantecon.org/img/qe-menubar-logo.svg" alt="QuantEcon">
@@ -25,7 +25,7 @@ kernelspec:
 ```
 
 
-```{code-cell} julia-1.9
+```{code-cell} jinja
 :tags: ["remove-cell"]
 using Pkg;
 Pkg.activate("../");
@@ -35,7 +35,7 @@ pygui(:tk);
 ```
 
 #### two_period_job_search.jl
-```{code-cell} julia-1.9
+```{code-cell} jinja
 :tags: ["hide-input"]
 """
 Two period job search in the IID case.
@@ -123,11 +123,11 @@ end
 
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} jinja
 fig_v1(savefig=true)
 ```
 #### compute_spec_rad.jl
-```{code-cell} julia-1.9
+```{code-cell} jinja
 :tags: ["hide-input"]
 using LinearAlgebra                         
 ρ(A) = maximum(abs(λ) for λ in eigvals(A))  # Spectral radius
@@ -137,7 +137,7 @@ print(ρ(A))
 
 ```
 #### power_series.jl
-```{code-cell} julia-1.9
+```{code-cell} jinja
 :tags: ["hide-input"]
 using LinearAlgebra
 
@@ -164,7 +164,7 @@ print(maximum(abs.(B_inverse - power_series(A))))
 
 ```
 #### s_approx.jl
-```{code-cell} julia-1.9
+```{code-cell} jinja
 :tags: ["hide-input"]
 """
 Computes an approximate fixed point of a given operator T 
@@ -204,7 +204,7 @@ end
 
 ```
 #### linear_iter.jl
-```{code-cell} julia-1.9
+```{code-cell} jinja
 :tags: ["hide-input"]
 include("s_approx.jl")
 using LinearAlgebra
@@ -224,7 +224,7 @@ print(isapprox(u_star, u_star_approx, rtol=1e-5))
 
 ```
 #### linear_iter_fig.jl
-```{code-cell} julia-1.9
+```{code-cell} jinja
 :tags: ["hide-input"]
 include("linear_iter.jl")
 using PyPlot
@@ -271,7 +271,7 @@ fig.savefig("../figures/linear_iter_fig_1.pdf")
 
 ```
 #### iid_job_search.jl
-```{code-cell} julia-1.9
+```{code-cell} jinja
 :tags: ["hide-input"]
 """
 VFI approach to job search in the infinite-horizon IID case.
@@ -382,10 +382,10 @@ end
 
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} jinja
 fig_vseq(savefig=true)
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} jinja
 fig_vstar(savefig=true)
 ```

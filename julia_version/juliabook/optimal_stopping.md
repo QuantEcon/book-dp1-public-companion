@@ -10,7 +10,7 @@ kernelspec:
 ---
 
 (Chapter 4: Optimal Stopping)=
-```{raw} html
+```{raw} jupyter
 <div id="qe-notebook-header" style="text-align:right;">
         <a href="https://quantecon.org/" title="quantecon.org">
                 <img style="width:250px;display:inline;" src="https://assets.quantecon.org/img/qe-menubar-logo.svg" alt="QuantEcon">
@@ -25,7 +25,7 @@ kernelspec:
 ```
 
 
-```{code-cell} julia-1.9
+```{code-cell} jinja
 :tags: ["remove-cell"]
 using Pkg;
 Pkg.activate("../");
@@ -35,7 +35,7 @@ pygui(:tk);
 ```
 
 #### firm_exit.jl
-```{code-cell} julia-1.9
+```{code-cell} jinja
 :tags: ["hide-input"]
 """
 Firm valuation with exit option.
@@ -144,15 +144,15 @@ end
 
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} jinja
 plot_val(savefig=true)
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} jinja
 plot_comparison(savefig=true)
 ```
 #### american_option.jl
-```{code-cell} julia-1.9
+```{code-cell} jinja
 :tags: ["hide-input"]
 """
 Valuation for finite-horizon American call options in discrete time.
@@ -308,10 +308,10 @@ end
 
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} jinja
 plot_contours(savefig=true)
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} jinja
 plot_strike(savefig=true)
 ```

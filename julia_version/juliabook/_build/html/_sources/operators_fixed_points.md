@@ -10,7 +10,7 @@ kernelspec:
 ---
 
 (Chapter 2: Operators and Fixed Points)=
-```{raw} html
+```{raw} jupyter
 <div id="qe-notebook-header" style="text-align:right;">
         <a href="https://quantecon.org/" title="quantecon.org">
                 <img style="width:250px;display:inline;" src="https://assets.quantecon.org/img/qe-menubar-logo.svg" alt="QuantEcon">
@@ -25,7 +25,7 @@ kernelspec:
 ```
 
 
-```{code-cell} julia-1.9
+```{code-cell} jinja
 :tags: ["remove-cell"]
 using Pkg;
 Pkg.activate("../");
@@ -35,7 +35,7 @@ pygui(:tk);
 ```
 
 #### lake.jl
-```{code-cell} julia-1.9
+```{code-cell} jinja
 :tags: ["hide-input"]
 using LinearAlgebra
 
@@ -170,10 +170,10 @@ end
 
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} jinja
 plot_paths(savefig=true)
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} jinja
 plot_growth(savefig=true)
 ```

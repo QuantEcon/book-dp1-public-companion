@@ -10,7 +10,7 @@ kernelspec:
 ---
 
 (Chapter 6: Stochastic Discounting)=
-```{raw} html
+```{raw} jupyter
 <div id="qe-notebook-header" style="text-align:right;">
         <a href="https://quantecon.org/" title="quantecon.org">
                 <img style="width:250px;display:inline;" src="https://assets.quantecon.org/img/qe-menubar-logo.svg" alt="QuantEcon">
@@ -25,7 +25,7 @@ kernelspec:
 ```
 
 
-```{code-cell} julia-1.9
+```{code-cell} jinja
 :tags: ["remove-cell"]
 using Pkg;
 Pkg.activate("../");
@@ -35,7 +35,7 @@ pygui(:tk);
 ```
 
 #### plot_interest_rates.jl
-```{code-cell} julia-1.9
+```{code-cell} jinja
 :tags: ["hide-input"]
 # Nominal interest rate from https://fred.stlouisfed.org/series/GS1
 # Real interest rate from https://fred.stlouisfed.org/series/WFII10
@@ -62,15 +62,15 @@ end
 
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} jinja
 plot_rates(df_nominal, savefig=true)
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} jinja
 plot_rates(df_real, savefig=true)
 ```
 #### pd_ratio.jl
-```{code-cell} julia-1.9
+```{code-cell} jinja
 :tags: ["hide-input"]
 """
 Price-dividend ratio in a model with dividend and consumption growth.
@@ -140,11 +140,11 @@ end
 
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} jinja
 plot_main(savefig=true)
 ```
 #### inventory_sdd.jl
-```{code-cell} julia-1.9
+```{code-cell} jinja
 :tags: ["hide-input"]
 """
 Inventory management model with state-dependent discounting.  
@@ -285,6 +285,6 @@ end
 
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} jinja
 plot_ts(savefig=true)
 ```

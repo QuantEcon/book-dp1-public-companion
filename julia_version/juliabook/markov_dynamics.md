@@ -10,7 +10,7 @@ kernelspec:
 ---
 
 (Chapter 3: Markov Dynamics)=
-```{raw} html
+```{raw} jupyter
 <div id="qe-notebook-header" style="text-align:right;">
         <a href="https://quantecon.org/" title="quantecon.org">
                 <img style="width:250px;display:inline;" src="https://assets.quantecon.org/img/qe-menubar-logo.svg" alt="QuantEcon">
@@ -25,7 +25,7 @@ kernelspec:
 ```
 
 
-```{code-cell} julia-1.9
+```{code-cell} jinja
 :tags: ["remove-cell"]
 using Pkg;
 Pkg.activate("../");
@@ -35,7 +35,7 @@ pygui(:tk);
 ```
 
 #### inventory_sim.jl
-```{code-cell} julia-1.9
+```{code-cell} jinja
 :tags: ["hide-input"]
 using Distributions, IterTools, QuantEcon
 
@@ -126,19 +126,19 @@ end
 
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} jinja
 model = create_inventory_model()
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} jinja
 plot_ts(model; savefig=true)
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} jinja
 plot_hist(model; savefig=true)
 ```
 #### is_irreducible.jl
-```{code-cell} julia-1.9
+```{code-cell} jinja
 :tags: ["hide-input"]
 using QuantEcon
 P = [0.1 0.9;
@@ -148,7 +148,7 @@ print(is_irreducible(mc))
 
 ```
 #### laborer_sim.jl
-```{code-cell} julia-1.9
+```{code-cell} jinja
 :tags: ["hide-input"]
 function create_laborer_model(; α=0.3, β=0.2)
     return (; α, β)
@@ -189,7 +189,7 @@ function test_convergence(; k=10_000_000, p=0.5)
 
 ```
 #### markov_js.jl
-```{code-cell} julia-1.9
+```{code-cell} jinja
 :tags: ["hide-input"]
 """
 Infinite-horizon job search with Markov wage draws.
@@ -307,11 +307,11 @@ end
 
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} jinja
 plot_main(savefig=true)
 ```
 #### markov_js_with_sep.jl
-```{code-cell} julia-1.9
+```{code-cell} jinja
 :tags: ["hide-input"]
 """
 Infinite-horizon job search with Markov wage draws and separation.
@@ -441,10 +441,10 @@ end
 
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} jinja
 plot_main(savefig=true)
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} jinja
 plot_w_stars(savefig=true)
 ```

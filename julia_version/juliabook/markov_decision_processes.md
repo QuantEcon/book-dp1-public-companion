@@ -10,7 +10,7 @@ kernelspec:
 ---
 
 (Chapter 5: Markov Decision Processes)=
-```{raw} html
+```{raw} jupyter
 <div id="qe-notebook-header" style="text-align:right;">
         <a href="https://quantecon.org/" title="quantecon.org">
                 <img style="width:250px;display:inline;" src="https://assets.quantecon.org/img/qe-menubar-logo.svg" alt="QuantEcon">
@@ -25,7 +25,7 @@ kernelspec:
 ```
 
 
-```{code-cell} julia-1.9
+```{code-cell} jinja
 :tags: ["remove-cell"]
 using Pkg;
 Pkg.activate("../");
@@ -35,7 +35,7 @@ pygui(:tk);
 ```
 
 #### inventory_dp.jl
-```{code-cell} julia-1.9
+```{code-cell} jinja
 :tags: ["hide-input"]
 include("s_approx.jl")
 using Distributions
@@ -154,15 +154,15 @@ end
 
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} jinja
 plot_vstar_and_opt_policy(savefig=true)
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} jinja
 plot_ts(savefig=true)
 ```
 #### finite_opt_saving_0.jl
-```{code-cell} julia-1.9
+```{code-cell} jinja
 :tags: ["hide-input"]
 using QuantEcon, LinearAlgebra, IterTools
 
@@ -210,7 +210,7 @@ end
 
 ```
 #### finite_opt_saving_1.jl
-```{code-cell} julia-1.9
+```{code-cell} jinja
 :tags: ["hide-input"]
 include("finite_opt_saving_0.jl")
 
@@ -258,7 +258,7 @@ end
 
 ```
 #### finite_opt_saving_2.jl
-```{code-cell} julia-1.9
+```{code-cell} jinja
 :tags: ["hide-input"]
 include("s_approx.jl")
 include("finite_opt_saving_1.jl")
@@ -444,27 +444,27 @@ end
 
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} jinja
 plot_timing(savefig=true)
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} jinja
 plot_policy()
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} jinja
 plot_time_series(savefig=true)
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} jinja
 plot_histogram(savefig=true)
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} jinja
 plot_lorenz(savefig=true)
 ```
 #### finite_lq.jl
-```{code-cell} julia-1.9
+```{code-cell} jinja
 :tags: ["hide-input"]
 using QuantEcon, LinearAlgebra, IterTools
 include("s_approx.jl")
@@ -694,19 +694,19 @@ end
 
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} jinja
 plot_policy()
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} jinja
 plot_sim(savefig=true)
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} jinja
 plot_timing(savefig=true)
 ```
 #### firm_hiring.jl
-```{code-cell} julia-1.9
+```{code-cell} jinja
 :tags: ["hide-input"]
 using QuantEcon, LinearAlgebra, IterTools
 
@@ -883,19 +883,19 @@ end
 
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} jinja
 plot_policy()
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} jinja
 plot_sim(savefig=true)
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} jinja
 plot_growth(savefig=true)
 ```
 #### modified_opt_savings.jl
-```{code-cell} julia-1.9
+```{code-cell} jinja
 :tags: ["hide-input"]
 using QuantEcon, LinearAlgebra, IterTools
 
@@ -1195,22 +1195,22 @@ end
 
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} jinja
 plot_contours(savefig=true)
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} jinja
 plot_policies(savefig=true)
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} jinja
 plot_time_series(savefig=true)
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} jinja
 plot_histogram(savefig=true)
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} jinja
 plot_lorenz(savefig=true)
 ```

@@ -10,7 +10,7 @@ kernelspec:
 ---
 
 (Chapter 7: Nonlinear Valuation)=
-```{raw} html
+```{raw} jupyter
 <div id="qe-notebook-header" style="text-align:right;">
         <a href="https://quantecon.org/" title="quantecon.org">
                 <img style="width:250px;display:inline;" src="https://assets.quantecon.org/img/qe-menubar-logo.svg" alt="QuantEcon">
@@ -25,7 +25,7 @@ kernelspec:
 ```
 
 
-```{code-cell} julia-1.9
+```{code-cell} jinja
 :tags: ["remove-cell"]
 using Pkg;
 Pkg.activate("../");
@@ -35,7 +35,7 @@ pygui(:tk);
 ```
 
 #### rs_utility.jl
-```{code-cell} julia-1.9
+```{code-cell} jinja
 :tags: ["hide-input"]
 include("s_approx.jl")
 using LinearAlgebra, QuantEcon
@@ -122,15 +122,15 @@ end
 
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} jinja
 plot_v(savefig=true)
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} jinja
 plot_multiple_v(savefig=true)
 ```
 #### ez_utility.jl
-```{code-cell} julia-1.9
+```{code-cell} jinja
 :tags: ["hide-input"]
 """
 Epstein--Zin utility: solving the recursion for a given consumption
@@ -276,18 +276,18 @@ end
 
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} jinja
 plot_convergence(savefig=true)
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} jinja
 plot_v(savefig=true)
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} jinja
 vary_gamma(savefig=true)
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} jinja
 vary_alpha(savefig=true)
 ```
