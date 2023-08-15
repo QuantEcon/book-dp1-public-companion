@@ -254,7 +254,17 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>plot_rates (generic function with 1 method)
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">ArgumentError</span>: &quot;data/GS1.csv&quot; is not a valid file or doesn&#39;t exist
+
+<span class="ne">Stacktrace</span>:
+ <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">CSV</span><span class="o">.</span><span class="n">Context</span><span class="p">(</span><span class="n">source</span><span class="p">::</span><span class="n">CSV</span><span class="o">.</span><span class="n">Arg</span><span class="p">,</span> <span class="n">header</span><span class="p">::</span><span class="n">CSV</span><span class="o">.</span><span class="n">Arg</span><span class="p">,</span> <span class="n">normalizenames</span><span class="p">::</span><span class="n">CSV</span><span class="o">.</span><span class="n">Arg</span><span class="p">,</span> <span class="n">datarow</span><span class="p">::</span><span class="n">CSV</span><span class="o">.</span><span class="n">Arg</span><span class="p">,</span> <span class="n">skipto</span><span class="p">::</span><span class="n">CSV</span><span class="o">.</span><span class="n">Arg</span><span class="p">,</span> <span class="n">footerskip</span><span class="p">::</span><span class="n">CSV</span><span class="o">.</span><span class="n">Arg</span><span class="p">,</span> <span class="n">transpose</span><span class="p">::</span><span class="n">CSV</span><span class="o">.</span><span class="n">Arg</span><span class="p">,</span> <span class="n">comment</span><span class="p">::</span><span class="n">CSV</span><span class="o">.</span><span class="n">Arg</span><span class="p">,</span> <span class="n">ignoreemptyrows</span><span class="p">::</span><span class="n">CSV</span><span class="o">.</span><span class="n">Arg</span><span class="p">,</span> <span class="n">ignoreemptylines</span><span class="p">::</span><span class="n">CSV</span><span class="o">.</span><span class="n">Arg</span><span class="p">,</span> <span class="n">select</span><span class="p">::</span><span class="n">CSV</span><span class="o">.</span><span class="n">Arg</span><span class="p">,</span> <span class="n">drop</span><span class="p">::</span><span class="n">CSV</span><span class="o">.</span><span class="n">Arg</span><span class="p">,</span> <span class="n">limit</span><span class="p">::</span><span class="n">CSV</span><span class="o">.</span><span class="n">Arg</span><span class="p">,</span> <span class="n">buffer_in_memory</span><span class="p">::</span><span class="n">CSV</span><span class="o">.</span><span class="n">Arg</span><span class="p">,</span> <span class="n">threaded</span><span class="p">::</span><span class="n">CSV</span><span class="o">.</span><span class="n">Arg</span><span class="p">,</span> <span class="n">ntasks</span><span class="p">::</span><span class="n">CSV</span><span class="o">.</span><span class="n">Arg</span><span class="p">,</span> <span class="n">tasks</span><span class="p">::</span><span class="n">CSV</span><span class="o">.</span><span class="n">Arg</span><span class="p">,</span> <span class="n">rows_to_check</span><span class="p">::</span><span class="n">CSV</span><span class="o">.</span><span class="n">Arg</span><span class="p">,</span> <span class="n">lines_to_check</span><span class="p">::</span><span class="n">CSV</span><span class="o">.</span><span class="n">Arg</span><span class="p">,</span> <span class="n">missingstrings</span><span class="p">::</span><span class="n">CSV</span><span class="o">.</span><span class="n">Arg</span><span class="p">,</span> <span class="n">missingstring</span><span class="p">::</span><span class="n">CSV</span><span class="o">.</span><span class="n">Arg</span><span class="p">,</span> <span class="n">delim</span><span class="p">::</span><span class="n">CSV</span><span class="o">.</span><span class="n">Arg</span><span class="p">,</span> <span class="n">ignorerepeated</span><span class="p">::</span><span class="n">CSV</span><span class="o">.</span><span class="n">Arg</span><span class="p">,</span> <span class="n">quoted</span><span class="p">::</span><span class="n">CSV</span><span class="o">.</span><span class="n">Arg</span><span class="p">,</span> <span class="n">quotechar</span><span class="p">::</span><span class="n">CSV</span><span class="o">.</span><span class="n">Arg</span><span class="p">,</span> <span class="n">openquotechar</span><span class="p">::</span><span class="n">CSV</span><span class="o">.</span><span class="n">Arg</span><span class="p">,</span> <span class="n">closequotechar</span><span class="p">::</span><span class="n">CSV</span><span class="o">.</span><span class="n">Arg</span><span class="p">,</span> <span class="n">escapechar</span><span class="p">::</span><span class="n">CSV</span><span class="o">.</span><span class="n">Arg</span><span class="p">,</span> <span class="n">dateformat</span><span class="p">::</span><span class="n">CSV</span><span class="o">.</span><span class="n">Arg</span><span class="p">,</span> <span class="n">dateformats</span><span class="p">::</span><span class="n">CSV</span><span class="o">.</span><span class="n">Arg</span><span class="p">,</span> <span class="n">decimal</span><span class="p">::</span><span class="n">CSV</span><span class="o">.</span><span class="n">Arg</span><span class="p">,</span> <span class="n">groupmark</span><span class="p">::</span><span class="n">CSV</span><span class="o">.</span><span class="n">Arg</span><span class="p">,</span> <span class="n">truestrings</span><span class="p">::</span><span class="n">CSV</span><span class="o">.</span><span class="n">Arg</span><span class="p">,</span> <span class="n">falsestrings</span><span class="p">::</span><span class="n">CSV</span><span class="o">.</span><span class="n">Arg</span><span class="p">,</span> <span class="n">stripwhitespace</span><span class="p">::</span><span class="n">CSV</span><span class="o">.</span><span class="n">Arg</span><span class="p">,</span> <span class="nb">type</span><span class="p">::</span><span class="n">CSV</span><span class="o">.</span><span class="n">Arg</span><span class="p">,</span> <span class="n">types</span><span class="p">::</span><span class="n">CSV</span><span class="o">.</span><span class="n">Arg</span><span class="p">,</span> <span class="n">typemap</span><span class="p">::</span><span class="n">CSV</span><span class="o">.</span><span class="n">Arg</span><span class="p">,</span> <span class="n">pool</span><span class="p">::</span><span class="n">CSV</span><span class="o">.</span><span class="n">Arg</span><span class="p">,</span> <span class="n">downcast</span><span class="p">::</span><span class="n">CSV</span><span class="o">.</span><span class="n">Arg</span><span class="p">,</span> <span class="n">lazystrings</span><span class="p">::</span><span class="n">CSV</span><span class="o">.</span><span class="n">Arg</span><span class="p">,</span> <span class="n">stringtype</span><span class="p">::</span><span class="n">CSV</span><span class="o">.</span><span class="n">Arg</span><span class="p">,</span> <span class="n">strict</span><span class="p">::</span><span class="n">CSV</span><span class="o">.</span><span class="n">Arg</span><span class="p">,</span> <span class="n">silencewarnings</span><span class="p">::</span><span class="n">CSV</span><span class="o">.</span><span class="n">Arg</span><span class="p">,</span> <span class="n">maxwarnings</span><span class="p">::</span><span class="n">CSV</span><span class="o">.</span><span class="n">Arg</span><span class="p">,</span> <span class="n">debug</span><span class="p">::</span><span class="n">CSV</span><span class="o">.</span><span class="n">Arg</span><span class="p">,</span> <span class="n">parsingdebug</span><span class="p">::</span><span class="n">CSV</span><span class="o">.</span><span class="n">Arg</span><span class="p">,</span> <span class="n">validate</span><span class="p">::</span><span class="n">CSV</span><span class="o">.</span><span class="n">Arg</span><span class="p">,</span> <span class="n">streaming</span><span class="p">::</span><span class="n">CSV</span><span class="o">.</span><span class="n">Arg</span><span class="p">)</span>
+   <span class="o">@</span> <span class="n">CSV</span> <span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">orect</span>\<span class="o">.</span><span class="n">julia</span>\<span class="n">packages</span>\<span class="n">CSV</span>\<span class="n">OnldF</span>\<span class="n">src</span>\<span class="n">context</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">314</span>
+ <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="c1">#File#32</span>
+   <span class="o">@</span> <span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">orect</span>\<span class="o">.</span><span class="n">julia</span>\<span class="n">packages</span>\<span class="n">CSV</span>\<span class="n">OnldF</span>\<span class="n">src</span>\<span class="n">file</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">222</span> <span class="p">[</span><span class="n">inlined</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="n">CSV</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">source</span><span class="p">::</span><span class="n">String</span><span class="p">)</span>
+   <span class="o">@</span> <span class="n">CSV</span> <span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">orect</span>\<span class="o">.</span><span class="n">julia</span>\<span class="n">packages</span>\<span class="n">CSV</span>\<span class="n">OnldF</span>\<span class="n">src</span>\<span class="n">file</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">162</span>
+ <span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="n">top</span><span class="o">-</span><span class="n">level</span> <span class="n">scope</span>
+   <span class="o">@</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span><span class="mi">9</span>
 </pre></div>
 </div>
 </div>
@@ -266,7 +276,13 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b53e080113bc47640cfdfd3206882adebd631d739e6dc3759bc049346e37a54d.png" src="_images/b53e080113bc47640cfdfd3206882adebd631d739e6dc3759bc049346e37a54d.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">UndefVarError</span>: `plot_rates` not defined
+
+<span class="ne">Stacktrace</span>:
+ <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">top</span><span class="o">-</span><span class="n">level</span> <span class="n">scope</span>
+   <span class="o">@</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span><span class="mi">1</span>
+</pre></div>
+</div>
 </div>
 </div>
 <div class="cell docutils container">
@@ -276,7 +292,13 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1880a039697c1e15946e6ab6d46fa8c060a6f4a513df4115f667f70ed69821a0.png" src="_images/1880a039697c1e15946e6ab6d46fa8c060a6f4a513df4115f667f70ed69821a0.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">UndefVarError</span>: `plot_rates` not defined
+
+<span class="ne">Stacktrace</span>:
+ <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">top</span><span class="o">-</span><span class="n">level</span> <span class="n">scope</span>
+   <span class="o">@</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">]:</span><span class="mi">1</span>
+</pre></div>
+</div>
 </div>
 </div>
 </section>
@@ -595,9 +617,6 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Terminated successfully in 563 iterations.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>plot_ts (generic function with 1 method)
 </pre></div>
 </div>
@@ -610,7 +629,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/162e776a8c68da071279e3980321dc3e0ac61e1e5b06eca90d321e9b7b11503b.png" src="_images/162e776a8c68da071279e3980321dc3e0ac61e1e5b06eca90d321e9b7b11503b.png" />
+<img alt="_images/a25b737cf112b12da4084c5ca82a1f382193aa8d41bffeab1f9885ee6a13134c.png" src="_images/a25b737cf112b12da4084c5ca82a1f382193aa8d41bffeab1f9885ee6a13134c.png" />
 </div>
 </div>
 </section>
