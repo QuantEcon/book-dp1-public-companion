@@ -52,7 +52,7 @@ sphinx:
     tojupyter_target_html: true
     #tojupyter_urlpath: "https://python-programming.quantecon.org/"
     #tojupyter_image_urlpath: "https://python-programming.quantecon.org/_static/"
-    tojupyter_lang_synonyms: ["julia-1.9"]
+    tojupyter_lang_synonyms: ["julia-1.9", "julia", "jinja"]
     tojupyter_kernels:
       julia:
         kernelspec:
