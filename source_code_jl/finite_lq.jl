@@ -151,7 +151,7 @@ function plot_policy()
     plt.show()
 end
 
-function plot_sim(; savefig=false, figname="../figures/finite_lq_1.pdf")
+function plot_sim(; savefig=false, figname="figures/finite_lq_1.pdf")
     ts_length = 200
 
     fig, axes = plt.subplots(4, 1, figsize=(9, 11.2))
@@ -191,7 +191,7 @@ end
 
 function plot_timing(; m_vals=collect(range(1, 600, step=10)),
                    savefig=false,
-                   figname="../figures/finite_lq_time.pdf"
+                   figname="figures/finite_lq_time.pdf"
     )
     model = create_investment_model()
     #println("Running Howard policy iteration.")

@@ -157,7 +157,7 @@ def optimistic_policy_iteration(model, tol=1e-5, m=100):
 import matplotlib.pyplot as plt
 
 
-def plot_policy(savefig=False, figname="../figures/finite_lq_0.pdf"):
+def plot_policy(savefig=False, figname="figures/finite_lq_0.pdf"):
     model = create_investment_model()
     β, a_0, a_1, γ, c, y_grid, z_grid, Q = model
     σ_star = optimistic_policy_iteration(model)
@@ -171,7 +171,7 @@ def plot_policy(savefig=False, figname="../figures/finite_lq_0.pdf"):
         fig.savefig(figname)
 
 
-def plot_sim(savefig=False, figname="../figures/finite_lq_1.pdf"):
+def plot_sim(savefig=False, figname="figures/finite_lq_1.pdf"):
     ts_length = 200
 
     fig, axes = plt.subplots(4, 1, figsize=(9, 11.2))
@@ -209,7 +209,7 @@ def plot_sim(savefig=False, figname="../figures/finite_lq_1.pdf"):
 
 def plot_timing(m_vals=np.arange(1, 601, 10),
                 savefig=False,
-                figname="../figures/finite_lq_time.pdf"
+                figname="figures/finite_lq_time.pdf"
     ):
     # NOTE: Uncomment the following lines in this function to
     # include Policy iteration plot

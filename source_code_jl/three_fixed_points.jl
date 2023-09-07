@@ -35,7 +35,7 @@ for (fp, lb, coord) in zip(fps, fps_labels, coords)
              arrowprops=Dict("arrowstyle"=>"->"))
 end
     
-#plt.savefig("../figures/three_fixed_points.pdf")
+#plt.savefig("figures/three_fixed_points.pdf")
 
 plt.show()
 

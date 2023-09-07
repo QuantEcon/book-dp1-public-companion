@@ -77,7 +77,7 @@ import matplotlib.pyplot as plt
 
 
 def plot_contours(savefig=False,
-                  figname="../figures/american_option_1.pdf"):
+                  figname="figures/american_option_1.pdf"):
 
     model = create_american_option_model()
     t_vals, z_vals, w_vals, Q, φ, T, β, K = model
@@ -110,7 +110,7 @@ def plot_contours(savefig=False,
 
 def plot_strike(savefig=False,
                 fontsize=9,
-                figname="../figures/american_option_2.pdf"):
+                figname="figures/american_option_2.pdf"):
     model = create_american_option_model()
     t_vals, z_vals, w_vals, Q, φ, T, β, K = model
     h_star = compute_cvf(model)
