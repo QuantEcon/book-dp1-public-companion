@@ -68,7 +68,7 @@ import matplotlib.pyplot as plt
 
 
 def plot_val(savefig=False,
-             figname="../figures/firm_exit_1.pdf"):
+             figname="./figures/firm_exit_1.pdf"):
 
     fig, ax = plt.subplots(figsize=(9, 5.2))
 
@@ -91,7 +91,7 @@ def plot_val(savefig=False,
 
 
 def plot_comparison(savefig=False,
-                    figname="../figures/firm_exit_2.pdf"):
+                    figname="./figures/firm_exit_2.pdf"):
 
     fig, ax = plt.subplots(figsize=(9, 5.2))
 

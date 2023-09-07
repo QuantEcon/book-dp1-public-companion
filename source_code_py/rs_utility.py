@@ -43,7 +43,7 @@ import matplotlib.pyplot as plt
 
 
 def plot_v(savefig=False,
-           figname="../figures/rs_utility_1.pdf"):
+           figname="./figures/rs_utility_1.pdf"):
 
     fig, ax = plt.subplots(figsize=(10, 5.2))
     model = create_rs_utility_model()
@@ -67,7 +67,7 @@ def plot_v(savefig=False,
 
 
 def plot_multiple_v(savefig=False,
-                    figname="../figures/rs_utility_2.pdf"):
+                    figname="./figures/rs_utility_2.pdf"):
 
     fig, ax = plt.subplots(figsize=(10, 5.2))
     σ_vals = 0.05, 0.1

@@ -46,7 +46,7 @@ PyPlot.matplotlib[:rc]("text", usetex=true) # allow tex rendering
 
 
 function plot_ts(model; fontsize=16, 
-                   figname="../figures/inventory_sim_1.pdf",
+                   figname="./figures/inventory_sim_1.pdf",
                    savefig=false)
     (; S, s, p, ϕ, h) = model
     X = sim_inventories(model)
@@ -65,7 +65,7 @@ end
 
 
 function plot_hist(model; fontsize=16, 
-                   figname="../figures/inventory_sim_2.pdf",
+                   figname="./figures/inventory_sim_2.pdf",
                    savefig=false)
     (; S, s, p, ϕ, h) = model
     state_values, ψ_star = compute_stationary_dist(model) 

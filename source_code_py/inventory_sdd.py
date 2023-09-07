@@ -171,7 +171,7 @@ def sim_inventories(ts_length, X_init=0):
 
 def plot_ts(ts_length=400,
             fontsize=10,
-            figname="../figures/inventory_sdd_ts.pdf",
+            figname="./figures/inventory_sdd_ts.pdf",
             savefig=False):
     
     X, Z = sim_inventories(ts_length)
@@ -221,5 +221,5 @@ def plot_timing(m_vals=np.arange(1, 400, 10),
     ax.set_ylabel("time", fontsize=fontsize)
     plt.show()
     if savefig:
-        fig.savefig("../figures/inventory_sdd_timing.pdf")
+        fig.savefig("./figures/inventory_sdd_timing.pdf")
     return (opi_time, vfi_time, opi_times)

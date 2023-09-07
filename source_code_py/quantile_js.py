@@ -62,7 +62,7 @@ import matplotlib.pyplot as plt
 
 def plot_main(tau_vals=(0.1, 0.25, 0.5, 0.6, 0.7, 0.8), 
                      savefig=False, 
-                     figname="../figures/quantile_js.pdf"):
+                     figname="./figures/quantile_js.pdf"):
 
     w_star_vals = np.zeros(len(tau_vals))
 

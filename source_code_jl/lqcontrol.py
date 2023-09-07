@@ -111,7 +111,7 @@ lc1 = LifeCycle()
 fig, axes = plt.subplots(1, 2, figsize=(10, 3.25))
 lc1.plot(axes[0], axes[1])
 
-plt.savefig("../figures/lqcontrol_1.pdf")
+plt.savefig("./figures/lqcontrol_1.pdf")
 plt.show()
 
 
@@ -121,7 +121,7 @@ lc2 = LifeCycle(β=0.962)
 fig, axes = plt.subplots(1, 2, figsize=(10, 3.25))
 lc2.plot(axes[0], axes[1])
 
-plt.savefig("../figures/lqcontrol_2.pdf")
+plt.savefig("./figures/lqcontrol_2.pdf")
 plt.show()
 
 
@@ -131,7 +131,7 @@ lc3 = LifeCycle(β=0.96)
 fig, axes = plt.subplots(1, 2, figsize=(10, 3.25))
 lc3.plot(axes[0], axes[1])
 
-plt.savefig("../figures/lqcontrol_3.pdf")
+plt.savefig("./figures/lqcontrol_3.pdf")
 plt.show()
 
 

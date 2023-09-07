@@ -129,6 +129,4 @@ dmypy.json
 .pyre/
 
 .vscode/
-source_code_py/temp.ipynb
-python_version/pythonbook/_build
-julia_version/juliabook/_build
+code-book/_build

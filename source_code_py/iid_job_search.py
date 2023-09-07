@@ -49,7 +49,7 @@ import matplotlib.pyplot as plt
 def fig_vseq(model=default_model,
                 k=3,
                 savefig=False,
-                figname="../figures/iid_job_search_1.pdf",
+                figname="./figures/iid_job_search_1.pdf",
                 fs=10):
 
     v = np.zeros_like(model.w_vals)
@@ -78,7 +78,7 @@ def fig_vseq(model=default_model,
 
 def fig_vstar(model=default_model,
               savefig=False, fs=10,
-              figname="../figures/iid_job_search_3.pdf"):
+              figname="./figures/iid_job_search_3.pdf"):
     """ Plot the fixed point. """
     n, w_vals, φ, β, c = model
     v_star, σ_star = vfi(model)

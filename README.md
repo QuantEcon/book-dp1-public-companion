@@ -14,3 +14,13 @@ The easiest way to provide feedback is to open an issue above.
 
 The repo also contains all of the Julia and Python code found in the code snippets within
 the textbook, as well as Julia and Python code to reproduce all figures.
+
+## Codebooks
+
+The repo contains a Jupyter Book with all code and figures used in the book. To build it locally, 
+
+1. Clone the repo
+2. Create an environment using `environment.yml`
+3. Run `python3 create_code_book.py` from the root directory of the repo. This should take a few minutes to finish running.
+
+
