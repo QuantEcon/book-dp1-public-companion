@@ -8,22 +8,22 @@ root: intro
 parts: 
   - caption: Julia Codebooks
     chapters:
-    - file: introductions_julia
-    - file: operators_fixed_points_julia
-    - file: markov_dynamics_julia
-    - file: optimal_stopping_julia
-    - file: markov_decision_processes_julia
-    - file: stochastic_discounting_julia
-    - file: nonlinear_valuation_julia
-    - file: recursive_decision_processes_julia
+    - file: jl/introductions
+    - file: jl/operators_fixed_points
+    - file: jl/markov_dynamics
+    - file: jl/optimal_stopping
+    - file: jl/markov_decision_processes
+    - file: jl/stochastic_discounting
+    - file: jl/nonlinear_valuation
+    - file: jl/recursive_decision_processes
   - caption: Python Codebooks
     chapters:
-    - file: introductions_python
-    - file: operators_fixed_points_python
-    - file: markov_dynamics_python
-    - file: optimal_stopping_python
-    - file: markov_decision_processes_python
-    - file: stochastic_discounting_python
-    - file: nonlinear_valuation_python
-    - file: recursive_decision_processes_python
+    - file: py/introductions
+    - file: py/operators_fixed_points
+    - file: py/markov_dynamics
+    - file: py/optimal_stopping
+    - file: py/markov_decision_processes
+    - file: py/stochastic_discounting
+    - file: py/nonlinear_valuation
+    - file: py/recursive_decision_processes
 

@@ -3,7 +3,8 @@ import shutil
 
 julia_src_dir = './source_code_jl/'
 python_src_dir = './source_code_py/'
-root_dst_dir = './code-book/'
+julia_dst_dir = './code-book/jl/'
+python_dst_dir = './code-book/py/'
 
 def remove_files(root_src_dir, root_dst_dir):
     for file in os.listdir(root_src_dir):
@@ -14,7 +15,7 @@ def remove_files(root_src_dir, root_dst_dir):
 
 #################################### Julia Version #################################################
 
-shutil.copytree(julia_src_dir, root_dst_dir, dirs_exist_ok=True)
+shutil.copytree(julia_src_dir, julia_dst_dir, dirs_exist_ok=True)
 
 header = """---
 jupytext:
@@ -133,7 +134,7 @@ try:
         chapter_name = chapter_meta[chapter]["name"]
         chapter_subs = chapter_meta[chapter]["subs"]
 
-        with open(f"./code-book/{chapter}_julia.md", "w", encoding='utf-8') as b:
+        with open(f"./code-book/jl/{chapter}.md", "w", encoding='utf-8') as b:
             new_header = header.replace("placeholder_text", chapter_name)
             b.write(new_header)
             b.write(f"# {chapter_name}\n\n")
@@ -145,7 +146,7 @@ try:
             b.write("\n")
 
             for sub in chapter_subs.keys():
-                with open(f"./code-book/{sub}", "r", encoding='utf-8') as g:
+                with open(f"./code-book/jl/{sub}", "r", encoding='utf-8') as g:
 
                     b.write(f"#### {sub}\n")
                     b.write(f"```{{code-cell}} julia-1.9\n")
@@ -166,7 +167,7 @@ try:
                             b.write(code)
 except Exception as e:
     print("Error in Julia markdown generation: " + str(e))
-    remove_files(julia_src_dir, root_dst_dir)
+    remove_files(julia_src_dir, julia_dst_dir)
     print("Failed! - Directory cleaned")
     exit(1)
 
@@ -174,7 +175,7 @@ except Exception as e:
 
 #################################### Python Version #################################################
 
-shutil.copytree(python_src_dir, root_dst_dir, dirs_exist_ok=True)
+shutil.copytree(python_src_dir, python_dst_dir, dirs_exist_ok=True)
 
 header = """---
 jupytext:
@@ -282,7 +283,7 @@ try:
         chapter_name = chapter_meta[chapter]["name"]
         chapter_subs = chapter_meta[chapter]["subs"]
 
-        with open(f"./code-book/{chapter}_python.md", "w", encoding='utf-8') as b:
+        with open(f"./code-book/py/{chapter}.md", "w", encoding='utf-8') as b:
             new_header = header.replace("placeholder_text", chapter_name)
             b.write(new_header)
             b.write(f"# {chapter_name}\n\n")
@@ -292,7 +293,7 @@ try:
             b.write("\n")
 
             for sub in chapter_subs.keys():
-                with open(f"./code-book/{sub}", "r", encoding='utf-8') as g:
+                with open(f"./code-book/py/{sub}", "r", encoding='utf-8') as g:
 
                     b.write(f"#### {sub}\n")
                     b.write(f"```{{code-cell}} python3\n")
@@ -316,8 +317,8 @@ try:
                             b.write(code)
 except Exception as e:
     print("Error in Python markdown generation: " + str(e))
-    remove_files(julia_src_dir, root_dst_dir)
-    remove_files(python_src_dir, root_dst_dir)
+    remove_files(julia_src_dir, julia_dst_dir)
+    remove_files(python_src_dir, python_dst_dir)
     print("Failed! - Directory cleaned")
     exit(1)
 
@@ -325,13 +326,13 @@ except Exception as e:
 
 try:
     os.system("jupyter-book build ./code-book/")
-    remove_files(python_src_dir, root_dst_dir)
-    remove_files(julia_src_dir, root_dst_dir)
+    remove_files(python_src_dir, python_dst_dir)
+    remove_files(julia_src_dir, julia_dst_dir)
     print("Success!")
     exit(0)
 except Exception as e:
     print("Error in building Jupyter Book: " + str(e))
-    remove_files(python_src_dir, root_dst_dir)
-    remove_files(julia_src_dir, root_dst_dir)
+    remove_files(python_src_dir, python_dst_dir)
+    remove_files(julia_src_dir, julia_dst_dir)
     print("Failed! - Directory cleaned")
     exit(1)
