@@ -119,7 +119,7 @@ chapter_meta = {
 
 
 pkg = """```{code-cell} julia-1.9
-:tags: [\"remove-input\"]
+:tags: [\"remove-cell\"]
 using Pkg;
 Pkg.activate(\"./\");
 
