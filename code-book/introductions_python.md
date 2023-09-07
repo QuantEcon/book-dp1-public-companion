@@ -102,7 +102,7 @@ def fig_dist(model=default_model, fs=10):
 
 
 def fig_v1(model=default_model, savefig=False,
-                  figname="./figures/iid_job_search_0_py.pdf", fs=18):
+                  figname="figures/iid_job_search_0_py.pdf", fs=18):
     """
     Plot two-period value function and res wage
     """
@@ -295,7 +295,7 @@ ax.set_yticks((3.0, 4.0, 5.0, 6.0))
 ax.set_xlim(1.8, 3.2)
 ax.set_ylim(2.8, 6.1)
 
-fig.savefig("./figures/linear_iter_fig_1.pdf")
+fig.savefig("figures/linear_iter_fig_1.pdf")
 
 ```
 #### iid_job_search.py
@@ -355,7 +355,7 @@ plt.rcParams.update({"text.usetex": True, "font.size": 14})
 def fig_vseq(model=default_model,
                 k=3,
                 savefig=False,
-                figname="./figures/iid_job_search_1.pdf",
+                figname="figures/iid_job_search_1.pdf",
                 fs=10):
 
     v = np.zeros_like(model.w_vals)
@@ -383,7 +383,7 @@ def fig_vseq(model=default_model,
 
 def fig_vstar(model=default_model,
               savefig=False, fs=10,
-              figname="./figures/iid_job_search_3.pdf"):
+              figname="figures/iid_job_search_3.pdf"):
     """ Plot the fixed point. """
     n, w_vals, φ, β, c = model
     v_star, σ_star = vfi(model)

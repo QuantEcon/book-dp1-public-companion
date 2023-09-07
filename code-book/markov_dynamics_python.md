@@ -86,7 +86,7 @@ default_model = create_inventory_model()
 
 
 def plot_ts(model, fontsize=16,
-                   figname="./figures/inventory_sim_1.pdf",
+                   figname="figures/inventory_sim_1.pdf",
                    savefig=False):
     S, s, p, φ, h = model
     X = sim_inventories(model)
@@ -103,7 +103,7 @@ def plot_ts(model, fontsize=16,
 
 
 def plot_hist(model, fontsize=16,
-                   figname="./figures/inventory_sim_2.pdf",
+                   figname="figures/inventory_sim_2.pdf",
                    savefig=False):
     S, s, p, φ, h = model
     state_values, ψ_star = compute_stationary_dist(model)
@@ -296,7 +296,7 @@ default_model = create_markov_js_model()
 def plot_main(model=default_model,
                method="vfi",
                savefig=False,
-               figname="./figures/markov_js_vfix.png"):
+               figname="figures/markov_js_vfix.png"):
     n, w_vals, P, β, c = model
 
     if method == "vfi":
@@ -392,7 +392,7 @@ default_model = create_js_with_sep_model()
 
 def plot_main(model=default_model,
               savefig=False,
-              figname="./figures/markov_js_with_sep_1.pdf"):
+              figname="figures/markov_js_with_sep_1.pdf"):
     n, w_vals, P, β, c, α = model
     v_star, σ_star = vfi(model)
 
@@ -422,7 +422,7 @@ def plot_main(model=default_model,
 
 def plot_w_stars(α_vals=np.linspace(0.0, 1.0, 10),
                  savefig=False,
-                 figname="./figures/markov_js_with_sep_2.pdf"):
+                 figname="figures/markov_js_with_sep_2.pdf"):
 
     w_star_vec = np.empty_like(α_vals)
     for (i_α, α) in enumerate(α_vals):

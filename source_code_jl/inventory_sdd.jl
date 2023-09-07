@@ -108,7 +108,7 @@ end
 
 function plot_ts(; ts_length=400,
                    fontsize=16, 
-                   figname="./figures/inventory_sdd_ts.pdf",
+                   figname="figures/inventory_sdd_ts.pdf",
                    savefig=false)
     X, Z = sim_inventories(ts_length)
     fig, axes = plt.subplots(2, 1, figsize=(9, 5.5))

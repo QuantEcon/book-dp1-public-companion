@@ -91,7 +91,7 @@ end
 
 " Plot two-period value function and res wage. "
 function fig_v1(model=default_model; savefig=false, 
-                  figname="./figures/iid_job_search_0.pdf", fs=18)
+                  figname="figures/iid_job_search_0.pdf", fs=18)
 
     (; n, w_vals, ϕ, β, c) = model
 
@@ -266,7 +266,7 @@ ax.set_yticks((3.0, 4.0, 5.0, 6.0))
 ax.set_xlim(1.8, 3.2)
 ax.set_ylim(2.8, 6.1)
 
-fig.savefig("./figures/linear_iter_fig_1.pdf")
+fig.savefig("figures/linear_iter_fig_1.pdf")
 
 
 ```
@@ -318,7 +318,7 @@ default_model = create_job_search_model()
 function fig_vseq(model=default_model; 
                     k=3, 
                     savefig=false, 
-                    figname="./figures/iid_job_search_1.pdf",
+                    figname="figures/iid_job_search_1.pdf",
                     fs=16)
 
     v = zero(model.w_vals)  
@@ -348,7 +348,7 @@ end
 " Plot the fixed point. "
 function fig_vstar(model=default_model; 
                    savefig=false, fs=18,
-                   figname="./figures/iid_job_search_3.pdf")
+                   figname="figures/iid_job_search_3.pdf")
 
     (; n, w_vals, ϕ, β, c) = model
     v_star, σ_star = vfi(model)

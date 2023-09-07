@@ -56,7 +56,7 @@ function plot_rates(df; fontsize=16, savefig=true)
     ax.set_xlim(df[1, 1], df[end, 1])
     ax.legend(fontsize=fontsize, frameon=false)
     if savefig
-        fig.savefig("./figures/plot_interest_rates_"*r_type*".pdf")
+        fig.savefig("figures/plot_interest_rates_"*r_type*".pdf")
     end
 end
 
@@ -120,7 +120,7 @@ default_model = create_asset_pricing_model()
 
 function plot_main(; μ_d_vals = (0.02, 0.08),
                      savefig=false, 
-                     figname="./figures/pd_ratio_1.pdf")
+                     figname="figures/pd_ratio_1.pdf")
     fig, ax = plt.subplots(figsize=(9, 5.2))
 
     for μ_d in μ_d_vals
@@ -256,7 +256,7 @@ end
 
 function plot_ts(; ts_length=400,
                    fontsize=16, 
-                   figname="./figures/inventory_sdd_ts.pdf",
+                   figname="figures/inventory_sdd_ts.pdf",
                    savefig=false)
     X, Z = sim_inventories(ts_length)
     fig, axes = plt.subplots(2, 1, figsize=(9, 5.5))

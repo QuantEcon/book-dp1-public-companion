@@ -102,7 +102,7 @@ plt.rcParams.update({"text.usetex": True, "font.size": 14})
 
 
 def plot_val(savefig=False,
-             figname="./figures/firm_exit_1.pdf"):
+             figname="figures/firm_exit_1.pdf"):
 
     fig, ax = plt.subplots(figsize=(9, 5.2))
 
@@ -124,7 +124,7 @@ def plot_val(savefig=False,
 
 
 def plot_comparison(savefig=False,
-                    figname="./figures/firm_exit_2.pdf"):
+                    figname="figures/firm_exit_2.pdf"):
 
     fig, ax = plt.subplots(figsize=(9, 5.2))
 
@@ -237,7 +237,7 @@ plt.rcParams.update({"text.usetex": True, "font.size": 14})
 
 
 def plot_contours(savefig=False,
-                  figname="./figures/american_option_1.pdf"):
+                  figname="figures/american_option_1.pdf"):
 
     model = create_american_option_model()
     t_vals, z_vals, w_vals, Q, φ, T, β, K = model
@@ -269,7 +269,7 @@ def plot_contours(savefig=False,
 
 def plot_strike(savefig=False,
                 fontsize=9,
-                figname="./figures/american_option_2.pdf"):
+                figname="figures/american_option_2.pdf"):
     model = create_american_option_model()
     t_vals, z_vals, w_vals, Q, φ, T, β, K = model
     h_star = compute_cvf(model)

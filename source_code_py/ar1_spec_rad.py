@@ -74,7 +74,7 @@ import matplotlib.pyplot as plt
 
 def plot_beta_sim(T=80,
                   savefig=True,
-                  figname="./figures/ar1_spec_rad.png"):
+                  figname="figures/ar1_spec_rad.png"):
     β_vals = np.zeros(T)
     Z = 1
     for t in range(T):

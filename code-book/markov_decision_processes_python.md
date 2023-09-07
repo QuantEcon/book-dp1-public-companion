@@ -127,7 +127,7 @@ def sim_inventories(ts_length=400, X_init=0):
 
 
 def plot_vstar_and_opt_policy(fontsize=10,
-                   figname="./figures/inventory_dp_vs.pdf",
+                   figname="figures/inventory_dp_vs.pdf",
                    savefig=False):
     fig, axes = plt.subplots(2, 1, figsize=(8, 6.5))
 
@@ -146,7 +146,7 @@ def plot_vstar_and_opt_policy(fontsize=10,
 
 
 def plot_ts(fontsize=10,
-            figname="./figures/inventory_dp_ts.pdf",
+            figname="figures/inventory_dp_ts.pdf",
             savefig=False):
     X = sim_inventories()
     fig, ax = plt.subplots(figsize=(9, 5.5))
@@ -414,7 +414,7 @@ def plot_timing(m_vals=np.arange(1, 601, 10),
     ax.set_xlabel(r"$m$")
     ax.set_ylabel("time")
     if savefig:
-        fig.savefig("./figures/finite_opt_saving_2_1.png")
+        fig.savefig("figures/finite_opt_saving_2_1.png")
     return (pi_time, vfi_time, opi_times)
 
 
@@ -435,7 +435,7 @@ def plot_policy(method="pi", savefig=False):
     ax.legend()
     plt.title(f"Method: {method}")
     if savefig:
-        fig.savefig(f"./figures/finite_opt_saving_2_2_{method}.png")
+        fig.savefig(f"figures/finite_opt_saving_2_2_{method}.png")
 
 def plot_time_series(m=2_000, savefig=False):
 
@@ -445,7 +445,7 @@ def plot_time_series(m=2_000, savefig=False):
     ax.set_xlabel("time")
     ax.legend()
     if savefig:
-        fig.savefig("./figures/finite_opt_saving_ts.pdf")
+        fig.savefig("figures/finite_opt_saving_ts.pdf")
 
 def plot_histogram(m=1_000_000, savefig=False):
 
@@ -458,7 +458,7 @@ def plot_histogram(m=1_000_000, savefig=False):
     ax.text(15, 0.4, f"Gini = {g}")
 
     if savefig:
-        fig.savefig("./figures/finite_opt_saving_hist.pdf")
+        fig.savefig("figures/finite_opt_saving_hist.pdf")
 
 def plot_lorenz(m=1_000_000, savefig=False):
 
@@ -472,7 +472,7 @@ def plot_lorenz(m=1_000_000, savefig=False):
     ax.legend()
 
     if savefig:
-        fig.savefig("./figures/finite_opt_saving_lorenz.pdf")
+        fig.savefig("figures/finite_opt_saving_lorenz.pdf")
 
 ```
 
@@ -660,7 +660,7 @@ import matplotlib.pyplot as plt
 plt.rcParams.update({"text.usetex": True, "font.size": 14})
 
 
-def plot_policy(savefig=False, figname="./figures/finite_lq_0.pdf"):
+def plot_policy(savefig=False, figname="figures/finite_lq_0.pdf"):
     model = create_investment_model()
     β, a_0, a_1, γ, c, y_grid, z_grid, Q = model
     σ_star = optimistic_policy_iteration(model)
@@ -673,7 +673,7 @@ def plot_policy(savefig=False, figname="./figures/finite_lq_0.pdf"):
         fig.savefig(figname)
 
 
-def plot_sim(savefig=False, figname="./figures/finite_lq_1.pdf"):
+def plot_sim(savefig=False, figname="figures/finite_lq_1.pdf"):
     ts_length = 200
 
     fig, axes = plt.subplots(4, 1, figsize=(9, 11.2))
@@ -710,7 +710,7 @@ def plot_sim(savefig=False, figname="./figures/finite_lq_1.pdf"):
 
 def plot_timing(m_vals=np.arange(1, 601, 10),
                 savefig=False,
-                figname="./figures/finite_lq_time.pdf"
+                figname="figures/finite_lq_time.pdf"
     ):
     # NOTE: Uncomment the following lines in this function to
     # include Policy iteration plot
@@ -856,7 +856,7 @@ plt.rcParams.update({"text.usetex": True, "font.size": 14})
 
 
 def plot_policy(savefig=False,
-                figname="./figures/firm_hiring_pol.pdf"):
+                figname="figures/firm_hiring_pol.pdf"):
     model = create_hiring_model()
     β, κ, α, p, w, l_grid, z_grid, Q = model
     σ_star = optimistic_policy_iteration(model)
@@ -897,7 +897,7 @@ def sim_dynamics(model, ts_length):
 
 
 def plot_sim(savefig=False,
-             figname="./figures/firm_hiring_ts.pdf",
+             figname="figures/firm_hiring_ts.pdf",
              ts_length = 250):
     model = create_hiring_model()
     β, κ, α, p, w, l_grid, z_grid, Q = model
@@ -915,7 +915,7 @@ def plot_sim(savefig=False,
 
 
 def plot_growth(savefig=False,
-                figname="./figures/firm_hiring_g.pdf",
+                figname="figures/firm_hiring_g.pdf",
                 ts_length = 10_000_000):
 
     model = create_hiring_model()
@@ -1145,7 +1145,7 @@ plt.rcParams.update({"text.usetex": True, "font.size": 14})
 
 
 def plot_contours(savefig=False,
-                  figname="./figures/modified_opt_savings_1.pdf"):
+                  figname="figures/modified_opt_savings_1.pdf"):
 
     model = create_savings_model()
     β, γ, η_grid, φ, w_grid, y_grid, Q = model
@@ -1192,7 +1192,7 @@ def plot_policies(savefig=False):
         
     ax.legend()
     if savefig:
-        fig.savefig(f"./figures/modified_opt_saving_2.pdf")
+        fig.savefig(f"figures/modified_opt_saving_2.pdf")
 
 def plot_time_series(m=2_000, savefig=False):
 
@@ -1202,7 +1202,7 @@ def plot_time_series(m=2_000, savefig=False):
     ax.set_xlabel("time")
     ax.legend()
     if savefig:
-        fig.savefig("./figures/modified_opt_saving_ts.pdf")
+        fig.savefig("figures/modified_opt_saving_ts.pdf")
 
 def plot_histogram(m=1_000_000, savefig=False):
 
@@ -1215,7 +1215,7 @@ def plot_histogram(m=1_000_000, savefig=False):
     ax.text(15, 0.4, f"Gini = {g}")
 
     if savefig:
-        fig.savefig("./figures/modified_opt_saving_hist.pdf")
+        fig.savefig("figures/modified_opt_saving_hist.pdf")
 
 def plot_lorenz(m=1_000_000, savefig=False):
 
@@ -1229,7 +1229,7 @@ def plot_lorenz(m=1_000_000, savefig=False):
     ax.legend()
 
     if savefig:
-        fig.savefig("./figures/modified_opt_saving_lorenz.pdf")
+        fig.savefig("figures/modified_opt_saving_lorenz.pdf")
 ```
 
 ```{code-cell} python

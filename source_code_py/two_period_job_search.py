@@ -69,7 +69,7 @@ def fig_dist(model=default_model, fs=10):
 
 
 def fig_v1(model=default_model, savefig=False,
-                  figname="./figures/iid_job_search_0_py.pdf", fs=18):
+                  figname="figures/iid_job_search_0_py.pdf", fs=18):
     """
     Plot two-period value function and res wage
     """
