@@ -26,7 +26,7 @@ kernelspec:
 
 
 
-#### quantile_function.py
+## quantile_function.py
 ```{code-cell} python3
 :tags: ["hide-input"]
 from scipy.stats import rv_discrete
@@ -58,7 +58,7 @@ def quantile_test(τ):
 
 
 ```
-#### quantile_js.py
+## quantile_js.py
 ```{code-cell} python3
 :tags: ["hide-input"]
 """

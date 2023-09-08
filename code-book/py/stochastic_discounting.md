@@ -26,7 +26,7 @@ kernelspec:
 
 
 
-#### plot_interest_rates.py
+## plot_interest_rates.py
 ```{code-cell} python3
 :tags: ["hide-input"]
 # Nominal interest rate from https://fred.stlouisfed.org/series/GS1
@@ -63,7 +63,7 @@ plot_rates(df_nominal)
 ```{code-cell} python
 plot_rates(df_real)
 ```
-#### pd_ratio.py
+## pd_ratio.py
 ```{code-cell} python3
 :tags: ["hide-input"]
 """
@@ -150,7 +150,7 @@ def plot_main(μ_d_vals=(0.02, 0.08),
 ```{code-cell} python
 plot_main()
 ```
-#### inventory_sdd.py
+## inventory_sdd.py
 ```{code-cell} python3
 :tags: ["hide-input"]
 """

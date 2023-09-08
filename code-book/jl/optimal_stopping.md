@@ -25,7 +25,7 @@ kernelspec:
 ```
 
 
-```{code-cell} julia-1.9
+```{code-cell} julia
 :tags: ["remove-cell"]
 using Pkg;
 Pkg.activate("./");
@@ -34,8 +34,8 @@ using PyCall;
 pygui(:tk);
 ```
 
-#### firm_exit.jl
-```{code-cell} julia-1.9
+## firm_exit.jl
+```{code-cell} julia
 :tags: ["hide-input"]
 """
 Firm valuation with exit option.
@@ -144,15 +144,15 @@ end
 
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} julia
 plot_val(savefig=true)
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} julia
 plot_comparison(savefig=true)
 ```
-#### american_option.jl
-```{code-cell} julia-1.9
+## american_option.jl
+```{code-cell} julia
 :tags: ["hide-input"]
 """
 Valuation for finite-horizon American call options in discrete time.
@@ -308,10 +308,10 @@ end
 
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} julia
 plot_contours(savefig=true)
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} julia
 plot_strike(savefig=true)
 ```

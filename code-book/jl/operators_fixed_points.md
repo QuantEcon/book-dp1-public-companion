@@ -25,7 +25,7 @@ kernelspec:
 ```
 
 
-```{code-cell} julia-1.9
+```{code-cell} julia
 :tags: ["remove-cell"]
 using Pkg;
 Pkg.activate("./");
@@ -34,8 +34,8 @@ using PyCall;
 pygui(:tk);
 ```
 
-#### lake.jl
-```{code-cell} julia-1.9
+## lake.jl
+```{code-cell} julia
 :tags: ["hide-input"]
 using LinearAlgebra
 
@@ -170,10 +170,10 @@ end
 
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} julia
 plot_paths(savefig=true)
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} julia
 plot_growth(savefig=true)
 ```

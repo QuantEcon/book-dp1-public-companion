@@ -26,7 +26,7 @@ kernelspec:
 
 
 
-#### lake.py
+## lake.py
 ```{code-cell} python3
 :tags: ["hide-input"]
 import numpy as np

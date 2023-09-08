@@ -25,7 +25,7 @@ kernelspec:
 ```
 
 
-```{code-cell} julia-1.9
+```{code-cell} julia
 :tags: ["remove-cell"]
 using Pkg;
 Pkg.activate("./");
@@ -34,8 +34,8 @@ using PyCall;
 pygui(:tk);
 ```
 
-#### two_period_job_search.jl
-```{code-cell} julia-1.9
+## two_period_job_search.jl
+```{code-cell} julia
 :tags: ["hide-input"]
 """
 Two period job search in the IID case.
@@ -123,11 +123,11 @@ end
 
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} julia
 fig_v1(savefig=true)
 ```
-#### compute_spec_rad.jl
-```{code-cell} julia-1.9
+## compute_spec_rad.jl
+```{code-cell} julia
 :tags: ["hide-input"]
 using LinearAlgebra                         
 ρ(A) = maximum(abs(λ) for λ in eigvals(A))  # Spectral radius
@@ -136,8 +136,8 @@ A = [0.4 0.1;                               # Test with arbitrary A
 print(ρ(A))
 
 ```
-#### power_series.jl
-```{code-cell} julia-1.9
+## power_series.jl
+```{code-cell} julia
 :tags: ["hide-input"]
 using LinearAlgebra
 
@@ -163,8 +163,8 @@ end
 print(maximum(abs.(B_inverse - power_series(A))))
 
 ```
-#### s_approx.jl
-```{code-cell} julia-1.9
+## s_approx.jl
+```{code-cell} julia
 :tags: ["hide-input"]
 """
 Computes an approximate fixed point of a given operator T 
@@ -203,8 +203,8 @@ function successive_approx(T,                  # operator (callable)
 end
 
 ```
-#### linear_iter.jl
-```{code-cell} julia-1.9
+## linear_iter.jl
+```{code-cell} julia
 :tags: ["hide-input"]
 include("s_approx.jl")
 using LinearAlgebra
@@ -223,8 +223,8 @@ print(isapprox(u_star, u_star_approx, rtol=1e-5))
 
 
 ```
-#### linear_iter_fig.jl
-```{code-cell} julia-1.9
+## linear_iter_fig.jl
+```{code-cell} julia
 :tags: ["hide-input"]
 include("linear_iter.jl")
 using PyPlot
@@ -270,8 +270,8 @@ fig.savefig("figures/linear_iter_fig_1.pdf")
 
 
 ```
-#### iid_job_search.jl
-```{code-cell} julia-1.9
+## iid_job_search.jl
+```{code-cell} julia
 :tags: ["hide-input"]
 """
 VFI approach to job search in the infinite-horizon IID case.
@@ -382,10 +382,10 @@ end
 
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} julia
 fig_vseq(savefig=true)
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} julia
 fig_vstar(savefig=true)
 ```

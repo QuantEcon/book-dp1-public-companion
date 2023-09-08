@@ -25,7 +25,7 @@ kernelspec:
 ```
 
 
-```{code-cell} julia-1.9
+```{code-cell} julia
 :tags: ["remove-cell"]
 using Pkg;
 Pkg.activate("./");
@@ -34,8 +34,8 @@ using PyCall;
 pygui(:tk);
 ```
 
-#### plot_interest_rates.jl
-```{code-cell} julia-1.9
+## plot_interest_rates.jl
+```{code-cell} julia
 :tags: ["hide-input"]
 # Nominal interest rate from https://fred.stlouisfed.org/series/GS1
 # Real interest rate from https://fred.stlouisfed.org/series/WFII10
@@ -62,15 +62,15 @@ end
 
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} julia
 plot_rates(df_nominal, savefig=true)
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} julia
 plot_rates(df_real, savefig=true)
 ```
-#### pd_ratio.jl
-```{code-cell} julia-1.9
+## pd_ratio.jl
+```{code-cell} julia
 :tags: ["hide-input"]
 """
 Price-dividend ratio in a model with dividend and consumption growth.
@@ -140,11 +140,11 @@ end
 
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} julia
 plot_main(savefig=true)
 ```
-#### inventory_sdd.jl
-```{code-cell} julia-1.9
+## inventory_sdd.jl
+```{code-cell} julia
 :tags: ["hide-input"]
 """
 Inventory management model with state-dependent discounting.  
@@ -285,6 +285,6 @@ end
 
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} julia
 plot_ts(savefig=true)
 ```

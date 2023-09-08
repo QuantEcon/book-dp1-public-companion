@@ -25,7 +25,7 @@ kernelspec:
 ```
 
 
-```{code-cell} julia-1.9
+```{code-cell} julia
 :tags: ["remove-cell"]
 using Pkg;
 Pkg.activate("./");
@@ -34,8 +34,8 @@ using PyCall;
 pygui(:tk);
 ```
 
-#### quantile_function.jl
-```{code-cell} julia-1.9
+## quantile_function.jl
+```{code-cell} julia
 :tags: ["hide-input"]
 import Distributions.quantile, Distributions.DiscreteNonParametric
 
@@ -68,8 +68,8 @@ end
 
 
 ```
-#### quantile_js.jl
-```{code-cell} julia-1.9
+## quantile_js.jl
+```{code-cell} julia
 :tags: ["hide-input"]
 """
 Job search with Markov wage draws and quantile preferences.
@@ -179,6 +179,6 @@ end
 
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} julia
 plot_main(savefig=true)
 ```

@@ -119,7 +119,7 @@ chapter_meta = {
 }
 
 
-pkg = """```{code-cell} julia-1.9
+pkg = """```{code-cell} julia
 :tags: [\"remove-cell\"]
 using Pkg;
 Pkg.activate(\"./\");
@@ -148,8 +148,8 @@ try:
             for sub in chapter_subs.keys():
                 with open(f"./code-book/jl/{sub}", "r", encoding='utf-8') as g:
 
-                    b.write(f"#### {sub}\n")
-                    b.write(f"```{{code-cell}} julia-1.9\n")
+                    b.write(f"## {sub}\n")
+                    b.write(f"```{{code-cell}} julia\n")
                     b.write(":tags: [\"hide-input\"]\n")
 
                     text = g.readlines()
@@ -162,7 +162,7 @@ try:
 
                     if len(chapter_subs[sub]) > 0:
                         for func_call in chapter_subs[sub]:
-                            code = f"\n```{{code-cell}} julia-1.9\n{func_call}\n```\n"
+                            code = f"\n```{{code-cell}} julia\n{func_call}\n```\n"
 
                             b.write(code)
 except Exception as e:
@@ -295,7 +295,7 @@ try:
             for sub in chapter_subs.keys():
                 with open(f"./code-book/py/{sub}", "r", encoding='utf-8') as g:
 
-                    b.write(f"#### {sub}\n")
+                    b.write(f"## {sub}\n")
                     b.write(f"```{{code-cell}} python3\n")
                     b.write(":tags: [\"hide-input\"]\n")
 

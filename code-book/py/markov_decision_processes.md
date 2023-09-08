@@ -26,7 +26,7 @@ kernelspec:
 
 
 
-#### inventory_dp.py
+## inventory_dp.py
 ```{code-cell} python3
 :tags: ["hide-input"]
 from quantecon import compute_fixed_point
@@ -167,7 +167,7 @@ plot_vstar_and_opt_policy()
 ```{code-cell} python
 plot_ts()
 ```
-#### finite_opt_saving_0.py
+## finite_opt_saving_0.py
 ```{code-cell} python3
 :tags: ["hide-input"]
 from quantecon.markov import tauchen
@@ -232,7 +232,7 @@ def T_σ(v, σ, model):
     return v_new
 
 ```
-#### finite_opt_saving_1.py
+## finite_opt_saving_1.py
 ```{code-cell} python3
 :tags: ["hide-input"]
 import numpy as np
@@ -289,7 +289,7 @@ def get_value(σ, model):
 
 
 ```
-#### finite_opt_saving_2.py
+## finite_opt_saving_2.py
 ```{code-cell} python3
 :tags: ["hide-input"]
 from quantecon import compute_fixed_point
@@ -495,7 +495,7 @@ plot_histogram()
 ```{code-cell} python
 plot_lorenz()
 ```
-#### finite_lq.py
+## finite_lq.py
 ```{code-cell} python3
 :tags: ["hide-input"]
 from quantecon import compute_fixed_point
@@ -760,7 +760,7 @@ plot_sim()
 ```{code-cell} python
 plot_timing()
 ```
-#### firm_hiring.py
+## firm_hiring.py
 ```{code-cell} python3
 :tags: ["hide-input"]
 import numpy as np
@@ -949,7 +949,7 @@ plot_sim()
 ```{code-cell} python
 plot_growth()
 ```
-#### modified_opt_savings.py
+## modified_opt_savings.py
 ```{code-cell} python3
 :tags: ["hide-input"]
 from quantecon import tauchen, MarkovChain

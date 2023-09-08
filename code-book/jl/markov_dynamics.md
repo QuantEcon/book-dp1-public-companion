@@ -25,7 +25,7 @@ kernelspec:
 ```
 
 
-```{code-cell} julia-1.9
+```{code-cell} julia
 :tags: ["remove-cell"]
 using Pkg;
 Pkg.activate("./");
@@ -34,8 +34,8 @@ using PyCall;
 pygui(:tk);
 ```
 
-#### inventory_sim.jl
-```{code-cell} julia-1.9
+## inventory_sim.jl
+```{code-cell} julia
 :tags: ["hide-input"]
 using Distributions, IterTools, QuantEcon
 
@@ -126,19 +126,19 @@ end
 
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} julia
 model = create_inventory_model()
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} julia
 plot_ts(model; savefig=true)
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} julia
 plot_hist(model; savefig=true)
 ```
-#### is_irreducible.jl
-```{code-cell} julia-1.9
+## is_irreducible.jl
+```{code-cell} julia
 :tags: ["hide-input"]
 using QuantEcon
 P = [0.1 0.9;
@@ -147,8 +147,8 @@ mc = MarkovChain(P)
 print(is_irreducible(mc))
 
 ```
-#### laborer_sim.jl
-```{code-cell} julia-1.9
+## laborer_sim.jl
+```{code-cell} julia
 :tags: ["hide-input"]
 function create_laborer_model(; α=0.3, β=0.2)
     return (; α, β)
@@ -188,8 +188,8 @@ function test_convergence(; k=10_000_000, p=0.5)
 
 
 ```
-#### markov_js.jl
-```{code-cell} julia-1.9
+## markov_js.jl
+```{code-cell} julia
 :tags: ["hide-input"]
 """
 Infinite-horizon job search with Markov wage draws.
@@ -307,11 +307,11 @@ end
 
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} julia
 plot_main(savefig=true)
 ```
-#### markov_js_with_sep.jl
-```{code-cell} julia-1.9
+## markov_js_with_sep.jl
+```{code-cell} julia
 :tags: ["hide-input"]
 """
 Infinite-horizon job search with Markov wage draws and separation.
@@ -441,10 +441,10 @@ end
 
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} julia
 plot_main(savefig=true)
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} julia
 plot_w_stars(savefig=true)
 ```

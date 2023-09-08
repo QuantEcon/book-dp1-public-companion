@@ -26,7 +26,7 @@ kernelspec:
 
 
 
-#### two_period_job_search.py
+## two_period_job_search.py
 ```{code-cell} python3
 :tags: ["hide-input"]
 from quantecon.distributions import BetaBinomial
@@ -138,7 +138,7 @@ def fig_v1(model=default_model, savefig=False,
 ```{code-cell} python
 fig_v1()
 ```
-#### compute_spec_rad.py
+## compute_spec_rad.py
 ```{code-cell} python3
 :tags: ["hide-input"]
 import numpy as np
@@ -154,7 +154,7 @@ A = np.array([
 print(ρ(A))
 
 ```
-#### power_series.py
+## power_series.py
 ```{code-cell} python3
 :tags: ["hide-input"]
 import numpy as np
@@ -185,7 +185,7 @@ def power_series(A):
 print(np.max(np.abs(B_inverse - power_series(A))))
 
 ```
-#### s_approx.py
+## s_approx.py
 ```{code-cell} python3
 :tags: ["hide-input"]
 """
@@ -216,7 +216,7 @@ def successive_approx(T,                     # Operator (callable)
     return x
 
 ```
-#### linear_iter.py
+## linear_iter.py
 ```{code-cell} python3
 :tags: ["hide-input"]
 from s_approx import successive_approx
@@ -249,7 +249,7 @@ x_star_approx = successive_approx(T, x_0)
 print(np.allclose(x_star, x_star_approx, rtol=1e-5))
 
 ```
-#### linear_iter_fig.py
+## linear_iter_fig.py
 ```{code-cell} python3
 :tags: ["hide-input"]
 import matplotlib.pyplot as plt
@@ -298,7 +298,7 @@ ax.set_ylim(2.8, 6.1)
 fig.savefig("figures/linear_iter_fig_1.pdf")
 
 ```
-#### iid_job_search.py
+## iid_job_search.py
 ```{code-cell} python3
 :tags: ["hide-input"]
 """
