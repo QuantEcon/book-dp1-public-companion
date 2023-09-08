@@ -26,7 +26,7 @@ kernelspec:
 
 
 
-#### rs_utility.py
+## rs_utility.py
 ```{code-cell} python3
 :tags: ["hide-input"]
 from quantecon import compute_fixed_point
@@ -127,7 +127,7 @@ plot_v()
 ```{code-cell} python
 plot_multiple_v()
 ```
-#### ez_utility.py
+## ez_utility.py
 ```{code-cell} python3
 :tags: ["hide-input"]
 """

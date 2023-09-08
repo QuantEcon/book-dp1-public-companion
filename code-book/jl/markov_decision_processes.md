@@ -25,7 +25,7 @@ kernelspec:
 ```
 
 
-```{code-cell} julia-1.9
+```{code-cell} julia
 :tags: ["remove-cell"]
 using Pkg;
 Pkg.activate("./");
@@ -34,8 +34,8 @@ using PyCall;
 pygui(:tk);
 ```
 
-#### inventory_dp.jl
-```{code-cell} julia-1.9
+## inventory_dp.jl
+```{code-cell} julia
 :tags: ["hide-input"]
 include("s_approx.jl")
 using Distributions
@@ -154,15 +154,15 @@ end
 
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} julia
 plot_vstar_and_opt_policy(savefig=true)
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} julia
 plot_ts(savefig=true)
 ```
-#### finite_opt_saving_0.jl
-```{code-cell} julia-1.9
+## finite_opt_saving_0.jl
+```{code-cell} julia
 :tags: ["hide-input"]
 using QuantEcon, LinearAlgebra, IterTools
 
@@ -209,8 +209,8 @@ end
 
 
 ```
-#### finite_opt_saving_1.jl
-```{code-cell} julia-1.9
+## finite_opt_saving_1.jl
+```{code-cell} julia
 :tags: ["hide-input"]
 include("finite_opt_saving_0.jl")
 
@@ -257,8 +257,8 @@ end
 
 
 ```
-#### finite_opt_saving_2.jl
-```{code-cell} julia-1.9
+## finite_opt_saving_2.jl
+```{code-cell} julia
 :tags: ["hide-input"]
 include("s_approx.jl")
 include("finite_opt_saving_1.jl")
@@ -444,27 +444,27 @@ end
 
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} julia
 plot_timing(savefig=true)
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} julia
 plot_policy()
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} julia
 plot_time_series(savefig=true)
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} julia
 plot_histogram(savefig=true)
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} julia
 plot_lorenz(savefig=true)
 ```
-#### finite_lq.jl
-```{code-cell} julia-1.9
+## finite_lq.jl
+```{code-cell} julia
 :tags: ["hide-input"]
 using QuantEcon, LinearAlgebra, IterTools
 include("s_approx.jl")
@@ -694,19 +694,19 @@ end
 
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} julia
 plot_policy()
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} julia
 plot_sim(savefig=true)
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} julia
 plot_timing(savefig=true)
 ```
-#### firm_hiring.jl
-```{code-cell} julia-1.9
+## firm_hiring.jl
+```{code-cell} julia
 :tags: ["hide-input"]
 using QuantEcon, LinearAlgebra, IterTools
 
@@ -883,19 +883,19 @@ end
 
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} julia
 plot_policy()
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} julia
 plot_sim(savefig=true)
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} julia
 plot_growth(savefig=true)
 ```
-#### modified_opt_savings.jl
-```{code-cell} julia-1.9
+## modified_opt_savings.jl
+```{code-cell} julia
 :tags: ["hide-input"]
 using QuantEcon, LinearAlgebra, IterTools
 
@@ -1195,22 +1195,22 @@ end
 
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} julia
 plot_contours(savefig=true)
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} julia
 plot_policies(savefig=true)
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} julia
 plot_time_series(savefig=true)
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} julia
 plot_histogram(savefig=true)
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} julia
 plot_lorenz(savefig=true)
 ```

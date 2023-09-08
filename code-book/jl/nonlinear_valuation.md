@@ -25,7 +25,7 @@ kernelspec:
 ```
 
 
-```{code-cell} julia-1.9
+```{code-cell} julia
 :tags: ["remove-cell"]
 using Pkg;
 Pkg.activate("./");
@@ -34,8 +34,8 @@ using PyCall;
 pygui(:tk);
 ```
 
-#### rs_utility.jl
-```{code-cell} julia-1.9
+## rs_utility.jl
+```{code-cell} julia
 :tags: ["hide-input"]
 include("s_approx.jl")
 using LinearAlgebra, QuantEcon
@@ -122,15 +122,15 @@ end
 
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} julia
 plot_v(savefig=true)
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} julia
 plot_multiple_v(savefig=true)
 ```
-#### ez_utility.jl
-```{code-cell} julia-1.9
+## ez_utility.jl
+```{code-cell} julia
 :tags: ["hide-input"]
 """
 Epstein--Zin utility: solving the recursion for a given consumption
@@ -276,18 +276,18 @@ end
 
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} julia
 plot_convergence(savefig=true)
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} julia
 plot_v(savefig=true)
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} julia
 vary_gamma(savefig=true)
 ```
 
-```{code-cell} julia-1.9
+```{code-cell} julia
 vary_alpha(savefig=true)
 ```

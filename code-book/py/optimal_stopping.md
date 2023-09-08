@@ -26,7 +26,7 @@ kernelspec:
 
 
 
-#### firm_exit.py
+## firm_exit.py
 ```{code-cell} python3
 :tags: ["hide-input"]
 """
@@ -152,7 +152,7 @@ plot_val()
 ```{code-cell} python
 plot_comparison()
 ```
-#### american_option.py
+## american_option.py
 ```{code-cell} python3
 :tags: ["hide-input"]
 """

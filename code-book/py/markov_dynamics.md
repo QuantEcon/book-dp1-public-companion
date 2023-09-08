@@ -26,7 +26,7 @@ kernelspec:
 
 
 
-#### inventory_sim.py
+## inventory_sim.py
 ```{code-cell} python3
 :tags: ["hide-input"]
 import numpy as np
@@ -136,7 +136,7 @@ plot_ts(model)
 ```{code-cell} python
 plot_hist(model)
 ```
-#### is_irreducible.py
+## is_irreducible.py
 ```{code-cell} python3
 :tags: ["hide-input"]
 from quantecon import MarkovChain
@@ -151,7 +151,7 @@ mc = MarkovChain(P)
 print(mc.is_irreducible)
 
 ```
-#### laborer_sim.py
+## laborer_sim.py
 ```{code-cell} python3
 :tags: ["hide-input"]
 import numpy as np
@@ -194,7 +194,7 @@ def test_convergence(k=10_000_000, p=0.5):
     print(f"Approximate equality is {approx_equal}")
 
 ```
-#### markov_js.py
+## markov_js.py
 ```{code-cell} python3
 :tags: ["hide-input"]
 """
@@ -322,7 +322,7 @@ def plot_main(model=default_model,
 ```{code-cell} python
 plot_main()
 ```
-#### markov_js_with_sep.py
+## markov_js_with_sep.py
 ```{code-cell} python3
 :tags: ["hide-input"]
 """
