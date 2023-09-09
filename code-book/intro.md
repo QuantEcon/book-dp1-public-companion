@@ -19,6 +19,6 @@ This website presents a set of lectures on dynamic programming and its applicati
 ```{code-cell} julia-1.9
 :tags: ["remove-cell"]
 using Pkg;
-Pkg.activate("./");
+Pkg.activate("./jl/");
 Pkg.instantiate();
 ```
