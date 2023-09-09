@@ -96,7 +96,7 @@ jobs:
       - name: Preview Deploy to Netlify
         uses: nwtgck/actions-netlify@v1.1
         with:
-          publish-dir: 'cod-book/_build/html/'
+          publish-dir: 'code-book/_build/html/'
           production-branch: main
           github-token: ${{ secrets.GITHUB_TOKEN }}
           deploy-message: "Preview Deploy from GitHub Actions"
