@@ -1,49 +1,51 @@
 include("s_approx.jl")
-using Distributions, OffsetArrays
+using Distributions
 m(x) = max(x, 0)  # Convenience function
 
 function create_inventory_model(; β=0.98,     # discount factor
                                   K=40,       # maximum inventory
-                                  c=0.2, κ=2, # cost parameters
+                                  c=0.2, κ=2, # cost paramters
                                   p=0.6)      # demand parameter
-    ϕ(d) = (1 - p)^d * p  # demand pdf
-    return (; β, K, c, κ, p, ϕ)
+    ϕ(d) = (1 - p)^d * p        # demand pdf
+    x_vals = collect(0:K)       # set of inventory levels
+    return (; β, K, c, κ, p, ϕ, x_vals)
 end
 
 "The function B(x, a, v) = r(x, a) + β Σ_x′ v(x′) P(x, a, x′)."
 function B(x, a, v, model; d_max=100)
-    (; β, K, c, κ, p, ϕ) = model
-    reward = sum(min(x, d)*ϕ(d) for d in 0:d_max) - c * a - κ * (a > 0)
-    continuation_value = β * sum(v[m(x - d) + a] * ϕ(d) for d in 0:d_max)
-    return reward + continuation_value
+    (; β, K, c, κ, p, ϕ, x_vals) = model
+    revenue = sum(min(x, d) * ϕ(d) for d in 0:d_max) 
+    current_profit = revenue - c * a - κ * (a > 0)
+    next_value = sum(v[m(x - d) + a + 1] * ϕ(d) for d in 0:d_max)
+    return current_profit + β * next_value
 end
 
 "The Bellman operator."
 function T(v, model)
-    (; β, K, c, κ, p, ϕ) = model
+    (; β, K, c, κ, p, ϕ, x_vals) = model
     new_v = similar(v)
-    for x in 0:K 
+    for (x_idx, x) in enumerate(x_vals)
         Γx = 0:(K - x) 
-        new_v[x], _ = findmax(B(x, a, v, model) for a in Γx)
+        new_v[x_idx], _ = findmax(B(x, a, v, model) for a in Γx)
     end
     return new_v
 end
 
 "Get a v-greedy policy.  Returns a zero-based array."
 function get_greedy(v, model)
-    (; β, K, c, κ, p, ϕ) = model
-    σ_star = OffsetArray(zeros(Int32, K+1), 0:K)
-    for x in 0:K 
+    (; β, K, c, κ, p, ϕ, x_vals) = model
+    σ_star = zero(x_vals)
+    for (x_idx, x) in enumerate(x_vals)
         Γx = 0:(K - x) 
         _, a_idx = findmax(B(x, a, v, model) for a in Γx)
-        σ_star[x] = Γx[a_idx]
+        σ_star[x_idx] = Γx[a_idx]
     end
     return σ_star
 end
 
 "Use successive_approx to get v_star and then compute greedy."
 function solve_inventory_model(v_init, model)
-    (; β, K, c, κ, p, ϕ) = model
+    (; β, K, c, κ, p, ϕ, x_vals) = model
     v_star = successive_approx(v -> T(v, model), v_init)
     σ_star = get_greedy(v_star, model)
     return v_star, σ_star
@@ -58,8 +60,8 @@ PyPlot.matplotlib[:rc]("text", usetex=true) # allow tex rendering
 
 # Create an instance of the model and solve it
 model = create_inventory_model()
-(; β, K, c, κ, p, ϕ) = model
-v_init = OffsetArray(zeros(K+1), 0:K)
+(; β, K, c, κ, p, ϕ, x_vals) = model
+v_init = zeros(length(x_vals))
 v_star, σ_star = solve_inventory_model(v_init, model)
 
 "Simulate given the optimal policy."
@@ -69,14 +71,14 @@ function sim_inventories(ts_length=400, X_init=0)
     X[1] = X_init
     for t in 1:(ts_length-1)
         D = rand(G)
-        X[t+1] = m(X[t] - D) + σ_star[X[t]]
+        X[t+1] = m(X[t] - D) + σ_star[X[t] + 1]
     end
     return X
 end
 
 
 function plot_vstar_and_opt_policy(; fontsize=16, 
-                   figname="../figures/inventory_dp_vs.pdf",
+                   figname="figures/inventory_dp_vs.pdf",
                    savefig=false)
     fig, axes = plt.subplots(2, 1, figsize=(8, 6.5))
 
@@ -97,7 +99,7 @@ function plot_vstar_and_opt_policy(; fontsize=16,
 end
 
 function plot_ts(; fontsize=16, 
-                   figname="../figures/inventory_dp_ts.pdf",
+                   figname="figures/inventory_dp_ts.pdf",
                    savefig=false)
     X = sim_inventories()
     fig, ax = plt.subplots(figsize=(9, 5.5))

@@ -23,7 +23,7 @@ def create_ez_utility_model(
         β=0.99,     # time discount factor
         α=0.75,     # EIS parameter
         γ=-2.0):    # risk aversion parameter
-    mc = tauchen(ρ, σ, 0, 5, n)
+    mc = tauchen(n, ρ, σ, 0, 5)
     x_vals, P = mc.state_values, mc.P
     c = np.exp(x_vals)
     return Model(β=β, ρ=ρ, σ=σ, α=α, γ=γ, c=c, x_vals=x_vals, P=P)
@@ -52,7 +52,7 @@ import matplotlib.pyplot as plt
 
 def plot_convergence(savefig=False,
                      num_iter=100,
-                     figname="../figures/ez_utility_c.pdf"):
+                     figname="figures/ez_utility_c.pdf"):
 
     fig, ax = plt.subplots(figsize=(10, 5.2))
     model = create_ez_utility_model()
@@ -82,7 +82,7 @@ def plot_convergence(savefig=False,
 
 
 def plot_v(savefig=False,
-           figname="../figures/ez_utility_1.pdf"):
+           figname="figures/ez_utility_1.pdf"):
 
     fig, ax = plt.subplots(figsize=(10, 5.2))
     model = create_ez_utility_model()
@@ -99,7 +99,7 @@ def plot_v(savefig=False,
 
 def vary_gamma(gamma_vals=[1.0, -8.0],
                savefig=False,
-               figname="../figures/ez_utility_2.pdf"):
+               figname="figures/ez_utility_2.pdf"):
 
     fig, ax = plt.subplots(figsize=(10, 5.2))
 
@@ -119,7 +119,7 @@ def vary_gamma(gamma_vals=[1.0, -8.0],
 
 def vary_alpha(alpha_vals=[0.5, 0.6],
                savefig=False,
-               figname="../figures/ez_utility_3.pdf"):
+               figname="figures/ez_utility_3.pdf"):
 
     fig, ax = plt.subplots(figsize=(10, 5.2))
 

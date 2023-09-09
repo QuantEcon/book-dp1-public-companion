@@ -30,7 +30,7 @@ for spine in ["right", "top"]
     ax.spines[spine].set_color("none")
 end
 
-ax.plot(xgrid, xgrid, "k--", lw=1, alpha=0.7, label=L"45")
+ax.plot(xgrid, xgrid, "k--", lw=1, alpha=0.7, label=L"45^{\circ}")
 
 ax.plot(xgrid, T1, "k-", lw=1)
 ax.plot(xgrid, T2, "k-", lw=1)
@@ -69,6 +69,6 @@ ax.text(2.4, -0.15, L"v", fontsize=22)
 
 plt.show()
 
-file_name = "../figures/optimality_illustration_1.pdf"
+file_name = "figures/optimality_illustration_1.pdf"
 fig.savefig(file_name)
 

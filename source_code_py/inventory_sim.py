@@ -52,7 +52,7 @@ default_model = create_inventory_model()
 
 
 def plot_ts(model, fontsize=16,
-                   figname="../figures_py/inventory_sim_1.pdf",
+                   figname="figures/inventory_sim_1.pdf",
                    savefig=False):
     S, s, p, φ, h = model
     X = sim_inventories(model)
@@ -70,7 +70,7 @@ def plot_ts(model, fontsize=16,
 
 
 def plot_hist(model, fontsize=16,
-                   figname="../figures_py/inventory_sim_2.pdf",
+                   figname="figures/inventory_sim_2.pdf",
                    savefig=False):
     S, s, p, φ, h = model
     state_values, ψ_star = compute_stationary_dist(model)

@@ -20,7 +20,7 @@ def create_hiring_model(
         z_size=100):                         # Grid size for shock
     β = 1/(1+r)
     l_grid = np.linspace(l_min, l_max, l_size)
-    mc = tauchen(ρ, ν, b, 6, z_size)
+    mc = tauchen(z_size, ρ, ν, b, 6)
     z_grid, Q = mc.state_values, mc.P
     return Model(β=β, κ=κ, α=α, p=p, w=w,
                  l_grid=l_grid, z_grid=z_grid, Q=Q)
@@ -88,7 +88,7 @@ import matplotlib.pyplot as plt
 
 
 def plot_policy(savefig=False,
-                figname="../figures/firm_hiring_pol.pdf"):
+                figname="figures/firm_hiring_pol.pdf"):
     model = create_hiring_model()
     β, κ, α, p, w, l_grid, z_grid, Q = model
     σ_star = optimistic_policy_iteration(model)
@@ -130,7 +130,7 @@ def sim_dynamics(model, ts_length):
 
 
 def plot_sim(savefig=False,
-             figname="../figures/firm_hiring_ts.pdf",
+             figname="figures/firm_hiring_ts.pdf",
              ts_length = 250):
     model = create_hiring_model()
     β, κ, α, p, w, l_grid, z_grid, Q = model
@@ -149,7 +149,7 @@ def plot_sim(savefig=False,
 
 
 def plot_growth(savefig=False,
-                figname="../figures/firm_hiring_g.pdf",
+                figname="figures/firm_hiring_g.pdf",
                 ts_length = 10_000_000):
 
     model = create_hiring_model()
@@ -160,11 +160,11 @@ def plot_growth(savefig=False,
     ax.hist(l_g, alpha=0.6, bins=100)
     ax.set_xlabel("growth")
 
-    fig, axes = plt.subplots(2, 1)
-    series = y_g, z_g
-    for (ax, g) in zip(axes, series):
-        ax.hist(g, alpha=0.6, bins=100)
-        ax.set_xlabel("growth")
+    #fig, axes = plt.subplots(2, 1)
+    #series = y_g, z_g
+    #for (ax, g) in zip(axes, series):
+    #    ax.hist(g, alpha=0.6, bins=100)
+    #    ax.set_xlabel("growth")
 
     plt.tight_layout()
     plt.show()

@@ -23,7 +23,7 @@ def create_exit_model(
     """
     Creates an instance of the firm exit model.
     """
-    mc = tauchen(ρ, ν, b=μ, n=n)
+    mc = tauchen(n, ρ, ν, mu=μ)
     z_vals, Q = mc.state_values, mc.P
     return Model(n=n, z_vals=z_vals, Q=Q, β=β, s=s)
 
@@ -68,7 +68,7 @@ import matplotlib.pyplot as plt
 
 
 def plot_val(savefig=False,
-             figname="../figures/firm_exit_1.pdf"):
+             figname="figures/firm_exit_1.pdf"):
 
     fig, ax = plt.subplots(figsize=(9, 5.2))
 
@@ -91,7 +91,7 @@ def plot_val(savefig=False,
 
 
 def plot_comparison(savefig=False,
-                    figname="../figures/firm_exit_2.pdf"):
+                    figname="figures/firm_exit_2.pdf"):
 
     fig, ax = plt.subplots(figsize=(9, 5.2))
 

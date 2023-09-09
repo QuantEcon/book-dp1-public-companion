@@ -88,12 +88,12 @@ def sim_inventories(ts_length=400, X_init=0):
     # Subtracts 1 because numpy generates only positive integers
     rand = np.random.default_rng().geometric(p=p, size=ts_length-1) - 1
     for t in range(0, ts_length-1):
-        X[t+1] = np.maximum(X[t] - rand[t], 0) + σ_star[X[t]]
+        X[t+1] = np.maximum(X[t] - rand[t], 0) + σ_star[X[t] + 1]
     return X
 
 
 def plot_vstar_and_opt_policy(fontsize=10,
-                   figname="../figures/inventory_dp_vs.pdf",
+                   figname="figures/inventory_dp_vs.pdf",
                    savefig=False):
     fig, axes = plt.subplots(2, 1, figsize=(8, 6.5))
 
@@ -113,7 +113,7 @@ def plot_vstar_and_opt_policy(fontsize=10,
 
 
 def plot_ts(fontsize=10,
-            figname="../figures/inventory_dp_ts.pdf",
+            figname="figures/inventory_dp_ts.pdf",
             savefig=False):
     X = sim_inventories()
     fig, ax = plt.subplots(figsize=(9, 5.5))

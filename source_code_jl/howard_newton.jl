@@ -23,7 +23,7 @@ ax.plot(xgrid, T.(xgrid),  lw=2, alpha=0.6, label=lb_T)
 lb_Tsp = L"T_{\sigma'}"
 ax.plot(xgrid, Tsp.(xgrid),  lw=2, alpha=0.6, label=lb_Tsp)
 
-ax.plot(xgrid, xgrid, "k--", lw=1, alpha=0.7, label=L"45")
+ax.plot(xgrid, xgrid, "k--", lw=1, alpha=0.7, label=L"45^{\circ}")
 
 fp1 = (v1,)
 ax.plot(fp1, fp1, "go", ms=5, alpha=0.6)
@@ -47,7 +47,7 @@ ax.set_ylim(0, 2.6)
 
 plt.show()
 
-filename = "../figures/howard_newton_1.pdf"
+filename = "figures/howard_newton_1.pdf"
 
 if true
     fig.savefig(filename)

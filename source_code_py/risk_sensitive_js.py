@@ -23,7 +23,7 @@ def create_markov_js_model(
         θ=-0.01       # risk parameter
     ):
     """Creates an instance of the job search model with Markov wages."""
-    mc = tauchen(ρ, ν, n=n)
+    mc = tauchen(n, ρ, ν)
     w_vals, P = np.exp(mc.state_values), mc.P
     return Model(n=n, w_vals=w_vals, P=P, β=β, c=c, θ=θ)
 
@@ -69,7 +69,7 @@ import matplotlib.pyplot as plt
 
 def plot_main(theta_vals=(-10, 0.0001, 0.1),
               savefig=False,
-              figname="../figures/risk_sensitive_js.pdf"):
+              figname="figures/risk_sensitive_js.pdf"):
 
     fig, axes = plt.subplots(len(theta_vals), 1, figsize=(9, 22))
 

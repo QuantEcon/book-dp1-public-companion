@@ -23,10 +23,10 @@ for (x_0, color) in zip(u_0_vecs, colors):
 
     for i in range(iter_range):
         s, t = x
-        ax.scatter((s,), (t,), c=color, alpha=0.3, s=marker_size)
+        ax.scatter((s,), (t,), c=color, alpha=0.2, s=marker_size)
         x_new = T(x)
         s_new, t_new = x_new
-        ax.plot((s,) + s_new, (t,) + t_new, marker='.',linewidth=0.5, alpha=0.5, color=color)
+        ax.plot((s, s_new), (t, t_new), marker='.',linewidth=0.5, alpha=0.5, color=color)
         x = x_new
 
 s_star, t_star = x_star
@@ -39,4 +39,4 @@ ax.set_xlim(1.8, 3.2)
 ax.set_ylim(2.8, 6.1)
 
 plt.show()
-fig.savefig("../figures/linear_iter_fig_1.png")
+fig.savefig("figures/linear_iter_fig_1.pdf")

@@ -22,7 +22,7 @@ def create_asset_pricing_model(
     """
     Creates an instance of the asset pricing model with Markov state.
     """
-    mc = tauchen(ρ, ν, n=n)
+    mc = tauchen(n, ρ, ν)
     x_vals, P = np.exp(mc.state_values), mc.P
     return Model(x_vals=x_vals, P=P, β=β, γ=γ,
                  μ_c=μ_c, σ_c=σ_c, μ_d=μ_d, σ_d=σ_d)
@@ -59,7 +59,7 @@ default_model = create_asset_pricing_model()
 
 def plot_main(μ_d_vals=(0.02, 0.08),
               savefig=False,
-              figname="../figures/pd_ratio_1.pdf"):
+              figname="figures/pd_ratio_1.pdf"):
     fig, ax = plt.subplots(figsize=(9, 5.2))
 
     for μ_d in μ_d_vals:

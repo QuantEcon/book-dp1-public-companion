@@ -22,7 +22,7 @@ def create_markov_js_model(
     """
     Creates an instance of the job search model with Markov wages.
     """
-    mc = tauchen(ρ, ν, n=n)
+    mc = tauchen(n, ρ, ν)
     w_vals, P = np.exp(mc.state_values), mc.P
     return Model(n=n, w_vals=w_vals, P=P, β=β, c=c)
 
@@ -94,7 +94,7 @@ default_model = create_markov_js_model()
 def plot_main(model=default_model,
                method="vfi",
                savefig=False,
-               figname="../figures/markov_js_vfix.png"):
+               figname="figures/markov_js_vfix.png"):
     n, w_vals, P, β, c = model
 
     if method == "vfi":

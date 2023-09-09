@@ -14,7 +14,7 @@ from quantecon.markov import tauchen
 
 
 def compute_mc_spec_rad(n, ρ, σ, μ, m, b):
-    mc = tauchen(ρ, σ, μ * (1 - ρ), m, n)
+    mc = tauchen(n, ρ, σ, μ * (1 - ρ), m)
     state_values, P = mc.state_values, mc.P
 
     L = np.zeros((n, n))
@@ -74,7 +74,7 @@ import matplotlib.pyplot as plt
 
 def plot_beta_sim(T=80,
                   savefig=True,
-                  figname="../figures/ar1_spec_rad.png"):
+                  figname="figures/ar1_spec_rad.png"):
     β_vals = np.zeros(T)
     Z = 1
     for t in range(T):

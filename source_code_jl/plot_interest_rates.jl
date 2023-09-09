@@ -18,6 +18,6 @@ function plot_rates(df; fontsize=16, savefig=true)
     ax.legend(fontsize=fontsize, frameon=false)
     plt.show()
     if savefig
-        fig.savefig("../figures/plot_interest_rates_"*r_type*".pdf")
+        fig.savefig("figures/plot_interest_rates_"*r_type*".pdf")
     end
 end
