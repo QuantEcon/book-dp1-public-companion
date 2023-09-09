@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 df_nominal = pd.read_csv("./data/GS1.csv")
 df_real = pd.read_csv("./data/WFII10.csv")
 
-def plot_rates(df, fontsize=16, savefig=True):
+def plot_rates(df, fontsize=16, savefig=False):
     r_type = 'nominal' if df.equals(df_nominal) else 'real'
     fig, ax = plt.subplots(figsize=(9, 5))
     ax.plot(df.iloc[:, 0], df.iloc[:, 1], label=f'{r_type} interest rate')
