@@ -81,8 +81,7 @@ jobs:
       - name: Build HTML
         shell: bash -l {0}
         run: |
-          python create_jb.py \
-          python build_jb.py
+          python create_code_book.py
       - name: Upload Execution Reports
         uses: actions/upload-artifact@v2
         if: failure()
