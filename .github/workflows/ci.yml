@@ -36,7 +36,7 @@ jobs:
       - name: Install IJulia and Setup Project
         shell: bash
         run: |
-          julia -e 'using Pkg; ENV["PYTHON"]="/usr/share/miniconda3/python"; Pkg.add(["PyCall", "PyPlot", "IJulia"]); using PyPlot'
+          julia -e 'using Pkg; ENV["PYTHON"]="/usr/share/miniconda3/python"; Pkg.add(["PyCall", "PyPlot", "IJulia"]); Pkg.build("PyCall"); Pkg.build("PyPlot"); using PyPlot;'
       # - name: Install latex dependencies
       #   run: |
       #     sudo apt-get -qq update
@@ -81,7 +81,8 @@ jobs:
       - name: Build HTML
         shell: bash -l {0}
         run: |
-          python create_code_book.py
+          python create_jb.py \
+          python build_jb.py
       - name: Upload Execution Reports
         uses: actions/upload-artifact@v2
         if: failure()
