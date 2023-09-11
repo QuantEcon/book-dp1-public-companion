@@ -188,7 +188,7 @@ import matplotlib.pyplot as plt
 
 
 def plot_contours(savefig=False,
-                  figname="figures/modified_opt_savings_1.pdf"):
+                  figname="./figures/modified_opt_savings_1.pdf"):
 
     model = create_savings_model()
     β, γ, η_grid, φ, w_grid, y_grid, Q = model
@@ -237,7 +237,7 @@ def plot_policies(savefig=False):
     ax.legend()
     plt.show()
     if savefig:
-        fig.savefig(f"figures/modified_opt_saving_2.pdf")
+        fig.savefig(f"./figures/modified_opt_saving_2.pdf")
 
 def plot_time_series(m=2_000, savefig=False):
 
@@ -248,7 +248,7 @@ def plot_time_series(m=2_000, savefig=False):
     ax.legend()
     plt.show()
     if savefig:
-        fig.savefig("figures/modified_opt_saving_ts.pdf")
+        fig.savefig("./figures/modified_opt_saving_ts.pdf")
 
 def plot_histogram(m=1_000_000, savefig=False):
 
@@ -262,7 +262,7 @@ def plot_histogram(m=1_000_000, savefig=False):
     plt.show()
 
     if savefig:
-        fig.savefig("figures/modified_opt_saving_hist.pdf")
+        fig.savefig("./figures/modified_opt_saving_hist.pdf")
 
 def plot_lorenz(m=1_000_000, savefig=False):
 
@@ -277,4 +277,4 @@ def plot_lorenz(m=1_000_000, savefig=False):
     plt.show()
 
     if savefig:
-        fig.savefig("figures/modified_opt_saving_lorenz.pdf")
+        fig.savefig("./figures/modified_opt_saving_lorenz.pdf")

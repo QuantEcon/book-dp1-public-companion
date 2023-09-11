@@ -17,7 +17,7 @@ print(np.allclose(A * x̄, (1 + g) * x̄))   # prints true
 import matplotlib.pyplot as plt
 
 
-def plot_paths(figname="figures/lake_1.pdf", savefig=False):
+def plot_paths(figname="./figures/lake_1.pdf", savefig=False):
 
     path_length = 100
     x_path_1 = np.zeros((2, path_length))
@@ -88,7 +88,7 @@ def plot_paths(figname="figures/lake_1.pdf", savefig=False):
 
 
 
-def plot_growth(savefig=False, figname="figures/lake_2.pdf"):
+def plot_growth(savefig=False, figname="./figures/lake_2.pdf"):
 
     path_length = 100
     x_0 = 2.1, 1.2

@@ -150,7 +150,7 @@ try:
 
                     b.write(f"## {sub}\n")
                     b.write(f"```{{code-cell}} julia\n")
-                    b.write(":tags: [\"hide-input\"]\n")
+                    #b.write(":tags: [\"hide-input\"]\n")
 
                     text = g.readlines()
 
@@ -297,7 +297,7 @@ try:
 
                     b.write(f"## {sub}\n")
                     b.write(f"```{{code-cell}} python3\n")
-                    b.write(":tags: [\"hide-input\"]\n")
+                    #b.write(":tags: [\"hide-input\"]\n")
 
                     text = g.readlines()
 
