@@ -1,0 +1,1328 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Chapter 3: Markov Dynamics &#8212; Dynamic Programming</title>
+    <script src="https://unpkg.com/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/tippy.js@6.3.1/dist/tippy-bundle.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    
+        <script>
+            MathJax = {
+            loader: {load: ['[tex]/boldsymbol', '[tex]/textmacros']},
+            tex: {
+                packages: {'[+]': ['boldsymbol', 'textmacros']},
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                processEscapes: true,
+                macros: {
+                    "argmax" : "arg\\,max",
+                    "argmin" : "arg\\,min",
+                    "col"    : "col",
+                    "Span"   :  "span",
+                    "epsilon": "\\varepsilon",
+                    "EE": "\\mathbb{E}",
+                    "PP": "\\mathbb{P}",
+                    "RR": "\\mathbb{R}",
+                    "NN": "\\mathbb{N}",
+                    "ZZ": "\\mathbb{Z}",
+                    "aA": "\\mathcal{A}",
+                    "bB": "\\mathcal{B}",
+                    "cC": "\\mathcal{C}",
+                    "dD": "\\mathcal{D}",
+                    "eE": "\\mathcal{E}",
+                    "fF": "\\mathcal{F}",
+                    "gG": "\\mathcal{G}",
+                    "hH": "\\mathcal{H}",
+                }
+            },
+            svg: {
+                fontCache: 'global',
+                scale: 0.92,
+                displayAlign: "center",
+            },
+            };
+        </script>
+    
+    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/quantecon-book-theme.279dae03c5caae754d20501e3fa00bbf.css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script src="_static/quantecon-book-theme.15b0c36fffe88f468997fa7b698991d3.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'markov_dynamics_python';</script>
+    <link rel="shortcut icon" href="_static/lectures-favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Chapter 4: Optimal Stopping" href="optimal_stopping_python.html" />
+    <link rel="prev" title="Chapter 2: Operators and Fixed Points" href="operators_fixed_points_python.html" />
+
+<!-- Normal Meta Tags -->
+<meta name="author" context="Thomas J. Sargent &amp; John Stachurski" />
+<meta name="keywords" content="" />
+<meta name="description" content=Chapter 3: Markov Dynamics  Contents  Chapter 3: Markov Dynamics  inventory_sim.py  is_irreducible.py  laborer_sim.py  markov_js.py  markov_js_with_sep.py  inve />
+
+<!-- Twitter tags -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@quantecon" />
+<meta name="twitter:title" content="Chapter 3: Markov Dynamics"/>
+<meta name="twitter:description" content="Chapter 3: Markov Dynamics  Contents  Chapter 3: Markov Dynamics  inventory_sim.py  is_irreducible.py  laborer_sim.py  markov_js.py  markov_js_with_sep.py  inve">
+<meta name="twitter:creator" content="@quantecon">
+<meta name="twitter:image" content="https://assets.quantecon.org/img/qe-twitter-logo.png">
+
+<!-- Opengraph tags -->
+<meta property="og:title" content="Chapter 3: Markov Dynamics" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="None" />
+<meta property="og:image" content="https://assets.quantecon.org/img/qe-og-logo.png" />
+<meta property="og:description" content="Chapter 3: Markov Dynamics  Contents  Chapter 3: Markov Dynamics  inventory_sim.py  is_irreducible.py  laborer_sim.py  markov_js.py  markov_js_with_sep.py  inve" />
+<meta property="og:site_name" content="Dynamic Programming" />
+<meta name="theme-color" content="#ffffff" />
+
+  </head>
+<body>
+
+
+    <span id="top"></span>
+
+    <div class="qe-wrapper">
+
+        <div class="qe-main">
+
+            <div class="qe-page" id=markov_dynamics_python>
+
+                <div class="qe-page__toc">
+
+                    <div class="inner">
+
+                        
+                        <div class="qe-page__toc-header">
+                            On this page
+                        </div>
+
+
+                        <nav id="bd-toc-nav" class="qe-page__toc-nav">
+                            <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inventory-sim-py">inventory_sim.py</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#is-irreducible-py">is_irreducible.py</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#laborer-sim-py">laborer_sim.py</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#markov-js-py">markov_js.py</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#markov-js-with-sep-py">markov_js_with_sep.py</a></li>
+</ul>
+                            <p class="logo">
+                                
+                                    
+                                    <a href=https://quantecon.org><img src="_static/qe-logo.png" class="logo" alt="logo"></a>
+                                    
+                                
+                            </p>
+
+                            <p class="powered">Powered by <a href="https://jupyterbook.org/">Jupyter Book</a></p>
+
+                        </nav>
+
+                        <div class="qe-page__toc-footer">
+                            
+                            
+                            <p><a href="#top"><strong>Back to top</strong></a></p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="qe-page__header">
+
+                    <div class="qe-page__header-copy">
+
+                        <p class="qe-page__header-heading"><a href="intro.html">Dynamic Programming</a></p>
+
+                        <p class="qe-page__header-subheading">Chapter 3: Markov Dynamics</p>
+
+                    </div>
+
+                    <p class="qe-page__header-authors">Thomas J. Sargent & John Stachurski</p>
+
+                </div> <!-- .page__header -->
+
+
+
+                
+                <main class="qe-page__content" role="main">
+                    
+                    <div>
+                        
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1><a class="toc-backref" href="#id2" role="doc-backlink">Chapter 3: Markov Dynamics</a><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<nav class="contents" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#id1" id="id2">Chapter 3: Markov Dynamics</a></p>
+<ul>
+<li><p><a class="reference internal" href="#inventory-sim-py" id="id3">inventory_sim.py</a></p></li>
+<li><p><a class="reference internal" href="#is-irreducible-py" id="id4">is_irreducible.py</a></p></li>
+<li><p><a class="reference internal" href="#laborer-sim-py" id="id5">laborer_sim.py</a></p></li>
+<li><p><a class="reference internal" href="#markov-js-py" id="id6">markov_js.py</a></p></li>
+<li><p><a class="reference internal" href="#markov-js-with-sep-py" id="id7">markov_js_with_sep.py</a></p></li>
+</ul>
+</li>
+</ul>
+</nav>
+<section id="inventory-sim-py">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">inventory_sim.py</a><a class="headerlink" href="#inventory-sim-py" title="Permalink to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">geom</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">product</span>
+<span class="kn">from</span> <span class="nn">quantecon</span> <span class="kn">import</span> <span class="n">MarkovChain</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
+
+<span class="c1"># NamedTuple Model</span>
+<span class="n">Model</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s2">&quot;Model&quot;</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="s2">&quot;p&quot;</span><span class="p">,</span> <span class="s2">&quot;φ&quot;</span><span class="p">,</span> <span class="s2">&quot;h&quot;</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">create_inventory_model</span><span class="p">(</span><span class="n">S</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>   <span class="c1"># Order size</span>
+                           <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>    <span class="c1"># Order threshold</span>
+                           <span class="n">p</span><span class="o">=</span><span class="mf">0.4</span><span class="p">):</span>  <span class="c1"># Demand parameter</span>
+    <span class="n">φ</span> <span class="o">=</span> <span class="n">geom</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">loc</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># loc sets support to {0,1,...}</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">d</span><span class="p">:</span> <span class="nb">max</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">d</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">S</span><span class="o">*</span><span class="p">(</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="n">s</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">Model</span><span class="p">(</span><span class="n">S</span><span class="o">=</span><span class="n">S</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="n">s</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">p</span><span class="p">,</span> <span class="n">φ</span><span class="o">=</span><span class="n">φ</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="n">h</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">sim_inventories</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">ts_length</span><span class="o">=</span><span class="mi">200</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Simulate the inventory process.&quot;&quot;&quot;</span>
+    <span class="n">S</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">φ</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">model</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">ts_length</span><span class="p">)</span>
+    <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">S</span>  <span class="c1"># Initial condition</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ts_length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">X</span><span class="p">[</span><span class="n">t</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">h</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">t</span><span class="p">],</span> <span class="n">φ</span><span class="o">.</span><span class="n">rvs</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">X</span>
+
+
+<span class="k">def</span> <span class="nf">compute_mc</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">d_max</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the transition probabilities and state.&quot;&quot;&quot;</span>
+    <span class="n">S</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">φ</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">model</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">S</span> <span class="o">+</span> <span class="n">s</span> <span class="o">+</span> <span class="mi">1</span>  <span class="c1"># Size of state space</span>
+    <span class="n">state_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="ow">in</span> <span class="n">product</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="p">),</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="p">)):</span>
+        <span class="n">P</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">((</span><span class="n">h</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span> <span class="o">==</span> <span class="n">j</span><span class="p">)</span><span class="o">*</span><span class="n">φ</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">d_max</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">MarkovChain</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">state_vals</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">compute_stationary_dist</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the stationary distribution of the model.&quot;&quot;&quot;</span>
+    <span class="n">mc</span> <span class="o">=</span> <span class="n">compute_mc</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">mc</span><span class="o">.</span><span class="n">state_values</span><span class="p">,</span> <span class="n">mc</span><span class="o">.</span><span class="n">stationary_distributions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+
+
+<span class="c1"># Plots</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;text.usetex&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;font.size&quot;</span><span class="p">:</span> <span class="mi">14</span><span class="p">})</span>
+
+
+<span class="n">default_model</span> <span class="o">=</span> <span class="n">create_inventory_model</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">plot_ts</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
+                   <span class="n">figname</span><span class="o">=</span><span class="s2">&quot;figures/inventory_sim_1.pdf&quot;</span><span class="p">,</span>
+                   <span class="n">savefig</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="n">S</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">φ</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">model</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">sim_inventories</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mf">5.2</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$X_t$&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+    <span class="n">fontdict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;fontsize&#39;</span><span class="p">:</span> <span class="n">fontsize</span><span class="p">}</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$t$&quot;</span><span class="p">,</span> <span class="n">fontdict</span><span class="o">=</span><span class="n">fontdict</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;inventory&quot;</span><span class="p">,</span> <span class="n">fontdict</span><span class="o">=</span><span class="n">fontdict</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">S</span> <span class="o">+</span> <span class="n">s</span> <span class="o">+</span> <span class="mi">20</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">savefig</span><span class="p">:</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">figname</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">plot_hist</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
+                   <span class="n">figname</span><span class="o">=</span><span class="s2">&quot;figures/inventory_sim_2.pdf&quot;</span><span class="p">,</span>
+                   <span class="n">savefig</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="n">S</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">φ</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">model</span>
+    <span class="n">state_values</span><span class="p">,</span> <span class="n">ψ_star</span> <span class="o">=</span> <span class="n">compute_stationary_dist</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">sim_inventories</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="mi">1_000_000</span><span class="p">)</span>
+    <span class="n">histogram</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">X</span> <span class="o">==</span> <span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">state_values</span><span class="p">]</span>
+
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mf">5.2</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">state_values</span><span class="p">,</span> <span class="n">ψ_star</span><span class="p">,</span> <span class="s2">&quot;k-&quot;</span><span class="p">,</span>  <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>
+                <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\psi^*$&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">state_values</span><span class="p">,</span> <span class="n">histogram</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;frequency&quot;</span><span class="p">)</span>
+    <span class="n">fontdict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;fontsize&#39;</span><span class="p">:</span> <span class="n">fontsize</span><span class="p">}</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;state&quot;</span><span class="p">,</span> <span class="n">fontdict</span><span class="o">=</span><span class="n">fontdict</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.015</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">savefig</span><span class="p">:</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">figname</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">create_inventory_model</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_ts</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ed2b129edee70a6e6df6ddeb0b75411915630ba1fa59a66dd3857b2642bea737.png" src="_images/ed2b129edee70a6e6df6ddeb0b75411915630ba1fa59a66dd3857b2642bea737.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_hist</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/13bfc5713be9dea4929d1ef5f24c6c44b544fd55868c5b0e3160075dbad2e703.png" src="_images/13bfc5713be9dea4929d1ef5f24c6c44b544fd55868c5b0e3160075dbad2e703.png" />
+</div>
+</div>
+</section>
+<section id="is-irreducible-py">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">is_irreducible.py</a><a class="headerlink" href="#is-irreducible-py" title="Permalink to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">quantecon</span> <span class="kn">import</span> <span class="n">MarkovChain</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]</span>
+<span class="p">])</span>
+
+<span class="n">mc</span> <span class="o">=</span> <span class="n">MarkovChain</span><span class="p">(</span><span class="n">P</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">is_irreducible</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="laborer-sim-py">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">laborer_sim.py</a><a class="headerlink" href="#laborer-sim-py" title="Permalink to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
+
+
+<span class="c1"># NamedTuple Model</span>
+<span class="n">Model</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s2">&quot;Model&quot;</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;α&quot;</span><span class="p">,</span> <span class="s2">&quot;β&quot;</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">create_laborer_model</span><span class="p">(</span><span class="n">α</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">β</span><span class="o">=</span><span class="mf">0.2</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">Model</span><span class="p">(</span><span class="n">α</span><span class="o">=</span><span class="n">α</span><span class="p">,</span> <span class="n">β</span><span class="o">=</span><span class="n">β</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">laborer_update</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>  <span class="c1"># update X from t to t+1</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">x_</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">model</span><span class="o">.</span><span class="n">α</span> <span class="k">else</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">x_</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">model</span><span class="o">.</span><span class="n">β</span> <span class="k">else</span> <span class="mi">2</span>
+    <span class="k">return</span> <span class="n">x_</span>
+
+
+<span class="k">def</span> <span class="nf">sim_chain</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+    <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">p</span> <span class="k">else</span> <span class="mi">2</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">X</span><span class="p">[</span><span class="n">t</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">laborer_update</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">t</span><span class="p">],</span> <span class="n">model</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">X</span>
+
+
+<span class="k">def</span> <span class="nf">test_convergence</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">10_000_000</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">create_laborer_model</span><span class="p">()</span>
+    <span class="n">α</span><span class="p">,</span> <span class="n">β</span> <span class="o">=</span> <span class="n">model</span>
+    <span class="n">ψ_star</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">α</span> <span class="o">+</span> <span class="n">β</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">β</span><span class="p">,</span> <span class="n">α</span><span class="p">])</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">sim_chain</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+    <span class="n">ψ_e</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">k</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">sum</span><span class="p">(</span><span class="n">X</span> <span class="o">==</span> <span class="mi">1</span><span class="p">),</span> <span class="nb">sum</span><span class="p">(</span><span class="n">X</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)])</span>
+    <span class="n">error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">ψ_star</span> <span class="o">-</span> <span class="n">ψ_e</span><span class="p">))</span>
+    <span class="n">approx_equal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">ψ_star</span><span class="p">,</span> <span class="n">ψ_e</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sup norm deviation is </span><span class="si">{</span><span class="n">error</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Approximate equality is </span><span class="si">{</span><span class="n">approx_equal</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<section id="markov-js-py">
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">markov_js.py</a><a class="headerlink" href="#markov-js-py" title="Permalink to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Infinite-horizon job search with Markov wage draws.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">quantecon.markov</span> <span class="kn">import</span> <span class="n">tauchen</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
+<span class="kn">from</span> <span class="nn">s_approx</span> <span class="kn">import</span> <span class="n">successive_approx</span>
+
+
+<span class="c1"># NamedTuple Model</span>
+<span class="n">Model</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s2">&quot;Model&quot;</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;n&quot;</span><span class="p">,</span> <span class="s2">&quot;w_vals&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="s2">&quot;β&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">create_markov_js_model</span><span class="p">(</span>
+        <span class="n">n</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>       <span class="c1"># wage grid size</span>
+        <span class="n">ρ</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>       <span class="c1"># wage persistence</span>
+        <span class="n">ν</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>       <span class="c1"># wage volatility</span>
+        <span class="n">β</span><span class="o">=</span><span class="mf">0.98</span><span class="p">,</span>      <span class="c1"># discount factor</span>
+        <span class="n">c</span><span class="o">=</span><span class="mf">1.0</span>        <span class="c1"># unemployment compensation</span>
+    <span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Creates an instance of the job search model with Markov wages.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">mc</span> <span class="o">=</span> <span class="n">tauchen</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">ρ</span><span class="p">,</span> <span class="n">ν</span><span class="p">)</span>
+    <span class="n">w_vals</span><span class="p">,</span> <span class="n">P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">state_values</span><span class="p">),</span> <span class="n">mc</span><span class="o">.</span><span class="n">P</span>
+    <span class="k">return</span> <span class="n">Model</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">w_vals</span><span class="o">=</span><span class="n">w_vals</span><span class="p">,</span> <span class="n">P</span><span class="o">=</span><span class="n">P</span><span class="p">,</span> <span class="n">β</span><span class="o">=</span><span class="n">β</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">c</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">T</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The Bellman operator Tv = max{e, c + β P v} with e(w) = w / (1-β).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">n</span><span class="p">,</span> <span class="n">w_vals</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="n">β</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">model</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="n">β</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+    <span class="n">e</span> <span class="o">=</span> <span class="n">w_vals</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">β</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">get_greedy</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get a v-greedy policy.&quot;&quot;&quot;</span>
+    <span class="n">n</span><span class="p">,</span> <span class="n">w_vals</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="n">β</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">model</span>
+    <span class="n">σ</span> <span class="o">=</span> <span class="n">w_vals</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">β</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">c</span> <span class="o">+</span> <span class="n">β</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">σ</span>
+
+
+
+<span class="k">def</span> <span class="nf">vfi</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Solve the infinite-horizon Markov job search model by VFI.&quot;&quot;&quot;</span>
+    <span class="n">v_init</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">w_vals</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="n">v_star</span> <span class="o">=</span> <span class="n">successive_approx</span><span class="p">(</span><span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="n">T</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">model</span><span class="p">),</span> <span class="n">v_init</span><span class="p">)</span>
+    <span class="n">σ_star</span> <span class="o">=</span> <span class="n">get_greedy</span><span class="p">(</span><span class="n">v_star</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">v_star</span><span class="p">,</span> <span class="n">σ_star</span>
+
+
+
+<span class="c1"># == Policy iteration == #</span>
+
+
+<span class="k">def</span> <span class="nf">get_value</span><span class="p">(</span><span class="n">σ</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the value of policy σ.&quot;&quot;&quot;</span>
+    <span class="n">n</span><span class="p">,</span> <span class="n">w_vals</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="n">β</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">model</span>
+    <span class="n">e</span> <span class="o">=</span> <span class="n">w_vals</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">β</span><span class="p">)</span>
+    <span class="n">K_σ</span> <span class="o">=</span> <span class="n">β</span> <span class="o">*</span> <span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">σ</span><span class="p">)</span> <span class="o">*</span> <span class="n">P</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+    <span class="n">r_σ</span> <span class="o">=</span> <span class="n">σ</span> <span class="o">*</span> <span class="n">e</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">σ</span><span class="p">)</span> <span class="o">*</span> <span class="n">c</span>
+    <span class="n">I</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="n">K_σ</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">((</span><span class="n">I</span> <span class="o">-</span> <span class="n">K_σ</span><span class="p">),</span> <span class="n">r_σ</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">policy_iteration</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Howard policy iteration routine.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">σ</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">n</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+    <span class="n">i</span><span class="p">,</span> <span class="n">error</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">True</span>
+    <span class="k">while</span> <span class="n">error</span><span class="p">:</span>
+        <span class="n">v_σ</span> <span class="o">=</span> <span class="n">get_value</span><span class="p">(</span><span class="n">σ</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+        <span class="n">σ_new</span> <span class="o">=</span> <span class="n">get_greedy</span><span class="p">(</span><span class="n">v_σ</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+        <span class="n">error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">σ_new</span> <span class="o">^</span> <span class="n">σ</span><span class="p">)</span>
+        <span class="n">σ</span> <span class="o">=</span> <span class="n">σ_new</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Concluded loop </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> with error: </span><span class="si">{</span><span class="n">error</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">σ</span>
+
+
+<span class="c1"># == Plots == #</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;text.usetex&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;font.size&quot;</span><span class="p">:</span> <span class="mi">14</span><span class="p">})</span>
+
+
+<span class="n">default_model</span> <span class="o">=</span> <span class="n">create_markov_js_model</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">plot_main</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">default_model</span><span class="p">,</span>
+               <span class="n">method</span><span class="o">=</span><span class="s2">&quot;vfi&quot;</span><span class="p">,</span>
+               <span class="n">savefig</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+               <span class="n">figname</span><span class="o">=</span><span class="s2">&quot;figures/markov_js_vfix.png&quot;</span><span class="p">):</span>
+    <span class="n">n</span><span class="p">,</span> <span class="n">w_vals</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="n">β</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">model</span>
+
+    <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;vfi&quot;</span><span class="p">:</span>
+        <span class="n">v_star</span><span class="p">,</span> <span class="n">σ_star</span> <span class="o">=</span> <span class="n">vfi</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">σ_star</span> <span class="o">=</span> <span class="n">policy_iteration</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+        <span class="n">v_star</span> <span class="o">=</span> <span class="n">get_value</span><span class="p">(</span><span class="n">σ_star</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+
+    <span class="n">h_star</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="n">β</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">v_star</span><span class="p">)</span>
+    <span class="n">e</span> <span class="o">=</span> <span class="n">w_vals</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">β</span><span class="p">)</span>
+
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mf">5.2</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">w_vals</span><span class="p">,</span> <span class="n">h_star</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$h^*(w)$&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">w_vals</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$w/(1-\beta)$&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">w_vals</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">h_star</span><span class="p">),</span> <span class="s2">&quot;k-&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$v^*(w)$&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$w$&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">savefig</span><span class="p">:</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">figname</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 25 with error 0.7358325123867075.
+Completed iteration 50 with error 0.21393801675842639.
+Completed iteration 75 with error 0.07487776205155683.
+Completed iteration 100 with error 0.027611709626711445.
+Completed iteration 125 with error 0.010342258331803578.
+Completed iteration 150 with error 0.00392782716204465.
+Completed iteration 175 with error 0.0014931447809374276.
+Completed iteration 200 with error 0.0005676247519375011.
+Completed iteration 225 with error 0.00021578485559814453.
+Completed iteration 250 with error 8.203149056384973e-05.
+Completed iteration 275 with error 3.118460483619856e-05.
+Completed iteration 300 with error 1.1854954365730919e-05.
+Completed iteration 325 with error 4.50670914631246e-06.
+Completed iteration 350 with error 1.7132438188127708e-06.
+Terminated successfully in 365 iterations.
+</pre></div>
+</div>
+<img alt="_images/c5c550839c96b88fc30e315893a4c6cf060b9c8f270d9528b8b67960afe90c1f.png" src="_images/c5c550839c96b88fc30e315893a4c6cf060b9c8f270d9528b8b67960afe90c1f.png" />
+</div>
+</div>
+</section>
+<section id="markov-js-with-sep-py">
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">markov_js_with_sep.py</a><a class="headerlink" href="#markov-js-with-sep-py" title="Permalink to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Infinite-horizon job search with Markov wage draws and separation.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">quantecon.markov</span> <span class="kn">import</span> <span class="n">tauchen</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
+<span class="kn">from</span> <span class="nn">s_approx</span> <span class="kn">import</span> <span class="n">successive_approx</span>
+
+
+<span class="c1"># NamedTuple Model</span>
+<span class="n">Model</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s2">&quot;Model&quot;</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;n&quot;</span><span class="p">,</span> <span class="s2">&quot;w_vals&quot;</span><span class="p">,</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="s2">&quot;β&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;α&quot;</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">create_js_with_sep_model</span><span class="p">(</span>
+        <span class="n">n</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>          <span class="c1"># wage grid size</span>
+        <span class="n">ρ</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">ν</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>   <span class="c1"># wage persistence and volatility</span>
+        <span class="n">β</span><span class="o">=</span><span class="mf">0.98</span><span class="p">,</span> <span class="n">α</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>  <span class="c1"># discount factor and separation rate</span>
+        <span class="n">c</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>         <span class="c1"># unemployment compensation</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Creates an instance of the job search model with separation.&quot;&quot;&quot;</span>
+    <span class="n">mc</span> <span class="o">=</span> <span class="n">tauchen</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">ρ</span><span class="p">,</span> <span class="n">ν</span><span class="p">)</span>
+    <span class="n">w_vals</span><span class="p">,</span> <span class="n">P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">state_values</span><span class="p">),</span> <span class="n">mc</span><span class="o">.</span><span class="n">P</span>
+    <span class="k">return</span> <span class="n">Model</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">w_vals</span><span class="o">=</span><span class="n">w_vals</span><span class="p">,</span> <span class="n">P</span><span class="o">=</span><span class="n">P</span><span class="p">,</span> <span class="n">β</span><span class="o">=</span><span class="n">β</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">α</span><span class="o">=</span><span class="n">α</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">T</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The Bellman operator for the value of being unemployed.&quot;&quot;&quot;</span>
+    <span class="n">n</span><span class="p">,</span> <span class="n">w_vals</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="n">β</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">α</span> <span class="o">=</span> <span class="n">model</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">β</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">α</span><span class="p">))</span>
+    <span class="n">accept</span> <span class="o">=</span> <span class="n">d</span> <span class="o">*</span> <span class="p">(</span><span class="n">w_vals</span> <span class="o">+</span> <span class="n">α</span> <span class="o">*</span> <span class="n">β</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">v</span><span class="p">))</span>
+    <span class="n">reject</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="n">β</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">accept</span><span class="p">,</span> <span class="n">reject</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">get_greedy</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Get a v-greedy policy.&quot;&quot;&quot;</span>
+    <span class="n">n</span><span class="p">,</span> <span class="n">w_vals</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="n">β</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">α</span> <span class="o">=</span> <span class="n">model</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">β</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">α</span><span class="p">))</span>
+    <span class="n">accept</span> <span class="o">=</span> <span class="n">d</span> <span class="o">*</span> <span class="p">(</span><span class="n">w_vals</span> <span class="o">+</span> <span class="n">α</span> <span class="o">*</span> <span class="n">β</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">v</span><span class="p">))</span>
+    <span class="n">reject</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="n">β</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+    <span class="n">σ</span> <span class="o">=</span> <span class="n">accept</span> <span class="o">&gt;=</span> <span class="n">reject</span>
+    <span class="k">return</span> <span class="n">σ</span>
+
+
+<span class="k">def</span> <span class="nf">vfi</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Solve by VFI.&quot;&quot;&quot;</span>
+    <span class="n">v_init</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">w_vals</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="n">v_star</span> <span class="o">=</span> <span class="n">successive_approx</span><span class="p">(</span><span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="n">T</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">model</span><span class="p">),</span> <span class="n">v_init</span><span class="p">)</span>
+    <span class="n">σ_star</span> <span class="o">=</span> <span class="n">get_greedy</span><span class="p">(</span><span class="n">v_star</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">v_star</span><span class="p">,</span> <span class="n">σ_star</span>
+
+
+
+<span class="c1"># == Plots == #</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;text.usetex&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;font.size&quot;</span><span class="p">:</span> <span class="mi">14</span><span class="p">})</span>
+
+
+<span class="n">default_model</span> <span class="o">=</span> <span class="n">create_js_with_sep_model</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">plot_main</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">default_model</span><span class="p">,</span>
+              <span class="n">savefig</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+              <span class="n">figname</span><span class="o">=</span><span class="s2">&quot;figures/markov_js_with_sep_1.pdf&quot;</span><span class="p">):</span>
+    <span class="n">n</span><span class="p">,</span> <span class="n">w_vals</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="n">β</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">α</span> <span class="o">=</span> <span class="n">model</span>
+    <span class="n">v_star</span><span class="p">,</span> <span class="n">σ_star</span> <span class="o">=</span> <span class="n">vfi</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+
+    <span class="n">d</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">β</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">α</span><span class="p">))</span>
+    <span class="n">accept</span> <span class="o">=</span> <span class="n">d</span> <span class="o">*</span> <span class="p">(</span><span class="n">w_vals</span> <span class="o">+</span> <span class="n">α</span> <span class="o">*</span> <span class="n">β</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">v_star</span><span class="p">))</span>
+    <span class="n">h_star</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="n">β</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">v_star</span><span class="p">)</span>
+
+    <span class="n">w_star</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">w_vals</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">accept</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">h_star</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+            <span class="n">w_star</span> <span class="o">=</span> <span class="n">w</span>
+            <span class="k">break</span>
+
+    <span class="k">assert</span> <span class="n">w_star</span> <span class="o">!=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="s2">&quot;Agent never accepts&quot;</span>
+
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mf">5.2</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">w_vals</span><span class="p">,</span> <span class="n">h_star</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="s2">&quot;continuation value&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">w_vals</span><span class="p">,</span> <span class="n">accept</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="s2">&quot;stopping value&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">w_vals</span><span class="p">,</span> <span class="n">v_star</span><span class="p">,</span> <span class="s2">&quot;k-&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$v_u^*(w)$&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$w$&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">savefig</span><span class="p">:</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">figname</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">plot_w_stars</span><span class="p">(</span><span class="n">α_vals</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+                 <span class="n">savefig</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                 <span class="n">figname</span><span class="o">=</span><span class="s2">&quot;figures/markov_js_with_sep_2.pdf&quot;</span><span class="p">):</span>
+
+    <span class="n">w_star_vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">α_vals</span><span class="p">)</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i_α</span><span class="p">,</span> <span class="n">α</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">α_vals</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i_α</span><span class="p">,</span> <span class="n">α</span><span class="p">)</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">create_js_with_sep_model</span><span class="p">(</span><span class="n">α</span><span class="o">=</span><span class="n">α</span><span class="p">)</span>
+        <span class="n">n</span><span class="p">,</span> <span class="n">w_vals</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="n">β</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">α</span> <span class="o">=</span> <span class="n">model</span>
+        <span class="n">v_star</span><span class="p">,</span> <span class="n">σ_star</span> <span class="o">=</span> <span class="n">vfi</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+
+        <span class="n">d</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">β</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">α</span><span class="p">))</span>
+        <span class="n">accept</span> <span class="o">=</span> <span class="n">d</span> <span class="o">*</span> <span class="p">(</span><span class="n">w_vals</span> <span class="o">+</span> <span class="n">α</span> <span class="o">*</span> <span class="n">β</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">v_star</span><span class="p">))</span>
+        <span class="n">h_star</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="n">β</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">v_star</span><span class="p">)</span>
+
+        <span class="n">w_star</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">i_w</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">w_vals</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">accept</span><span class="p">[</span><span class="n">i_w</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">h_star</span><span class="p">[</span><span class="n">i_w</span><span class="p">]:</span>
+                <span class="n">w_star</span> <span class="o">=</span> <span class="n">w</span>
+                <span class="k">break</span>
+
+        <span class="k">assert</span> <span class="n">w_star</span> <span class="o">!=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="s2">&quot;Agent never accepts&quot;</span>
+        <span class="n">w_star_vec</span><span class="p">[</span><span class="n">i_α</span><span class="p">]</span> <span class="o">=</span> <span class="n">w_star</span>
+
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mf">5.2</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">α_vals</span><span class="p">,</span> <span class="n">w_star_vec</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="s2">&quot;reservation wage&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\alpha$&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$w$&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">savefig</span><span class="p">:</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">figname</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 25 with error 1.0768067726007686.
+Completed iteration 50 with error 0.3114311653737829.
+Completed iteration 75 with error 0.10927534292910934.
+Completed iteration 100 with error 0.04148769976492872.
+Completed iteration 125 with error 0.016208489343696897.
+Completed iteration 150 with error 0.006367184136806259.
+Completed iteration 175 with error 0.0025017074515147897.
+Completed iteration 200 with error 0.0009893612445353028.
+Completed iteration 225 with error 0.0003952811634491127.
+Completed iteration 250 with error 0.00015803164485816978.
+Completed iteration 275 with error 6.318165888785643e-05.
+Completed iteration 300 with error 2.5260286278694366e-05.
+Completed iteration 325 with error 1.0099166232180323e-05.
+Completed iteration 350 with error 4.037688142943807e-06.
+Completed iteration 375 with error 1.6142842866884166e-06.
+Terminated successfully in 390 iterations.
+</pre></div>
+</div>
+<img alt="_images/6ce50045e9c550c82226029a7f95a89d5e1ba251f15e39ce3904dd8b39ec8453.png" src="_images/6ce50045e9c550c82226029a7f95a89d5e1ba251f15e39ce3904dd8b39ec8453.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_w_stars</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0 0.0
+Completed iteration 25 with error 0.7358325123867075.
+Completed iteration 50 with error 0.21393801675841928.
+Completed iteration 75 with error 0.07487776205155683.
+Completed iteration 100 with error 0.027611709626711445.
+Completed iteration 125 with error 0.010342258331803578.
+Completed iteration 150 with error 0.00392782716204465.
+Completed iteration 175 with error 0.0014931447809374276.
+Completed iteration 200 with error 0.0005676247519375011.
+Completed iteration 225 with error 0.00021578485559814453.
+Completed iteration 250 with error 8.203149056384973e-05.
+Completed iteration 275 with error 3.118460483619856e-05.
+Completed iteration 300 with error 1.1854954365730919e-05.
+Completed iteration 325 with error 4.50670914631246e-06.
+Completed iteration 350 with error 1.7132438188127708e-06.
+Terminated successfully in 365 iterations.
+1 0.1111111111111111
+Completed iteration 25 with error 1.0908342197011507.
+Completed iteration 50 with error 0.3207246338823424.
+Completed iteration 75 with error 0.11318340744480082.
+Completed iteration 100 with error 0.04326081621016442.
+Completed iteration 125 with error 0.01702270454350696.
+Completed iteration 150 with error 0.006738975380415013.
+Completed iteration 175 with error 0.0026685293016583955.
+Completed iteration 200 with error 0.0010679313731145612.
+Completed iteration 225 with error 0.0004299980392232783.
+Completed iteration 250 with error 0.0001731810760929875.
+Completed iteration 275 with error 6.974899996237127e-05.
+Completed iteration 300 with error 2.8091546766972897e-05.
+Completed iteration 325 with error 1.1313925725175977e-05.
+Completed iteration 350 with error 4.556705832214902e-06.
+Completed iteration 375 with error 1.8352222781459204e-06.
+Terminated successfully in 393 iterations.
+2 0.2222222222222222
+Completed iteration 25 with error 1.1302039661879135.
+Completed iteration 50 with error 0.40190677446813794.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 75 with error 0.1541702600417736.
+Completed iteration 100 with error 0.06350128466103655.
+Completed iteration 125 with error 0.026934357233869832.
+Completed iteration 150 with error 0.01158044876807196.
+Completed iteration 175 with error 0.005002636660108806.
+Completed iteration 200 with error 0.00216159711674635.
+Completed iteration 225 with error 0.0009340178864931659.
+Completed iteration 250 with error 0.00040358577067678425.
+Completed iteration 275 with error 0.0001743879643782975.
+Completed iteration 300 with error 7.535241418565874e-05.
+Completed iteration 325 with error 3.2559508014173844e-05.
+Completed iteration 350 with error 1.4068846674319957e-05.
+Completed iteration 375 with error 6.079098220368451e-06.
+Completed iteration 400 with error 2.626756533175012e-06.
+Completed iteration 425 with error 1.135012084318987e-06.
+Terminated successfully in 430 iterations.
+3 0.3333333333333333
+Completed iteration 25 with error 1.0827818060272634.
+Completed iteration 50 with error 0.45519415974240474.
+Completed iteration 75 with error 0.19282144291683068.
+Completed iteration 100 with error 0.08581200863319793.
+Completed iteration 125 with error 0.03915773796497746.
+Completed iteration 150 with error 0.01805454739234591.
+Completed iteration 175 with error 0.00838563508999357.
+Completed iteration 200 with error 0.003898038044262364.
+Completed iteration 225 with error 0.001812070458747428.
+Completed iteration 250 with error 0.0008423743598768851.
+Completed iteration 275 with error 0.00039159330419380467.
+Completed iteration 300 with error 0.00018203939286820514.
+Completed iteration 325 with error 8.462437997991401e-05.
+Completed iteration 350 with error 3.9339208811384196e-05.
+Completed iteration 375 with error 1.828755910082691e-05.
+Completed iteration 400 with error 8.501310226449732e-06.
+Completed iteration 425 with error 3.951991345729766e-06.
+Completed iteration 450 with error 1.8371563186292406e-06.
+Terminated successfully in 471 iterations.
+4 0.4444444444444444
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 25 with error 1.010106109561594.
+Completed iteration 50 with error 0.48366451069682626.
+Completed iteration 75 with error 0.22456412506510048.
+Completed iteration 100 with error 0.1073955458537057.
+Completed iteration 125 with error 0.05228381359918899.
+Completed iteration 150 with error 0.025665632138021977.
+Completed iteration 175 with error 0.012671593196685649.
+Completed iteration 200 with error 0.00626138069863913.
+Completed iteration 225 with error 0.003094052382124346.
+Completed iteration 250 with error 0.0015289256308150811.
+Completed iteration 275 with error 0.0007555185499654726.
+Completed iteration 300 with error 0.00037333947034312587.
+Completed iteration 325 with error 0.00018448568894768869.
+Completed iteration 350 with error 9.116359809979713e-05.
+Completed iteration 375 with error 4.5048489489829535e-05.
+Completed iteration 400 with error 2.2260709833687997e-05.
+Completed iteration 425 with error 1.1000129163107886e-05.
+Completed iteration 450 with error 5.435713511303675e-06.
+Completed iteration 475 with error 2.6860576696208227e-06.
+Completed iteration 500 with error 1.3273153385284786e-06.
+Terminated successfully in 512 iterations.
+5 0.5555555555555556
+Completed iteration 25 with error 0.9354993514006793.
+Completed iteration 50 with error 0.49436451425172834.
+Completed iteration 75 with error 0.24818960566408776.
+Completed iteration 100 with error 0.12648987573434312.
+Completed iteration 125 with error 0.06517289125884673.
+Completed iteration 150 with error 0.03378604797022433.
+Completed iteration 175 with error 0.017566215840979282.
+Completed iteration 200 with error 0.009155847975627296.
+Completed iteration 225 with error 0.004772835312408574.
+Completed iteration 250 with error 0.002488041947152908.
+Completed iteration 275 with error 0.0012969975859533633.
+Completed iteration 300 with error 0.000676115125898491.
+Completed iteration 325 with error 0.0003524537512262782.
+Completed iteration 350 with error 0.00018373150076911315.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 375 with error 9.577785525038962e-05.
+Completed iteration 400 with error 4.992827861372007e-05.
+Completed iteration 425 with error 2.6027237694847827e-05.
+Completed iteration 450 with error 1.3567804074909873e-05.
+Completed iteration 475 with error 7.072794645068825e-06.
+Completed iteration 500 with error 3.686994894280815e-06.
+Completed iteration 525 with error 1.922002816456825e-06.
+Completed iteration 550 with error 1.0019256606597082e-06.
+Terminated successfully in 552 iterations.
+6 0.6666666666666666
+Completed iteration 25 with error 0.9049282870971069.
+Completed iteration 50 with error 0.4935393062159861.
+Completed iteration 75 with error 0.26422541561913704.
+Completed iteration 100 with error 0.1422057238442207.
+Completed iteration 125 with error 0.07698303775878657.
+Completed iteration 150 with error 0.041804996160614394.
+Completed iteration 175 with error 0.022759933588361037.
+Completed iteration 200 with error 0.012395733168737877.
+Completed iteration 225 with error 0.0067511795392718454.
+Completed iteration 250 with error 0.0036769480922558273.
+Completed iteration 275 with error 0.002002605329195717.
+Completed iteration 300 with error 0.0010906947884805618.
+Completed iteration 325 with error 0.0005940337342806856.
+Completed iteration 350 with error 0.0003235332938373858.
+Completed iteration 375 with error 0.00017620849820332296.
+Completed iteration 400 with error 9.5969828883824e-05.
+Completed iteration 425 with error 5.226880740138995e-05.
+Completed iteration 450 with error 2.846757421792745e-05.
+Completed iteration 475 with error 1.5504520227693774e-05.
+Completed iteration 500 with error 8.444349553826669e-06.
+Completed iteration 525 with error 4.599112934045024e-06.
+Completed iteration 550 with error 2.5048512526382183e-06.
+Completed iteration 575 with error 1.3642369651734043e-06.
+Terminated successfully in 589 iterations.
+7 0.7777777777777777
+Completed iteration 25 with error 0.8754680641411454.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 50 with error 0.48591938913981636.
+Completed iteration 75 with error 0.2739472364400015.
+Completed iteration 100 with error 0.15435613754703326.
+Completed iteration 125 with error 0.08716896006369979.
+Completed iteration 150 with error 0.04929986845724699.
+Completed iteration 175 with error 0.02790173261596607.
+Completed iteration 200 with error 0.015807991478112626.
+Completed iteration 225 with error 0.008956542454100713.
+Completed iteration 250 with error 0.005074636273015187.
+Completed iteration 275 with error 0.002875209574980886.
+Completed iteration 300 with error 0.001629048808375444.
+Completed iteration 325 with error 0.0009229935949051082.
+Completed iteration 350 with error 0.0005229537457083211.
+Completed iteration 375 with error 0.00029629741922576613.
+Completed iteration 400 with error 0.00016787748700863858.
+Completed iteration 425 with error 9.511676042706085e-05.
+Completed iteration 450 with error 5.3891669914207796e-05.
+Completed iteration 475 with error 3.0534177909657956e-05.
+Completed iteration 500 with error 1.730018799150912e-05.
+Completed iteration 525 with error 9.802016144533354e-06.
+Completed iteration 550 with error 5.553669133462336e-06.
+Completed iteration 575 with error 3.146622141514399e-06.
+Completed iteration 600 with error 1.7828269207598169e-06.
+Completed iteration 625 with error 1.010121870592684e-06.
+Terminated successfully in 627 iterations.
+8 0.8888888888888888
+Completed iteration 25 with error 0.8460605070496854.
+Completed iteration 50 with error 0.4748541534684847.
+Completed iteration 75 with error 0.2788181611011922.
+Completed iteration 100 with error 0.1631737247170051.
+Completed iteration 125 with error 0.09553448380319196.
+Completed iteration 150 with error 0.05593656450190565.
+Completed iteration 175 with error 0.03276931670900751.
+Completed iteration 200 with error 0.01920113908681742.
+Completed iteration 225 with error 0.01125091517433674.
+Completed iteration 250 with error 0.006592479196839918.
+Completed iteration 275 with error 0.0038628664157869252.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 300 with error 0.002263448470671392.
+Completed iteration 325 with error 0.0013262687414368202.
+Completed iteration 350 with error 0.0007771278194823594.
+Completed iteration 375 with error 0.0004553584269402222.
+Completed iteration 400 with error 0.00026681749359624973.
+Completed iteration 425 with error 0.00015634184123314299.
+Completed iteration 450 with error 9.160857854340065e-05.
+Completed iteration 475 with error 5.3678091532560757e-05.
+Completed iteration 500 with error 3.1452704035928036e-05.
+Completed iteration 525 with error 1.8429727383306727e-05.
+Completed iteration 550 with error 1.0798907794651313e-05.
+Completed iteration 575 with error 6.327625314384022e-06.
+Completed iteration 600 with error 3.7076751553399845e-06.
+Completed iteration 625 with error 2.1725140655348696e-06.
+Completed iteration 650 with error 1.2729856990745247e-06.
+Terminated successfully in 663 iterations.
+9 1.0
+Completed iteration 25 with error 0.8195566251536093.
+Completed iteration 50 with error 0.46642498056927906.
+Completed iteration 75 with error 0.28037678187634185.
+Completed iteration 100 with error 0.16915170563318327.
+Completed iteration 125 with error 0.10207516364069136.
+Completed iteration 150 with error 0.061598680129037575.
+Completed iteration 175 with error 0.03717262745708183.
+Completed iteration 200 with error 0.02243236944055127.
+Completed iteration 225 with error 0.013537143756735759.
+Completed iteration 250 with error 0.008169188798902383.
+Completed iteration 275 with error 0.004929817311051465.
+Completed iteration 300 with error 0.002974970871477467.
+Completed iteration 325 with error 0.0017952899930691046.
+Completed iteration 350 with error 0.0010833941905588063.
+Completed iteration 375 with error 0.0006537901824543724.
+Completed iteration 400 with error 0.0003945393158062416.
+Completed iteration 425 with error 0.0002380905616092832.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 450 with error 0.00014367925643199442.
+Completed iteration 475 with error 8.670536367105797e-05.
+Completed iteration 500 with error 5.232362886431474e-05.
+Completed iteration 525 with error 3.157546456122873e-05.
+Completed iteration 550 with error 1.905467919982584e-05.
+Completed iteration 575 with error 1.1498826850697696e-05.
+Completed iteration 600 with error 6.93913644767008e-06.
+Completed iteration 625 with error 4.1875241052480305e-06.
+Completed iteration 650 with error 2.5270231134300047e-06.
+Completed iteration 675 with error 1.5249693348096116e-06.
+Terminated successfully in 697 iterations.
+</pre></div>
+</div>
+<img alt="_images/c69a1a395d13eeb9caede67054426b39ca31dd8b5d896456f0429c3887c26266.png" src="_images/c69a1a395d13eeb9caede67054426b39ca31dd8b5d896456f0429c3887c26266.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                    </div>
+                    
+                </main> <!-- .page__content -->
+                
+
+
+                <footer class="qe-page__footer">
+
+                    <p><a href="https://creativecommons.org/licenses/by-sa/4.0/"><img src="https://licensebuttons.net/l/by-sa/4.0/80x15.png"></a></p>
+
+                    <p>Creative Commons License &ndash; This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International.</p>
+
+                </footer> <!-- .page__footer -->
+
+            </div> <!-- .page -->
+
+            
+
+            
+            <div class="qe-sidebar bd-sidebar inactive" id="site-navigation">
+
+                <div class="qe-sidebar__header">
+
+
+                    Contents
+
+                </div>
+
+                <nav class="qe-sidebar__nav" id="qe-sidebar-nav" aria-label="Main navigation">
+                    <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Julia Codebooks
+ </span>
+</p>
+<ul class="nav bd-sidenav nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="introductions_julia.html">
+   Chapter 1: Introductions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="operators_fixed_points_julia.html">
+   Chapter 2: Operators and Fixed Points
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="markov_dynamics_julia.html">
+   Chapter 3: Markov Dynamics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="optimal_stopping_julia.html">
+   Chapter 4: Optimal Stopping
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="markov_decision_processes_julia.html">
+   Chapter 5: Markov Decision Processes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stochastic_discounting_julia.html">
+   Chapter 6: Stochastic Discounting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="nonlinear_valuation_julia.html">
+   Chapter 7: Nonlinear Valuation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="recursive_decision_processes_julia.html">
+   Chapter 8: Recursive Decision Processes
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Python Codebooks
+ </span>
+</p>
+<ul class="current nav bd-sidenav nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="introductions_python.html">
+   Chapter 1: Introductions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="operators_fixed_points_python.html">
+   Chapter 2: Operators and Fixed Points
+  </a>
+ </li>
+ <li class="toctree-l1 current active active">
+  <a class="current reference internal" href="#">
+   Chapter 3: Markov Dynamics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="optimal_stopping_python.html">
+   Chapter 4: Optimal Stopping
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="markov_decision_processes_python.html">
+   Chapter 5: Markov Decision Processes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stochastic_discounting_python.html">
+   Chapter 6: Stochastic Discounting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="nonlinear_valuation_python.html">
+   Chapter 7: Nonlinear Valuation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="recursive_decision_processes_python.html">
+   Chapter 8: Recursive Decision Processes
+  </a>
+ </li>
+</ul>
+
+                </nav>
+
+                <div class="qe-sidebar__footer">
+
+                </div>
+
+            </div> <!-- .sidebar -->
+            
+        </div> <!-- .main -->
+
+        <div class="qe-toolbar">
+
+            <div class="qe-toolbar__inner">
+
+                <ul class="qe-toolbar__main">
+                    <li data-tippy-content="Table of Contents" class="btn__sidebar"><i data-feather="menu"></i></li>
+                    <li data-tippy-content="Home"><a href="intro.html"><i data-feather="home"></i></a></li>
+                    <li class="btn__qelogo"><a href="https://quantecon.org" title=""><span class="show-for-sr">QuantEcon</span></a></li>
+                    <!-- <li class="btn__search">
+                        <form action="search.html" method="get">
+                            <input type="search" class="form-control" name="q" id="search-input" placeholder="Search..." aria-label="Search..." autocomplete="off">
+                            <i data-feather="search"></i>
+                        </form>
+                    </li> -->
+                </ul>
+
+                <ul class="qe-toolbar__links">
+                    <li data-tippy-content="Fullscreen" class="btn__fullscreen"><i data-feather="maximize"></i></li>
+                    <li data-tippy-content="Increase font size" class="btn__plus"><i data-feather="plus-circle"></i></li>
+                    <li data-tippy-content="Decrease font size" class="btn__minus"><i data-feather="minus-circle"></i></li>
+                    <li data-tippy-content="Change contrast" class="btn__contrast"><i data-feather="sunset"></i></li>
+                        <li data-tippy-content="Download PDF" onClick="window.print()"><i data-feather="file"></i></li>
+                    <li data-tippy-content="View Source"><a target="_blank" href="https://github.com/orectique/book-dp1/tree/master-test/code-book/markov_dynamics_python.md" download><i data-feather="github"></i></a></li>
+                </ul>
+
+            </div>
+
+        </div> <!-- .toolbar -->
+        <div id="downloadPDFModal" style="display: none;">
+            <ul class="pdf-options" style="display: block;">
+                <li class="download-pdf-book" onClick="window.print()">
+                    <p>Lecture (PDF)</p>
+                </li>
+                <li class="download-pdf-file">
+                    <a href="" download><p>Book (PDF)</p></a>
+                </li>
+            </ul>
+        </div>
+        <div id="settingsModal" style="display: none;">
+            <p class="modal-title"> Notebook Launcher </p>
+            <div class="modal-desc">
+            <p>
+                Choose public or private cloud service for "Launch" button.
+            </p>
+            </div>
+            <p class="modal-subtitle">Select a server</p>
+            <ul class="modal-servers">
+            <li class="active launcher-public">
+                <span class="label">Public</span>
+                <select id="launcher-public-input">
+                
+                </select>
+                <i class="fas fa-check-circle"></i>
+            </li>
+            <li class="launcher-private">
+                <span class="label">Private</span>
+                <input type="text" id="launcher-private-input" data-repourl="" data-urlpath="" data-branch=>
+                <i class="fas fa-check-circle"></i>
+            </li>
+            </ul>
+            <p class="launch"><a href="" id="advancedLaunchButton" target="_blank">Launch Notebook</a></p>
+            <script>
+                // QuantEcon Notebook Launcher
+                const launcherTypeElements = document.querySelectorAll('#settingsModal .modal-servers li');
+                // Highlight the server type if previous selection exists
+                if (typeof localStorage.launcherType !== 'undefined') {
+                  for (var i = 0; i < launcherTypeElements.length; i++) {
+                    launcherTypeElements[i].classList.remove('active');
+                    if ( launcherTypeElements[i].classList.contains(localStorage.launcherType) ) {
+                      launcherTypeElements[i].classList.add('active');
+                    }
+                  }
+                }
+                // Highlight server type on click and set local storage value
+                for (var i = 0; i < launcherTypeElements.length; i++) {
+                  launcherTypeElements[i].addEventListener('click', function() {
+                    for (var j = 0; j < launcherTypeElements.length; j++) {
+                      launcherTypeElements[j].classList.remove('active');
+                    }
+                    this.classList.add('active');
+                    if ( this.classList.contains('launcher-private') ) {
+                      localStorage.launcherType = 'launcher-private';
+                    } else if ( this.classList.contains('launcher-public') ) {
+                      localStorage.launcherType = 'launcher-public';
+                    }
+                    setLaunchServer();
+                  })
+                }
+                const launcherPublic = document.getElementById('launcher-public-input');
+                const launcherPrivate = document.getElementById('launcher-private-input');
+                const pageName = "markov_dynamics_python";
+                const repoURL = "";
+                const urlPath = "";
+                const branch = ""
+                const launchNotebookLink = document.getElementById('advancedLaunchButton');
+
+                // Highlight public server option if previous selection exists
+                if (typeof localStorage.launcherPublic !== 'undefined') {
+                  launcherPublic.value = localStorage.launcherPublic;
+                }
+                // Update local storage upon public server selection
+                launcherPublic.addEventListener('change', (event) => {
+                  setLaunchServer();
+                });
+                // Populate private server input if previous entry exists
+                if (typeof localStorage.launcherPrivate !== 'undefined') {
+                  launcherPrivate.value = localStorage.launcherPrivate;
+                }
+                // Update local storage when a private server is entered
+                launcherPrivate.addEventListener('input', (event) => {
+                  setLaunchServer();
+                });
+
+                // Function to update the "Launch Notebook" link href
+                function setLaunchServer() {
+                  launchNotebookLink.removeAttribute("style")
+                  if ( localStorage.launcherType == 'launcher-private' ) {
+                    let repoPrefix = "/jupyter/hub/user-redirect/git-pull?repo=" + repoURL + "&branch=" + branch + "&urlpath=" + urlPath;
+                    launcherPrivateValue = launcherPrivate.value
+                    if (!launcherPrivateValue) {
+                        launchNotebookLink.removeAttribute("href")
+                        launchNotebookLink.style.background = "grey"
+                        return
+                    }
+                    localStorage.launcherPrivate = launcherPrivateValue;
+                    privateServer = localStorage.launcherPrivate.replace(/\/$/, "")
+                    if (!privateServer.includes("http")) {
+                        privateServer = "http://" + privateServer
+                    }
+                    launchNotebookLinkURL = privateServer + repoPrefix;
+                  } else if ( localStorage.launcherType == 'launcher-public' ) {
+                    launcherPublicValue = launcherPublic.options[launcherPublic.selectedIndex].value;
+                    localStorage.launcherPublic = launcherPublicValue;
+                    launchNotebookLinkURL = localStorage.launcherPublic;
+                  }
+                  if (launchNotebookLinkURL) launchNotebookLink.href = launchNotebookLinkURL;
+                }
+                // Check if user has previously selected a server
+                if ( (typeof localStorage.launcherPrivate !== 'undefined') || (typeof localStorage.launcherPublic !== 'undefined') ) {
+                  setLaunchServer();
+                }
+                </script>
+
+        </div>
+
+    </div> <!-- .wrapper-->
+  </body>
+</html>
