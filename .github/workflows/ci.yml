@@ -36,7 +36,7 @@ jobs:
       - name: Install IJulia and Setup Project
         shell: bash
         run: |
-          julia -e 'using Pkg; ENV["PYTHON"]="/usr/share/miniconda3/python"; Pkg.add(["PyCall", "Conda", "PyPlot", "IJulia"]); using Conda; Conda.add("matplotlib");'
+          julia -e 'using Pkg; ENV["PYTHON"]="/usr/share/miniconda3/python"; Pkg.add(["PyCall", "Conda", "PyPlot", "IJulia"]); using Conda; Conda.add("matplotlib"); using PyPlot;'
       # - name: Install latex dependencies
       #   run: |
       #     sudo apt-get -qq update
