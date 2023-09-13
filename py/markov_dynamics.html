@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Chapter 3: Markov Dynamics &#8212; Dynamic Programming</title>
     <script src="https://unpkg.com/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
@@ -71,7 +71,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/quantecon-book-theme.b1c2e4f636e57c481a96e252d9ca7e4e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/quantecon-book-theme.279dae03c5caae754d20501e3fa00bbf.css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
@@ -97,7 +97,7 @@
     <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
-    <script src="../_static/quantecon-book-theme.ef2ef6c3e8da75e1e736fb5fce08cde6.js"></script>
+    <script src="../_static/quantecon-book-theme.15b0c36fffe88f468997fa7b698991d3.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -207,8 +207,8 @@ const thebe_selector_output = ".output, .cell_output"
                     <div>
                         
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><a class="toc-backref" href="#id2">Chapter 3: Markov Dynamics</a><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
-<div class="contents topic" id="contents">
+<h1><a class="toc-backref" href="#id2" role="doc-backlink">Chapter 3: Markov Dynamics</a><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<nav class="contents" id="contents">
 <p class="topic-title">Contents</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#id1" id="id2">Chapter 3: Markov Dynamics</a></p>
@@ -221,15 +221,10 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 </ul>
-</div>
+</nav>
 <section id="inventory-sim-py">
-<h2><a class="toc-backref" href="#id3">inventory_sim.py</a><a class="headerlink" href="#inventory-sim-py" title="Permalink to this heading">#</a></h2>
-<div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">inventory_sim.py</a><a class="headerlink" href="#inventory-sim-py" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">geom</span>
@@ -288,7 +283,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <span class="k">def</span> <span class="nf">plot_ts</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
-                   <span class="n">figname</span><span class="o">=</span><span class="s2">&quot;figures/inventory_sim_1.pdf&quot;</span><span class="p">,</span>
+                   <span class="n">figname</span><span class="o">=</span><span class="s2">&quot;./figures/inventory_sim_1.pdf&quot;</span><span class="p">,</span>
                    <span class="n">savefig</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="n">S</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">φ</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">model</span>
     <span class="n">X</span> <span class="o">=</span> <span class="n">sim_inventories</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
@@ -305,7 +300,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <span class="k">def</span> <span class="nf">plot_hist</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
-                   <span class="n">figname</span><span class="o">=</span><span class="s2">&quot;figures/inventory_sim_2.pdf&quot;</span><span class="p">,</span>
+                   <span class="n">figname</span><span class="o">=</span><span class="s2">&quot;./figures/inventory_sim_2.pdf&quot;</span><span class="p">,</span>
                    <span class="n">savefig</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="n">S</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">φ</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">model</span>
     <span class="n">state_values</span><span class="p">,</span> <span class="n">ψ_star</span> <span class="o">=</span> <span class="n">compute_stationary_dist</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
@@ -327,7 +322,6 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
-</details>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -343,7 +337,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ed2b129edee70a6e6df6ddeb0b75411915630ba1fa59a66dd3857b2642bea737.png" src="../_images/ed2b129edee70a6e6df6ddeb0b75411915630ba1fa59a66dd3857b2642bea737.png" />
+<img alt="../_images/fa5feca3dd50be78a61f343bcf0d432331328a21f6efdb2de6451006db58f4b9.png" src="../_images/fa5feca3dd50be78a61f343bcf0d432331328a21f6efdb2de6451006db58f4b9.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -353,18 +347,13 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/13bfc5713be9dea4929d1ef5f24c6c44b544fd55868c5b0e3160075dbad2e703.png" src="../_images/13bfc5713be9dea4929d1ef5f24c6c44b544fd55868c5b0e3160075dbad2e703.png" />
+<img alt="../_images/1ccc536043f92cb6a43ef831c85a06233c1a671c1ec697526c29674bedfd3115.png" src="../_images/1ccc536043f92cb6a43ef831c85a06233c1a671c1ec697526c29674bedfd3115.png" />
 </div>
 </div>
 </section>
 <section id="is-irreducible-py">
-<h2><a class="toc-backref" href="#id4">is_irreducible.py</a><a class="headerlink" href="#is-irreducible-py" title="Permalink to this heading">#</a></h2>
-<div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">is_irreducible.py</a><a class="headerlink" href="#is-irreducible-py" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">quantecon</span> <span class="kn">import</span> <span class="n">MarkovChain</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -379,7 +368,6 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
-</details>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
 </pre></div>
@@ -388,13 +376,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </section>
 <section id="laborer-sim-py">
-<h2><a class="toc-backref" href="#id5">laborer_sim.py</a><a class="headerlink" href="#laborer-sim-py" title="Permalink to this heading">#</a></h2>
-<div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">laborer_sim.py</a><a class="headerlink" href="#laborer-sim-py" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
@@ -437,17 +420,11 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
-</details>
 </div>
 </section>
 <section id="markov-js-py">
-<h2><a class="toc-backref" href="#id6">markov_js.py</a><a class="headerlink" href="#markov-js-py" title="Permalink to this heading">#</a></h2>
-<div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">markov_js.py</a><a class="headerlink" href="#markov-js-py" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Infinite-horizon job search with Markov wage draws.</span>
@@ -548,7 +525,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="k">def</span> <span class="nf">plot_main</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">default_model</span><span class="p">,</span>
                <span class="n">method</span><span class="o">=</span><span class="s2">&quot;vfi&quot;</span><span class="p">,</span>
                <span class="n">savefig</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-               <span class="n">figname</span><span class="o">=</span><span class="s2">&quot;figures/markov_js_vfix.png&quot;</span><span class="p">):</span>
+               <span class="n">figname</span><span class="o">=</span><span class="s2">&quot;./figures/markov_js_vfix.png&quot;</span><span class="p">):</span>
     <span class="n">n</span><span class="p">,</span> <span class="n">w_vals</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="n">β</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">model</span>
 
     <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;vfi&quot;</span><span class="p">:</span>
@@ -571,7 +548,6 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
-</details>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -581,19 +557,19 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 25 with error 0.7358325123867075.
-Completed iteration 50 with error 0.21393801675842639.
-Completed iteration 75 with error 0.07487776205155683.
+Completed iteration 50 with error 0.21393801675841218.
+Completed iteration 75 with error 0.07487776205154262.
 Completed iteration 100 with error 0.027611709626711445.
-Completed iteration 125 with error 0.010342258331803578.
+Completed iteration 125 with error 0.010342258331789367.
 Completed iteration 150 with error 0.00392782716204465.
-Completed iteration 175 with error 0.0014931447809374276.
-Completed iteration 200 with error 0.0005676247519375011.
+Completed iteration 175 with error 0.0014931447809232168.
+Completed iteration 200 with error 0.0005676247519517119.
 Completed iteration 225 with error 0.00021578485559814453.
-Completed iteration 250 with error 8.203149056384973e-05.
-Completed iteration 275 with error 3.118460483619856e-05.
-Completed iteration 300 with error 1.1854954365730919e-05.
-Completed iteration 325 with error 4.50670914631246e-06.
-Completed iteration 350 with error 1.7132438188127708e-06.
+Completed iteration 250 with error 8.203149057806058e-05.
+Completed iteration 275 with error 3.1184604821987705e-05.
+Completed iteration 300 with error 1.1854954394152628e-05.
+Completed iteration 325 with error 4.506709132101605e-06.
+Completed iteration 350 with error 1.713243804601916e-06.
 Terminated successfully in 365 iterations.
 </pre></div>
 </div>
@@ -602,13 +578,8 @@ Terminated successfully in 365 iterations.
 </div>
 </section>
 <section id="markov-js-with-sep-py">
-<h2><a class="toc-backref" href="#id7">markov_js_with_sep.py</a><a class="headerlink" href="#markov-js-with-sep-py" title="Permalink to this heading">#</a></h2>
-<div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">markov_js_with_sep.py</a><a class="headerlink" href="#markov-js-with-sep-py" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Infinite-horizon job search with Markov wage draws and separation.</span>
@@ -677,7 +648,7 @@ Terminated successfully in 365 iterations.
 
 <span class="k">def</span> <span class="nf">plot_main</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">default_model</span><span class="p">,</span>
               <span class="n">savefig</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-              <span class="n">figname</span><span class="o">=</span><span class="s2">&quot;figures/markov_js_with_sep_1.pdf&quot;</span><span class="p">):</span>
+              <span class="n">figname</span><span class="o">=</span><span class="s2">&quot;./figures/markov_js_with_sep_1.pdf&quot;</span><span class="p">):</span>
     <span class="n">n</span><span class="p">,</span> <span class="n">w_vals</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="n">β</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">α</span> <span class="o">=</span> <span class="n">model</span>
     <span class="n">v_star</span><span class="p">,</span> <span class="n">σ_star</span> <span class="o">=</span> <span class="n">vfi</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
 
@@ -707,7 +678,7 @@ Terminated successfully in 365 iterations.
 
 <span class="k">def</span> <span class="nf">plot_w_stars</span><span class="p">(</span><span class="n">α_vals</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
                  <span class="n">savefig</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                 <span class="n">figname</span><span class="o">=</span><span class="s2">&quot;figures/markov_js_with_sep_2.pdf&quot;</span><span class="p">):</span>
+                 <span class="n">figname</span><span class="o">=</span><span class="s2">&quot;./figures/markov_js_with_sep_2.pdf&quot;</span><span class="p">):</span>
 
     <span class="n">w_star_vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">α_vals</span><span class="p">)</span>
     <span class="k">for</span> <span class="p">(</span><span class="n">i_α</span><span class="p">,</span> <span class="n">α</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">α_vals</span><span class="p">):</span>
@@ -740,7 +711,6 @@ Terminated successfully in 365 iterations.
 </pre></div>
 </div>
 </div>
-</details>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -749,21 +719,21 @@ Terminated successfully in 365 iterations.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 25 with error 1.0768067726007686.
-Completed iteration 50 with error 0.3114311653737829.
-Completed iteration 75 with error 0.10927534292910934.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 25 with error 1.0768067726007757.
+Completed iteration 50 with error 0.3114311653737616.
+Completed iteration 75 with error 0.10927534292912355.
 Completed iteration 100 with error 0.04148769976492872.
-Completed iteration 125 with error 0.016208489343696897.
-Completed iteration 150 with error 0.006367184136806259.
-Completed iteration 175 with error 0.0025017074515147897.
-Completed iteration 200 with error 0.0009893612445353028.
+Completed iteration 125 with error 0.016208489343711108.
+Completed iteration 150 with error 0.00636718413682047.
+Completed iteration 175 with error 0.002501707451486368.
+Completed iteration 200 with error 0.000989361244521092.
 Completed iteration 225 with error 0.0003952811634491127.
-Completed iteration 250 with error 0.00015803164485816978.
-Completed iteration 275 with error 6.318165888785643e-05.
-Completed iteration 300 with error 2.5260286278694366e-05.
-Completed iteration 325 with error 1.0099166232180323e-05.
+Completed iteration 250 with error 0.0001580316448865915.
+Completed iteration 275 with error 6.318165887364557e-05.
+Completed iteration 300 with error 2.526028629290522e-05.
+Completed iteration 325 with error 1.0099166189547759e-05.
 Completed iteration 350 with error 4.037688142943807e-06.
-Completed iteration 375 with error 1.6142842866884166e-06.
+Completed iteration 375 with error 1.6142843008992713e-06.
 Terminated successfully in 390 iterations.
 </pre></div>
 </div>
@@ -779,242 +749,230 @@ Terminated successfully in 390 iterations.
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0 0.0
 Completed iteration 25 with error 0.7358325123867075.
-Completed iteration 50 with error 0.21393801675841928.
-Completed iteration 75 with error 0.07487776205155683.
+Completed iteration 50 with error 0.21393801675841218.
+Completed iteration 75 with error 0.07487776205154262.
 Completed iteration 100 with error 0.027611709626711445.
-Completed iteration 125 with error 0.010342258331803578.
+Completed iteration 125 with error 0.010342258331789367.
 Completed iteration 150 with error 0.00392782716204465.
-Completed iteration 175 with error 0.0014931447809374276.
-Completed iteration 200 with error 0.0005676247519375011.
+Completed iteration 175 with error 0.0014931447809232168.
+Completed iteration 200 with error 0.0005676247519517119.
 Completed iteration 225 with error 0.00021578485559814453.
-Completed iteration 250 with error 8.203149056384973e-05.
-Completed iteration 275 with error 3.118460483619856e-05.
-Completed iteration 300 with error 1.1854954365730919e-05.
-Completed iteration 325 with error 4.50670914631246e-06.
-Completed iteration 350 with error 1.7132438188127708e-06.
+Completed iteration 250 with error 8.203149057806058e-05.
+Completed iteration 275 with error 3.1184604821987705e-05.
+Completed iteration 300 with error 1.1854954394152628e-05.
+Completed iteration 325 with error 4.506709132101605e-06.
+Completed iteration 350 with error 1.713243804601916e-06.
 Terminated successfully in 365 iterations.
 1 0.1111111111111111
-Completed iteration 25 with error 1.0908342197011507.
+Completed iteration 25 with error 1.0908342197011365.
 Completed iteration 50 with error 0.3207246338823424.
-Completed iteration 75 with error 0.11318340744480082.
-Completed iteration 100 with error 0.04326081621016442.
+Completed iteration 75 with error 0.11318340744479372.
+Completed iteration 100 with error 0.04326081621015021.
 Completed iteration 125 with error 0.01702270454350696.
 Completed iteration 150 with error 0.006738975380415013.
 Completed iteration 175 with error 0.0026685293016583955.
 Completed iteration 200 with error 0.0010679313731145612.
 Completed iteration 225 with error 0.0004299980392232783.
-Completed iteration 250 with error 0.0001731810760929875.
-Completed iteration 275 with error 6.974899996237127e-05.
-Completed iteration 300 with error 2.8091546766972897e-05.
+Completed iteration 250 with error 0.00017318107607877664.
+Completed iteration 275 with error 6.974899999079298e-05.
+Completed iteration 300 with error 2.8091546738551187e-05.
 Completed iteration 325 with error 1.1313925725175977e-05.
-Completed iteration 350 with error 4.556705832214902e-06.
-Completed iteration 375 with error 1.8352222781459204e-06.
+Completed iteration 350 with error 4.556705860636612e-06.
+Completed iteration 375 with error 1.8352222355133563e-06.
 Terminated successfully in 393 iterations.
 2 0.2222222222222222
-Completed iteration 25 with error 1.1302039661879135.
+Completed iteration 25 with error 1.1302039661879064.
 Completed iteration 50 with error 0.40190677446813794.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 75 with error 0.1541702600417736.
-Completed iteration 100 with error 0.06350128466103655.
+Completed iteration 75 with error 0.15417026004176648.
+Completed iteration 100 with error 0.06350128466102234.
 Completed iteration 125 with error 0.026934357233869832.
-Completed iteration 150 with error 0.01158044876807196.
-Completed iteration 175 with error 0.005002636660108806.
-Completed iteration 200 with error 0.00216159711674635.
-Completed iteration 225 with error 0.0009340178864931659.
-Completed iteration 250 with error 0.00040358577067678425.
-Completed iteration 275 with error 0.0001743879643782975.
-Completed iteration 300 with error 7.535241418565874e-05.
-Completed iteration 325 with error 3.2559508014173844e-05.
-Completed iteration 350 with error 1.4068846674319957e-05.
-Completed iteration 375 with error 6.079098220368451e-06.
-Completed iteration 400 with error 2.626756533175012e-06.
+Completed iteration 150 with error 0.011580448768086171.
+Completed iteration 175 with error 0.0050026366601017.
+Completed iteration 200 with error 0.0021615971167534553.
+Completed iteration 225 with error 0.0009340178864860604.
+Completed iteration 250 with error 0.0004035857706625734.
+Completed iteration 275 with error 0.00017438796437119208.
+Completed iteration 300 with error 7.535241419276417e-05.
+Completed iteration 325 with error 3.255950799996299e-05.
+Completed iteration 350 with error 1.4068846688530812e-05.
+Completed iteration 375 with error 6.079098213263023e-06.
+Completed iteration 400 with error 2.6267565402804394e-06.
 Completed iteration 425 with error 1.135012084318987e-06.
 Terminated successfully in 430 iterations.
 3 0.3333333333333333
-Completed iteration 25 with error 1.0827818060272634.
+Completed iteration 25 with error 1.082781806027267.
 Completed iteration 50 with error 0.45519415974240474.
-Completed iteration 75 with error 0.19282144291683068.
+Completed iteration 75 with error 0.19282144291682357.
 Completed iteration 100 with error 0.08581200863319793.
-Completed iteration 125 with error 0.03915773796497746.
+Completed iteration 125 with error 0.039157737964949035.
 Completed iteration 150 with error 0.01805454739234591.
 Completed iteration 175 with error 0.00838563508999357.
 Completed iteration 200 with error 0.003898038044262364.
-Completed iteration 225 with error 0.001812070458747428.
+Completed iteration 225 with error 0.0018120704587545333.
 Completed iteration 250 with error 0.0008423743598768851.
 Completed iteration 275 with error 0.00039159330419380467.
-Completed iteration 300 with error 0.00018203939286820514.
-Completed iteration 325 with error 8.462437997991401e-05.
+Completed iteration 300 with error 0.00018203939284688886.
+Completed iteration 325 with error 8.462437999412487e-05.
 Completed iteration 350 with error 3.9339208811384196e-05.
-Completed iteration 375 with error 1.828755910082691e-05.
-Completed iteration 400 with error 8.501310226449732e-06.
+Completed iteration 375 with error 1.8287559086616056e-05.
+Completed iteration 400 with error 8.501310219344305e-06.
 Completed iteration 425 with error 3.951991345729766e-06.
-Completed iteration 450 with error 1.8371563186292406e-06.
+Completed iteration 450 with error 1.8371563044183858e-06.
 Terminated successfully in 471 iterations.
 4 0.4444444444444444
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 25 with error 1.010106109561594.
-Completed iteration 50 with error 0.48366451069682626.
-Completed iteration 75 with error 0.22456412506510048.
-Completed iteration 100 with error 0.1073955458537057.
-Completed iteration 125 with error 0.05228381359918899.
-Completed iteration 150 with error 0.025665632138021977.
-Completed iteration 175 with error 0.012671593196685649.
+Completed iteration 25 with error 1.0101061095615904.
+Completed iteration 50 with error 0.48366451069681204.
+Completed iteration 75 with error 0.2245641250651147.
+Completed iteration 100 with error 0.10739554585371991.
+Completed iteration 125 with error 0.052283813599210305.
+Completed iteration 150 with error 0.025665632138029082.
+Completed iteration 175 with error 0.012671593196692754.
 Completed iteration 200 with error 0.00626138069863913.
-Completed iteration 225 with error 0.003094052382124346.
-Completed iteration 250 with error 0.0015289256308150811.
+Completed iteration 225 with error 0.0030940523821314514.
+Completed iteration 250 with error 0.0015289256308008703.
 Completed iteration 275 with error 0.0007555185499654726.
 Completed iteration 300 with error 0.00037333947034312587.
-Completed iteration 325 with error 0.00018448568894768869.
+Completed iteration 325 with error 0.00018448568895479411.
 Completed iteration 350 with error 9.116359809979713e-05.
 Completed iteration 375 with error 4.5048489489829535e-05.
-Completed iteration 400 with error 2.2260709833687997e-05.
-Completed iteration 425 with error 1.1000129163107886e-05.
-Completed iteration 450 with error 5.435713511303675e-06.
-Completed iteration 475 with error 2.6860576696208227e-06.
-Completed iteration 500 with error 1.3273153385284786e-06.
+Completed iteration 400 with error 2.226070982658257e-05.
+Completed iteration 425 with error 1.1000129170213313e-05.
+Completed iteration 450 with error 5.435713518409102e-06.
+Completed iteration 475 with error 2.68605767672625e-06.
+Completed iteration 500 with error 1.3273153314230512e-06.
 Terminated successfully in 512 iterations.
 5 0.5555555555555556
-Completed iteration 25 with error 0.9354993514006793.
-Completed iteration 50 with error 0.49436451425172834.
+Completed iteration 25 with error 0.9354993514006864.
+Completed iteration 50 with error 0.49436451425174255.
 Completed iteration 75 with error 0.24818960566408776.
-Completed iteration 100 with error 0.12648987573434312.
+Completed iteration 100 with error 0.12648987573435022.
 Completed iteration 125 with error 0.06517289125884673.
-Completed iteration 150 with error 0.03378604797022433.
-Completed iteration 175 with error 0.017566215840979282.
-Completed iteration 200 with error 0.009155847975627296.
-Completed iteration 225 with error 0.004772835312408574.
+Completed iteration 150 with error 0.03378604797021012.
+Completed iteration 175 with error 0.017566215840986388.
+Completed iteration 200 with error 0.00915584797562019.
+Completed iteration 225 with error 0.004772835312394363.
 Completed iteration 250 with error 0.002488041947152908.
-Completed iteration 275 with error 0.0012969975859533633.
-Completed iteration 300 with error 0.000676115125898491.
-Completed iteration 325 with error 0.0003524537512262782.
-Completed iteration 350 with error 0.00018373150076911315.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 375 with error 9.577785525038962e-05.
-Completed iteration 400 with error 4.992827861372007e-05.
-Completed iteration 425 with error 2.6027237694847827e-05.
-Completed iteration 450 with error 1.3567804074909873e-05.
-Completed iteration 475 with error 7.072794645068825e-06.
-Completed iteration 500 with error 3.686994894280815e-06.
-Completed iteration 525 with error 1.922002816456825e-06.
+Completed iteration 275 with error 0.001296997585946258.
+Completed iteration 300 with error 0.0006761151259055964.
+Completed iteration 325 with error 0.00035245375121206735.
+Completed iteration 350 with error 0.0001837315007549023.
+Completed iteration 375 with error 9.577785525749505e-05.
+Completed iteration 400 with error 4.992827860661464e-05.
+Completed iteration 425 with error 2.60272376877424e-05.
+Completed iteration 450 with error 1.3567804067804445e-05.
+Completed iteration 475 with error 7.072794652174252e-06.
+Completed iteration 500 with error 3.686994872964533e-06.
+Completed iteration 525 with error 1.9220028093513974e-06.
 Completed iteration 550 with error 1.0019256606597082e-06.
 Terminated successfully in 552 iterations.
 6 0.6666666666666666
-Completed iteration 25 with error 0.9049282870971069.
-Completed iteration 50 with error 0.4935393062159861.
-Completed iteration 75 with error 0.26422541561913704.
-Completed iteration 100 with error 0.1422057238442207.
-Completed iteration 125 with error 0.07698303775878657.
-Completed iteration 150 with error 0.041804996160614394.
-Completed iteration 175 with error 0.022759933588361037.
-Completed iteration 200 with error 0.012395733168737877.
-Completed iteration 225 with error 0.0067511795392718454.
-Completed iteration 250 with error 0.0036769480922558273.
-Completed iteration 275 with error 0.002002605329195717.
-Completed iteration 300 with error 0.0010906947884805618.
-Completed iteration 325 with error 0.0005940337342806856.
-Completed iteration 350 with error 0.0003235332938373858.
-Completed iteration 375 with error 0.00017620849820332296.
-Completed iteration 400 with error 9.5969828883824e-05.
-Completed iteration 425 with error 5.226880740138995e-05.
-Completed iteration 450 with error 2.846757421792745e-05.
-Completed iteration 475 with error 1.5504520227693774e-05.
-Completed iteration 500 with error 8.444349553826669e-06.
-Completed iteration 525 with error 4.599112934045024e-06.
-Completed iteration 550 with error 2.5048512526382183e-06.
-Completed iteration 575 with error 1.3642369651734043e-06.
+Completed iteration 25 with error 0.904928287097114.
+Completed iteration 50 with error 0.4935393062159932.
+Completed iteration 75 with error 0.2642254156191157.
+Completed iteration 100 with error 0.1422057238442065.
+Completed iteration 125 with error 0.07698303775877946.
+Completed iteration 150 with error 0.04180499616060729.
+Completed iteration 175 with error 0.022759933588368142.
+Completed iteration 200 with error 0.012395733168744982.
+Completed iteration 225 with error 0.006751179539278951.
+Completed iteration 250 with error 0.003676948092248722.
+Completed iteration 275 with error 0.0020026053292028223.
+Completed iteration 300 with error 0.001090694788466351.
+Completed iteration 325 with error 0.0005940337342735802.
+Completed iteration 350 with error 0.00032353329382317497.
+Completed iteration 375 with error 0.0001762084982104284.
+Completed iteration 400 with error 9.596982887671857e-05.
+Completed iteration 425 with error 5.226880737296824e-05.
+Completed iteration 450 with error 2.8467574225032877e-05.
+Completed iteration 475 with error 1.5504520249010056e-05.
+Completed iteration 500 with error 8.444349539615814e-06.
+Completed iteration 525 with error 4.59911291983417e-06.
+Completed iteration 550 with error 2.5048512597436456e-06.
+Completed iteration 575 with error 1.3642369722788317e-06.
 Terminated successfully in 589 iterations.
 7 0.7777777777777777
-Completed iteration 25 with error 0.8754680641411454.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 50 with error 0.48591938913981636.
-Completed iteration 75 with error 0.2739472364400015.
-Completed iteration 100 with error 0.15435613754703326.
-Completed iteration 125 with error 0.08716896006369979.
+Completed iteration 25 with error 0.8754680641411525.
+Completed iteration 50 with error 0.48591938913980925.
+Completed iteration 75 with error 0.2739472364400086.
+Completed iteration 100 with error 0.15435613754701194.
+Completed iteration 125 with error 0.08716896006367847.
 Completed iteration 150 with error 0.04929986845724699.
-Completed iteration 175 with error 0.02790173261596607.
-Completed iteration 200 with error 0.015807991478112626.
-Completed iteration 225 with error 0.008956542454100713.
-Completed iteration 250 with error 0.005074636273015187.
-Completed iteration 275 with error 0.002875209574980886.
+Completed iteration 175 with error 0.027901732615987385.
+Completed iteration 200 with error 0.01580799147810552.
+Completed iteration 225 with error 0.008956542454093608.
+Completed iteration 250 with error 0.00507463627297966.
+Completed iteration 275 with error 0.002875209574966675.
 Completed iteration 300 with error 0.001629048808375444.
-Completed iteration 325 with error 0.0009229935949051082.
+Completed iteration 325 with error 0.0009229935949193191.
 Completed iteration 350 with error 0.0005229537457083211.
-Completed iteration 375 with error 0.00029629741922576613.
-Completed iteration 400 with error 0.00016787748700863858.
+Completed iteration 375 with error 0.00029629741923287156.
+Completed iteration 400 with error 0.00016787748700153315.
 Completed iteration 425 with error 9.511676042706085e-05.
-Completed iteration 450 with error 5.3891669914207796e-05.
-Completed iteration 475 with error 3.0534177909657956e-05.
-Completed iteration 500 with error 1.730018799150912e-05.
-Completed iteration 525 with error 9.802016144533354e-06.
-Completed iteration 550 with error 5.553669133462336e-06.
-Completed iteration 575 with error 3.146622141514399e-06.
-Completed iteration 600 with error 1.7828269207598169e-06.
-Completed iteration 625 with error 1.010121870592684e-06.
+Completed iteration 450 with error 5.389166990710237e-05.
+Completed iteration 475 with error 3.053417790255253e-05.
+Completed iteration 500 with error 1.7300188005719974e-05.
+Completed iteration 525 with error 9.802016151638782e-06.
+Completed iteration 550 with error 5.55366914767319e-06.
+Completed iteration 575 with error 3.1466221486198265e-06.
+Completed iteration 600 with error 1.7828269136543895e-06.
+Completed iteration 625 with error 1.0101218776981113e-06.
 Terminated successfully in 627 iterations.
 8 0.8888888888888888
-Completed iteration 25 with error 0.8460605070496854.
-Completed iteration 50 with error 0.4748541534684847.
+Completed iteration 25 with error 0.8460605070496783.
+Completed iteration 50 with error 0.4748541534684918.
 Completed iteration 75 with error 0.2788181611011922.
-Completed iteration 100 with error 0.1631737247170051.
-Completed iteration 125 with error 0.09553448380319196.
+Completed iteration 100 with error 0.16317372471699798.
+Completed iteration 125 with error 0.09553448380320617.
 Completed iteration 150 with error 0.05593656450190565.
 Completed iteration 175 with error 0.03276931670900751.
-Completed iteration 200 with error 0.01920113908681742.
+Completed iteration 200 with error 0.01920113908680321.
 Completed iteration 225 with error 0.01125091517433674.
 Completed iteration 250 with error 0.006592479196839918.
-Completed iteration 275 with error 0.0038628664157869252.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 300 with error 0.002263448470671392.
-Completed iteration 325 with error 0.0013262687414368202.
-Completed iteration 350 with error 0.0007771278194823594.
-Completed iteration 375 with error 0.0004553584269402222.
-Completed iteration 400 with error 0.00026681749359624973.
+Completed iteration 275 with error 0.00386286641577982.
+Completed iteration 300 with error 0.0022634484706642866.
+Completed iteration 325 with error 0.0013262687414226093.
+Completed iteration 350 with error 0.0007771278194965703.
+Completed iteration 375 with error 0.00045535842692601136.
+Completed iteration 400 with error 0.0002668174935891443.
 Completed iteration 425 with error 0.00015634184123314299.
-Completed iteration 450 with error 9.160857854340065e-05.
-Completed iteration 475 with error 5.3678091532560757e-05.
-Completed iteration 500 with error 3.1452704035928036e-05.
-Completed iteration 525 with error 1.8429727383306727e-05.
+Completed iteration 450 with error 9.16085785291898e-05.
+Completed iteration 475 with error 5.367809152545533e-05.
+Completed iteration 500 with error 3.1452704064349746e-05.
+Completed iteration 525 with error 1.8429727369095872e-05.
 Completed iteration 550 with error 1.0798907794651313e-05.
-Completed iteration 575 with error 6.327625314384022e-06.
-Completed iteration 600 with error 3.7076751553399845e-06.
+Completed iteration 575 with error 6.3276253214894496e-06.
+Completed iteration 600 with error 3.707675148234557e-06.
 Completed iteration 625 with error 2.1725140655348696e-06.
 Completed iteration 650 with error 1.2729856990745247e-06.
 Terminated successfully in 663 iterations.
 9 1.0
-Completed iteration 25 with error 0.8195566251536093.
-Completed iteration 50 with error 0.46642498056927906.
+Completed iteration 25 with error 0.8195566251536164.
+Completed iteration 50 with error 0.46642498056927195.
 Completed iteration 75 with error 0.28037678187634185.
-Completed iteration 100 with error 0.16915170563318327.
-Completed iteration 125 with error 0.10207516364069136.
+Completed iteration 100 with error 0.16915170563319748.
+Completed iteration 125 with error 0.10207516364071978.
 Completed iteration 150 with error 0.061598680129037575.
 Completed iteration 175 with error 0.03717262745708183.
-Completed iteration 200 with error 0.02243236944055127.
-Completed iteration 225 with error 0.013537143756735759.
+Completed iteration 200 with error 0.02243236944053706.
+Completed iteration 225 with error 0.01353714375674997.
 Completed iteration 250 with error 0.008169188798902383.
 Completed iteration 275 with error 0.004929817311051465.
-Completed iteration 300 with error 0.002974970871477467.
+Completed iteration 300 with error 0.0029749708714845724.
 Completed iteration 325 with error 0.0017952899930691046.
 Completed iteration 350 with error 0.0010833941905588063.
 Completed iteration 375 with error 0.0006537901824543724.
 Completed iteration 400 with error 0.0003945393158062416.
 Completed iteration 425 with error 0.0002380905616092832.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 450 with error 0.00014367925643199442.
+Completed iteration 450 with error 0.00014367925643909985.
 Completed iteration 475 with error 8.670536367105797e-05.
 Completed iteration 500 with error 5.232362886431474e-05.
-Completed iteration 525 with error 3.157546456122873e-05.
+Completed iteration 525 with error 3.157546457543958e-05.
 Completed iteration 550 with error 1.905467919982584e-05.
-Completed iteration 575 with error 1.1498826850697696e-05.
-Completed iteration 600 with error 6.93913644767008e-06.
+Completed iteration 575 with error 1.1498826843592269e-05.
+Completed iteration 600 with error 6.9391364547755074e-06.
 Completed iteration 625 with error 4.1875241052480305e-06.
-Completed iteration 650 with error 2.5270231134300047e-06.
-Completed iteration 675 with error 1.5249693348096116e-06.
+Completed iteration 650 with error 2.5270231276408595e-06.
+Completed iteration 675 with error 1.5249693490204663e-06.
 Terminated successfully in 697 iterations.
 </pre></div>
 </div>
@@ -1186,21 +1144,21 @@ Terminated successfully in 697 iterations.
                     <li data-tippy-content="Table of Contents" class="btn__sidebar"><i data-feather="menu"></i></li>
                     <li data-tippy-content="Home"><a href="../intro.html"><i data-feather="home"></i></a></li>
                     <li class="btn__qelogo"><a href="https://quantecon.org" title=""><span class="show-for-sr">QuantEcon</span></a></li>
+                    <!-- <li class="btn__search">
+                        <form action="../search.html" method="get">
+                            <input type="search" class="form-control" name="q" id="search-input" placeholder="Search..." aria-label="Search..." autocomplete="off">
+                            <i data-feather="search"></i>
+                        </form>
+                    </li> -->
                 </ul>
 
                 <ul class="qe-toolbar__links">
-                    <li class="btn__search">
-                        <form action="../search.html" method="get">
-                            <input type="search" class="form-control" name="q" id="search-input" placeholder="Search..." aria-label="Search..." autocomplete="off" accesskey="k">
-                            <i data-feather="search" id="search-icon"></i>
-                        </form>
-                    </li>
                     <li data-tippy-content="Fullscreen" class="btn__fullscreen"><i data-feather="maximize"></i></li>
                     <li data-tippy-content="Increase font size" class="btn__plus"><i data-feather="plus-circle"></i></li>
                     <li data-tippy-content="Decrease font size" class="btn__minus"><i data-feather="minus-circle"></i></li>
                     <li data-tippy-content="Change contrast" class="btn__contrast"><i data-feather="sunset"></i></li>
                         <li data-tippy-content="Download PDF" onClick="window.print()"><i data-feather="file"></i></li>
-                    <li data-tippy-content="View Source"><a target="_blank" href="https://github.com/orectique/book-dp1/blob/main-test/code-book/py/markov_dynamics.md" download><i data-feather="github"></i></a></li>
+                    <li data-tippy-content="View Source"><a target="_blank" href="https://github.com/orectique/book-dp1/tree/master/code-book/py/markov_dynamics.md" download><i data-feather="github"></i></a></li>
                 </ul>
 
             </div>

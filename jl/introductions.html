@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Chapter 1: Introductions &#8212; Dynamic Programming</title>
     <script src="https://unpkg.com/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
@@ -71,7 +71,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/quantecon-book-theme.b1c2e4f636e57c481a96e252d9ca7e4e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/quantecon-book-theme.279dae03c5caae754d20501e3fa00bbf.css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
@@ -97,7 +97,7 @@
     <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
-    <script src="../_static/quantecon-book-theme.ef2ef6c3e8da75e1e736fb5fce08cde6.js"></script>
+    <script src="../_static/quantecon-book-theme.15b0c36fffe88f468997fa7b698991d3.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -209,8 +209,8 @@ const thebe_selector_output = ".output, .cell_output"
                     <div>
                         
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><a class="toc-backref" href="#id2">Chapter 1: Introductions</a><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
-<div class="contents topic" id="contents">
+<h1><a class="toc-backref" href="#id2" role="doc-backlink">Chapter 1: Introductions</a><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<nav class="contents" id="contents">
 <p class="topic-title">Contents</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#id1" id="id2">Chapter 1: Introductions</a></p>
@@ -225,15 +225,10 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 </ul>
-</div>
+</nav>
 <section id="two-period-job-search-jl">
-<h2><a class="toc-backref" href="#id3">two_period_job_search.jl</a><a class="headerlink" href="#two-period-job-search-jl" title="Permalink to this heading">#</a></h2>
-<div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">two_period_job_search.jl</a><a class="headerlink" href="#two-period-job-search-jl" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="s">&quot;&quot;&quot;</span>
 <span class="s">Two period job search in the IID case.</span>
@@ -289,7 +284,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <span class="s">&quot; Plot two-period value function and res wage. &quot;</span>
 <span class="k">function</span><span class="w"> </span><span class="n">fig_v1</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">default_model</span><span class="p">;</span><span class="w"> </span><span class="n">savefig</span><span class="o">=</span><span class="nb">false</span><span class="p">,</span><span class="w"> </span>
-<span class="w">                  </span><span class="n">figname</span><span class="o">=</span><span class="s">&quot;figures/iid_job_search_0.pdf&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">fs</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="w">                  </span><span class="n">figname</span><span class="o">=</span><span class="s">&quot;./figures/iid_job_search_0.pdf&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">fs</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
 
 <span class="w">    </span><span class="p">(;</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">w_vals</span><span class="p">,</span><span class="w"> </span><span class="n">ϕ</span><span class="p">,</span><span class="w"> </span><span class="n">β</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">model</span>
 
@@ -319,7 +314,6 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
-</details>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fig_v1
 </pre></div>
@@ -338,13 +332,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </section>
 <section id="compute-spec-rad-jl">
-<h2><a class="toc-backref" href="#id4">compute_spec_rad.jl</a><a class="headerlink" href="#compute-spec-rad-jl" title="Permalink to this heading">#</a></h2>
-<div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">compute_spec_rad.jl</a><a class="headerlink" href="#compute-spec-rad-jl" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">LinearAlgebra</span><span class="w">                         </span>
 <span class="n">ρ</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">maximum</span><span class="p">(</span><span class="n">abs</span><span class="p">(</span><span class="n">λ</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">λ</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">eigvals</span><span class="p">(</span><span class="n">A</span><span class="p">))</span><span class="w">  </span><span class="c"># Spectral radius</span>
@@ -354,7 +343,6 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
-</details>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5828427124746189
 </pre></div>
@@ -363,13 +351,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </section>
 <section id="power-series-jl">
-<h2><a class="toc-backref" href="#id5">power_series.jl</a><a class="headerlink" href="#power-series-jl" title="Permalink to this heading">#</a></h2>
-<div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">power_series.jl</a><a class="headerlink" href="#power-series-jl" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">LinearAlgebra</span>
 
@@ -396,7 +379,6 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
-</details>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.6210591736771676e-12
 </pre></div>
@@ -405,13 +387,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </section>
 <section id="s-approx-jl">
-<h2><a class="toc-backref" href="#id6">s_approx.jl</a><a class="headerlink" href="#s-approx-jl" title="Permalink to this heading">#</a></h2>
-<div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">s_approx.jl</a><a class="headerlink" href="#s-approx-jl" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="s">&quot;&quot;&quot;</span>
 <span class="s">Computes an approximate fixed point of a given operator T </span>
@@ -451,7 +428,6 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
-</details>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>successive_approx
 </pre></div>
@@ -460,13 +436,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </section>
 <section id="linear-iter-jl">
-<h2><a class="toc-backref" href="#id7">linear_iter.jl</a><a class="headerlink" href="#linear-iter-jl" title="Permalink to this heading">#</a></h2>
-<div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">linear_iter.jl</a><a class="headerlink" href="#linear-iter-jl" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">include</span><span class="p">(</span><span class="s">&quot;s_approx.jl&quot;</span><span class="p">)</span>
 <span class="k">using</span><span class="w"> </span><span class="n">LinearAlgebra</span>
@@ -485,9 +456,8 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
-</details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 25 with error 2.911659384707832e-6.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 25 with error 2.9116593855960105e-6.
 Terminated successfully in 28 iterations.
 </pre></div>
 </div>
@@ -498,13 +468,8 @@ Terminated successfully in 28 iterations.
 </div>
 </section>
 <section id="linear-iter-fig-jl">
-<h2><a class="toc-backref" href="#id8">linear_iter_fig.jl</a><a class="headerlink" href="#linear-iter-fig-jl" title="Permalink to this heading">#</a></h2>
-<div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">linear_iter_fig.jl</a><a class="headerlink" href="#linear-iter-fig-jl" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">include</span><span class="p">(</span><span class="s">&quot;linear_iter.jl&quot;</span><span class="p">)</span>
 <span class="k">using</span><span class="w"> </span><span class="n">PyPlot</span>
@@ -546,17 +511,14 @@ Terminated successfully in 28 iterations.
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mf">1.8</span><span class="p">,</span><span class="w"> </span><span class="mf">3.2</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mf">2.8</span><span class="p">,</span><span class="w"> </span><span class="mf">6.1</span><span class="p">)</span>
 
-<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s">&quot;figures/linear_iter_fig_1.pdf&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s">&quot;./figures/linear_iter_fig_1.pdf&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-</details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 25 with error 2.911659384707832e-6.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 25 with error 2.9116593855960105e-6.
 Terminated successfully in 28 iterations.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>true
+true
 </pre></div>
 </div>
 <img alt="../_images/4fe2b4af7be1d31b22a0735a27b10308d1c7ac031fe4be4ef86c67c3570c3056.png" src="../_images/4fe2b4af7be1d31b22a0735a27b10308d1c7ac031fe4be4ef86c67c3570c3056.png" />
@@ -564,13 +526,8 @@ Terminated successfully in 28 iterations.
 </div>
 </section>
 <section id="iid-job-search-jl">
-<h2><a class="toc-backref" href="#id9">iid_job_search.jl</a><a class="headerlink" href="#iid-job-search-jl" title="Permalink to this heading">#</a></h2>
-<div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">iid_job_search.jl</a><a class="headerlink" href="#iid-job-search-jl" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="s">&quot;&quot;&quot;</span>
 <span class="s">VFI approach to job search in the infinite-horizon IID case.</span>
@@ -617,7 +574,7 @@ Terminated successfully in 28 iterations.
 <span class="k">function</span><span class="w"> </span><span class="n">fig_vseq</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">default_model</span><span class="p">;</span><span class="w"> </span>
 <span class="w">                    </span><span class="n">k</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span>
 <span class="w">                    </span><span class="n">savefig</span><span class="o">=</span><span class="nb">false</span><span class="p">,</span><span class="w"> </span>
-<span class="w">                    </span><span class="n">figname</span><span class="o">=</span><span class="s">&quot;figures/iid_job_search_1.pdf&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="n">figname</span><span class="o">=</span><span class="s">&quot;./figures/iid_job_search_1.pdf&quot;</span><span class="p">,</span>
 <span class="w">                    </span><span class="n">fs</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
 
 <span class="w">    </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">zero</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">w_vals</span><span class="p">)</span><span class="w">  </span>
@@ -647,7 +604,7 @@ Terminated successfully in 28 iterations.
 <span class="s">&quot; Plot the fixed point. &quot;</span>
 <span class="k">function</span><span class="w"> </span><span class="n">fig_vstar</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">default_model</span><span class="p">;</span><span class="w"> </span>
 <span class="w">                   </span><span class="n">savefig</span><span class="o">=</span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="n">fs</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span>
-<span class="w">                   </span><span class="n">figname</span><span class="o">=</span><span class="s">&quot;figures/iid_job_search_3.pdf&quot;</span><span class="p">)</span>
+<span class="w">                   </span><span class="n">figname</span><span class="o">=</span><span class="s">&quot;./figures/iid_job_search_3.pdf&quot;</span><span class="p">)</span>
 
 <span class="w">    </span><span class="p">(;</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">w_vals</span><span class="p">,</span><span class="w"> </span><span class="n">ϕ</span><span class="p">,</span><span class="w"> </span><span class="n">β</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">model</span>
 <span class="w">    </span><span class="n">v_star</span><span class="p">,</span><span class="w"> </span><span class="n">σ_star</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vfi</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
@@ -678,7 +635,6 @@ Terminated successfully in 28 iterations.
 </pre></div>
 </div>
 </div>
-</details>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fig_vstar
 </pre></div>
@@ -704,9 +660,6 @@ Terminated successfully in 28 iterations.
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Completed iteration 25 with error 2.2046856429369655e-6.
 Terminated successfully in 28 iterations.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 <img alt="../_images/db6527b2aea8200d53be821bce82128814be2356fd120c0d32778be6f758d46d.png" src="../_images/db6527b2aea8200d53be821bce82128814be2356fd120c0d32778be6f758d46d.png" />
@@ -877,21 +830,21 @@ Terminated successfully in 28 iterations.
                     <li data-tippy-content="Table of Contents" class="btn__sidebar"><i data-feather="menu"></i></li>
                     <li data-tippy-content="Home"><a href="../intro.html"><i data-feather="home"></i></a></li>
                     <li class="btn__qelogo"><a href="https://quantecon.org" title=""><span class="show-for-sr">QuantEcon</span></a></li>
+                    <!-- <li class="btn__search">
+                        <form action="../search.html" method="get">
+                            <input type="search" class="form-control" name="q" id="search-input" placeholder="Search..." aria-label="Search..." autocomplete="off">
+                            <i data-feather="search"></i>
+                        </form>
+                    </li> -->
                 </ul>
 
                 <ul class="qe-toolbar__links">
-                    <li class="btn__search">
-                        <form action="../search.html" method="get">
-                            <input type="search" class="form-control" name="q" id="search-input" placeholder="Search..." aria-label="Search..." autocomplete="off" accesskey="k">
-                            <i data-feather="search" id="search-icon"></i>
-                        </form>
-                    </li>
                     <li data-tippy-content="Fullscreen" class="btn__fullscreen"><i data-feather="maximize"></i></li>
                     <li data-tippy-content="Increase font size" class="btn__plus"><i data-feather="plus-circle"></i></li>
                     <li data-tippy-content="Decrease font size" class="btn__minus"><i data-feather="minus-circle"></i></li>
                     <li data-tippy-content="Change contrast" class="btn__contrast"><i data-feather="sunset"></i></li>
                         <li data-tippy-content="Download PDF" onClick="window.print()"><i data-feather="file"></i></li>
-                    <li data-tippy-content="View Source"><a target="_blank" href="https://github.com/orectique/book-dp1/blob/main-test/code-book/jl/introductions.md" download><i data-feather="github"></i></a></li>
+                    <li data-tippy-content="View Source"><a target="_blank" href="https://github.com/orectique/book-dp1/tree/master/code-book/jl/introductions.md" download><i data-feather="github"></i></a></li>
                 </ul>
 
             </div>

@@ -28,7 +28,6 @@ kernelspec:
 
 ## quantile_function.py
 ```{code-cell} python3
-:tags: ["hide-input"]
 from scipy.stats import rv_discrete
 import numpy as np
 
@@ -60,7 +59,6 @@ def quantile_test(τ):
 ```
 ## quantile_js.py
 ```{code-cell} python3
-:tags: ["hide-input"]
 """
 Job search with Markov wage draws and quantile preferences.
 
@@ -128,7 +126,7 @@ plt.rcParams.update({"text.usetex": True, "font.size": 14})
 
 def plot_main(tau_vals=(0.1, 0.25, 0.5, 0.6, 0.7, 0.8), 
                      savefig=False, 
-                     figname="figures/quantile_js.pdf"):
+                     figname="./figures/quantile_js.pdf"):
 
     w_star_vals = np.zeros(len(tau_vals))
 

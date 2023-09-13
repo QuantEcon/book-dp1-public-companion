@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Chapter 8: Recursive Decision Processes &#8212; Dynamic Programming</title>
     <script src="https://unpkg.com/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
@@ -71,7 +71,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/quantecon-book-theme.b1c2e4f636e57c481a96e252d9ca7e4e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/quantecon-book-theme.279dae03c5caae754d20501e3fa00bbf.css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
@@ -97,7 +97,7 @@
     <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
-    <script src="../_static/quantecon-book-theme.ef2ef6c3e8da75e1e736fb5fce08cde6.js"></script>
+    <script src="../_static/quantecon-book-theme.15b0c36fffe88f468997fa7b698991d3.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -203,8 +203,8 @@ const thebe_selector_output = ".output, .cell_output"
                     <div>
                         
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><a class="toc-backref" href="#id2">Chapter 8: Recursive Decision Processes</a><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
-<div class="contents topic" id="contents">
+<h1><a class="toc-backref" href="#id2" role="doc-backlink">Chapter 8: Recursive Decision Processes</a><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<nav class="contents" id="contents">
 <p class="topic-title">Contents</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#id1" id="id2">Chapter 8: Recursive Decision Processes</a></p>
@@ -214,15 +214,10 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 </ul>
-</div>
+</nav>
 <section id="quantile-function-py">
-<h2><a class="toc-backref" href="#id3">quantile_function.py</a><a class="headerlink" href="#quantile-function-py" title="Permalink to this heading">#</a></h2>
-<div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">quantile_function.py</a><a class="headerlink" href="#quantile-function-py" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">rv_discrete</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -252,17 +247,11 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
-</details>
 </div>
 </section>
 <section id="quantile-js-py">
-<h2><a class="toc-backref" href="#id4">quantile_js.py</a><a class="headerlink" href="#quantile-js-py" title="Permalink to this heading">#</a></h2>
-<div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">quantile_js.py</a><a class="headerlink" href="#quantile-js-py" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Job search with Markov wage draws and quantile preferences.</span>
@@ -331,7 +320,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <span class="k">def</span> <span class="nf">plot_main</span><span class="p">(</span><span class="n">tau_vals</span><span class="o">=</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">),</span> 
                      <span class="n">savefig</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> 
-                     <span class="n">figname</span><span class="o">=</span><span class="s2">&quot;figures/quantile_js.pdf&quot;</span><span class="p">):</span>
+                     <span class="n">figname</span><span class="o">=</span><span class="s2">&quot;./figures/quantile_js.pdf&quot;</span><span class="p">):</span>
 
     <span class="n">w_star_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tau_vals</span><span class="p">))</span>
 
@@ -361,7 +350,6 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
-</details>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -370,7 +358,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 197.04958104222322
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 197.04958104222325
 OPI current error = 32.41999066047552
 OPI current error = 35.62127408582426
 OPI current error = 34.1446640510786
@@ -380,9 +368,11 @@ OPI current error = 23.254898512652094
 OPI current error = 16.591569430034006
 OPI current error = 7.09109988950496
 OPI current error = 3.102226038720346e-06
-OPI current error = 197.04958104222322
+OPI current error = 197.04958104222325
 OPI current error = 32.41999066047552
-OPI current error = 29.678936943622382
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 29.678936943622382
 OPI current error = 29.093921296620483
 OPI current error = 27.974814794615806
 OPI current error = 26.72531111677077
@@ -391,12 +381,12 @@ OPI current error = 23.255076254919008
 OPI current error = 20.92822560847147
 OPI current error = 18.39891195068428
 OPI current error = 14.680917085664738
+OPI current error = 10.525484762612273
+OPI current error = 5.881149036250456
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 10.525484762612273
-OPI current error = 5.881149036250456
-OPI current error = 9.59630597208161e-10
-OPI current error = 197.04958104222322
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 9.59630597208161e-10
+OPI current error = 197.04958104222325
 OPI current error = 36.59694294236868
 OPI current error = 0.676518038229375
 OPI current error = 0.08971952178475817
@@ -405,16 +395,16 @@ OPI current error = 0.001577982158643465
 OPI current error = 0.00020927129308034864
 OPI current error = 2.7753465943192168e-05
 OPI current error = 3.6806523482368902e-06
-OPI current error = 197.04958104222322
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 51.40389833249008
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OPI current error = 197.04958104222325
+OPI current error = 51.40389833249008
 OPI current error = 0.0
-OPI current error = 197.04958104222322
+OPI current error = 197.04958104222325
 OPI current error = 82.51356008425164
 OPI current error = 0.0
-OPI current error = 197.04958104222322
-OPI current error = 133.14095588610522
+OPI current error = 197.04958104222325
+OPI current error = 133.14095588610525
 OPI current error = 0.0
 </pre></div>
 </div>
@@ -586,21 +576,21 @@ OPI current error = 0.0
                     <li data-tippy-content="Table of Contents" class="btn__sidebar"><i data-feather="menu"></i></li>
                     <li data-tippy-content="Home"><a href="../intro.html"><i data-feather="home"></i></a></li>
                     <li class="btn__qelogo"><a href="https://quantecon.org" title=""><span class="show-for-sr">QuantEcon</span></a></li>
+                    <!-- <li class="btn__search">
+                        <form action="../search.html" method="get">
+                            <input type="search" class="form-control" name="q" id="search-input" placeholder="Search..." aria-label="Search..." autocomplete="off">
+                            <i data-feather="search"></i>
+                        </form>
+                    </li> -->
                 </ul>
 
                 <ul class="qe-toolbar__links">
-                    <li class="btn__search">
-                        <form action="../search.html" method="get">
-                            <input type="search" class="form-control" name="q" id="search-input" placeholder="Search..." aria-label="Search..." autocomplete="off" accesskey="k">
-                            <i data-feather="search" id="search-icon"></i>
-                        </form>
-                    </li>
                     <li data-tippy-content="Fullscreen" class="btn__fullscreen"><i data-feather="maximize"></i></li>
                     <li data-tippy-content="Increase font size" class="btn__plus"><i data-feather="plus-circle"></i></li>
                     <li data-tippy-content="Decrease font size" class="btn__minus"><i data-feather="minus-circle"></i></li>
                     <li data-tippy-content="Change contrast" class="btn__contrast"><i data-feather="sunset"></i></li>
                         <li data-tippy-content="Download PDF" onClick="window.print()"><i data-feather="file"></i></li>
-                    <li data-tippy-content="View Source"><a target="_blank" href="https://github.com/orectique/book-dp1/blob/main-test/code-book/py/recursive_decision_processes.md" download><i data-feather="github"></i></a></li>
+                    <li data-tippy-content="View Source"><a target="_blank" href="https://github.com/orectique/book-dp1/tree/master/code-book/py/recursive_decision_processes.md" download><i data-feather="github"></i></a></li>
                 </ul>
 
             </div>
