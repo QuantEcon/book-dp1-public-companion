@@ -78,7 +78,7 @@ end
 
 
 function plot_vstar_and_opt_policy(; fontsize=16, 
-                   figname="figures/inventory_dp_vs.pdf",
+                   figname="./figures/inventory_dp_vs.pdf",
                    savefig=false)
     fig, axes = plt.subplots(2, 1, figsize=(8, 6.5))
 
@@ -99,7 +99,7 @@ function plot_vstar_and_opt_policy(; fontsize=16,
 end
 
 function plot_ts(; fontsize=16, 
-                   figname="figures/inventory_dp_ts.pdf",
+                   figname="./figures/inventory_dp_ts.pdf",
                    savefig=false)
     X = sim_inventories()
     fig, ax = plt.subplots(figsize=(9, 5.5))

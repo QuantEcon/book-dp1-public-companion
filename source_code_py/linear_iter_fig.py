@@ -3,7 +3,7 @@ import numpy as np
 
 from linear_iter import x_star, T
 
-def plot_main(savefig=False, figname="figures/linear_iter_fig_1.pdf"):
+def plot_main(savefig=False, figname="./figures/linear_iter_fig_1.pdf"):
 
     fig, ax = plt.subplots()
 

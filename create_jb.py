@@ -150,7 +150,7 @@ try:
 
                     b.write(f"## {sub}\n")
                     b.write(f"```{{code-cell}} julia\n")
-                    #b.write(":tags: [\"hide-input\"]\n")
+                    b.write(":tags: [\"hide-input\"]\n")
 
                     text = g.readlines()
 
@@ -297,7 +297,7 @@ try:
 
                     b.write(f"## {sub}\n")
                     b.write(f"```{{code-cell}} python3\n")
-                    #b.write(":tags: [\"hide-input\"]\n")
+                    b.write(":tags: [\"hide-input\"]\n")
 
                     text = g.readlines()
 
@@ -324,15 +324,5 @@ except Exception as e:
 
 #####################################################################################################
 
-try:
-    os.system("jupyter-book build ./code-book/")
-    remove_files(python_src_dir, python_dst_dir)
-    remove_files(julia_src_dir, julia_dst_dir)
-    print("Success!")
-    exit(0)
-except Exception as e:
-    print("Error in building Jupyter Book: " + str(e))
-    remove_files(python_src_dir, python_dst_dir)
-    remove_files(julia_src_dir, julia_dst_dir)
-    print("Failed! - Directory cleaned")
-    exit(1)
+remove_files(python_src_dir, python_dst_dir)
+remove_files(julia_src_dir, julia_dst_dir)

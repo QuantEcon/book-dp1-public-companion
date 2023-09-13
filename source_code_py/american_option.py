@@ -77,7 +77,7 @@ import matplotlib.pyplot as plt
 
 
 def plot_contours(savefig=False,
-                  figname="figures/american_option_1.pdf"):
+                  figname="./figures/american_option_1.pdf"):
 
     model = create_american_option_model()
     t_vals, z_vals, w_vals, Q, φ, T, β, K = model
@@ -110,7 +110,7 @@ def plot_contours(savefig=False,
 
 def plot_strike(savefig=False,
                 fontsize=9,
-                figname="figures/american_option_2.pdf"):
+                figname="./figures/american_option_2.pdf"):
     model = create_american_option_model()
     t_vals, z_vals, w_vals, Q, φ, T, β, K = model
     h_star = compute_cvf(model)
@@ -142,21 +142,21 @@ def plot_strike(savefig=False,
 
         if exercise_date >= T:
             print("Warning: Option not exercised.")
-
-        # Plot
-        ax.set_ylim(y_min, y_max)
-        ax.set_xlim(0, T+1)
-        ax.fill_between(range(T), np.ones(T) * K, np.ones(T) * y_max, alpha=0.2)
-        ax.plot(range(T), s_vals, label=r"$S_t$")
-        ax.plot((exercise_date,), (s_vals[exercise_date]), "ko")
-        ax.vlines((exercise_date,), 0, (s_vals[exercise_date]), ls="--", colors="black")
-        ax.legend(loc="upper left", fontsize=fontsize)
-        ax.text(-10, 11, "in the money", fontsize=fontsize, rotation=90)
-        ax.text(-10, 7.2, "out of the money", fontsize=fontsize, rotation=90)
-        ax.text(exercise_date-20, 6,
-                "exercise date", fontsize=fontsize)
-        ax.set_xticks((1, T))
-        ax.set_yticks((y_min, y_max))
+        else:
+            # Plot
+            ax.set_ylim(y_min, y_max)
+            ax.set_xlim(0, T+1)
+            ax.fill_between(range(T), np.ones(T) * K, np.ones(T) * y_max, alpha=0.2)
+            ax.plot(range(T), s_vals, label=r"$S_t$")
+            ax.plot((exercise_date,), (s_vals[exercise_date]), "ko")
+            ax.vlines((exercise_date,), 0, (s_vals[exercise_date]), ls="--", colors="black")
+            ax.legend(loc="upper left", fontsize=fontsize)
+            ax.text(-10, 11, "in the money", fontsize=fontsize, rotation=90)
+            ax.text(-10, 7.2, "out of the money", fontsize=fontsize, rotation=90)
+            ax.text(exercise_date-20, 6,
+                    "exercise date", fontsize=fontsize)
+            ax.set_xticks((1, T))
+            ax.set_yticks((y_min, y_max))
 
     if savefig:
         fig.savefig(figname)
