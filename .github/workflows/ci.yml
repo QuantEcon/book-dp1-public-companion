@@ -37,20 +37,6 @@ jobs:
         shell: bash
         run: |
           julia -e 'using Pkg; ENV["PYTHON"]="/usr/share/miniconda3/python"; Pkg.add(["PyCall", "Conda", "PyPlot", "IJulia"]); using Conda; Conda.add("matplotlib"); using PyPlot;'
-      # - name: Install latex dependencies
-      #   run: |
-      #     sudo apt-get -qq update
-      #     sudo apt-get install -y     \
-      #       texlive-latex-recommended \
-      #       texlive-latex-extra       \
-      #       texlive-fonts-recommended \
-      #       texlive-fonts-extra       \
-      #       texlive-xetex             \
-      #       latexmk                   \
-      #       xindy                     \
-      #       dvipng                    \
-      #       cm-super                  \
-      #       msttcorefonts
       - name: Display Conda Environment Versions
         shell: bash -l {0}
         run: conda list
