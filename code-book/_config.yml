@@ -8,12 +8,8 @@ execute:
   execute_notebooks: "cache"
   timeout: 600 # 10 minutes
   allow_errors: true
-  exclude_patterns:
-    - '*.py'
-    - '*.jl'
-    - '*.ipynb' 
 
-only_build_toc_files: false
+only_build_toc_files: true
 
 
 

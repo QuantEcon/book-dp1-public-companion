@@ -9,7 +9,7 @@ kernelspec:
   name: julia-1.9
 ---
 
-# Dynamic Programming <br/> Python and Julia Code
+# Dynamic Programming
 
 **Authors**: [John Stachurski](https://johnstachurski.net/) and [Thomas J. Sargent](http://www.tomsargent.com/)
 

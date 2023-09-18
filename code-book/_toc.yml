@@ -26,3 +26,6 @@ parts:
     - file: py/stochastic_discounting
     - file: py/nonlinear_valuation
     - file: py/recursive_decision_processes
+  - caption: Others
+    chapters:
+    - file: status.md
