@@ -9,7 +9,7 @@ kernelspec:
   name: julia-1.9
 ---
 
-(Chapter 1: Introductions)=
+(Chapter 1: Introduction)=
 ```{raw} jupyter
 <div id="qe-notebook-header" style="text-align:right;">
         <a href="https://quantecon.org/" title="quantecon.org">
@@ -17,7 +17,7 @@ kernelspec:
         </a>
 </div>
 ```
-# Chapter 1: Introductions
+# Chapter 1: Introduction
 
 
 ```{contents} Contents
@@ -36,7 +36,6 @@ pygui(:tk);
 
 ## two_period_job_search.jl
 ```{code-cell} julia
-:tags: ["hide-input"]
 """
 Two period job search in the IID case.
 """
@@ -91,7 +90,7 @@ end
 
 " Plot two-period value function and res wage. "
 function fig_v1(model=default_model; savefig=false, 
-                  figname="figures/iid_job_search_0.pdf", fs=18)
+                  figname="./figures/iid_job_search_0.pdf", fs=18)
 
     (; n, w_vals, ϕ, β, c) = model
 
@@ -128,7 +127,6 @@ fig_v1(savefig=true)
 ```
 ## compute_spec_rad.jl
 ```{code-cell} julia
-:tags: ["hide-input"]
 using LinearAlgebra                         
 ρ(A) = maximum(abs(λ) for λ in eigvals(A))  # Spectral radius
 A = [0.4 0.1;                               # Test with arbitrary A
@@ -138,7 +136,6 @@ print(ρ(A))
 ```
 ## power_series.jl
 ```{code-cell} julia
-:tags: ["hide-input"]
 using LinearAlgebra
 
 # Primitives
@@ -165,7 +162,6 @@ print(maximum(abs.(B_inverse - power_series(A))))
 ```
 ## s_approx.jl
 ```{code-cell} julia
-:tags: ["hide-input"]
 """
 Computes an approximate fixed point of a given operator T 
 via successive approximation.
@@ -205,7 +201,6 @@ end
 ```
 ## linear_iter.jl
 ```{code-cell} julia
-:tags: ["hide-input"]
 include("s_approx.jl")
 using LinearAlgebra
 
@@ -225,7 +220,6 @@ print(isapprox(u_star, u_star_approx, rtol=1e-5))
 ```
 ## linear_iter_fig.jl
 ```{code-cell} julia
-:tags: ["hide-input"]
 include("linear_iter.jl")
 using PyPlot
 
@@ -266,13 +260,12 @@ ax.set_yticks((3.0, 4.0, 5.0, 6.0))
 ax.set_xlim(1.8, 3.2)
 ax.set_ylim(2.8, 6.1)
 
-fig.savefig("figures/linear_iter_fig_1.pdf")
+fig.savefig("./figures/linear_iter_fig_1.pdf")
 
 
 ```
 ## iid_job_search.jl
 ```{code-cell} julia
-:tags: ["hide-input"]
 """
 VFI approach to job search in the infinite-horizon IID case.
 
@@ -318,7 +311,7 @@ default_model = create_job_search_model()
 function fig_vseq(model=default_model; 
                     k=3, 
                     savefig=false, 
-                    figname="figures/iid_job_search_1.pdf",
+                    figname="./figures/iid_job_search_1.pdf",
                     fs=16)
 
     v = zero(model.w_vals)  
@@ -348,7 +341,7 @@ end
 " Plot the fixed point. "
 function fig_vstar(model=default_model; 
                    savefig=false, fs=18,
-                   figname="figures/iid_job_search_3.pdf")
+                   figname="./figures/iid_job_search_3.pdf")
 
     (; n, w_vals, ϕ, β, c) = model
     v_star, σ_star = vfi(model)

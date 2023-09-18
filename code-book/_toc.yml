@@ -6,7 +6,7 @@
 format: jb-book
 root: intro
 parts: 
-  - caption: Julia Codebooks
+  - caption: Julia
     chapters:
     - file: jl/introductions
     - file: jl/operators_fixed_points
@@ -16,7 +16,7 @@ parts:
     - file: jl/stochastic_discounting
     - file: jl/nonlinear_valuation
     - file: jl/recursive_decision_processes
-  - caption: Python Codebooks
+  - caption: Python
     chapters:
     - file: py/introductions
     - file: py/operators_fixed_points
@@ -26,4 +26,3 @@ parts:
     - file: py/stochastic_discounting
     - file: py/nonlinear_valuation
     - file: py/recursive_decision_processes
-

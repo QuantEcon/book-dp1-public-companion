@@ -36,7 +36,6 @@ pygui(:tk);
 
 ## inventory_dp.jl
 ```{code-cell} julia
-:tags: ["hide-input"]
 include("s_approx.jl")
 using Distributions
 m(x) = max(x, 0)  # Convenience function
@@ -117,7 +116,7 @@ end
 
 
 function plot_vstar_and_opt_policy(; fontsize=16, 
-                   figname="figures/inventory_dp_vs.pdf",
+                   figname="./figures/inventory_dp_vs.pdf",
                    savefig=false)
     fig, axes = plt.subplots(2, 1, figsize=(8, 6.5))
 
@@ -137,7 +136,7 @@ function plot_vstar_and_opt_policy(; fontsize=16,
 end
 
 function plot_ts(; fontsize=16, 
-                   figname="figures/inventory_dp_ts.pdf",
+                   figname="./figures/inventory_dp_ts.pdf",
                    savefig=false)
     X = sim_inventories()
     fig, ax = plt.subplots(figsize=(9, 5.5))
@@ -163,7 +162,6 @@ plot_ts(savefig=true)
 ```
 ## finite_opt_saving_0.jl
 ```{code-cell} julia
-:tags: ["hide-input"]
 using QuantEcon, LinearAlgebra, IterTools
 
 function create_savings_model(; R=1.01, β=0.98, γ=2.5,  
@@ -211,7 +209,6 @@ end
 ```
 ## finite_opt_saving_1.jl
 ```{code-cell} julia
-:tags: ["hide-input"]
 include("finite_opt_saving_0.jl")
 
 "Compute a v-greedy policy."
@@ -259,7 +256,6 @@ end
 ```
 ## finite_opt_saving_2.jl
 ```{code-cell} julia
-:tags: ["hide-input"]
 include("s_approx.jl")
 include("finite_opt_saving_1.jl")
 
@@ -372,7 +368,7 @@ function plot_timing(; m_vals=collect(range(1, 600, step=10)),
     ax.set_xlabel(L"m", fontsize=fontsize)
     ax.set_ylabel("time", fontsize=fontsize)
     if savefig
-        fig.savefig("figures/finite_opt_saving_2_1.pdf")
+        fig.savefig("./figures/finite_opt_saving_2_1.pdf")
     end
     return (pi_time, vfi_time, opi_times)
 end
@@ -397,7 +393,7 @@ end
 
 function plot_time_series(; m=2_000,
                            savefig=false, 
-                           figname="figures/finite_opt_saving_ts.pdf")
+                           figname="./figures/finite_opt_saving_ts.pdf")
 
     w_series = simulate_wealth(m)
     fig, ax = plt.subplots(figsize=(9, 5.2))
@@ -411,7 +407,7 @@ end
 
 function plot_histogram(; m=1_000_000,
                            savefig=false, 
-                           figname="figures/finite_opt_saving_hist.pdf")
+                           figname="./figures/finite_opt_saving_hist.pdf")
 
     w_series = simulate_wealth(m)
     g = round(gini(sort(w_series)), digits=2)
@@ -427,7 +423,7 @@ end
 
 function plot_lorenz(; m=1_000_000,
                            savefig=false, 
-                           figname="figures/finite_opt_saving_lorenz.pdf")
+                           figname="./figures/finite_opt_saving_lorenz.pdf")
 
     w_series = simulate_wealth(m)
     (; F, L) = lorenz(sort(w_series))
@@ -465,7 +461,6 @@ plot_lorenz(savefig=true)
 ```
 ## finite_lq.jl
 ```{code-cell} julia
-:tags: ["hide-input"]
 using QuantEcon, LinearAlgebra, IterTools
 include("s_approx.jl")
 
@@ -618,7 +613,7 @@ function plot_policy()
     ax.legend(fontsize=fontsize)
 end
 
-function plot_sim(; savefig=false, figname="figures/finite_lq_1.pdf")
+function plot_sim(; savefig=false, figname="./figures/finite_lq_1.pdf")
     ts_length = 200
 
     fig, axes = plt.subplots(4, 1, figsize=(9, 11.2))
@@ -657,7 +652,7 @@ end
 
 function plot_timing(; m_vals=collect(range(1, 600, step=10)),
                    savefig=false,
-                   figname="figures/finite_lq_time.pdf"
+                   figname="./figures/finite_lq_time.pdf"
     )
     model = create_investment_model()
     #println("Running Howard policy iteration.")
@@ -707,7 +702,6 @@ plot_timing(savefig=true)
 ```
 ## firm_hiring.jl
 ```{code-cell} julia
-:tags: ["hide-input"]
 using QuantEcon, LinearAlgebra, IterTools
 
 function create_hiring_model(; 
@@ -788,7 +782,7 @@ PyPlot.matplotlib[:rc]("text", usetex=true) # allow tex rendering
 fontsize=14
 
 function plot_policy(; savefig=false, 
-                    figname="figures/firm_hiring_pol.pdf")
+                    figname="./figures/firm_hiring_pol.pdf")
     model = create_hiring_model()
     (; β, κ, α, p, w, l_grid, z_grid, Q) = model
     σ_star = optimistic_policy_iteration(model)
@@ -835,7 +829,7 @@ end
 
 
 function plot_sim(; savefig=false, 
-                    figname="figures/firm_hiring_ts.pdf",
+                    figname="./figures/firm_hiring_ts.pdf",
                     ts_length = 250)
 
     model = create_hiring_model()
@@ -855,7 +849,7 @@ end
 
 
 function plot_growth(; savefig=false, 
-                    figname="figures/firm_hiring_g.pdf",
+                    figname="./figures/firm_hiring_g.pdf",
                     ts_length = 10_000_000)
 
     model = create_hiring_model()
@@ -896,7 +890,6 @@ plot_growth(savefig=true)
 ```
 ## modified_opt_savings.jl
 ```{code-cell} julia
-:tags: ["hide-input"]
 using QuantEcon, LinearAlgebra, IterTools
 
 function create_savings_model(; β=0.98, γ=2.5,  
@@ -1086,7 +1079,7 @@ fontsize=16
 
 
 function plot_contours(; savefig=false, 
-                         figname="figures/modified_opt_savings_1.pdf")
+                         figname="./figures/modified_opt_savings_1.pdf")
 
     model = create_savings_model()
     (; β, γ, η_grid, ϕ, w_grid, y_grid, Q) = model
@@ -1121,7 +1114,7 @@ end
 
 
 function plot_policies(; savefig=false, 
-                         figname="figures/modified_opt_savings_2.pdf")
+                         figname="./figures/modified_opt_savings_2.pdf")
 
     model = create_savings_model()
     (; β, γ, η_grid, ϕ, w_grid, y_grid, Q) = model
@@ -1146,7 +1139,7 @@ end
 
 function plot_time_series(; m=2_000,
                            savefig=false, 
-                           figname="figures/modified_opt_savings_ts.pdf")
+                           figname="./figures/modified_opt_savings_ts.pdf")
 
     w_series = simulate_wealth(m)
     fig, ax = plt.subplots(figsize=(9, 5.2))
@@ -1161,7 +1154,7 @@ end
 
 function plot_histogram(; m=1_000_000,
                            savefig=false, 
-                           figname="figures/modified_opt_savings_hist.pdf")
+                           figname="./figures/modified_opt_savings_hist.pdf")
 
     w_series = simulate_wealth(m)
     g = round(gini(sort(w_series)), digits=2)
@@ -1178,7 +1171,7 @@ end
 
 function plot_lorenz(; m=1_000_000,
                            savefig=false, 
-                           figname="figures/modified_opt_savings_lorenz.pdf")
+                           figname="./figures/modified_opt_savings_lorenz.pdf")
 
     w_series = simulate_wealth(m)
     (; F, L) = lorenz(sort(w_series))

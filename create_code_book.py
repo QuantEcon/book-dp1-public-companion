@@ -45,7 +45,7 @@ contents = """
 """
 chapter_meta = {
     "introductions": {
-        "name": "Chapter 1: Introductions",
+        "name": "Chapter 1: Introduction",
         "subs": { # order determines order in chapter
             "two_period_job_search.jl": ["fig_v1(savefig=true)"],
             "compute_spec_rad.jl": [],
@@ -205,7 +205,7 @@ contents = """
 """
 chapter_meta = {
     "introductions": {
-        "name": "Chapter 1: Introductions",
+        "name": "Chapter 1: Introduction",
         "subs": { # order determines order in chapter
             "two_period_job_search.py": ["fig_v1()"],
             "compute_spec_rad.py": [],
