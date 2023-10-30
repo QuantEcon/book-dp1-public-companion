@@ -1,4 +1,5 @@
 title: Dynamic Programming
+subtitle: Julia and Python Code
 author: Thomas J. Sargent & John Stachurski
 logo: _static/qe-logo.png
 #description: This website presents a set of lectures on dynamic programming for economics, designed and written by Thomas J. Sargent and John Stachurski.
@@ -9,6 +10,8 @@ execute:
   allow_errors: true
 
 only_build_toc_files: true
+
+
 
 #html:
   #baseurl: https://python.quantecon.org/

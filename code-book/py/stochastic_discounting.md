@@ -28,7 +28,6 @@ kernelspec:
 
 ## plot_interest_rates.py
 ```{code-cell} python3
-:tags: ["hide-input"]
 # Nominal interest rate from https://fred.stlouisfed.org/series/GS1
 # Real interest rate from https://fred.stlouisfed.org/series/WFII10
 #
@@ -45,7 +44,7 @@ plt.rcParams.update({"text.usetex": True, "font.size": 14})
 df_nominal = pd.read_csv("./data/GS1.csv")
 df_real = pd.read_csv("./data/WFII10.csv")
 
-def plot_rates(df, fontsize=16, savefig=True):
+def plot_rates(df, fontsize=16, savefig=False):
     r_type = 'nominal' if df.equals(df_nominal) else 'real'
     fig, ax = plt.subplots(figsize=(9, 5))
     ax.plot(df.iloc[:, 0], df.iloc[:, 1], label=f'{r_type} interest rate')
@@ -65,7 +64,6 @@ plot_rates(df_real)
 ```
 ## pd_ratio.py
 ```{code-cell} python3
-:tags: ["hide-input"]
 """
 Price-dividend ratio in a model with dividend and consumption growth.
 
@@ -130,7 +128,7 @@ default_model = create_asset_pricing_model()
 
 def plot_main(μ_d_vals=(0.02, 0.08),
               savefig=False,
-              figname="figures/pd_ratio_1.pdf"):
+              figname="./figures/pd_ratio_1.pdf"):
     fig, ax = plt.subplots(figsize=(9, 5.2))
 
     for μ_d in μ_d_vals:
@@ -152,7 +150,6 @@ plot_main()
 ```
 ## inventory_sdd.py
 ```{code-cell} python3
-:tags: ["hide-input"]
 """
 
 Inventory management model with state-dependent discounting. The discount
@@ -329,7 +326,7 @@ def sim_inventories(ts_length, X_init=0):
 
 def plot_ts(ts_length=400,
             fontsize=10,
-            figname="figures/inventory_sdd_ts.pdf",
+            figname="./figures/inventory_sdd_ts.pdf",
             savefig=False):
     
     X, Z = sim_inventories(ts_length)
@@ -377,7 +374,7 @@ def plot_timing(m_vals=np.arange(1, 400, 10),
     ax.set_xlabel(r"$m$", fontsize=fontsize)
     ax.set_ylabel("time", fontsize=fontsize)
     if savefig:
-        fig.savefig("figures/inventory_sdd_timing.pdf")
+        fig.savefig("./figures/inventory_sdd_timing.pdf")
     return (opi_time, vfi_time, opi_times)
 ```
 

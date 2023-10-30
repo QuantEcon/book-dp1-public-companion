@@ -36,7 +36,6 @@ pygui(:tk);
 
 ## inventory_sim.jl
 ```{code-cell} julia
-:tags: ["hide-input"]
 using Distributions, IterTools, QuantEcon
 
 function create_inventory_model(; S=100,  # Order size
@@ -85,7 +84,7 @@ PyPlot.matplotlib[:rc]("text", usetex=true) # allow tex rendering
 
 
 function plot_ts(model; fontsize=16, 
-                   figname="figures/inventory_sim_1.pdf",
+                   figname="./figures/inventory_sim_1.pdf",
                    savefig=false)
     (; S, s, p, ϕ, h) = model
     X = sim_inventories(model)
@@ -103,7 +102,7 @@ end
 
 
 function plot_hist(model; fontsize=16, 
-                   figname="figures/inventory_sim_2.pdf",
+                   figname="./figures/inventory_sim_2.pdf",
                    savefig=false)
     (; S, s, p, ϕ, h) = model
     state_values, ψ_star = compute_stationary_dist(model) 
@@ -139,7 +138,6 @@ plot_hist(model; savefig=true)
 ```
 ## is_irreducible.jl
 ```{code-cell} julia
-:tags: ["hide-input"]
 using QuantEcon
 P = [0.1 0.9;
      0.0 1.0]
@@ -149,7 +147,6 @@ print(is_irreducible(mc))
 ```
 ## laborer_sim.jl
 ```{code-cell} julia
-:tags: ["hide-input"]
 function create_laborer_model(; α=0.3, β=0.2)
     return (; α, β)
 end
@@ -190,7 +187,6 @@ function test_convergence(; k=10_000_000, p=0.5)
 ```
 ## markov_js.jl
 ```{code-cell} julia
-:tags: ["hide-input"]
 """
 Infinite-horizon job search with Markov wage draws.
 
@@ -279,7 +275,7 @@ default_model = create_markov_js_model()
 function plot_main(; model=default_model,
                      method="vfi", 
                      savefig=false, 
-                     figname="figures/markov_js_1.pdf")
+                     figname="./figures/markov_js_1.pdf")
     (; n, w_vals, P, β, c) = model
 
 
@@ -312,7 +308,6 @@ plot_main(savefig=true)
 ```
 ## markov_js_with_sep.jl
 ```{code-cell} julia
-:tags: ["hide-input"]
 """
 Infinite-horizon job search with Markov wage draws and separation.
 
@@ -373,7 +368,7 @@ default_model = create_js_with_sep_model()
 function plot_main(; model=default_model,
                      method="vfi", 
                      savefig=false, 
-                     figname="figures/markov_js_with_sep_1.pdf")
+                     figname="./figures/markov_js_with_sep_1.pdf")
     (; n, w_vals, P, β, c, α) = model
     v_star, σ_star = vfi(model)
 
@@ -403,7 +398,7 @@ end
 
 function plot_w_stars(; α_vals=LinRange(0.0, 1.0, 10),
                         savefig=false, 
-                        figname="figures/markov_js_with_sep_2.pdf")
+                        figname="./figures/markov_js_with_sep_2.pdf")
 
     w_star_vec = similar(α_vals)
     for (i_α, α) in enumerate(α_vals)

@@ -36,7 +36,6 @@ pygui(:tk);
 
 ## firm_exit.jl
 ```{code-cell} julia
-:tags: ["hide-input"]
 """
 Firm valuation with exit option.
 
@@ -95,7 +94,7 @@ fontsize=16
 
 
 function plot_val(; savefig=false, 
-                     figname="figures/firm_exit_1.pdf")
+                     figname="./figures/firm_exit_1.pdf")
 
     fig, ax = plt.subplots(figsize=(9, 5.2))
 
@@ -119,7 +118,7 @@ end
 
 
 function plot_comparison(; savefig=false, 
-                     figname="figures/firm_exit_2.pdf")
+                     figname="./figures/firm_exit_2.pdf")
 
     fig, ax = plt.subplots(figsize=(9, 5.2))
 
@@ -153,7 +152,6 @@ plot_comparison(savefig=true)
 ```
 ## american_option.jl
 ```{code-cell} julia
-:tags: ["hide-input"]
 """
 Valuation for finite-horizon American call options in discrete time.
 
@@ -211,7 +209,7 @@ fontsize=16
 
 
 function plot_contours(; savefig=false, 
-                         figname="figures/american_option_1.pdf")
+                         figname="./figures/american_option_1.pdf")
 
     model = create_american_option_model()
     (; t_vals, z_vals, w_vals, Q, φ, T, β, K, e) = model
@@ -249,7 +247,7 @@ end
 
 function plot_strike(; savefig=false, 
                        fontsize=12,
-                       figname="figures/american_option_2.pdf")
+                       figname="./figures/american_option_2.pdf")
 
     model = create_american_option_model()
     (; t_vals, z_vals, w_vals, Q, φ, T, β, K, e) = model

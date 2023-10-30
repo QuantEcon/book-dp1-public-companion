@@ -9,7 +9,7 @@ kernelspec:
   name: python3
 ---
 
-(Chapter 1: Introductions)=
+(Chapter 1: Introduction)=
 ```{raw} jupyter
 <div id="qe-notebook-header" style="text-align:right;">
         <a href="https://quantecon.org/" title="quantecon.org">
@@ -17,7 +17,7 @@ kernelspec:
         </a>
 </div>
 ```
-# Chapter 1: Introductions
+# Chapter 1: Introduction
 
 
 ```{contents} Contents
@@ -28,7 +28,6 @@ kernelspec:
 
 ## two_period_job_search.py
 ```{code-cell} python3
-:tags: ["hide-input"]
 from quantecon.distributions import BetaBinomial
 
 import numpy as np
@@ -102,7 +101,7 @@ def fig_dist(model=default_model, fs=10):
 
 
 def fig_v1(model=default_model, savefig=False,
-                  figname="figures/iid_job_search_0_py.pdf", fs=18):
+                  figname="./figures/iid_job_search_0_py.pdf", fs=18):
     """
     Plot two-period value function and res wage
     """
@@ -140,7 +139,6 @@ fig_v1()
 ```
 ## compute_spec_rad.py
 ```{code-cell} python3
-:tags: ["hide-input"]
 import numpy as np
 
 # Spectral radius
@@ -156,7 +154,6 @@ print(ρ(A))
 ```
 ## power_series.py
 ```{code-cell} python3
-:tags: ["hide-input"]
 import numpy as np
 
 # Primitives
@@ -187,7 +184,6 @@ print(np.max(np.abs(B_inverse - power_series(A))))
 ```
 ## s_approx.py
 ```{code-cell} python3
-:tags: ["hide-input"]
 """
 Computes the approximate fixed point of T via successive approximation.
 """
@@ -218,7 +214,6 @@ def successive_approx(T,                     # Operator (callable)
 ```
 ## linear_iter.py
 ```{code-cell} python3
-:tags: ["hide-input"]
 from s_approx import successive_approx
 import numpy as np
 
@@ -251,7 +246,6 @@ print(np.allclose(x_star, x_star_approx, rtol=1e-5))
 ```
 ## linear_iter_fig.py
 ```{code-cell} python3
-:tags: ["hide-input"]
 import matplotlib.pyplot as plt
 import matplotlib.pyplot as plt
 
@@ -260,47 +254,48 @@ import numpy as np
 
 from linear_iter import x_star, T
 
+def plot_main(savefig=False, figname="./figures/linear_iter_fig_1.pdf"):
 
-fig, ax = plt.subplots()
+    fig, ax = plt.subplots()
 
-e = 0.02
+    e = 0.02
 
-marker_size = 60
-fs = 10
+    marker_size = 60
+    fs = 10
 
-colors = ("red", "blue", "orange", "green")
-u_0_vecs = ([[2.0], [3.0]], [[3.0], [5.2]], [[2.4], [3.6]], [[2.6], [5.6]])
-u_0_vecs = list(map(np.array, u_0_vecs))
-iter_range = 8
+    colors = ("red", "blue", "orange", "green")
+    u_0_vecs = ([[2.0], [3.0]], [[3.0], [5.2]], [[2.4], [3.6]], [[2.6], [5.6]])
+    u_0_vecs = list(map(np.array, u_0_vecs))
+    iter_range = 8
 
-for (x_0, color) in zip(u_0_vecs, colors):
-    x = x_0
-    s, t = x
-    ax.text(s+e, t-4*e, r"$u_0$", fontsize=fs)
-
-    for i in range(iter_range):
+    for (x_0, color) in zip(u_0_vecs, colors):
+        x = x_0
         s, t = x
-        ax.scatter((s,), (t,), c=color, alpha=0.2, s=marker_size)
-        x_new = T(x)
-        s_new, t_new = x_new
-        ax.plot((s, s_new), (t, t_new), marker='.',linewidth=0.5, alpha=0.5, color=color)
-        x = x_new
+        ax.text(s+e, t-4*e, r"$u_0$", fontsize=fs)
 
-s_star, t_star = x_star
-ax.scatter((s_star,), (t_star,), c="k", s=marker_size * 1.2)
-ax.text(s_star-4*e, t_star+4*e, r"$u^*$", fontsize=fs)
+        for i in range(iter_range):
+            s, t = x
+            ax.scatter((s,), (t,), c=color, alpha=0.2, s=marker_size)
+            x_new = T(x)
+            s_new, t_new = x_new
+            ax.plot((s, s_new), (t, t_new), marker='.',linewidth=0.5, alpha=0.5, color=color)
+            x = x_new
 
-ax.set_xticks((2.0, 2.5, 3.0))
-ax.set_yticks((3.0, 4.0, 5.0, 6.0))
-ax.set_xlim(1.8, 3.2)
-ax.set_ylim(2.8, 6.1)
+    s_star, t_star = x_star
+    ax.scatter((s_star,), (t_star,), c="k", s=marker_size * 1.2)
+    ax.text(s_star-4*e, t_star+4*e, r"$u^*$", fontsize=fs)
 
-fig.savefig("figures/linear_iter_fig_1.pdf")
+    ax.set_xticks((2.0, 2.5, 3.0))
+    ax.set_yticks((3.0, 4.0, 5.0, 6.0))
+    ax.set_xlim(1.8, 3.2)
+    ax.set_ylim(2.8, 6.1)
+
+    if savefig:
+        fig.savefig(figname)
 
 ```
 ## iid_job_search.py
 ```{code-cell} python3
-:tags: ["hide-input"]
 """
 VFI approach to job search in the infinite-horizon IID case.
 
@@ -355,7 +350,7 @@ plt.rcParams.update({"text.usetex": True, "font.size": 14})
 def fig_vseq(model=default_model,
                 k=3,
                 savefig=False,
-                figname="figures/iid_job_search_1.pdf",
+                figname="./figures/iid_job_search_1.pdf",
                 fs=10):
 
     v = np.zeros_like(model.w_vals)
@@ -383,7 +378,7 @@ def fig_vseq(model=default_model,
 
 def fig_vstar(model=default_model,
               savefig=False, fs=10,
-              figname="figures/iid_job_search_3.pdf"):
+              figname="./figures/iid_job_search_3.pdf"):
     """ Plot the fixed point. """
     n, w_vals, φ, β, c = model
     v_star, σ_star = vfi(model)
