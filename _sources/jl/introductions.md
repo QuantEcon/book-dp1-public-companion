@@ -9,7 +9,7 @@ kernelspec:
   name: julia-1.9
 ---
 
-(Chapter 1: Introductions)=
+(Chapter 1: Introduction)=
 ```{raw} jupyter
 <div id="qe-notebook-header" style="text-align:right;">
         <a href="https://quantecon.org/" title="quantecon.org">
@@ -17,7 +17,7 @@ kernelspec:
         </a>
 </div>
 ```
-# Chapter 1: Introductions
+# Chapter 1: Introduction
 
 
 ```{contents} Contents

@@ -200,7 +200,7 @@ def plot_convergence(savefig=False,
     greys.reverse()
 
     for g in greys:
-        ax.plot(x_vals, v, "k-", color=g, linewidth=1, alpha=0.7)
+        ax.plot(x_vals, v, "k-", linewidth=1, alpha=0.7)
         for t in range(20):
             v = K(v, model)
 

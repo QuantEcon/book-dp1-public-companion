@@ -11,7 +11,9 @@ kernelspec:
 
 # Dynamic Programming
 
-This website presents a set of lectures on dynamic programming and its applications in economics, finance, and adjacent fields like operations research, designed and written by [Thomas J. Sargent](http://www.tomsargent.com/) and [John Stachurski](http://johnstachurski.net/). The languages of instruction are Julia and Python.
+**Authors**: [John Stachurski](https://johnstachurski.net/) and [Thomas J. Sargent](http://www.tomsargent.com/)
+
+This website provides Julia and Python code for the textbook [Dynamic Programming](https://dp.quantecon.org/).
 
 ```{tableofcontents}
 ```
