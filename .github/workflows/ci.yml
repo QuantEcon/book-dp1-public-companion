@@ -74,6 +74,11 @@ jobs:
         with:
           name: execution-reports
           path: code-book/_build/html/reports
+      - name: Book PDF
+        shell: bash -l {0}
+        run: |
+          mkdir -p code-book/_build/html/_downloads
+          cp pdf/dp.pdf code-book/_build/html/_downloads/
       - name: Save Build as Artifact
         uses: actions/upload-artifact@v1
         with:
