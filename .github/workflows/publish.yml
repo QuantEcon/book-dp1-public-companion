@@ -85,9 +85,13 @@ jobs:
         shell: bash -l {0}
         run: |
           python create_code_book.py
+      - name: Book PDF
+        shell: bash -l {0}
+        run: |
+          mkdir -p code-book/_build/html/_downloads
+          cp pdf/dp.pdf code-book/_build/html/_downloads/
       - name: Deploy website to gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: code-book/_build/html/
-          # cname: networks.quantecon.org
