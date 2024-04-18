@@ -1,3 +1,7 @@
+> [!CAUTION]  
+> **ARCHIVED: 18th April 2024** 
+> The code for the textbook **Dynamic Programming Volume 1** is available on the website dp.quantecon.org
+
 # Dynamic Programming Volume 1
 
 Public repo for the textbook **Dynamic Programming Volume 1** by [Thomas J.
